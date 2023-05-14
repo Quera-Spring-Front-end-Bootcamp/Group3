@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  @apply leading-[normal] m-0;
+}
+*,
+::before,
+::after {
+  border-width: 0;
+}
+
+@font-face {
+  font-family: "Dana";
+  src: url("./assets/fonts/dana-regular.ttf");
+}
