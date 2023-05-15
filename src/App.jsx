@@ -1,9 +1,7 @@
-import Form from "./components/Form";
-
 const App = () => {
   return (
     <>
-   <Form/> 
+      return <div className="text-xl text-secondary"> متن تست است</div>;
     </>
   );
 };
