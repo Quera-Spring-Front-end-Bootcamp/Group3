@@ -12,7 +12,7 @@ export default {
           DEFAULT: '1rem',
           md: '1rem',
           lg: '2rem',
-          xl: '3rem',
+          "3xl": '3rem',
 
         },
       },

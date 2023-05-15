@@ -1,5 +1,11 @@
+import Form from "./components/Form";
+
 const App = () => {
-  return <div className="text-xl text-secondary"> متن تست است</div>;
+  return (
+    <>
+   <Form/> 
+    </>
+  );
 };
 
 export default App;
