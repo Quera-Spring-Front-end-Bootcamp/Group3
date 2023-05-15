@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow : {
+        "1": '0px 12px 50px rgba(0, 0, 0, 0.18)',
+
+      },
       container: {
 
         padding: {
