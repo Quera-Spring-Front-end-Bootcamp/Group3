@@ -1,17 +1,5 @@
-import Login from "./pages/auth/Login.jsx";
-import Register from "./pages/auth/Register.jsx";
-import Forgot from "./pages/auth/Forgot.jsx";
-import Success from "./pages/auth/Success.jsx";
-
-function App() {
-  return (
-    <>
-      {/* <Forgot /> */}
-      <Login />
-      {/* <Register /> */}
-      {/* <Success /> */}
-    </>
-  );
-}
+const App = () => {
+  return <div className="text-xl text-secondary"> متن تست است</div>;
+};
 
 export default App;

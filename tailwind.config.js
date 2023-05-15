@@ -1,31 +1,26 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
+      container: {
+
+        padding: {
+          DEFAULT: '1rem',
+          md: '1rem',
+          lg: '2rem',
+          xl: '3rem',
+
+        },
+      },
       colors: {
-        gleft: "#118c80",
-        gright: "#4ab7d8",
-        white: "#fff",
-        black: "#000",
-        darkcyan: "#208d8e",
-        darkgray: "#aaa",
-      },
-      fontFamily: {
-        dana: "Dana",
-      },
-      borderRadius: {
-        xl: "20px",
-      },
-    },
-    fontSize: {
-      "13xl": "32px",
-      base: "16px",
-      sm: "14px",
-      xs: "12px",
+        primary: "#1E1E1E",
+        secondary: "#208D8E"
+      }
     },
   },
-  corePlugins: {
-    preflight: false,
-  },
-};
+  plugins: [],
+}
