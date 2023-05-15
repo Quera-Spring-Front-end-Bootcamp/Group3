@@ -2,7 +2,7 @@ import Input from "./Input";
 
 const Form = () => {
   return (
-    <form action="" className="w-full h-full flex flex-col gap-5 px-6 py-9">
+    <form action="" className="w-full h-full flex flex-col gap-5">
       <h2 className="text-black font-semibold text-2xl text-center mb-2">
         ثبت‌نام در کوئرا تسک منیجر
       </h2>
