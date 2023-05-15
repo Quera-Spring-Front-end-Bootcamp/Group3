@@ -1,5 +1,7 @@
+import Layout from "./components/Layout/Layout";
+
 const App = () => {
-  return <div className="text-xl text-secondary"> متن تست است</div>;
+  return <Layout>Test</Layout>;
 };
 
 export default App;
