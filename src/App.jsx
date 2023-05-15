@@ -1,7 +1,7 @@
 const App = () => {
   return (
     <>
-      return <div className="text-xl text-secondary"> متن تست است</div>;
+      return <div className=" text-xl text-secondary"> متن تست است</div>;
     </>
   );
 };
