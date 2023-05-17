@@ -1,3 +1,8 @@
+import { Routes, Route } from "react-router-dom";
+import AuthRouter from "./routes/AuthRouter";
+import Home from "./pages/home";
+import NotFound from "./pages/notFound";
+
 const App = () => {
   return (
     <Routes>
