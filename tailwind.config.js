@@ -3,10 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      boxShadow : {
-        "1": '0px 12px 50px rgba(0, 0, 0, 0.18)',
-
-      },
+      
       container: {
         padding: {
           DEFAULT: "1rem",
