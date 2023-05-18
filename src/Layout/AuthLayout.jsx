@@ -7,7 +7,11 @@ import { Outlet } from "react-router-dom";
 export const AuthLayout = () => {
   return (
     <>
-      <img className="absolute bottom-0 w-[100%]" alt="" src={rectangle} />
+      <img
+        className="absolute bottom-0 w-[100%] -z-10"
+        alt=""
+        src={rectangle}
+      />
       <Header />
       <Outlet />
     </>
