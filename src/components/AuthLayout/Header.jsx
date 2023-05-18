@@ -15,19 +15,18 @@ const Header = () => {
   }
   return (
     <head className="flex flex-row items-center justify-between p-10">
+      <Logo />
       <div className="flex flex-row items-center justify-end gap-[7px]">
-        <Button
-          handleClick={handleClick}
-          title={`${location.pathname === "/auth/login" ? "ثبت نام" : "ورود"}`}
-        />
-
         {location.pathname === "/auth/login" ? (
           <div className="relative text-black">ثبت‌نام نکرده‌ای؟</div>
         ) : (
           <div className="relative text-black">قبلا ثبت‌نام کرده‌ای؟</div>
         )}
+        <Button
+          handleClick={handleClick}
+          title={`${location.pathname === "/auth/login" ? "ثبت نام" : "ورود"}`}
+        />
       </div>
-      <Logo />
     </head>
   );
 };

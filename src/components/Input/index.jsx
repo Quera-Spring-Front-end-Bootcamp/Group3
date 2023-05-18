@@ -1,13 +1,11 @@
-
-const Input = ({ type, label, value, onChange,...props }) => {
+const Input = ({ type, label, value, onChange, ...props }) => {
   return (
     <div className="relative">
       <label
-        htmlFor={type}
         className={
           (type === "checkbox"
             ? "absolute right-8 text-base "
-            : "text-sm flex pb-2") + " text-black"
+            : "text-sm/[21px] flex pb-2") + " text-black"
         }
       >
         {label}
@@ -26,7 +24,7 @@ const Input = ({ type, label, value, onChange,...props }) => {
           value={value}
           onChange={onChange}
           {...props}
-          className="w-full  h-10 border border-[#aaaaaa] rounded-md placeholder:text-[#959595] pr-4 "
+          className="w-full h-10 border border-[#aaaaaa] rounded-md placeholder:text-[#959595] pr-4 "
         />
       )}
     </div>
