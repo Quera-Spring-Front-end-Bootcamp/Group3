@@ -1,10 +1,10 @@
 // import React from "react";
 
-function Button({ title, handleClick, ...props }) {
+function Button({ title, handleClick, classNames, ...props }) {
   return (
     <button
       onClick={handleClick}
-      className="rounded-md	bg-secondary p-2.5 font-bold text-white text-right text-sm/[22px]"
+      className={` rounded-md	bg-primary p-2.5 font-bold text-white  text-sm/[22px] ${classNames} `}
       {...props}
     >
       {title}
