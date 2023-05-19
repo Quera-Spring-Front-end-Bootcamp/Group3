@@ -1,4 +1,4 @@
-const Input = ({ type, label, value, onChange, ...props }) => {
+const Input = ({ type, label, value, onChange, register, error, ...props }) => {
   return (
     <div className="relative">
       <label
@@ -15,6 +15,7 @@ const Input = ({ type, label, value, onChange, ...props }) => {
           type={type}
           checked={value}
           onChange={onChange}
+          {...register}
           {...props}
           className="w-5 h-5 border border-[#aaaaaa] rounded-md placeholder:text-[#959595] pr-4 "
         />
@@ -23,10 +24,12 @@ const Input = ({ type, label, value, onChange, ...props }) => {
           type={type}
           value={value}
           onChange={onChange}
+          {...register}
           {...props}
           className="w-full h-10 border border-[#aaaaaa] rounded-md placeholder:text-[#959595] pr-4 "
         />
       )}
+      {error && <p className="text-red-500 mt-1 text-xs">{error.message}</p>}
     </div>
   );
 };
