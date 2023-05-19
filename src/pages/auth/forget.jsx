@@ -5,7 +5,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const Forget = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
   const onSubmit = (data) => {
     const enteredEmail = data.email;
@@ -27,10 +31,16 @@ const Forget = () => {
           onSubmit={handleSubmit(onSubmit, onError)}
         >
           <Input
-            type={"email"}
-            label={"ایمیل خود را وارد کنید"}
-            id={"email"}
-            register={register("email", { required: true })}
+            label="ایمیل خود را وارد کنید"
+            id="email"
+            error={errors.email}
+            register={register("email", {
+              required: "این فیلد الزامی می باشد!",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "ایمیل معتبر نمی باشد.",
+              },
+            })}
           />
           <Button
             title={"دریافت ایمیل بازیابی رمز عبور"}
