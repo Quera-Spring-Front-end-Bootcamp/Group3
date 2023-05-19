@@ -14,7 +14,7 @@ const Header = () => {
     }
   }
   return (
-    <head className="flex flex-row items-center justify-between p-10">
+    <head className="flex flex-row items-center justify-between p-10 fixed w-full">
       <Logo />
       <div className="flex flex-row items-center justify-end gap-[7px]">
         {location.pathname === "/auth/login" ? (
