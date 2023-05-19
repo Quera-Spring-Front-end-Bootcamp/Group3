@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import AuthCard from "../../components/Card/AuthCard";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    toast.success("شما با موفقیت وارد شدید :)");
   };
 
   return (

@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import AuthCard from "../../components/Card/AuthCard";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const {
@@ -12,6 +13,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    toast.success("ثبت نام شما با موفقیت انجام شد :)");
   };
 
   return (
