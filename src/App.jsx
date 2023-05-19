@@ -20,7 +20,15 @@ const App = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Toaster/>
+      <Toaster
+        toastOptions={{
+          style: {
+            direction: "rtl",
+            padding: "16px",
+            fontFamily: "dana",
+          },
+        }}
+      />
     </>
   );
 };
