@@ -6,11 +6,13 @@ import ResetPassword from "./pages/auth/resetpassword";
 import NotFound from "./pages/notFound";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
+import Home from "./pages/home";
 
 const App = () => {
   return (
     <>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

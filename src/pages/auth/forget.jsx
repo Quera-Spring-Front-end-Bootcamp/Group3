@@ -1,5 +1,5 @@
 import Button from "../../components/Button";
-import AuthCard from "../../components/Card/AuthCard";
+import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,10 @@ const Forget = () => {
 
   return (
     <div className="flex flex-row items-center justify-center w-screen h-screen">
-      <AuthCard title={"فراموشی رمز عبور"} className="w-[463px]">
+      <Card
+        title={"فراموشی رمز عبور"}
+        className="w-[463px] shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px]"
+      >
         <form
           className="w-full mt-7"
           onSubmit={handleSubmit(onSubmit, onError)}
@@ -48,7 +51,7 @@ const Forget = () => {
             type={"submit"}
           />
         </form>
-      </AuthCard>
+      </Card>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import AuthCard from "../../components/Card/AuthCard";
+import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-row items-center justify-center w-screen h-screen">
-      <AuthCard title="به کوئرا تسک منیجر خوش برگشتی :)">
+      <Card title="به کوئرا تسک منیجر خوش برگشتی :)">
         <form className="w-full mt-7" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <Input
@@ -81,7 +81,7 @@ const Login = () => {
             </a>
           </div>
         </form>
-      </AuthCard>
+      </Card>
     </div>
   );
 };

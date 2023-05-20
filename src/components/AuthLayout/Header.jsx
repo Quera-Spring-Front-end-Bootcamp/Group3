@@ -25,6 +25,7 @@ const Header = () => {
         <Button
           handleClick={handleClick}
           title={`${location.pathname === "/auth/login" ? "ثبت نام" : "ورود"}`}
+          classNames="w-[90px] h-10"
         />
       </div>
     </header>
