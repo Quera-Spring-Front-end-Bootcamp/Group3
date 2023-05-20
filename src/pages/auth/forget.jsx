@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const Forget = () => {
+  
   const {
     register,
     handleSubmit,
@@ -24,7 +25,7 @@ const Forget = () => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center w-screen h-screen">
+    <div className="flex flex-row items-center justify-center h-screen w-full ">
       <Card
         title={"فراموشی رمز عبور"}
         className="w-[463px] shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px]"

@@ -5,10 +5,11 @@ export default {
     extend: {
       container: {
         padding: {
-          DEFAULT: "1rem",
-          md: "1rem",
-          lg: "2rem",
-          xl: "3rem",
+          DEFAULT: '1rem',
+          sm: '1rem',
+          lg: '1rem',
+          xl: '0',
+          '2xl': '6rem',
         },
       },
       colors: {
