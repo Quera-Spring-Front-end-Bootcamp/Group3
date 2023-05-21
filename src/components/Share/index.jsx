@@ -1,25 +1,34 @@
-import { ArrowDown } from "../../assets/icons";
+import { useState } from "react";
 import Card from "../Card/Card";
+import { Permission } from "./Permission";
 
 const Share = () => {
-  const options = ['دسترسی کامل', 'ویرایش', 'مشاهده'];
-  const onOptionChangeHandler = (event) => {
-      console.log("User Selected Value - ", event.target.value)
-  }
-
-  return <Card>
-    <ArrowDown/>
-    <select onChange={onOptionChangeHandler}>
+ 
+ 
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('');
+    const handleToggleDropdown = () => {
+      setIsOpen(!isOpen);
+    };
   
-  <option><ArrowDown/></option>
-  {options.map((option, index) => {
-      return <option key={index} >
-          {option}
-      </option>
-      
-  })}
-</select>
-  </Card>;
+   
+  
+  return (
+    <Card>
+  
+
+
+    <div className="relative inline-block">
+      <div
+        className="w-48 px-2 py-1 border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring focus:ring-blue-200"
+        onClick={handleToggleDropdown}
+      >
+        {selectedOption || 'دسترسی کامل'}
+      </div>
+     <Permission isOpen={isOpen} setIsOpen={setIsOpen} setSelectedOption={setSelectedOption}/>
+    </div>
+    </Card>
+  );
 };
 
 export default Share;
