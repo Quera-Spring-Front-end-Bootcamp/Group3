@@ -39,10 +39,10 @@ import Card from "../Card/Card";
     {isOpen && (
         <Card
         title={null}
-        className="m-4 w-64 flex gap-4 items-start  p-4 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)]"
+        className="absolute top-10 left-0 z-20  w-64 flex gap-4 items-start  p-4 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)]"
       >
         {permissionArry.map((option) => (
-          <div key={option.id} className="flex flex-col gap-1"  onClick={() => handleSelectOption(option)}>
+          <div key={option.id} className="flex flex-col gap-1 cursor-pointer"  onClick={() => handleSelectOption(option)}>
             <span className="text-[#1e1e1e] text-xs font-semibold">
               {option.title}
             </span>
