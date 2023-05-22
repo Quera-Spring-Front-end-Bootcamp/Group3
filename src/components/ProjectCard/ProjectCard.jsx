@@ -28,7 +28,7 @@ export const ProjectCard = ({
   userName,
 }) => {
   return (
-    <div className="group transition-all w-[250px] box-border flex-col items-end p-[10px] gap-[18px] h-[133px] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0, 0, 0, 0.08)] rounded bg-teal-600 hover:h-[189px]">
+    <div className="group transition-all w-[250px] box-border flex-col items-end p-[10px] gap-[18px] h-[133px] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0, 0, 0, 0.08)] rounded hover:h-[189px]">
       <div className="flex flex-col  gap-[9px] w-[238px] h-[42px]">
         <div className="justify-between items-center flex ml-[10px] w-[230px] h-[42px]">
           <h1 className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#534D60]">
