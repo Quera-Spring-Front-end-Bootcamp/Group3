@@ -18,5 +18,7 @@ export const ColumnMore = ({
 };
 
 ColumnMore.defaultProps = {
+  title: "عنوان",
+  icon: "محل ایکون",
   className: "gap-[10px] text-[#1e1e1e]",
 };
