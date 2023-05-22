@@ -10,14 +10,20 @@ import none from "../assets/svgs/none.svg";
 import frame from "../assets/svgs/frame.png";
 import check from "../assets/svgs/check.svg";
 
-function CreateWorkspace() {
+/* define a onClose function in parent component that will close this modal.
+for example:
+const [showModal, setShowModal] = useState(true);
+onClose={() => {
+            setShowModal(false);
+          }}
+*/
+function CreateWorkspace({ onClose }) {
   const [colorCode, setColorCode] = useState("#7D828C");
   const [name, setName] = useState("");
   const [step, setStep] = useState(1);
 
-  // TODO: Make a close handler function that remove this component from the dom.
   const closeHandler = () => {
-    console.log("Modal Close !");
+    onClose();
   };
 
   const colors = [
@@ -47,181 +53,171 @@ function CreateWorkspace() {
   ];
 
   return (
-    <div>
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       {step === 1 && (
-        <div className="flex flex-row items-center justify-center w-screen h-screen bg-blue-400">
-          <div className="shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] w-[500px] relative flex flex-col items-center bg-white">
-            <div className="flex flex-row flex-grow w-full items-center justify-start gap-[84px]">
-              <button
-                className="w-[24px] h-[24px] flex items-center justify-center"
-                onClick={closeHandler}
-              >
-                <img src={close} alt={"close"} />
-              </button>
-              <p className="text-center font-bold text-[24px]/[37px]">
-                ساختن ورک اسپیس جدید
-              </p>
-            </div>
-            <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
-              <div className="flex flex-col w-full items-start gap-[20px]">
-                <div className="px-[19px] w-full">
-                  <Input
-                    type={"text"}
-                    label={"نام ورک اسپیس"}
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                    value={name}
-                  />
-                </div>
+        <div className="shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] w-[500px] relative flex flex-col items-center bg-white">
+          <div className="flex flex-row flex-grow w-full items-center justify-start gap-[84px]">
+            <button
+              className="w-[24px] h-[24px] flex items-center justify-center"
+              onClick={closeHandler}
+            >
+              <img src={close} alt={"close"} />
+            </button>
+            <p className="text-center font-bold text-[24px]/[37px]">
+              ساختن ورک اسپیس جدید
+            </p>
+          </div>
+          <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
+            <div className="flex flex-col w-full items-start gap-[20px]">
+              <div className="px-[19px] w-full">
+                <Input
+                  type={"text"}
+                  label={"نام ورک اسپیس"}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  value={name}
+                />
               </div>
             </div>
-            <div className="px-[19px] w-full">
-              <Button
-                title={"ادامه"}
-                classNames={"w-full mt-[60px]"}
-                handleClick={() => {
-                  setStep(2);
-                }}
-              />
-            </div>
+          </div>
+          <div className="px-[19px] w-full">
+            <Button
+              title={"ادامه"}
+              classNames={"w-full mt-[60px]"}
+              handleClick={() => {
+                setStep(2);
+              }}
+            />
           </div>
         </div>
       )}
       {step === 2 && (
-        <div className="flex flex-row items-center justify-center w-screen h-screen bg-blue-400">
-          <div className="shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] w-[500px] relative flex flex-col items-center bg-white">
-            <div className="flex flex-row flex-grow w-full items-center justify-between">
-              <button className="w-[24px] h-[24px] flex items-center justify-center">
-                <img src={close} alt={"close"} onClick={closeHandler} />
-              </button>
-              <p className="text-center font-bold text-[24px]/[37.18px]">
-                انتخاب رنگ ورک اسپیس
-              </p>
-              <button
-                className="w-[24px] h-[24px] flex items-center justify-center"
-                onClick={() => setStep(1)}
-              >
-                <img src={back} alt={"back"} />
-              </button>
+        <div className="shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] w-[500px] relative flex flex-col items-center bg-white">
+          <div className="flex flex-row flex-grow w-full items-center justify-between">
+            <button className="w-[24px] h-[24px] flex items-center justify-center">
+              <img src={close} alt={"close"} onClick={closeHandler} />
+            </button>
+            <p className="text-center font-bold text-[24px]/[37.18px]">
+              انتخاب رنگ ورک اسپیس
+            </p>
+            <button
+              className="w-[24px] h-[24px] flex items-center justify-center"
+              onClick={() => setStep(1)}
+            >
+              <img src={back} alt={"back"} />
+            </button>
+          </div>
+          <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
+            <div
+              className="w-[70px] h-[70px] rounded-[8px] text-center flex items-center justify-center"
+              style={{ backgroundColor: colorCode }}
+            >
+              {name
+                .split(" ")
+                .slice(0, 2)
+                .map((word) => word.charAt(0))
+                .join(" ")}
             </div>
-            <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
-              <div
-                className="w-[70px] h-[70px] rounded-[8px] text-center flex items-center justify-center"
-                style={{ backgroundColor: colorCode }}
-              >
-                {name
-                  .split(" ")
-                  .slice(0, 2)
-                  .map((word) => word.charAt(0))
-                  .join(" ")}
+            <div className="flex flex-col items-start gap-[20px]">
+              <div className="text-right font-[500] text-[14px]/[21.22px]">
+                رنگ ورک اسپیس
               </div>
-              <div className="flex flex-col items-start gap-[20px]">
-                <div className="text-right font-[500] text-[14px]/[21.22px]">
-                  رنگ ورک اسپیس
-                </div>
-                <div className="grid grid-cols-12 gap-[10px] items-center justify-items-center max-w-[299px]">
-                  <button
-                    className="block relative rounded-sm w-[15px] h-[15px] items-center justify-center"
-                    onClick={() => setColorCode("#7D828C")}
-                  >
-                    <img src={none} className="w-full h-full" />
-                  </button>
-                  {colors.map((color, index) => {
-                    return (
-                      <button
-                        key={index}
-                        className={`block relative rounded-sm w-[15px] ${
-                          color == colorCode && "w-[24px] h-[24px]"
-                        } h-[15px]`}
-                        style={{ backgroundColor: color }}
-                        onClick={() => setColorCode(color)}
-                      >
-                        {color == colorCode && (
-                          <img src={check} alt={"Check"} />
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
+              <div className="grid grid-cols-12 gap-[10px] items-center justify-items-center max-w-[299px] transition-all duration-300 ease-in-out">
+                <button
+                  className="block relative rounded-sm w-[15px] h-[15px] items-center justify-center"
+                  onClick={() => setColorCode("#7D828C")}
+                >
+                  <img src={none} className="w-full h-full" />
+                </button>
+                {colors.map((color, index) => {
+                  return (
+                    <button
+                      key={index}
+                      className={`block relative rounded-sm w-[15px] ${
+                        color == colorCode && "w-[24px] h-[24px]"
+                      } h-[15px] transition-all duration-300 ease-in-out`}
+                      style={{ backgroundColor: color }}
+                      onClick={() => setColorCode(color)}
+                    >
+                      {color == colorCode && <img src={check} alt={"Check"} />}
+                    </button>
+                  );
+                })}
               </div>
             </div>
-            <div className="px-[19px] w-full">
-              <Button
-                title={"ادامه"}
-                classNames={"w-full mt-[60px]"}
-                handleClick={() => {
-                  setStep(3);
-                }}
-              />
-            </div>
+          </div>
+          <div className="px-[19px] w-full">
+            <Button
+              title={"ادامه"}
+              classNames={"w-full mt-[60px]"}
+              handleClick={() => {
+                setStep(3);
+              }}
+            />
           </div>
         </div>
       )}
       {step === 3 && (
-        <div className="flex flex-row items-center justify-center w-screen h-screen bg-blue-400">
-          <div className="shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] w-[500px] relative flex flex-col items-center bg-white">
-            <div className="flex flex-row flex-grow w-full items-center justify-between">
-              <button className="w-[24px] h-[24px] flex items-center justify-center">
-                <img src={close} alt={"close"} onClick={closeHandler} />
-              </button>
-              <p className="text-center font-bold text-[24px]/[37.18px]">
-                مرور اطلاعات
-              </p>
-              <button className="w-[24px] h-[24px] flex items-center justify-center">
-                <img
-                  src={back}
-                  alt={"back"}
-                  onClick={() => {
-                    setStep(2);
-                  }}
-                />
-              </button>
-            </div>
-            <div className="flex w-full flex-col justify-start items-start gap-[12px] border-[0.5px] border-[#AAAAAA] rounded-[8px] mt-[40px] px-[12px] py-[16px]">
-              <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                <div className="font-normal font-[600] text-[14px]/[22px]">
-                  نام ورک اسپیس
-                </div>
-                <div className="font-normal font-[600] text-[14px]/[22px]">
-                  {name}
-                </div>
-              </div>
-              <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                <div className="font-normal font-[600] text-[14px]/[22px]">
-                  رنگ ورک اسپیس
-                </div>
-                <div
-                  className="block relative rounded-sm w-[15px] h-[15px]"
-                  style={{ backgroundColor: colorCode }}
-                ></div>
-              </div>
-              <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                <div className="font-normal font-[600] text-[14px]/[22px]">
-                  اعضا
-                </div>
-                <div className="w-[35px] h-[35px]">
-                  <img
-                    className="rounded-full"
-                    src={
-                      frame
-                    } /* TODO: we should pass profile picture to src  */
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="px-[19px] w-full">
-              <Button
-                title={"ساختن ورک اسپیس"}
-                classNames={"w-full mt-[60px]"}
-                handleClick={
-                  //TODO: Connect to API and send this info to server.
-                  () => {
-                    console.log(name, colorCode);
-                  }
-                }
+        <div className="shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] w-[500px] relative flex flex-col items-center bg-white">
+          <div className="flex flex-row flex-grow w-full items-center justify-between">
+            <button className="w-[24px] h-[24px] flex items-center justify-center">
+              <img src={close} alt={"close"} onClick={closeHandler} />
+            </button>
+            <p className="text-center font-bold text-[24px]/[37.18px]">
+              مرور اطلاعات
+            </p>
+            <button className="w-[24px] h-[24px] flex items-center justify-center">
+              <img
+                src={back}
+                alt={"back"}
+                onClick={() => {
+                  setStep(2);
+                }}
               />
+            </button>
+          </div>
+          <div className="flex w-full flex-col justify-start items-start gap-[12px] border-[0.5px] border-[#AAAAAA] rounded-[8px] mt-[40px] px-[12px] py-[16px]">
+            <div className="flex flex-row w-full items-center justify-between h-[35px]">
+              <div className="font-normal font-[600] text-[14px]/[22px]">
+                نام ورک اسپیس
+              </div>
+              <div className="font-normal font-[600] text-[14px]/[22px]">
+                {name}
+              </div>
             </div>
+            <div className="flex flex-row w-full items-center justify-between h-[35px]">
+              <div className="font-normal font-[600] text-[14px]/[22px]">
+                رنگ ورک اسپیس
+              </div>
+              <div
+                className="block relative rounded-sm w-[15px] h-[15px]"
+                style={{ backgroundColor: colorCode }}
+              ></div>
+            </div>
+            <div className="flex flex-row w-full items-center justify-between h-[35px]">
+              <div className="font-normal font-[600] text-[14px]/[22px]">
+                اعضا
+              </div>
+              <div className="w-[35px] h-[35px]">
+                <img
+                  className="rounded-full"
+                  src={frame} /* TODO: we should pass profile picture to src  */
+                />
+              </div>
+            </div>
+          </div>
+          <div className="px-[19px] w-full">
+            <Button
+              title={"ساختن ورک اسپیس"}
+              classNames={"w-full mt-[60px]"}
+              handleClick={
+                //TODO: Connect to API and send this info to server.
+                () => {
+                  console.log(name, colorCode);
+                }
+              }
+            />
           </div>
         </div>
       )}
