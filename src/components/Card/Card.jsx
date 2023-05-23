@@ -8,6 +8,7 @@ const Card = ({
   backIcon,
   handleClose,
   handleBack,
+  titleClassName,
 }) => {
   return (
     <div className={`flex flex-col items-center bg-white ${className}`}>
@@ -18,9 +19,7 @@ const Card = ({
         >
           {closeIcon && icons.CloseIcon}
         </button>
-        {title && (
-          <p className="font-semibold text-[32px]/[50px] text-right">{title}</p>
-        )}
+        {title && <p className={`${titleClassName}`}>{title}</p>}
         <button
           className="w-5 flex flex-row justify-center"
           onClick={handleBack}
@@ -36,6 +35,7 @@ const Card = ({
 
 Card.defaultProps = {
   className: "shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px]",
+  titleClassName: "font-semibold text-[32px]/[50px] text-right",
 };
 
 export default Card;
