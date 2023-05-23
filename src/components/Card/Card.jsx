@@ -1,4 +1,4 @@
-import icons from "../Icons";
+import icons from "../../assets/Icons";
 
 const Card = ({ title, children, className, closeIcon, backIcon }) => {
   return (
