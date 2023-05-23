@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown } from "../../assets/icons";
+import icons from "../../assets/Icons";
 import { Permission } from "./Permission";
 
 export const DropDown = ({ isOwner }) => {
@@ -13,7 +13,7 @@ export const DropDown = ({ isOwner }) => {
   return (
     <div className="relative">
       {isOwner ? (
-        <div className="flex gap-[10px] items-center py-1 px-2 border border-[#e9ebf0] rounded-md ">
+        <div className="flex py-1 px-2 border border-[#e9ebf0] rounded-md ">
           <span className="text-xs font-normal text-[#1e1e1e]">
             دسترسی کامل
           </span>
@@ -21,13 +21,13 @@ export const DropDown = ({ isOwner }) => {
       ) : (
         <>
           <div
-            className="flex gap-[10px] py-1 px-2 border border-[#e9ebf0] rounded-md cursor-pointer focus:outline-none"
+            className="flex items-center  gap-[10px] py-1 px-2 border border-[#e9ebf0] rounded-md cursor-pointer focus:outline-none"
             onClick={handleToggleDropdown}
           >
             <span className="text-xs font-normal text-[#1e1e1e]">
               {selectedOption || "دسترسی کامل"}
             </span>
-            <ArrowDown />
+            {icons.ArrowDownIcon}
           </div>
           <Permission
             isOpen={isOpen}

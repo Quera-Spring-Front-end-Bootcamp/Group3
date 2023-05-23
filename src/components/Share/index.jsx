@@ -1,10 +1,11 @@
-import { Close } from "../../assets/icons";
 import { DropDown } from "./DropDown";
 import { CopyLink } from "./CopyLink";
 import { useState } from "react";
 import { Admin } from "./Admin";
 import { FormInvite } from "./FormInvite";
 import profile from "../../assets/profile.png";
+import Card from "../Card/Card";
+import icons from "../../assets/Icons";
 
 const Share = () => {
   const info = [
@@ -15,7 +16,12 @@ const Share = () => {
       image: profile,
       isOwner: true,
     },
-    { id: 2, name: "Vahid Razavi", email: "test@test.com", isOwner: false },
+    {
+      id: 2,
+      name: "Vahid Razavi",
+      email: "test@test.com",
+      isOwner: false,
+    },
   ];
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => {
@@ -23,7 +29,7 @@ const Share = () => {
   };
 
   return (
-    <div
+    <Card
       className={
         !isOpen
           ? "max-w-[470px] w-full rounded-xl  p-5 bg-white flex flex-col"
@@ -31,10 +37,12 @@ const Share = () => {
       }
     >
       <div className="flex items-center pb-[45px]">
-        <div onClick={handleClose} className="cursor-pointer">
-          <Close />
+        <div className="cursor-pointer" onClick={handleClose}>
+          {icons.CloseIcon}
         </div>
-        <div className="w-full text-center">به اشتراک‌گذاری پروژه‌</div>
+        <div className="w-full text-center font-semibold">
+          به اشتراک‌گذاری پروژه‌
+        </div>
       </div>
       <FormInvite />
       <CopyLink className="mb-[29px]" />
@@ -54,7 +62,7 @@ const Share = () => {
           </div>
         ))}
       </div>
-    </div>
+    </Card>
   );
 };
 

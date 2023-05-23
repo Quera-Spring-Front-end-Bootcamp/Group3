@@ -31,7 +31,7 @@ export const FormInvite = () => {
           className="bg-[#F0F1F3] w-full h-8 placeholder:text-[#A6A7A7] placeholder:text-sm text-xs text-[#A6A7A7] rounded-lg"
         />
         <Button
-          title={"ثبت‌نام"}
+          title={"ارسال"}
           type={"submit"}
           classNames={
             " absolute top-1/2 left-0 transform  -translate-y-1/2 flex  px-9 py-0 h-full text-center rounded-l-lg rounded-r-none text-sm"
