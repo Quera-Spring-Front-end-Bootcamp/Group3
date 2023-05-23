@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import icons from "../Icons";
-
+import icons from "../Icon";
+import Card from "../Card/Card";
+import { ColumnMore } from "../ColumnMoreItem/index";
 const projectItems = [
   {
     projectTitle: "پروژه اول",
@@ -12,9 +13,7 @@ const projectItems = [
         tagTitle: "درس",
         tagColor: "#BFFDE3",
       },
-      { tagTitle: "پروژه",
-       tagColor: "#EEDFF7" 
-    },
+      { tagTitle: "پروژه", tagColor: "#EEDFF7" },
     ],
     userName: "NA",
   },
@@ -27,8 +26,27 @@ export const ProjectCard = ({
   tags,
   userName,
 }) => {
+  const [showMore, setShowMore] = useState(false);
+  const [hover, setHover] = useState(false);
+  const columnMore = () => {
+    // setHover(false)
+    // console.log("more")
+    setShowMore(!showMore);
+  };
+  const handleHover = () => {
+    setShowMore(false);
+  };
+  // const handleHover_2 = () => {
+  //   console.log(!hover)
+  //   setShowMore(!showMore);
+
+  // }
+
   return (
-    <div className="group transition-all w-[250px] box-border flex-col items-end p-[10px] gap-[18px] h-[133px] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0, 0, 0, 0.08)] rounded hover:h-[189px]">
+    <div
+      onMouseLeave={handleHover}
+      className="group transition-all w-[250px] box-border flex-col items-end p-[10px] gap-[18px] h-[133px] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0, 0, 0, 0.08)] rounded hover:h-[189px]"
+    >
       <div className="flex flex-col  gap-[9px] w-[238px] h-[42px]">
         <div className="justify-between items-center flex ml-[10px] w-[230px] h-[42px]">
           <h1 className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#534D60]">
@@ -84,7 +102,40 @@ export const ProjectCard = ({
       <hr className="border-[#EFF0F0] invisible mt-[20px] group-hover:visible" />
       <div className="flex invisible flex-row justify-between items-center gap-[8px] mt-[16px] group-hover:visible">
         <i>{icons.AcceptIcon}</i>
-        <i>{icons.MoreIcon}</i>
+        <i className="cursor-pointer" onClick={columnMore}>
+          {icons.MoreIcon}
+        </i>
+        {showMore ? (
+          <Card
+            className="absolute rounded-[8px] mr-60 mt-[110px]  gap-[16px] p-[12px] shadow-[0_4px_16px_rgba(0, 0, 0, 0.16)]"
+            title=""
+          >
+            <div className="flex w-[142px] flex-col items-start gap-[12px]">
+            <ColumnMore
+              className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
+              title="ویرایش نام ستون"
+              icon={icons.EditIcon}
+            />
+            <ColumnMore
+              className="flex-row justify-between gap-[8px]  not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
+              title="افزودن تسک"
+              icon={icons.plusIcon}
+            />
+            <ColumnMore
+              className="flex-row justify-between gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
+              title="آرشیو تمام تسک ها"
+              icon={icons.ArchiveIcon}
+            />
+            <ColumnMore
+              className="flex-row justify-between gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
+              title=" حذف ستون"
+              icon={icons.DeleteIcon}
+            />
+            </div>
+          </Card>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
