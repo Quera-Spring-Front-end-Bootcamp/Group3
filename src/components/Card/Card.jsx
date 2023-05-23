@@ -1,18 +1,32 @@
 import icons from "../../assets/Icons";
 
-const Card = ({ title, children, className, closeIcon, backIcon }) => {
+const Card = ({
+  title,
+  children,
+  className,
+  closeIcon,
+  backIcon,
+  handleClose,
+  handleBack,
+}) => {
   return (
     <div className={`flex flex-col items-center bg-white ${className}`}>
       <div className="flex flex-row items-center justify-between w-full">
-        <div className="w-5 flex flex-row justify-center">
+        <button
+          className="w-5 flex flex-row justify-center"
+          onClick={handleClose}
+        >
           {closeIcon && icons.CloseIcon}
-        </div>
+        </button>
         {title && (
           <p className="font-semibold text-[32px]/[50px] text-right">{title}</p>
         )}
-        <div className="w-5 flex flex-row justify-center">
+        <button
+          className="w-5 flex flex-row justify-center"
+          onClick={handleBack}
+        >
           {backIcon && icons.BackIcon}
-        </div>
+        </button>
       </div>
 
       {children}
