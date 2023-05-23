@@ -5,8 +5,9 @@ import "moment/locale/fa";
 import Icons from "../assets/Icons";
 
 // can't pass the clickHandler as prop. it should change inside the component
-function Calendar() {
+function Calendar({ selectedDate }) {
   const [currentDate, setCurrentDate] = useState(moment());
+  const [selectedDate, setSelectedDate] = useState(Date());
 
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     dateStyle: "medium",
@@ -24,7 +25,8 @@ function Calendar() {
 
   //define a function to work with the clicked date e is a Date object.
   const clickHandler = (e) => {
-    console.log(e);
+    setSelectedDate(e);
+    console.log(selectedDate);
   };
 
   const goToPreviousMonth = () => {
