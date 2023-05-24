@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import icons from "../Icon";
 import Card from "../Card/Card";
 import { ColumnMore } from "../ColumnMoreItem/index";
-import { Transition } from "@headlessui/react";
+import { Transition } from '@headlessui/react'
 const projectItems = [
   {
     projectTitle: "پروژه اول",
@@ -20,6 +20,9 @@ const projectItems = [
   },
 ];
 
+
+
+
 export const ProjectCard = ({
   projectTitle,
   taskTitle,
@@ -28,9 +31,11 @@ export const ProjectCard = ({
   tags,
   userName,
 }) => {
+  console.log(tags[0].tagColor)
   const [showMore, setShowMore] = useState(false);
-
+  
   const columnMore = () => {
+    
     setShowMore(!showMore);
   };
   const handleHover = () => {
@@ -89,7 +94,8 @@ export const ProjectCard = ({
         {tags.map((tag) => (
           <>
             <div
-              className={`flex flex-row justify-center items-center py-[2px] px-[4px] w-[28px] h-[19px] bg-[${tag.tagColor}] rounded-tl-md rounded-bl-md`}
+              style={{ backgroundColor: tag.tagColor }}
+              className={`flex flex-row justify-center items-center py-[2px] px-[4px] w-[28px] h-[19px] rounded-tl-md rounded-bl-md`}
             >
               <span className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#323232]">
                 {tag.tagTitle}
@@ -106,9 +112,14 @@ export const ProjectCard = ({
           {icons.MoreIcon}
         </i>
         {/* {showMore ? ( */}
+          
+          
+
+          
+        
       </div>
       <Transition
-        show={showMore}
+          show={showMore}
         enter="transition-opacity duration-500"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -116,12 +127,15 @@ export const ProjectCard = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
         className="mr-[3px]"
-      >
-        <Card
-          className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_rgba(0, 0, 0, 0.16)]`}
-          title=""
-        >
-          <div className="flex w-[142px] flex-col items-start gap-[12px] mt-[-14px]">
+       
+          >
+
+         
+          <Card
+            className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_rgba(0, 0, 0, 0.16)]`}
+            title=""
+          >
+            <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]">
             <ColumnMore
               className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
               title="ویرایش نام ستون"
@@ -142,9 +156,9 @@ export const ProjectCard = ({
               title=" حذف ستون"
               icon={icons.DeleteIcon}
             />
-          </div>
-        </Card>
-      </Transition>
+            </div>
+          </Card>
+          </Transition>
     </div>
   );
 };
