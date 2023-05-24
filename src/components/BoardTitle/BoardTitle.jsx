@@ -16,8 +16,10 @@ export const BoardTitle = ({ badgeValue, clickAddHandler }) => {
     setHoverTooltip(false )
 
   }
+
+  
   return (
-    <div className="flex gap-5 mt-5">
+    <div className="flex gap-5 p-5 overflow-x-auto whitespace-nowrap">
       {card.map((item) => (
         <div
           key={item.id}
