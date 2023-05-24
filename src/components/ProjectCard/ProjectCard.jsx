@@ -9,12 +9,14 @@ const projectItems = [
     taskTitle: "این یک تیتر برای این تسک است.",
     date: "۵ مهر - فردا",
     time: "۲ / ۱۲",
+    id: 1,
     tags: [
       {
+        id: 1,
         tagTitle: "درس",
         tagColor: "#BFFDE3",
       },
-      { tagTitle: "پروژه", tagColor: "#EEDFF7" },
+      { id : 2, tagTitle: "پروژه", tagColor: "#EEDFF7" },
     ],
     userName: "NA",
   },
@@ -31,7 +33,7 @@ export const ProjectCard = ({
   tags,
   userName,
 }) => {
-  console.log(tags[0].tagColor)
+  
   const [showMore, setShowMore] = useState(false);
   
   const columnMore = () => {
@@ -41,11 +43,7 @@ export const ProjectCard = ({
   const handleHover = () => {
     setShowMore(false);
   };
-  // const handleHover_2 = () => {
-  //   console.log(!hover)
-  //   setShowMore(!showMore);
-
-  // }
+ 
 
   return (
     <div
@@ -92,8 +90,9 @@ export const ProjectCard = ({
 
       <div className="flex flex-row items-start gap-[12px] mt-[20.5px] ">
         {tags.map((tag) => (
-          <>
-            <div
+          
+            <div 
+              key={tag.id}
               style={{ backgroundColor: tag.tagColor }}
               className={`flex flex-row justify-center items-center py-[2px] px-[4px] w-[28px] h-[19px] rounded-tl-md rounded-bl-md`}
             >
@@ -101,7 +100,7 @@ export const ProjectCard = ({
                 {tag.tagTitle}
               </span>
             </div>
-          </>
+          
         ))}
       </div>
 
