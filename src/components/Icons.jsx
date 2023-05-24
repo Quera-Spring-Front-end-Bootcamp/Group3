@@ -217,8 +217,8 @@ const icons = {
         strokeLinejoin="round"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M5.91016 10.9175L8.4492 10.6039C8.62734 10.5822 8.79339 10.5008 8.92074 10.3742L15.0717 4.22326C15.7528 3.54215 15.7528 2.43787 15.0717 1.75595V1.75595C14.3906 1.07484 13.2863 1.07484 12.6044 1.75595L6.51066 7.84966C6.38734 7.97299 6.30754 8.13259 6.28255 8.30589L5.91016 10.9175Z"
         stroke="#323232"
         strokeWidth="1.20907"
@@ -267,8 +267,8 @@ const icons = {
         strokeLinejoin="round"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M10.3281 9.69356L12.7473 7.27441L10.3281 9.69356Z"
         stroke="#323232"
         strokeWidth="1.20907"
@@ -290,8 +290,8 @@ const icons = {
         strokeLinejoin="round"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M7.90918 7.27441L10.3283 9.69356L7.90918 7.27441Z"
         stroke="#323232"
         strokeWidth="1.20907"
@@ -309,8 +309,8 @@ const icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M13.6634 17.7544H6.98929C6.14536 17.7544 5.4441 17.1031 5.38123 16.2608L4.6582 6.46973H15.9703L15.2714 16.2567C15.211 17.1007 14.5089 17.7544 13.6634 17.7544V17.7544Z"
         stroke="#323232"
         strokeWidth="1.20907"

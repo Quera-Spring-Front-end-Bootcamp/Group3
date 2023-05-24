@@ -48,7 +48,7 @@ export const ProjectCard = ({
   return (
     <div
       onMouseLeave={handleHover}
-      className="group transition-all w-[250px] box-border flex-col items-end p-[10px] gap-[18px] h-[133px] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0, 0, 0, 0.08)] rounded hover:h-[189px]"
+      className="group transition-all w-[250px] box-border flex-col items-end p-[10px] gap-[18px] h-[133px] bg-[#FFFFFF] shadow-[0_2px_8px_0_rgba(0, 0, 0, 0.08)] rounded hover:h-[189px]"
     >
       <div className="flex flex-col  gap-[9px] w-[238px] h-[42px]">
         <div className="justify-between items-center flex ml-[10px] w-[230px] h-[42px]">
@@ -131,7 +131,7 @@ export const ProjectCard = ({
 
          
           <Card
-            className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_rgba(0, 0, 0, 0.16)]`}
+            className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_0_rgba(0, 0, 0, 0.16)]`}
             title=""
           >
             <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]">
