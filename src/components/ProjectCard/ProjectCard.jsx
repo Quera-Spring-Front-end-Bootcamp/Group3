@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import icons from "../Icon";
 import Card from "../Card/Card";
 import { ColumnMore } from "../ColumnMoreItem/index";
+import { Transition } from '@headlessui/react'
 const projectItems = [
   {
     projectTitle: "پروژه اول",
@@ -18,6 +19,10 @@ const projectItems = [
     userName: "NA",
   },
 ];
+
+
+
+
 export const ProjectCard = ({
   projectTitle,
   taskTitle,
@@ -27,10 +32,9 @@ export const ProjectCard = ({
   userName,
 }) => {
   const [showMore, setShowMore] = useState(false);
-  const [hover, setHover] = useState(false);
+  
   const columnMore = () => {
-    // setHover(false)
-    // console.log("more")
+    
     setShowMore(!showMore);
   };
   const handleHover = () => {
@@ -105,9 +109,28 @@ export const ProjectCard = ({
         <i className="cursor-pointer" onClick={columnMore}>
           {icons.MoreIcon}
         </i>
-        {showMore ? (
+        {/* {showMore ? ( */}
+          
+          
+
+          
+        
+      </div>
+      <Transition
+          show={showMore}
+        enter="transition-opacity duration-500"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-500"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+        className="mr-[3px]"
+       
+          >
+
+         
           <Card
-            className="absolute rounded-[8px] mr-60 mt-[110px]  gap-[16px] p-[12px] shadow-[0_4px_16px_rgba(0, 0, 0, 0.16)]"
+            className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_rgba(0, 0, 0, 0.16)]`}
             title=""
           >
             <div className="flex w-[142px] flex-col items-start gap-[12px]">
@@ -133,10 +156,7 @@ export const ProjectCard = ({
             />
             </div>
           </Card>
-        ) : (
-          ""
-        )}
-      </div>
+          </Transition>
     </div>
   );
 };
