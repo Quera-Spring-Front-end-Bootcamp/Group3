@@ -1,13 +1,3 @@
-{
-  /*
-State : everything is ok. just clean up code.
-TODO:
-Add selected dates design
-implement logic of selections
-
-*/
-}
-
 import { useState } from "react";
 
 import moment from "moment-jalaali";
@@ -17,6 +7,7 @@ import toast from "react-hot-toast";
 import Card from "./Card/Card";
 import Button from "./Button";
 import icons from "../assets/Icons";
+
 function Datepicker() {
   const [currentDate, setCurrentDate] = useState(moment());
   const [selectedStartDate, setSelectedStartDate] = useState(currentDate);
@@ -35,15 +26,102 @@ function Datepicker() {
   }
 
   //side bar functions
-  const sidebarDays = {
-    today: moment().clone(),
-    tomorrow: moment().clone().add(1, "day"),
-    endOfWeek: moment().clone().endOf("week"),
-    nextWeek: moment().clone().add(7, "day"),
-    nextEndOfWeek: moment().clone().add(7, "day").endOf("week"),
-    nextTwoWeek: moment().clone().add(14, "day"),
-    nextFourWeek: moment().clone().add(28, "day"),
-  };
+  const sidebarFunctions = [
+    {
+      id: "today",
+      name: "امروز",
+      momentObject: moment().clone(),
+      displayFormat: function () {
+        return this.momentObject.locale("fa").format("dddd");
+      },
+    },
+    {
+      id: "later",
+      name: "کمی بعد",
+      momentObject: moment().clone().add(1, "hour"),
+      displayFormat: function () {
+        return this.momentObject.format("HH:mm");
+      },
+    },
+    {
+      id: "tomorrow",
+      name: "فردا",
+      momentObject: moment().clone().add(1, "day"),
+      displayFormat: function () {
+        return this.momentObject.locale("fa").format("dddd");
+      },
+    },
+    {
+      id: "endOfWeek",
+      name: "این آخر هفته",
+      momentObject: moment().clone().endOf("week"),
+      displayFormat: function () {
+        return this.momentObject.locale("fa").format("dddd");
+      },
+    },
+    {
+      id: "nextWeek",
+      name: "هفته ی آینده",
+      momentObject: moment().clone().add(7, "day"),
+      displayFormat: function () {
+        return (
+          <div>
+            {monthFormatter.format(this.momentObject).split(" ")[0]}{" "}
+            {monthFormatter.format(this.momentObject).split(" ")[1]}
+          </div>
+        );
+      },
+    },
+    {
+      id: "nextEndOfWeek",
+      name: "آخر هفته ی آینده",
+      momentObject: moment().clone().add(7, "day").endOf("week"),
+      displayFormat: function () {
+        return (
+          <div>
+            {monthFormatter.format(this.momentObject).split(" ")[0]}{" "}
+            {monthFormatter.format(this.momentObject).split(" ")[1]}
+          </div>
+        );
+      },
+    },
+    {
+      id: "nextTwoWeek",
+      name: "دو هفته دیگر",
+      momentObject: moment().clone().add(14, "day"),
+      displayFormat: function () {
+        return (
+          <div>
+            {monthFormatter.format(this.momentObject).split(" ")[0]}{" "}
+            {monthFormatter.format(this.momentObject).split(" ")[1]}
+          </div>
+        );
+      },
+    },
+    {
+      id: "nextFourWeek",
+      name: "4 هفته دیگر",
+      momentObject: moment().clone().add(28, "day"),
+      displayFormat: function () {
+        return (
+          <div>
+            {monthFormatter.format(this.momentObject).split(" ")[0]}{" "}
+            {monthFormatter.format(this.momentObject).split(" ")[1]}
+          </div>
+        );
+      },
+    },
+  ];
+
+  const weekDays = [
+    "شنبه",
+    "یکشنبه",
+    "دوشنبه",
+    "سه شنبه",
+    "چهارشنبه",
+    "پنج شنبه",
+    "جمعه",
+  ];
 
   //date monitor
   const monthFormatter = new Intl.DateTimeFormat("fa-IR", {
@@ -51,6 +129,10 @@ function Datepicker() {
   });
 
   //buttons functionality
+  const closeHandler = () => {
+    console.log("close button clicked");
+  };
+
   const clickHandler = (e) => {
     if (daySelector === "start") {
       setSelectedStartDate(e);
@@ -61,7 +143,6 @@ function Datepicker() {
     if (daySelector === "end" && e.isBefore(selectedStartDate)) {
       toast("زمان پایان نمیتواند قبل از زمان شروع باشد");
     }
-    console.log(calendarDays, selectedEndDate, selectedStartDate);
   };
 
   const goToPreviousMonth = () => {
@@ -106,7 +187,7 @@ function Datepicker() {
           {/* end date section */}
           <button
             onClick={() => setDaySelector("end")}
-            className={`flex flex-row justify-start items-center gap-[8px] w-[438px`}
+            className={`flex flex-row justify-start items-center gap-[8px] w-[438px]`}
           >
             {daySelector === "end"
               ? icons.CalendarIconActive
@@ -127,94 +208,20 @@ function Datepicker() {
         <div className="flex flex-row ">
           {/* side bar */}
           <div className="bg-[#F7F8F9] flex flex-col items-end p-[24px] gap-[24px] w-[293px] h-[510px]">
-            <button
-              onClick={() => clickHandler(sidebarDays.today)}
-              className="flex flex-row justify-between items-center w-full"
-            >
-              <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
-                امروز
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                {sidebarDays.today.locale("fa").format("dddd")}
-              </div>
-            </button>
-
-            <div className="flex flex-row justify-between items-center w-full">
-              <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
-                کمی بعد
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                17:39
-              </div>
-            </div>
-            <button
-              onClick={() => clickHandler(sidebarDays.tomorrow)}
-              className="flex flex-row justify-between items-center w-full"
-            >
-              <div className="font-normal text-[24px]/[37px] text-right text-[#2A2D33]">
-                فردا
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                {sidebarDays.tomorrow.locale("fa").format("dddd")}
-              </div>
-            </button>
-            <button
-              onClick={() => clickHandler(sidebarDays.endOfWeek)}
-              className="flex flex-row justify-between items-center w-full"
-            >
-              <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
-                این آخر هفته
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                {sidebarDays.endOfWeek.locale("fa").format("dddd")}
-              </div>
-            </button>
-            <button
-              onClick={() => clickHandler(sidebarDays.nextWeek)}
-              className="flex flex-row justify-between items-center w-full"
-            >
-              <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
-                هفته ی آینده
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                {sidebarDays.nextWeek.locale("fa").format("dddd")}
-              </div>
-            </button>
-            <button
-              onClick={() => clickHandler(sidebarDays.nextEndOfWeek)}
-              className="flex flex-row justify-between items-center w-full"
-            >
-              <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
-                آخرهفته ی آینده
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                {sidebarDays.nextEndOfWeek.locale("fa").format("dddd")}
-              </div>
-            </button>
-            <button
-              onClick={() => clickHandler(sidebarDays.nextTwoWeek)}
-              className="flex flex-row justify-between items-center w-full"
-            >
-              <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
-                دو هفته دیگر
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                {monthFormatter.format(sidebarDays.nextTwoWeek).split(" ")[0]}{" "}
-                {monthFormatter.format(sidebarDays.nextTwoWeek).split(" ")[1]}
-              </div>
-            </button>
-            <button
-              onClick={() => clickHandler(sidebarDays.nextFourWeek)}
-              className="flex flex-row justify-between items-center w-full"
-            >
-              <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
-                4 هفته دیگر
-              </div>
-              <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
-                {monthFormatter.format(sidebarDays.nextFourWeek).split(" ")[0]}{" "}
-                {monthFormatter.format(sidebarDays.nextFourWeek).split(" ")[1]}
-              </div>
-            </button>
+            {sidebarFunctions.map((sidebarItem) => (
+              <button
+                onClick={() => clickHandler(sidebarItem.momentObject)}
+                className="flex flex-row justify-between items-center w-full"
+                key={sidebarItem.id}
+              >
+                <div className="font-normal text-[20px]/[31px] text-right text-[#2A2D33]">
+                  {sidebarItem.name}
+                </div>
+                <div className="font-normal text-[16px]/[25px] text-right text-[#CCCFD5]">
+                  {sidebarItem.displayFormat()}
+                </div>
+              </button>
+            ))}
           </div>
           {/* calendar */}
           <div className="relative w-[643px] h-[510px] pr-[24px] pt-[28px] pb-[32px] pl-[32px] flex flex-col items-start justify-start">
@@ -244,27 +251,14 @@ function Datepicker() {
             <div className="flex flex-col pt-[33px]">
               {/* days name */}
               <div className="grid grid-cols-7 w-full gap-[29.17px]">
-                <div className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center">
-                  شنبه
-                </div>
-                <div className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center">
-                  یکشنبه
-                </div>
-                <div className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center">
-                  دوشنبه
-                </div>
-                <div className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center">
-                  سه شنبه
-                </div>
-                <div className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center">
-                  چهارشنبه
-                </div>
-                <div className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center">
-                  پنج شنبه
-                </div>
-                <div className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center">
-                  جمعه
-                </div>
+                {weekDays.map((weekday) => (
+                  <div
+                    key={weekday}
+                    className="font-[500] text-[16px]/[25px] text-[#CCCFD5] text-center"
+                  >
+                    {weekday}
+                  </div>
+                ))}
               </div>
               {/* days number */}
               <div className="grid grid-cols-7 w-full gap-y-4 pt-[16px]">
@@ -282,14 +276,16 @@ function Datepicker() {
                     }
                     
                     ${
-                      day.isSameOrAfter(selectedStartDate, "day") &&
-                      day.isSameOrBefore(selectedEndDate, "day") &&
+                      day.isAfter(selectedStartDate, "day") &&
+                      day.isBefore(selectedEndDate, "day") &&
                       !day.isSame(moment(), "day") &&
                       "bg-[#E3FDFB]"
                     }
                     
                     `}
-                    onClick={() => clickHandler(day)}
+                    onClick={() => {
+                      clickHandler(day);
+                    }}
                     key={day.format("jYYYY-jMM-jDD")}
                   >
                     {day.format("jD")}
@@ -299,6 +295,7 @@ function Datepicker() {
             </div>
             {/* close button */}
             <Button
+              handleClick={closeHandler}
               title={"بستن"}
               classNames={
                 " absolute w-[125px] bottom-[32px] left-[32px] rounded-[4px]"
