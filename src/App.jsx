@@ -11,6 +11,7 @@ import Home from "./pages/home";
 const App = () => {
   return (
     <>
+    <Sha
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
