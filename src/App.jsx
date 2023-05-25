@@ -7,12 +7,12 @@ import NotFound from "./pages/notFound";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
-import Share from "./components/Share";
+import Share from "./components/ShareProject/ShareProjectCard";
 
 const App = () => {
   return (
     <>
-    <Share/>
+      <Share />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>

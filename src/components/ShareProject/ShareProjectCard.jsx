@@ -7,7 +7,7 @@ import profile from "../../assets/images/profile.png";
 import Card from "../Card/Card";
 import icons from "../../assets/Icons";
 
-const Share = () => {
+const ShareProjectCard = () => {
   const info = [
     {
       id: 1,
@@ -66,4 +66,4 @@ const Share = () => {
   );
 };
 
-export default Share;
+export default ShareProjectCard;
