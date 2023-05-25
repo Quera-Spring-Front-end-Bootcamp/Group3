@@ -1,14 +1,14 @@
 import { useState } from "react";
 import icons from "../../assets/Icons";
-import { ColumnMore } from "../ColumnMoreItem";
+import { ColumnMore } from "../ColumnMoreItem/ColumnMore";
 import Card from "../Card/Card";
 
-export const BoardTitle = ({ badgeValue }) => {
+export const BoardTitle = () => {
   const card = [
-    { id: "1", title: "Open", color: "#F98F2E" },
-    { id: "2", title: "In progress", color: "#2E7FF9" },
-    { id: "3", title: "Pending", color: "#DEC908" },
-    { id: "4", title: "To Do", color: "#F98F2E" },
+    { id: "1", title: "Open", color: "#F98F2E", badgeValue: "12" },
+    { id: "2", title: "In progress", color: "#2E7FF9", badgeValue: "16" },
+    { id: "3", title: "Pending", color: "#DEC908", badgeValue: "13 " },
+    { id: "4", title: "To Do", color: "#F98F2E", badgeValue: "10" },
   ];
   const [hoverTooltip, setHoverTooltip] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -44,16 +44,16 @@ export const BoardTitle = ({ badgeValue }) => {
       {card.map((item) => (
         <div
           key={item.id}
-          className={`group transition-all  w-[250px]  px-4 py-2 flex  items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.18)] rounded border-t group-hover:opacity-100`}
+          className={`group transition-all  min-w-[250px]  px-4 py-2 flex  items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.18)] rounded border-t group-hover:opacity-100`}
           style={{ borderTopColor: item.color }}
         >
           <div className="flex gap-1 items-center">
             <span className=" text-[#1E1E1E] text-base font-medium">
               {item.title}
             </span>
-            <span className="text-[10px] p-1  grid items-center bg-[#F4F4F4] text-[#1E1E1E] font-medium rounded-full">
-              {badgeValue}
-            </span>
+            <div className="text-[10px] leading-none	 p-1   grid items-center bg-[#F4F4F4] text-[#1E1E1E] font-medium rounded-full">
+              <span>{item.badgeValue}</span>
+            </div>
           </div>
           <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100 ">
             <div
@@ -76,7 +76,7 @@ export const BoardTitle = ({ badgeValue }) => {
                   />
                   <ColumnMore
                     title="حذف ستون"
-                    className="text-[#9F0000]"
+                    className="text-[#9F0000] gap-[10px]"
                     icon={icons.TrashIcon}
                     onClick={() => removeCulomnHandler(item.id)}
                   />
@@ -102,7 +102,7 @@ export const BoardTitle = ({ badgeValue }) => {
       ))}
       <div className="pl-5">
         <div
-          className="w-[250px]  cursor-pointer  px-4 py-2 flex  items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.18)] rounded border-t "
+          className="min-w-[250px]  cursor-pointer  px-4 py-2 flex  items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.18)] rounded border-t "
           onClick={addNewBoardTitleClickHandler}
         >
           <div className="flex gap-1 items-center">
@@ -115,7 +115,4 @@ export const BoardTitle = ({ badgeValue }) => {
       </div>
     </div>
   );
-};
-BoardTitle.defaultProps = {
-  badgeValue: 0,
 };
