@@ -12,21 +12,29 @@ const Card = ({
 }) => {
   return (
     <div className={`flex flex-col  bg-white ${className}`}>
-      <div className="flex flex-row items-center justify-between w-full">
-        <button
-          className="w-5 flex flex-row justify-center"
-          onClick={handleClose}
-        >
-          {closeIcon && icons.CloseIcon}
-        </button>
-        {title && <p className={`${titleClassName}`}>{title}</p>}
-        <button
-          className="w-5 flex flex-row justify-center"
-          onClick={handleBack}
-        >
-          {backIcon && icons.BackIcon}
-        </button>
-      </div>
+      {closeIcon ||
+        title ||
+        (backIcon && (
+          <div className="flex flex-row items-center justify-between w-full">
+            {closeIcon && (
+              <button
+                className="w-5 flex flex-row justify-center"
+                onClick={handleClose}
+              >
+                {icons.CloseIcon}
+              </button>
+            )}
+            {title && <p className={`${titleClassName}`}>{title}</p>}
+            {backIcon && (
+              <button
+                className="w-5 flex flex-row justify-center"
+                onClick={handleBack}
+              >
+                {icons.BackIcon}
+              </button>
+            )}
+          </div>
+        ))}
 
       {children}
     </div>
