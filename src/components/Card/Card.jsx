@@ -5,7 +5,6 @@ const Card = ({
   children,
   className,
   closeIcon,
-  closeIconLeft,
   backIcon,
   handleClose,
   handleBack,
@@ -13,10 +12,10 @@ const Card = ({
 }) => {
   return (
     <div className={`flex flex-col  bg-white ${className}`}>
-      {(title || closeIcon || closeIconLeft || backIcon) && (
+      {(title || closeIcon || backIcon) && (
         <div
           className={
-            (closeIcon || closeIconLeft || backIcon
+            (closeIcon  || backIcon
               ? ` justify-between `
               : `justify-center `) + " flex flex-row items-center  w-full"
           }
@@ -30,13 +29,12 @@ const Card = ({
             </button>
           )}
           {title && <p className={`${titleClassName}`}>{title}</p>}
-          {(backIcon || closeIconLeft) && (
+          {(backIcon ) && (
             <button
               className="w-5 flex flex-row justify-center"
-              onClick={handleBack || handleClose}
+              onClick={handleBack }
             >
               {backIcon && icons.BackIcon}
-              {closeIconLeft && icons.CloseIcon}
             </button>
           )}
         </div>
