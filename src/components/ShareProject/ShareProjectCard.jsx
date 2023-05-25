@@ -1,11 +1,11 @@
 import { DropDown } from "./DropDown";
 import { CopyLink } from "./CopyLink";
 import { useState } from "react";
-import { Admin } from "./Admin";
 import { FormInvite } from "./FormInvite";
 import profile from "../../assets/images/profile.png";
 import Card from "../Card/Card";
 import icons from "../../assets/Icons";
+import { SharedUser } from "./SharedUser";
 
 const ShareProjectCard = () => {
   const info = [
@@ -52,7 +52,7 @@ const ShareProjectCard = () => {
       <div className="flex  flex-col gap-5">
         {info.map((user) => (
           <div className="flex justify-between " key={user.id}>
-            <Admin
+            <SharedUser
               name={user.name}
               email={user.email}
               image={user.image}
