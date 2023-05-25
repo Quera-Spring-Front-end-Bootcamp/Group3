@@ -1,6 +1,10 @@
+import ProjectList from "../components/ProjectList"
+
 const Home = () => {
-  return(
-    <h1>Home Page</h1>
-  )
+  return (
+    <>
+      <ProjectList />
+    </>
+  );
 }
 export default Home
