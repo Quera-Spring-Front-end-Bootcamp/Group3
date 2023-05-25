@@ -1,7 +1,7 @@
 import { PermissionTitle } from "./PermissionTitle";
 import { CopyLink } from "./CopyLink";
 import { useState } from "react";
-import { FormInvite } from "./FormInvite";
+import { ProjectInvitationForm } from "./ProjectInvitationForm";
 import profile from "../../assets/images/profile.png";
 import Card from "../Card/Card";
 import icons from "../../assets/Icons";
@@ -44,7 +44,7 @@ const ShareProjectCard = () => {
           به اشتراک‌گذاری پروژه‌
         </div>
       </div>
-      <FormInvite />
+      <ProjectInvitationForm />
       <CopyLink className="mb-[29px]" />
       <span className="text-sm text-[#7d828c] block mb-5">
         اشتراک‌ گذاشته شده با
