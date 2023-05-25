@@ -14,7 +14,13 @@ const Card = ({
   return (
     <div className={`flex flex-col  bg-white ${className}`}>
       {(title || closeIcon || closeIconLeft || backIcon) && (
-        <div className="flex flex-row items-center justify-between w-full">
+        <div
+          className={
+            (closeIcon || closeIconLeft || backIcon
+              ? ` justify-between `
+              : `justify-center `) + " flex flex-row items-center  w-full"
+          }
+        >
           {closeIcon && (
             <button
               className="w-5 flex flex-row justify-center"
@@ -44,7 +50,7 @@ const Card = ({
 Card.defaultProps = {
   className:
     "shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] items-center",
-  titleClassName: "font-semibold text-[32px]/[50px] text-right",
+  titleClassName: "font-semibold text-[32px]/[50px] text-center",
 };
 
 export default Card;
