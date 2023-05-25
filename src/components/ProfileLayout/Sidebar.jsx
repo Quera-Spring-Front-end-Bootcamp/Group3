@@ -42,12 +42,13 @@ export const Sidebar = () => {
               <NavLink
                 style={({ isActive }) => ({
                   backgroundColor: isActive ? "#C5FFFF" : "",
+                  fontWeight: isActive ? 600 : 500,
                 })}
                 to={`/profile/${link.slug}`}
                 className="flex items-center gap-[11px] rounded-[4px] py-1 px-2"
               >
                 <i>{link.icon}</i>
-                <p className="text-[#1e1e1e] text-5 font-medium leading-[1.8]">
+                <p className="text-[#1e1e1e] text-5  leading-[1.8]">
                   {link.title}
                 </p>
               </NavLink>
