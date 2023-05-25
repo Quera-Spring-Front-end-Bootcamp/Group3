@@ -22,12 +22,17 @@ const Login = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-    toast.success("شما با موفقیت وارد شدید :)");
+    if (!Object.keys(errors).length) {
+      console.log(data);
+      toast.success("شما با موفقیت وارد شدید :)");
+      navigate("/", { replace: true });
+    } else {
+      toast.error("دوباره تلاش کنید");
+    }
   };
 
   return (
-    <div className="flex flex-row items-center justify-center w-screen h-screen">
+    <div className="flex flex-row items-center justify-center h-screen w-full">
       <Card title="به کوئرا تسک منیجر خوش برگشتی :)">
         <form className="w-full mt-7" onSubmit={handleSubmit(onSubmit)}>
           <div>

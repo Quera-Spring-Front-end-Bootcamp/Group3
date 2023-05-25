@@ -14,13 +14,17 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
-    toast.success("ثبت نام شما با موفقیت انجام شد :)");
-    navigate("/");
+    if (!Object.keys(errors).length) {
+      console.log(data);
+      toast.success("ثبت نام شما با موفقیت انجام شد :)");
+      navigate("/",{replace:true});
+    } else {
+      toast.error("دوباره تلاش کنید");
+    }
   };
 
   return (
-    <div className="flex flex-row items-center justify-center w-screen h-screen">
+    <div className="flex flex-row items-center justify-center h-screen w-full ">
       <Card title="ثبت‌نام در کوئرا تسک منیجر">
         <form className="w-full mt-7" onSubmit={handleSubmit(onSubmit)}>
           <div>
