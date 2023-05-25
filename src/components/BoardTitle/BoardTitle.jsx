@@ -3,9 +3,9 @@ import icons from "../../assets/Icons";
 import { ColumnMore } from "../ColumnMoreItem/ColumnMore";
 import Card from "../Card/Card";
 
-export const BoardTitle = () => {
+const BoardTitle = () => {
   const card = [
-    { id: "1", title: "Open", color: "#F98F2E", badgeValue: "12" },
+    { id: "1", title: "Open", color: "#F98F2E", badgeValue: "1" },
     { id: "2", title: "In progress", color: "#2E7FF9", badgeValue: "16" },
     { id: "3", title: "Pending", color: "#DEC908", badgeValue: "13 " },
     { id: "4", title: "To Do", color: "#F98F2E", badgeValue: "10" },
@@ -116,3 +116,5 @@ export const BoardTitle = () => {
     </div>
   );
 };
+
+export default BoardTitle;
