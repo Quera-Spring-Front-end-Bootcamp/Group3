@@ -7,10 +7,12 @@ import NotFound from "./pages/notFound";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
+import Filter from "./components/Filter/Filter";
 
 const App = () => {
   return (
     <>
+      <Filter />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
