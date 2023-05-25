@@ -1,4 +1,4 @@
-import { DropDown } from "./DropDown";
+import { PermissionTitle } from "./PermissionTitle";
 import { CopyLink } from "./CopyLink";
 import { useState } from "react";
 import { FormInvite } from "./FormInvite";
@@ -58,7 +58,7 @@ const ShareProjectCard = () => {
               image={user.image}
               isOwner={user.isOwner}
             />
-            <DropDown isOwner={user.isOwner} />
+            <PermissionTitle isOwner={user.isOwner} />
           </div>
         ))}
       </div>

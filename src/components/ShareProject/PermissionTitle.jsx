@@ -1,8 +1,8 @@
 import { useState } from "react";
 import icons from "../../assets/Icons";
-import { Permission } from "./Permission";
+import { PermissionList } from "./PermissionList";
 
-export const DropDown = ({ isOwner }) => {
+export const PermissionTitle = ({ isOwner }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -29,7 +29,7 @@ export const DropDown = ({ isOwner }) => {
             </span>
             {icons.ArrowDownIcon}
           </div>
-          <Permission
+          <PermissionList
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             setSelectedOption={setSelectedOption}

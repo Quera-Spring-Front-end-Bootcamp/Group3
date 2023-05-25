@@ -1,14 +1,11 @@
+import { copyLink } from "../../Utils/copyLink";
 import icons from "../../assets/Icons";
-import { toast } from "react-hot-toast";
 
 export const CopyLink = ({ className }) => {
   const privateLink = location.href;
-
   const handleCopy = () => {
-    navigator.clipboard.writeText(privateLink);
-    toast.success("لینک  با موفقیت کپی شد");
+    copyLink(privateLink);
   };
-
   return (
     <div className={`flex justify-between ${className}`}>
       <div className="flex gap-2.5">
