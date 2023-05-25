@@ -46,17 +46,18 @@ const Filter = () => {
     isOpen && (
       <Card
         title="فیلتر"
+        className="items-start gap-[14px] py-[15px] px-[21px] w-[718px]"
+        titleClassName="text-2xl text-[#000000] font-semibold "
         handleClose={handleClose}
         closeIconLeft={icons.CloseIcon}
-        closeIcon={icons.CloseIcon}
       >
-        <div>
+        <div className="w-full flex flex-col items-start gap-8">
           {filters.map((filter, index) => (
-            <div key={index}>
-              <span>تسک هایی که</span>
-              <div className="w-[82px]">
+            <div key={index} className="w-full flex items-center">
+              <div className="flex items-center gap-[10px]">
+                <span className="text-[#000000] text-sm ">تسک هایی که</span>
                 <select
-                  className="border border-red-400 w-full "
+                  className=" text-sm text-[#1e1e1e1] w-[182px] border border-[E9EBF0] rounded-md focus:outline-none py-1 px-2"
                   value={filter.option1}
                   onChange={(e) => handleOptionChange(index, 0, e.target.value)}
                 >
@@ -69,38 +70,58 @@ const Filter = () => {
                     </option>
                   ))}
                 </select>
+                <span className="text-[#000000] text-sm ">آن ها</span>
+                <select
+                  value={filter.option2}
+                  onChange={(e) => handleOptionChange(index, 1, e.target.value)}
+                  className=" text-sm text-[#1e1e1e1] w-[146px] border border-[E9EBF0] rounded-md focus-visible:border-[E9EBF0]"
+                >
+                  <option value="" disabled>
+                    انتخاب کنید
+                  </option>
+                  {optionsTag.map((option) => (
+                    <option
+                      key={option.id}
+                      value={option.value}
+                      className="text-[#1E1E1E] text-xs "
+                    >
+                      {option.value}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  className=" text-sm text-[#1e1e1e1] w-[107px] border border-[E9EBF0] rounded-md focus-visible:border-[E9EBF0]"
+                  value={filter.option3}
+                  onChange={(e) => handleOptionChange(index, 2, e.target.value)}
+                >
+                  <option value="" disabled>
+                    انتخاب کنید
+                  </option>
+                  {optionsIsOrNot.map((option) => (
+                    <option
+                      key={option.id}
+                      value={option.value}
+                      className="text-[#1E1E1E] text-xs "
+                    >
+                      {option.value}
+                    </option>
+                  ))}
+                </select>
               </div>
-              <span>آن ها</span>
-              <select
-                value={filter.option2}
-                onChange={(e) => handleOptionChange(index, 1, e.target.value)}
+              <button
+                className="flex flex-1 justify-end"
+                onClick={() => handleRemoveFilter(index)}
               >
-                <option value="" disabled>
-                  انتخاب کنید
-                </option>
-                {optionsTag.map((option) => (
-                  <option key={option.id} value={option.value}>
-                    {option.value}
-                  </option>
-                ))}
-              </select>
-              <select
-                value={filter.option3}
-                onChange={(e) => handleOptionChange(index, 2, e.target.value)}
-              >
-                <option value="" disabled>
-                  انتخاب کنید
-                </option>
-                {optionsIsOrNot.map((option) => (
-                  <option key={option.id} value={option.value}>
-                    {option.value}
-                  </option>
-                ))}
-              </select>
-              <button onClick={() => handleRemoveFilter(index)}>حذف</button>
+                {icons.TrashIcons}
+              </button>
             </div>
           ))}
-          <button onClick={handleAddFilter}>افزودن فیلتر جدید</button>
+          <button
+            onClick={handleAddFilter}
+            className="text-[#208D8E] font-semibold text-xs  "
+          >
+            افزودن فیلتر جدید
+          </button>
         </div>
       </Card>
     )
