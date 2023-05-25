@@ -248,7 +248,7 @@ function Datepicker() {
               </button>
             </div>
             {/* cells */}
-            <div className="flex flex-col pt-[33px]">
+            <div className="h-full flex flex-col pt-[33px] parent-container">
               {/* days name */}
               <div className="grid grid-cols-7 w-full gap-[29.17px]">
                 {weekDays.map((weekday) => (
@@ -261,15 +261,15 @@ function Datepicker() {
                 ))}
               </div>
               {/* days number */}
-              <div className="grid grid-cols-7 w-full gap-y-4 pt-[16px]">
+              <div className="grid grid-cols-7 grid-rows-auto gap-y-[13px] w-full h-full pt-[16px] pb-[67px]">
                 {calendarDays.map((day) => (
                   <button
-                    className={`flex items-center justify-center px-[5px] py-[10px] font-[500] font-[20px]/[31px] hover:bg-primary text-center ${
+                    className={`flex items-center justify-center px-[5px] font-[500] text-[20px]/[31px] hover:bg-primary text-center ${
                       day.isSame(moment(), "day") &&
                       "bg-primary text-white rounded-[4px]"
                     } ${
                       day.isSame(selectedStartDate, "day") &&
-                      "bg-[#4BECE2] rounded-[4px]"
+                      "bg-[#4BECE2]  rounded-[4px]"
                     } ${
                       day.isSame(selectedEndDate, "day") &&
                       "bg-[#4BECE2] rounded-[4px]"
