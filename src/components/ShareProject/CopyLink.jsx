@@ -1,14 +1,11 @@
-import { useState } from "react";
 import icons from "../../assets/Icons";
 import { toast } from "react-hot-toast";
 
 export const CopyLink = ({ className }) => {
-  const [isCopied, setIsCopied] = useState(false);
   const privateLink = location.href;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(privateLink);
-    setIsCopied(true);
     toast.success("لینک  با موفقیت کپی شد");
   };
 
