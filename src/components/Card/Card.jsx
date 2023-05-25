@@ -13,14 +13,10 @@ const Card = ({
   return (
     <div className={`flex flex-col  bg-white ${className}`}>
       <div className="flex flex-row items-center justify-between w-full">
-<<<<<<< HEAD
-        <div className="w-5 flex flex-row justify-center cursor-pointer ">
-=======
         <button
           className="w-5 flex flex-row justify-center"
           onClick={handleClose}
         >
->>>>>>> main
           {closeIcon && icons.CloseIcon}
         </button>
         {title && <p className={`${titleClassName}`}>{title}</p>}
@@ -38,13 +34,8 @@ const Card = ({
 };
 
 Card.defaultProps = {
-<<<<<<< HEAD
-  className:
-    "shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px] items-center",
-=======
   className: "shadow-[0_12px_50px_-15px_rgba(0,0,0,0.18)] p-6 rounded-[20px]",
   titleClassName: "font-semibold text-[32px]/[50px] text-right",
->>>>>>> main
 };
 
 export default Card;

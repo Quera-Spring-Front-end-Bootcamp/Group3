@@ -3,7 +3,7 @@ import { CopyLink } from "./CopyLink";
 import { useState } from "react";
 import { Admin } from "./Admin";
 import { FormInvite } from "./FormInvite";
-import profile from "../../assets/profile.png";
+import profile from "../../assets/images/profile.png";
 import Card from "../Card/Card";
 import icons from "../../assets/Icons";
 
