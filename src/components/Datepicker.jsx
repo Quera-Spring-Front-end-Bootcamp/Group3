@@ -205,9 +205,9 @@ function Datepicker() {
           </button>
         </div>
         {/* main part div */}
-        <div className="flex flex-row ">
+        <div className="flex flex-row h-full ">
           {/* side bar */}
-          <div className="bg-[#F7F8F9] flex flex-col items-end p-[24px] gap-[24px] w-[293px] h-[510px]">
+          <div className="bg-[#F7F8F9] flex flex-col items-end p-[24px] gap-[24px] w-[293px] h-full rounded-br-[20px]">
             {sidebarFunctions.map((sidebarItem) => (
               <button
                 onClick={() => clickHandler(sidebarItem.momentObject)}
