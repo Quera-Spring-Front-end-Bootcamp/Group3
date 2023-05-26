@@ -23,7 +23,6 @@ const icons = {
       />
     </svg>
   ),
-
   BackIcon: (
     <svg
       width="24"
@@ -355,6 +354,23 @@ const icons = {
         d="M7.56371 9.69531L7.91031 14.5316"
         stroke="#9F0000"
         strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  ArrowDownIcon: (
+    <svg
+      width="18"
+      height="19"
+      viewBox="0 0 18 19"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 8L9 11L12 8"
+        stroke="#323232"
+        strokeWidth="1.125"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
