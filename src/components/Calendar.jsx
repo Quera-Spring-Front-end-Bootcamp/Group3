@@ -70,7 +70,7 @@ function Calendar() {
             </button>
           </div>
           <div className="font-[500] text-[12px]/[18px] text-black whitespace-nowrap">
-            {formatter.format(currentDate).split(" ")[1]}{" "}
+            {formatter.format(currentDate).split(" ")[1]}
             {formatter.format(currentDate).split(" ")[2]}
           </div>
         </div>
