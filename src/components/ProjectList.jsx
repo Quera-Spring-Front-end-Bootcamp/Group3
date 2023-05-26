@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Transition } from "@headlessui/react";
 import TaskAccordion from "./TaskAccordion";
 import icons from "../assets/Icons";
 
@@ -95,8 +96,17 @@ const ProjectList = () => {
           {data.project.title}
         </h1>
       </div>
-      {isOpen && (
-        <div className="mr-5">
+      
+        <Transition
+          className="mr-5"
+          show={isOpen}
+          enter="transition-opacity duration-75"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-500"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
           {data.statusList.map((item) => (
             <div key={item.statusName}>
               <TaskAccordion
@@ -108,8 +118,8 @@ const ProjectList = () => {
               />
             </div>
           ))}
-        </div>
-      )}
+        </Transition>
+      
     </div>
   );
 }

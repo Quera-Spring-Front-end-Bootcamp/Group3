@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Transition } from "@headlessui/react";
 import icons from "../assets/Icons";
 
 const TaskAccordion = ({statusName, statusColor, tasks }) =>{
@@ -75,8 +76,8 @@ const TaskAccordion = ({statusName, statusColor, tasks }) =>{
                     onClick={handleCollapse}
                     className={
                       isOpen
-                        ? "transition transform-none  delay-150 duration-700"
-                        : "transition transform-none  delay-150 duration-700  focus:-rotate-180"
+                        ? "transition transform-none   duration-500"
+                        : "transition transform-none   duration-500  focus:-rotate-180"
                     }
                   >
                     {icons.CollapsIcon_W5}
@@ -105,16 +106,18 @@ const TaskAccordion = ({statusName, statusColor, tasks }) =>{
             {isOpen && <th className="font-medium ">توضیحات</th>}
           </tr>
         </thead>
-        {isOpen && <></>}
-        <tbody
-          className={
-            isOpen
-              ? "transition-all duration-1000 delay-700"
-              : "transition-all hidden duration-1000 delay-700"
-          }
-        >
-          {rows}
-        </tbody>
+          <Transition
+            show={isOpen}
+            as="tbody"
+            enter="transition-opacity duration-75"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-500"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            {rows}
+          </Transition>
       </table>
     </>
   );
