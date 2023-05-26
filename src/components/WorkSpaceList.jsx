@@ -1,11 +1,7 @@
-// import { useState } from "react";
-
 import TasksList from "./TasksList";
 
-
 const WorkSpaceList = () => {
-  // const [isOpen, setIsOpen] = useState(true);
-
+  
   const data = [
     {
       project: {
@@ -109,7 +105,7 @@ const WorkSpaceList = () => {
             { name: "Hasan", avatarUrl: "https://i.pravatar.cc/298" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "low",
         },
         {
           status: "In progress",
@@ -154,9 +150,6 @@ const WorkSpaceList = () => {
       ],
     },
   ];
-    // const handleCollapse = () => {
-    //   setIsOpen((perv) => !perv);
-    // };
 
     return (
       <div className="bg-[#FAFBFC]  w-[1100px] p-12">
