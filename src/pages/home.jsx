@@ -1,9 +1,12 @@
-import ProjectList from "../components/ProjectList"
+import ProjectList from "../components/ProjectList";
+import WorkSpaceList from "../components/WorkSpaceList";
+
 
 const Home = () => {
   return (
     <>
-      <ProjectList />
+      {/* <ProjectList/> */}
+      <WorkSpaceList />
     </>
   );
 }

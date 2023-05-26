@@ -2,20 +2,20 @@ import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import icons from "../assets/Icons";
 
-const TaskAccordion = ({statusName, statusColor, tasks }) =>{
+const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleCollapse = () => {
     setIsOpen((perv) => !perv);
   };
 
-  const handleNavigateTaskInfoPage = () =>{}
+  const handleNavigateTaskInfoPage = () => {};
   const avatarUrls = tasks.map((task) =>
     task.members.map((member) => member.avatarUrl)
   )[0];
-  const limitAvatar = avatarUrls ? {urls:avatarUrls.slice(0,3), count:avatarUrls.length}:[]
-
-  
+  const limitAvatar = avatarUrls
+    ? { urls: avatarUrls.slice(0, 3), count: avatarUrls.length }
+    : [];
 
   const rows = tasks.map((task) => (
     <tr className="bg-white  " key={task.taskID}>
@@ -29,7 +29,7 @@ const TaskAccordion = ({statusName, statusColor, tasks }) =>{
         </div>
       </td>
       <td className="p-3 mx-5 my-4">
-        <div className="flex flex-row-reverse -space-x-3 ">
+        <div className="flex flex-row-reverse -space-x-3 justify-center">
           {limitAvatar.count > 3 && (
             <a
               onClick={handleNavigateTaskInfoPage}
@@ -106,21 +106,21 @@ const TaskAccordion = ({statusName, statusColor, tasks }) =>{
             {isOpen && <th className="font-medium ">توضیحات</th>}
           </tr>
         </thead>
-          <Transition
-            show={isOpen}
-            as="tbody"
-            enter="transition-opacity duration-75"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-500"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            {rows}
-          </Transition>
+        <Transition
+          show={isOpen}
+          as="tbody"
+          enter="transition-opacity duration-75"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-500"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          {rows}
+        </Transition>
       </table>
     </>
   );
-}
+};
 
-export default TaskAccordion;
+export default TasksBasedOnStatus;
