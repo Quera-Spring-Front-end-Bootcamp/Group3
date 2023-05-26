@@ -13,29 +13,27 @@ const Card = ({
   return (
     <div className={`flex flex-col  bg-white ${className}`}>
       {(title || closeIcon || backIcon) && (
-        <div
-          className={
-            (closeIcon  || backIcon
-              ? ` justify-between `
-              : `justify-center `) + " flex flex-row items-center  w-full"
-          }
-        >
-          {closeIcon && (
+        <div className={" flex flex-row items-center  w-full justify-between"}>
+          {closeIcon ? (
             <button
               className="w-5 flex flex-row justify-center"
               onClick={handleClose}
             >
               {icons.CloseIcon}
             </button>
+          ) : (
+            <div className="w-5"></div>
           )}
           {title && <p className={`${titleClassName}`}>{title}</p>}
-          {(backIcon ) && (
+          {backIcon ? (
             <button
               className="w-5 flex flex-row justify-center"
-              onClick={handleBack }
+              onClick={handleBack}
             >
               {backIcon && icons.BackIcon}
             </button>
+          ) : (
+            <div className="w-5"></div>
           )}
         </div>
       )}
