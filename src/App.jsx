@@ -7,6 +7,7 @@ import NotFound from "./pages/notFound";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
+import MainLayout from "./Layout/MainLayout";
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
           <Route path="forget" element={<Forget />} />
           <Route path="resetpassword" element={<ResetPassword />} />
         </Route>
+
+        <Route path="main" element={<MainLayout />}></Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
