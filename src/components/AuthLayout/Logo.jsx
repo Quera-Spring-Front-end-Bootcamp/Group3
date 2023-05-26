@@ -1,6 +1,6 @@
 const Logo = () => {
   return (
-    <div className="text-[32px] font-extrabold bg-gradient-to-l  from-primary to-secondary text-transparent bg-clip-text">
+    <div className="text-[32px] font-extrabold bg-gradient-to-r  from-primary to-secondary text-transparent bg-clip-text">
       کوئرا تسک منیجر
     </div>
   );
