@@ -1,49 +1,43 @@
-import React, { useState } from "react";
-import icons from "../Icon";
+import { useState } from "react";
+import icons from "../Icons";
 import Card from "../Card/Card";
-import { ColumnMore } from "../ColumnMoreItem/index";
-import { Transition } from '@headlessui/react'
-const projectItems = [
-  {
-    projectTitle: "پروژه اول",
-    taskTitle: "این یک تیتر برای این تسک است.",
-    date: "۵ مهر - فردا",
-    time: "۲ / ۱۲",
-    id: 1,
-    tags: [
-      {
-        id: 1,
-        tagTitle: "درس",
-        tagColor: "#BFFDE3",
-      },
-      { id : 2, tagTitle: "پروژه", tagColor: "#EEDFF7" },
-    ],
-    userName: "NA",
-  },
-];
-
-
-
+import { ColumnMoreItem } from "../ColumnMoreItem/ColumnMoreItem";
+import { Transition } from "@headlessui/react";
+// const projectItems = [
+//   {
+//     projectTitle: "پروژه اول",
+//     taskTitle: "این یک تیتر برای این تسک است.",
+//     date: "۵ مهر - فردا",
+//     time: "۲ / ۱۲",
+//     id: 1,
+//     tags: [
+//       {
+//         id: 1,
+//         tagTitle: "درس",
+//         tagColor: "#BFFDE3",
+//       },
+//       { id: 2, tagTitle: "پروژه", tagColor: "#EEDFF7" },
+//     ],
+//     userName: "NA",
+//   },
+// ];
 
 export const ProjectCard = ({
   projectTitle,
   taskTitle,
   date,
   time,
-  tags,
+  tags = [],
   userName,
 }) => {
-  
   const [showMore, setShowMore] = useState(false);
-  
+
   const columnMore = () => {
-    
     setShowMore(!showMore);
   };
   const handleHover = () => {
     setShowMore(false);
   };
- 
 
   return (
     <div
@@ -90,17 +84,15 @@ export const ProjectCard = ({
 
       <div className="flex flex-row items-start gap-[12px] mt-[20.5px] ">
         {tags.map((tag) => (
-          
-            <div 
-              key={tag.id}
-              style={{ backgroundColor: tag.tagColor }}
-              className={`flex flex-row justify-center items-center py-[2px] px-[4px] w-[28px] h-[19px] rounded-tl-md rounded-bl-md`}
-            >
-              <span className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#323232]">
-                {tag.tagTitle}
-              </span>
-            </div>
-          
+          <div
+            key={tag.id}
+            style={{ backgroundColor: tag.tagColor }}
+            className={`flex flex-row justify-center items-center py-[2px] px-[4px] w-[28px] h-[19px] rounded-tl-md rounded-bl-md`}
+          >
+            <span className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#323232]">
+              {tag.tagTitle}
+            </span>
+          </div>
         ))}
       </div>
 
@@ -111,14 +103,9 @@ export const ProjectCard = ({
           {icons.MoreIcon}
         </i>
         {/* {showMore ? ( */}
-          
-          
-
-          
-        
       </div>
       <Transition
-          show={showMore}
+        show={showMore}
         enter="transition-opacity duration-500"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -126,38 +113,35 @@ export const ProjectCard = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
         className="mr-[3px]"
-       
-          >
-
-         
-          <Card
-            className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_0_rgba(0, 0, 0, 0.16)]`}
-            title=""
-          >
-            <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]">
-            <ColumnMore
+      >
+        <Card
+          className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_0_rgba(0, 0, 0, 0.16)]`}
+          title=""
+        >
+          <div className="flex w-[160px] flex-col mt-[-14px] items-start gap-[12px] p-2 rounded-md">
+            <ColumnMoreItem
               className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
               title="ویرایش نام ستون"
               icon={icons.EditIcon}
             />
-            <ColumnMore
+            <ColumnMoreItem
               className="flex-row justify-between gap-[8px]  not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
               title="افزودن تسک"
               icon={icons.plusIcon}
             />
-            <ColumnMore
+            <ColumnMoreItem
               className="flex-row justify-between gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
               title="آرشیو تمام تسک ها"
               icon={icons.ArchiveIcon}
             />
-            <ColumnMore
+            <ColumnMoreItem
               className="flex-row justify-between gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
               title=" حذف ستون"
               icon={icons.DeleteIcon}
             />
-            </div>
-          </Card>
-          </Transition>
+          </div>
+        </Card>
+      </Transition>
     </div>
   );
 };

@@ -59,35 +59,35 @@ const icons = {
       <path
         d="M2.99902 2.99913H11.0024"
         stroke="#BDC0C6"
-        stroke-width="0.75"
+        strokeWidth="0.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M4.49902 5.0001H11.0017"
         stroke="#BDC0C6"
-        stroke-width="0.75"
+        strokeWidth="0.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M4.49902 7.0001H11.0017"
         stroke="#BDC0C6"
-        stroke-width="0.75"
+        strokeWidth="0.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M2.99902 9.00206H11.0024"
         stroke="#BDC0C6"
-        stroke-width="0.75"
+        strokeWidth="0.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M7 11.0021H11.0017"
         stroke="#BDC0C6"
-        stroke-width="0.75"
+        strokeWidth="0.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -278,14 +278,14 @@ const icons = {
       <path
         d="M3.07031 12.9189H6.60388C6.90905 12.9189 7.18807 13.0912 7.32479 13.3641L7.68524 14.0858C7.82186 14.3592 8.10131 14.5319 8.40695 14.5317H12.2478C12.5534 14.5319 12.8328 14.3592 12.9695 14.0858L13.3299 13.3649C13.4665 13.0915 13.746 12.9188 14.0516 12.9189H17.5852"
         stroke="#323232"
-        stroke-width="1.20907"
+        strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M12.7469 3.24219H15.1661C16.5021 3.24219 17.5852 4.32528 17.5852 5.66134V15.3379C17.5852 16.674 16.5021 17.7571 15.1661 17.7571H5.48946C4.1534 17.7571 3.07031 16.674 3.07031 15.3379V5.66134C3.07031 4.32528 4.1534 3.24219 5.48946 3.24219H7.90861"
         stroke="#323232"
-        stroke-width="1.20907"
+        strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
