@@ -176,6 +176,82 @@ const icons = {
       />
     </svg>
   ),
+  FlagIcon_medium: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 17.9998V3.7749"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8337 12.1835V3.8335"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 12.1664C4.16699 12.1664 4.89616 11.5605 7.08365 11.5605C9.27114 11.5605 10.7295 12.9997 12.917 12.9997C15.1044 12.9997 15.8336 12.1855 15.8336 12.1855"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 3.77666C4.16699 3.77666 4.89616 3 7.08365 3C9.27114 3 10.7295 4.43916 12.917 4.43916C15.1044 4.43916 15.8336 3.83333 15.8336 3.83333"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagIcon_low: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 17.9998V3.7749"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8337 12.1835V3.8335"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 12.1664C4.16699 12.1664 4.89616 11.5605 7.08365 11.5605C9.27114 11.5605 10.7295 12.9997 12.917 12.9997C15.1044 12.9997 15.8336 12.1855 15.8336 12.1855"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 3.77666C4.16699 3.77666 4.89616 3 7.08365 3C9.27114 3 10.7295 4.43916 12.917 4.43916C15.1044 4.43916 15.8336 3.83333 15.8336 3.83333"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 
   descriptionIcon: (
     <svg
