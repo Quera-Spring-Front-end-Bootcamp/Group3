@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import TasksBasedOnStatus from "./TasksBasedOnStatus";
-import icons from "../assets/Icons";
+import icons from "../../assets/Icons";
 
 const TasksList = ({data}) => {
   const [isOpen, setIsOpen] = useState(true);

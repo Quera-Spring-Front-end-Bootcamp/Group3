@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
-import icons from "../assets/Icons";
+import icons from "../../assets/Icons";
 
 const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
   const [isOpen, setIsOpen] = useState(true);

@@ -1,5 +1,6 @@
-import ProjectList from "../components/ProjectList";
-import WorkSpaceList from "../components/WorkSpaceList";
+import ProjectList from "../components/ListView/ProjectList";
+import WorkSpaceList from "../components/ListView/WorkSpaceList";
+
 
 
 const Home = () => {
