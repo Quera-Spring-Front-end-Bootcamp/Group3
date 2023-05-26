@@ -56,7 +56,7 @@ function CreateWorkspace({ onClose }) {
   ];
 
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div>
       {step === 1 && (
         <Card
           className="p-6 rounded-[8px] w-[500px]"
@@ -163,26 +163,18 @@ function CreateWorkspace({ onClose }) {
         >
           <div className="flex w-full flex-col justify-start items-start gap-[12px] border-[0.5px] border-[#AAAAAA] rounded-[8px] mt-[40px] px-[12px] py-[16px]">
             <div className="flex flex-row w-full items-center justify-between h-[35px]">
-              <div className="font-normal font-[600] text-[14px]/[22px]">
-                نام ورک اسپیس
-              </div>
-              <div className="font-normal font-[600] text-[14px]/[22px]">
-                {name}
-              </div>
+              <div className="font-[600] text-[14px]/[22px]">نام ورک اسپیس</div>
+              <div className="font-[600] text-[14px]/[22px]">{name}</div>
             </div>
             <div className="flex flex-row w-full items-center justify-between h-[35px]">
-              <div className="font-normal font-[600] text-[14px]/[22px]">
-                رنگ ورک اسپیس
-              </div>
+              <div className="font-[600] text-[14px]/[22px]">رنگ ورک اسپیس</div>
               <div
                 className="block relative rounded-sm w-[15px] h-[15px]"
                 style={{ backgroundColor: colorCode }}
               ></div>
             </div>
             <div className="flex flex-row w-full items-center justify-between h-[35px]">
-              <div className="font-normal font-[600] text-[14px]/[22px]">
-                اعضا
-              </div>
+              <div className="font-[600] text-[14px]/[22px]">اعضا</div>
               <div className="w-[35px] h-[35px]">
                 <img
                   className="rounded-full"
