@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import moment from "moment-jalaali";
 import "moment/locale/fa";
 
 import Icons from "../assets/Icons";
 
 // can't pass the clickHandler as prop. it should change inside the component
-function Calendar({ selectedDate }) {
+function Calendar() {
   const [currentDate, setCurrentDate] = useState(moment());
   const [selectedDate, setSelectedDate] = useState(Date());
 
@@ -61,17 +61,11 @@ function Calendar({ selectedDate }) {
             امروز
           </button>
           <div className="flex">
-            <button
-              onClick={goToPreviousMonth}
-              className="bg-black  w-[24px] h-[24px]"
-            >
+            <button onClick={goToPreviousMonth} className="w-[24px] h-[24px]">
               {Icons.prevArrowIcon}
             </button>
 
-            <button
-              onClick={goToNextMonth}
-              className="bg-black w-[24px] h-[24px]"
-            >
+            <button onClick={goToNextMonth} className="w-[24px] h-[24px]">
               {Icons.nextArrowIcon}
             </button>
           </div>
@@ -83,27 +77,17 @@ function Calendar({ selectedDate }) {
       </div>
       <div className="relative W-full h-full">
         <div className="z-10 absolute w-full grid grid-cols-7 pt-[12.5px]">
-          <div className="font-medium font-[16px]/[25px] font-[500] pr-[11px]">
-            شنبه
-          </div>
-          <div className="font-medium font-[16px]/[25px] font-[500] pr-[11px]">
-            یکشنبه
-          </div>
-          <div className="font-medium font-[16px]/[25px] font-[500] pr-[11px]">
-            دوشنبه
-          </div>
-          <div className="font-medium font-[16px]/[25px] font-[500] pr-[11px]">
-            سه شنبه
-          </div>
-          <div className="font-medium font-[16px]/[25px] font-[500] pr-[11px]">
+          <div className="font-[16px]/[25px] font-[500] pr-[11px]">شنبه</div>
+          <div className="font-[16px]/[25px] font-[500] pr-[11px]">یکشنبه</div>
+          <div className="font-[16px]/[25px] font-[500] pr-[11px]">دوشنبه</div>
+          <div className="font-[16px]/[25px] font-[500] pr-[11px]">سه شنبه</div>
+          <div className="font-[16px]/[25px] font-[500] pr-[11px]">
             چهارشنبه
           </div>
-          <div className="font-medium font-[16px]/[25px] font-[500] pr-[11px]">
+          <div className="font-[16px]/[25px] font-[500] pr-[11px]">
             پنج شنبه
           </div>
-          <div className="font-medium font-[16px]/[25px] font-[500] pr-[11px]">
-            جمعه
-          </div>
+          <div className="font-[16px]/[25px] font-[500] pr-[11px]">جمعه</div>
         </div>
         <div className="min-h-full grid grid-cols-7 grid-row-5 border-solid border-[#AAAAAA] border-l-[0.5px] border-t-[0.5px]">
           {calendarDays.map((day) => (
