@@ -12,7 +12,6 @@ const TasksList = ({data}) => {
   };
 
   return (
-
     <>
       <div className="flex align-baseline items-center gap-1 mb-5">
         <button

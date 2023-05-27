@@ -4,6 +4,7 @@ const WorkSpaceList = () => {
   
   const data = [
     {
+      id:"1",
       project: {
         id: "1",
         title: "پروژه اول",
@@ -77,6 +78,7 @@ const WorkSpaceList = () => {
       ],
     },
     {
+      id: "2",
       project: {
         id: "2",
         title: "پروژه دوم",
@@ -153,8 +155,8 @@ const WorkSpaceList = () => {
 
     return (
       <div className="bg-[#FAFBFC]  w-[1100px] p-12">
-        {data.map(item => (
-          <TasksList data={item} />
+        {data.map((item) => (
+          <TasksList key={item.id} data={item} />
         ))}
       </div>
     );
