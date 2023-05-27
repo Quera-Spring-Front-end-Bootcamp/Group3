@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import Button from "../Button";
-import Input from "../Input";
+import Button from "../components/Button";
+import Input from "../components/Input";
 import { toast } from "react-hot-toast";
-export const ProjectInvitationForm = () => {
+export const InvitationForm = () => {
   const {
     register,
     formState: { errors },

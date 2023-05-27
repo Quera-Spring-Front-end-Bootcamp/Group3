@@ -1,13 +1,14 @@
 import { PermissionTitle } from "./PermissionTitle";
-import { CopyLink } from "../../shared/CopyLink";
 import { useState } from "react";
-import { InvitationForm } from "../../shared/InvitationForm";
 import profile from "../../assets/images/profile.png";
 import Card from "../Card/Card";
 import icons from "../../assets/Icons";
 import { SharedUser } from "./SharedUser";
+import { CopyLink } from "../../shared/CopyLink";
 
-const ShareProjectCard = () => {
+import { InvitationForm } from "../../shared/InvitationForm";
+
+const ShareWorkSpace = () => {
   const info = [
     {
       id: 1,
@@ -41,7 +42,7 @@ const ShareProjectCard = () => {
           {icons.CloseIcon}
         </div>
         <div className="w-full text-center font-semibold">
-          به اشتراک‌گذاری پروژه‌
+          اشتراک‌گذاری ورک‌اسپیس‌‌
         </div>
       </div>
       <InvitationForm />
@@ -66,4 +67,4 @@ const ShareProjectCard = () => {
   );
 };
 
-export default ShareProjectCard;
+export default ShareWorkSpace;

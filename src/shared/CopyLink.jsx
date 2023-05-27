@@ -1,5 +1,5 @@
-import { copyLink } from "../../Utils/copyLink";
-import icons from "../../assets/Icons";
+import { copyLink } from "../Utils/copyLink";
+import icons from "../assets/Icons";
 
 export const CopyLink = ({ className }) => {
   const privateLink = location.href;

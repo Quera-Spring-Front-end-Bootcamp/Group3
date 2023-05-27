@@ -6,7 +6,7 @@ export const PermissionTitle = ({ isOwner }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
-  const handleToggleDropdown = () => {
+  const handleToggleDropdown = (id) => {
     setIsOpen(!isOpen);
   };
 
