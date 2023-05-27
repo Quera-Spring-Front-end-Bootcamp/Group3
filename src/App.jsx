@@ -7,7 +7,6 @@ import NotFound from "./pages/notFound";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
-import Calendar from "./components/Calendar";
 
 const App = () => {
   return (
@@ -20,7 +19,6 @@ const App = () => {
           <Route path="forget" element={<Forget />} />
           <Route path="resetpassword" element={<ResetPassword />} />
         </Route>
-        <Route path="test" element={<Calendar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster
