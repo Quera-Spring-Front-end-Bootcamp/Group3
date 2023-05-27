@@ -1,8 +1,8 @@
 import icons from "../../assets/Icons";
 import Button from "../Button";
-import { ColumnMore } from "../ColumnMoreItem/ColumnMore";
 import Card from "../Card/Card";
 import { copyLink } from "../../Utils/copyLink";
+import { ColumnMoreItem } from "../ColumnMoreItem/ColumnMoreItem";
 
 export const ColumnMoreWorkSpace = () => {
   const privateLink = location.href;
@@ -27,23 +27,27 @@ export const ColumnMoreWorkSpace = () => {
   };
   return (
     <Card className="w-[184px] rounded-[8px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] top-full  gap-[12px] p-[12px] ">
-      <ColumnMore
+      <ColumnMoreItem
         icon={icons.AddIcon}
         title="ساخت پروژه جدید"
         onClick={handleNewProject}
       />
-      <ColumnMore
+      <ColumnMoreItem
         icon={icons.EditIcon}
         title="ویراش نام ورک اسپیس"
         onClick={handleNameEdit}
       />
-      <ColumnMore
+      <ColumnMoreItem
         icon={icons.PalletIcons}
         title="ویراش رنگ"
         onClick={handleColorEdit}
       />
-      <ColumnMore icon={icons.LinkIcon} title="کپی لینک" onClick={handleCopy} />
-      <ColumnMore
+      <ColumnMoreItem
+        icon={icons.LinkIcon}
+        title="کپی لینک"
+        onClick={handleCopy}
+      />
+      <ColumnMoreItem
         icon={icons.TrashIcon}
         title="حذف ستون"
         className="text-[#9F0000] gap-[10px]"
