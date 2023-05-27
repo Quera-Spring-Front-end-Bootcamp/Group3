@@ -23,13 +23,11 @@ import { Transition } from "@headlessui/react";
 // ];
 
 const columnMoreItems = [
-  {title: "ویرایش نام ستون", icon: icons.EditIcon},
-  {title: "افزودن تسک", icon: icons.plusIcon},
-  {title: "آرشیو تمام تسک ها", icon: icons.ArchiveIcon},
-  {title: "حذف ستون", icon: icons.DeleteIcon}
-]
-
-
+  { id: 1, title: "ویرایش نام ستون", icon: icons.EditIcon },
+  { id: 2, title: "افزودن تسک", icon: icons.plusIcon },
+  { id: 3, title: "آرشیو تمام تسک ها", icon: icons.ArchiveIcon },
+  { id: 4, title: "حذف ستون", icon: icons.DeleteIcon },
+];
 
 export const ProjectCard = ({
   projectTitle,
@@ -122,28 +120,26 @@ export const ProjectCard = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
         className="mr-[3px]"
-       
+      >
+        <Card
+          className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_0_rgba(0, 0, 0, 0.16)]`}
+          title=""
+        >
+          <div
+            className="flex w-[160px] flex-col mt-[-14px] items-start gap-[12px] p-2 rounded-md"
+            onMouseEnter={() => setShowMore(true)}
           >
-
-         
-          <Card
-            className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_0_rgba(0, 0, 0, 0.16)]`}
-            title=""
-            
-          >
-            <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]" onMouseEnter = {() => setShowMore(true)}>
             {columnMoreItems.map((item) => (
-              <ColumnMore
-              className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
-              title= {item.title}
-              icon={item.icon}
-            />
-              
+              <ColumnMoreItem
+                key={item.id}
+                className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
+                title={item.title}
+                icon={item.icon}
+              />
             ))}
-           
-            </div>
-          </Card>
-          </Transition>
+          </div>
+        </Card>
+      </Transition>
     </div>
   );
 };
