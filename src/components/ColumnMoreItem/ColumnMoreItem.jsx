@@ -1,4 +1,4 @@
-export const ColumnMore = ({
+export const ColumnMoreItem = ({
   icon,
   title,
   handleClick,
@@ -19,7 +19,7 @@ export const ColumnMore = ({
   );
 };
 
-ColumnMore.defaultProps = {
+ColumnMoreItem.defaultProps = {
   title: "عنوان",
   icon: "محل ایکون",
   className: "gap-[10px] text-[#1e1e1e] items-center",
