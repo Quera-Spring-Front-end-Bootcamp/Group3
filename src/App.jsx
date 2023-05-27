@@ -15,7 +15,7 @@ import { Setting } from "./pages/Profile/Setting";
 const App = () => {
   return (
     <>
-      <Routes>
+         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
@@ -24,9 +24,9 @@ const App = () => {
           <Route path="resetpassword" element={<ResetPassword />} />
         </Route>
         <Route path="profile" element={<ProfileLayout />}>
-          <Route path="personalInfo" element={<PersonalInfo/>}/>
-          <Route path="accountInfo" element={<AccountInfo/>}/>
-          <Route path="setting" element={<Setting/>}/>
+          <Route path="personalInfo" element={<PersonalInfo />} />
+          <Route path="accountInfo" element={<AccountInfo />} />
+          <Route path="setting" element={<Setting />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

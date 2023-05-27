@@ -14,7 +14,7 @@ export const ColumnMore = ({
       <span className="flex flex-row items-center w-5 justify-center">
         {icon}
       </span>
-      <span className=" font-normal">{title}</span>
+      <span className=" font-normal text-sm">{title}</span>
     </div>
   );
 };
@@ -22,5 +22,5 @@ export const ColumnMore = ({
 ColumnMore.defaultProps = {
   title: "عنوان",
   icon: "محل ایکون",
-  className: "gap-[10px] text-[#1e1e1e]",
+  className: "gap-[10px] text-[#1e1e1e] items-center",
 };
