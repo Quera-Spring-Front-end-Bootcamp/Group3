@@ -114,13 +114,13 @@ function Calendar() {
                 className={`relative border-solid border-[#AAAAAA] border-[0.5px] flex justify-end items-end p-[11px] font-[500] font-[16px]/[24.53px] border-l-0 border-t-0 ${
                   day.isSame(moment(), "day") && "bg-primary"
                 }`}
-                onClick={() => clickHandler(day.toDate())}
                 key={day.format("jYYYY-jMM-jDD")}
                 onMouseEnter={() => setHoveredDate(day)}
                 onMouseLeave={() => setHoveredDate(false)}
               >
                 {day.isSame(hoveredDate, "day") && (
                   <Button
+                    onClick={() => clickHandler(day.toDate())}
                     classNames={
                       "absolute bottom-[17px] right-[12px] w-[24px] h-[24px]"
                     }
@@ -132,15 +132,6 @@ function Calendar() {
             ))}
           </div>
         </div>
-        <Button
-          classNames={"absolute bottom-[30px] left-[50px] w-[118px] z-50 "}
-          title={
-            <div className="flex flex-row items-center justify-center gap-[8px]">
-              {Icons.addIcon} تسک جدید
-            </div>
-          }
-          onClick={() => clickHandler(currentDate)}
-        />
       </div>
     </div>
   );
