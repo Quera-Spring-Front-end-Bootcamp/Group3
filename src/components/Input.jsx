@@ -1,15 +1,17 @@
-const Input = ({ type, label, value, onChange, register, error, ...props }) => {
+const Input = ({ type, label, value, onChange,className, register, error, ...props }) => {
   return (
     <div className="relative">
-      <label
-        className={
-          (type === "checkbox"
-            ? "absolute right-8 text-base "
-            : "text-sm/[21px] flex pb-2") + " text-black"
-        }
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          className={
+            (type === "checkbox"
+              ? "absolute right-8 text-base "
+              : "text-sm/[21px] flex pb-2") + " text-black"
+          }
+        >
+          {label}
+        </label>
+      )}
       {type === "checkbox" ? (
         <input
           type={type}
@@ -26,12 +28,15 @@ const Input = ({ type, label, value, onChange, register, error, ...props }) => {
           onChange={onChange}
           {...register}
           {...props}
-          className="w-full h-10 border border-[#aaaaaa] rounded-md placeholder:text-[#959595] pr-4 "
+          className={` pr-4  ${className}`}
         />
       )}
       {error && <p className="text-red-500 mt-1 text-xs">{error.message}</p>}
     </div>
   );
+};
+Input.defaultProps = {
+  className: "w-full h-10 border border-[#aaaaaa]  rounded-md placeholder:text-[#959595] ",
 };
 
 export default Input;

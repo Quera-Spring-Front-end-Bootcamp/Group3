@@ -7,7 +7,14 @@ import NotFound from "./pages/notFound";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
+<<<<<<< HEAD
 import Filter from "./components/Filter/Filter";
+=======
+import { ProfileLayout } from "./components/ProfileLayout/ProfileLayout";
+import { PersonalInfo } from "./pages/Profile/PersonalInfo";
+import { AccountInfo } from "./pages/Profile/AccountInfo";
+import { Setting } from "./pages/Profile/Setting";
+>>>>>>> main
 
 const App = () => {
   return (
@@ -20,6 +27,11 @@ const App = () => {
           <Route path="register" element={<Register />} />
           <Route path="forget" element={<Forget />} />
           <Route path="resetpassword" element={<ResetPassword />} />
+        </Route>
+        <Route path="profile" element={<ProfileLayout />}>
+          <Route path="personalInfo" element={<PersonalInfo/>}/>
+          <Route path="accountInfo" element={<AccountInfo/>}/>
+          <Route path="setting" element={<Setting/>}/>
         </Route>
 
         <Route path="*" element={<NotFound />} />
