@@ -47,15 +47,6 @@ const icons = {
       />
     </svg>
   ),
-<<<<<<< HEAD
-<<<<<<< HEAD
-  TrashIcons: (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-=======
-=======
   noneIcon: (
     <svg
       width="15"
@@ -85,9 +76,9 @@ const icons = {
       <path
         d="M20 6.5L9 17.5L4 12.5"
         stroke="#1E1E1E"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -219,22 +210,15 @@ const icons = {
       />
     </svg>
   ),
->>>>>>> main
   DotsMenu: (
     <svg
       width="20"
       height="21"
       viewBox="0 0 20 21"
->>>>>>> main
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-<<<<<<< HEAD
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M13.0081 17.5825H6.33402C5.49009 17.5825 4.78883 16.9312 4.72595 16.0889L4.00293 6.29785H15.315L14.6161 16.0849C14.5557 16.9288 13.8536 17.5825 13.0081 17.5825V17.5825Z"
-=======
         d="M15.4196 10.5008C15.4196 10.731 15.233 10.9177 15.0028 10.9177C14.7726 10.9177 14.5859 10.731 14.5859 10.5008C14.5859 10.2706 14.7726 10.084 15.0028 10.084C15.233 10.084 15.4196 10.2706 15.4196 10.5008"
         stroke="#323232"
         strokeWidth="1.25"
@@ -300,16 +284,11 @@ const icons = {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M7.91016 12.9185L10.4492 12.6049C10.6273 12.5831 10.7934 12.5017 10.9207 12.3752L17.0717 6.22424C17.7528 5.54313 17.7528 4.43884 17.0717 3.75693V3.75693C16.3906 3.07582 15.2863 3.07582 14.6044 3.75693L8.51066 9.85064C8.38734 9.97397 8.30754 10.1336 8.28255 10.3069L7.91016 12.9185Z"
->>>>>>> main
         stroke="#323232"
         strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-<<<<<<< HEAD
-      <path
-        d="M9.67255 9.52148V14.3578"
-=======
     </svg>
   ),
   ArchiveIcon: (
@@ -322,55 +301,38 @@ const icons = {
     >
       <path
         d="M10.328 9.6938V3.50195"
->>>>>>> main
         stroke="#323232"
         strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-<<<<<<< HEAD
-        d="M3.22461 6.29755H16.1214"
-=======
         fillRule="evenodd"
         clipRule="evenodd"
         d="M10.3281 9.69454L12.7473 7.27539L10.3281 9.69454Z"
->>>>>>> main
         stroke="#323232"
         strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-<<<<<<< HEAD
-        d="M13.703 6.29743L12.8865 4.11949C12.6503 3.48997 12.049 3.07324 11.3768 3.07324H7.96883C7.29659 3.07324 6.69528 3.48997 6.4591 4.11949L5.64258 6.29743"
-=======
         d="M3.07031 12.9199H6.60388C6.90905 12.9199 7.18807 13.0922 7.32479 13.365L7.68524 14.0868C7.82186 14.3602 8.10131 14.5328 8.40695 14.5327H12.2478C12.5534 14.5328 12.8328 14.3602 12.9695 14.0868L13.3299 13.3659C13.4665 13.0924 13.746 12.9198 14.0516 12.9199H17.5852"
->>>>>>> main
         stroke="#323232"
         strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-<<<<<<< HEAD
-        d="M12.4377 9.52148L12.0911 14.3578"
-=======
         d="M12.7469 3.24219H15.1661C16.5021 3.24219 17.5852 4.32528 17.5852 5.66134V15.3379C17.5852 16.674 16.5021 17.7571 15.1661 17.7571H5.48946C4.1534 17.7571 3.07031 16.674 3.07031 15.3379V5.66134C3.07031 4.32528 4.1534 3.24219 5.48946 3.24219H7.90861"
->>>>>>> main
         stroke="#323232"
         strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-<<<<<<< HEAD
-        d="M6.90843 9.52148L7.25503 14.3578"
-=======
         fillRule="evenodd"
         clipRule="evenodd"
         d="M7.90918 7.27539L10.3283 9.69454L7.90918 7.27539Z"
->>>>>>> main
         stroke="#323232"
         strokeWidth="1.20907"
         strokeLinecap="round"
@@ -378,8 +340,6 @@ const icons = {
       />
     </svg>
   ),
-<<<<<<< HEAD
-=======
   TrashIcon: (
     <svg
       width="20"
@@ -434,9 +394,6 @@ const icons = {
       />
     </svg>
   ),
-<<<<<<< HEAD
->>>>>>> main
-=======
   ArrowIcon: (
     <svg
       width="24"
@@ -494,7 +451,7 @@ const icons = {
       />
     </svg>
   ),
- ProfileCheckmarkIcon : (
+  ProfileCheckmarkIcon: (
     <svg
       width="26"
       height="25"
@@ -570,7 +527,60 @@ const icons = {
       />
     </svg>
   ),
->>>>>>> main
+  BlackTrashIcon: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13.0081 17.5825H6.33402C5.49009 17.5825 4.78883 16.9312 4.72595 16.0889L4.00293 6.29785H15.315L14.6161 16.0849C14.5557 16.9288 13.8536 17.5825 13.0081 17.5825V17.5825Z"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.67255 9.52148V14.3578"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.22461 6.29755H16.1214"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.703 6.29743L12.8865 4.11949C12.6503 3.48997 12.049 3.07324 11.3768 3.07324H7.96883C7.29659 3.07324 6.69528 3.48997 6.4591 4.11949L5.64258 6.29743"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.4377 9.52148L12.0911 14.3578"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.90843 9.52148L7.25503 14.3578"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };
 
 export default icons;
