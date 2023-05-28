@@ -161,12 +161,7 @@ export const NewTask = () => {
         >   
             <Transition
             show={datePickerOpen}
-            enter="transition-opacity duration-500"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            className='z-40'
             >
             <Datepicker setDatePickerOpen={handleDatePickerOpen} className='absolute mt-[-130px] mr-[63px] z-10' />
 
@@ -324,7 +319,7 @@ export const NewTask = () => {
 
                                 </Transition>
                         <div className='relative'>
-                            <div className='flex absolute flex-col items-center pt-[3.0303px] py-[6.06061px] pb-[6.06061px] gap-[15.15px]  w-[25.76px] h-[25.76px] top-[-10px]  bg-[#4AB7D8] rounded-[151.515px]'>
+                            <div className='flex absolute  flex-col items-center pt-[3.0303px] py-[6.06061px] pb-[6.06061px] gap-[15.15px]  w-[25.76px] h-[25.76px] top-[-10px]  bg-[#4AB7D8] rounded-[151.515px]'>
                                 <span className=''>۲</span>
                             </div>
                             <i>{icons.eyeTaskIcon}</i>
