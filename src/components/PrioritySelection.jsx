@@ -1,15 +1,12 @@
-import { useState } from "react";
 import Card from "./Card/Card";
 import icons from "../assets/Icons";
 
-function PrioritySelection() {
-  const [flag, setFlag] = useState(false);
-
+function PrioritySelection({ setFlag }) {
   const flagItems = [
-    { name: "فوری", icon: icons.FlagRed },
-    { name: "بالا", icon: icons.FlagYellow },
-    { name: "متوسط", icon: icons.FlagGreen },
-    { name: "پایین", icon: icons.FlagGray },
+    { id: "urgent", name: "فوری", icon: icons.FlagRed },
+    { id: "high", name: "بالا", icon: icons.FlagYellow },
+    { id: "medium", name: "متوسط", icon: icons.FlagGreen },
+    { id: "low", name: "پایین", icon: icons.FlagGray },
   ];
 
   return (
@@ -23,7 +20,7 @@ function PrioritySelection() {
           <button
             className="flex flex-row items-center justify-end gap-[8px]"
             key={flag.name}
-            onClick={() => setFlag(flag.icon)}
+            onClick={() => setFlag([flag.id, flag.icon])}
           >
             <div className="w-[20px] h-[20px]">{flag.icon}</div>
             <div className="font-[400] text-[14px]/[21px] text-right text-[#1E1E1E]">

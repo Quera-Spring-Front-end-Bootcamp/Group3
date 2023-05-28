@@ -7,11 +7,22 @@ import Icons from "../assets/Icons";
 import Button from "./Button";
 
 import toast from "react-hot-toast";
+import { Popover, Transition } from "@headlessui/react";
+
 import Datepicker from "./Datepicker";
+import PrioritySelection from "./PrioritySelection";
 
 function CalendarTaskModal({ initialDate, setOpenModal }) {
   const [date, setDate] = useState(initialDate);
   const [endDate, setEndDate] = useState(false);
+  const [flag, setFlag] = useState(false);
+
+  const flagItems = [
+    { id: "urgent", icon: Icons.FlagRedBig },
+    { id: "high", icon: Icons.FlagYellowBig },
+    { id: "medium", icon: Icons.FlagGreenBig },
+    { id: "low", icon: Icons.FlagGrayBig },
+  ];
 
   const [inputText, setInputText] = useState("");
   const [datepickerModalOpen, setDatepickerModalOpen] = useState(false);
@@ -19,6 +30,8 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     dateStyle: "medium",
   });
+
+  const matchingItem = flagItems.find((item) => item.id === flag[0]);
 
   const DateButtonClickHandler = () => {
     console.log("Date Button Clicked!");
@@ -29,7 +42,11 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
   };
   const AddButtonClickHandler = () => {
     if (inputText) {
-      console.log(inputText, date, endDate);
+      console.log(
+        `text: ${inputText}, startDate: ${date}, endDate: ${endDate}, priority: ${
+          flag ? flag[0] : "none"
+        }`
+      );
     }
     if (!inputText) {
       toast("نام تسک نمیتواند خالی باشد");
@@ -71,7 +88,32 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
           </div>
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex flex-row items-center gap-[12px] justify-end">
-              <button onClick={FlagButtonClickHandler}>{Icons.FlagIcon}</button>
+              <Popover className="relative">
+                <Popover.Button onClick={FlagButtonClickHandler}>
+                  <div
+                    style={{
+                      borderColor: flag
+                        ? flag[1].props.children[0].props.stroke
+                        : "white",
+                    }}
+                    className="rounded-[100%] border-dashed border-[1.4px] p-[11px]"
+                  >
+                    {flag ? matchingItem.icon : Icons.FlagIcon}
+                  </div>
+                </Popover.Button>
+                <Transition
+                  enter="transition duration-200 ease-out"
+                  enterFrom="transform scale-95 opacity-0"
+                  enterTo="transform scale-100 opacity-100"
+                  leave="transition duration-200 ease-out"
+                  leaveFrom="transform scale-100 opacity-100"
+                  leaveTo="transform scale-95 opacity-0"
+                >
+                  <Popover.Panel className=" absolute z-20">
+                    <PrioritySelection setFlag={setFlag} />
+                  </Popover.Panel>
+                </Transition>
+              </Popover>
               <button
                 onClick={DateButtonClickHandler}
                 className="flex flex-row items-center justify-center gap-[15px] text-[20px]/[31px]  font-[500] "

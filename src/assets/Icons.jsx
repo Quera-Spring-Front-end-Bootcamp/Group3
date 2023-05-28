@@ -801,6 +801,158 @@ const icons = {
       />
     </svg>
   ),
+  FlagRedBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4766V5.19727"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagYellowBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4766V5.19727"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagGreenBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4766V5.19727"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagGrayBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4766V5.19727"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };
 
 export default icons;
