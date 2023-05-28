@@ -143,7 +143,7 @@ export const ProjectCard = ({
           >
             <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]" onMouseEnter = {() => setShowMore(true)}>
             {columnMoreItems.map((item) => (
-              <ColumnMore
+              <ColumnMore  
               className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
               title= {item.title}
               icon={item.icon}
