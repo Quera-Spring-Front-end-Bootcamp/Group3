@@ -11,7 +11,6 @@ import { ProfileLayout } from "./components/ProfileLayout/ProfileLayout";
 import { PersonalInfo } from "./pages/Profile/PersonalInfo";
 import { AccountInfo } from "./pages/Profile/AccountInfo";
 import { Setting } from "./pages/Profile/Setting";
-import CalendarTaskModal from "./components/CalendarTaskModal";
 
 const App = () => {
   return (
@@ -30,7 +29,6 @@ const App = () => {
           <Route path="setting" element={<Setting />} />
         </Route>
 
-        <Route path="test" element={<CalendarTaskModal />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster
