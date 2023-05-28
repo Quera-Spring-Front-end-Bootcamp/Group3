@@ -8,7 +8,7 @@ import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
 import MainLayout from "./Layout/MainLayout";
-import { ProfileLayout } from "./components/ProfileLayout/ProfileLayout";
+import { ProfileLayout } from "./Layout/ProfileLayout";
 import { PersonalInfo } from "./pages/Profile/PersonalInfo";
 import { AccountInfo } from "./pages/Profile/AccountInfo";
 import { Setting } from "./pages/Profile/Setting";
@@ -25,9 +25,9 @@ const App = () => {
           <Route path="resetpassword" element={<ResetPassword />} />
         </Route>
         <Route path="profile" element={<ProfileLayout />}>
-          <Route path="personalInfo" element={<PersonalInfo/>}/>
-          <Route path="accountInfo" element={<AccountInfo/>}/>
-          <Route path="setting" element={<Setting/>}/>
+          <Route path="personalInfo" element={<PersonalInfo />} />
+          <Route path="accountInfo" element={<AccountInfo />} />
+          <Route path="setting" element={<Setting />} />
         </Route>
 
         <Route path="main" element={<MainLayout />}></Route>
