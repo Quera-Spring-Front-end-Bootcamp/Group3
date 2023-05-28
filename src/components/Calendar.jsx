@@ -97,7 +97,7 @@ function Calendar() {
   //define a function to work with the clicked date e is a Date object.
   const clickHandler = (e) => {
     setSelectedDate(e);
-    // setOpenModal(true);
+    setOpenModal(true);
     console.log(DUMMY_TASK);
   };
 
