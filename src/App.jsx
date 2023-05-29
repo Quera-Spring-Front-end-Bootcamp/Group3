@@ -15,7 +15,7 @@ import { Setting } from "./pages/Profile/Setting";
 const App = () => {
   return (
     <>
-         <Routes>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />

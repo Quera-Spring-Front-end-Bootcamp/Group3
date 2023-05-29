@@ -1,4 +1,4 @@
-export const ColumnMore = ({
+export const ColumnMoreItem = ({
   icon,
   title,
   handleClick,
@@ -11,16 +11,16 @@ export const ColumnMore = ({
       onClick={handleClick}
       {...props}
     >
-      <span className="flex flex-row items-center w-5 justify-center">
+      <span className="flex flex-row items-center w-5 justify-center ">
         {icon}
       </span>
-      <span className=" font-normal text-sm">{title}</span>
+      <span className=" font-normal">{title}</span>
     </div>
   );
 };
 
-ColumnMore.defaultProps = {
+ColumnMoreItem.defaultProps = {
   title: "عنوان",
   icon: "محل ایکون",
-  className: "gap-[10px] text-[#1e1e1e] items-center",
+  className: "gap-[10px] text-[#1e1e1e]",
 };
