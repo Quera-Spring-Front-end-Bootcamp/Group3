@@ -11,7 +11,6 @@ import { ProfileLayout } from "./components/ProfileLayout/ProfileLayout";
 import { PersonalInfo } from "./pages/Profile/PersonalInfo";
 import { AccountInfo } from "./pages/Profile/AccountInfo";
 import { Setting } from "./pages/Profile/Setting";
-import Calendar from "./components/Calendar";
 
 const App = () => {
   return (
