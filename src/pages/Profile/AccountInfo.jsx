@@ -3,17 +3,15 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-// import { useEffect} from "react";
+
+
 
 
 export const AccountInfo = () => {
 
   const user = { userName: "Mt123456", email: "a@b.com", password: "123" };
 
-  // useEffect(() => {
-  //   // Fech data  
-  // },[]);
+
 
   const {
     register,
@@ -21,12 +19,11 @@ export const AccountInfo = () => {
     handleSubmit,
   } = useForm({defaultValues: user});
 
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
-    // navigate("/");
+ 
   };
 
   const HandleAuth = () => {
@@ -34,7 +31,7 @@ export const AccountInfo = () => {
   }
   return (
     <div className="">
-      <Card className={"w-[354px] h-[550px] absolute top-[170px] left-[688x] "}>
+      <Card className={"w-[354px] h-[550px] absolute top-[160px] left-[688x] "}>
         <p className="font-bold text-[31px] text-right">اطلاعات حساب</p>
         <form className="w-full mt-7" onSubmit={handleSubmit(onSubmit)}>
           <div className="my-5">
@@ -66,11 +63,11 @@ export const AccountInfo = () => {
                 // },
               })}
             />
-            <a 
+            <button
               onClick={HandleAuth}
               className="w-24 rounded-md	bg-primary p-2.5 font-bold text-white text-center text-sm/[22px] absolute top-7 left-0">
               احراز هویت
-            </a>
+            </button>
           </div>
           <div className="my-5">
             <Input
