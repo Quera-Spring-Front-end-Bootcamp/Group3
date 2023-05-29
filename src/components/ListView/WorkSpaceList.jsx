@@ -1,3 +1,4 @@
+import HeaderProjectList from "./HeaderProjectList";
 import TasksList from "./TasksList";
 
 const WorkSpaceList = () => {
@@ -155,6 +156,7 @@ const WorkSpaceList = () => {
 
     return (
       <div className="bg-[#FAFBFC]  w-[1100px] p-12">
+        <HeaderProjectList />
         {data.map((item) => (
           <TasksList key={item.id} data={item} />
         ))}

@@ -1,4 +1,5 @@
 
+import HeaderProjectList from "./HeaderProjectList";
 import TasksList from "./TasksList";
 
 const ProjectList = () => {
@@ -73,9 +74,12 @@ const ProjectList = () => {
       ],
     };
     return (
-      <div className="bg-[#FAFBFC]  w-[1100px] p-12">
-        <TasksList data={data} />
-      </div>
+      <>
+        <div className="bg-[#FAFBFC]  w-[1100px] p-12">
+          <HeaderProjectList />
+          <TasksList data={data} />
+        </div>
+      </>
     );
 }
 
