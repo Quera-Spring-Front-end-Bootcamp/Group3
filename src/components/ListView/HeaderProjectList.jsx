@@ -10,10 +10,10 @@ const HeaderProjectList = () => {
         </span>
       </div>
       <span className="w-1 h-[22px] border-l-[1px] border-[#999999] mr-28 ml-10" />
-      <div className="flex gap-1 items-center">
+      <button className="flex gap-1 items-center">
         <span>{icons.FilterIcon}</span>
         <span className="text-black font-medium text-xs">فیلترها</span>
-      </div>
+      </button>
       <span className="bg-[#E9F9FF] text-black font-medium text-xs mr-5 h-[26px] p-1 flex items-center">
         دسته‌بندی‌شده با: وضعیت
       </span>
