@@ -1,5 +1,6 @@
 import Logo from "../components/AuthLayout/Logo";
 import Icons from "../assets/Icons";
+import Button from "../components/Button";
 
 function MainLayout() {
   return (
@@ -45,13 +46,39 @@ function MainLayout() {
         className="flex flex-col w-[calc(100vw_-_256px)] p-4
       "
       >
-        <header className="flex flex-row items-center h-20">
-          <div>پروژه اول</div>
-          <div className="w-[1px] h-[24px] bg-[#999999]"></div>
-          <div>پروژه اول</div>
+        <header className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center h-20 gap-3">
+            <div>پروژه اول</div>
+            <div className="w-[1px] h-[24px] bg-[#999999]"></div>
+            <div className="flex flex-row items-center">
+              <div className="">{Icons.ListViewIcon}</div>
+              <span className="mr-2 font-normal text-base">نمایش لیستی</span>
+            </div>
+            <div className="w-[1px] h-[24px] bg-[#999999]"></div>
+            <div className="flex flex-row items-center">
+              <div className="">{Icons.ColumnViewIcon}</div>
+              <span className="mr-2 font-normal text-base">نمایش ستونی</span>
+            </div>
+            <div className="w-[1px] h-[24px] bg-[#999999]"></div>
+            <div className="flex flex-row items-center">
+              <div className="">{Icons.CalendarMainIcon}</div>
+              <span className="mr-2 font-normal text-base">تقویم</span>
+            </div>
+            <div className="w-[1px] h-[24px] bg-[#999999]"></div>
+          </div>
+          <div className="flex flex-row items-center">
+            <div className="">{Icons.ShareIcon}</div>
+            <span className="mr-2 font-normal text-base">اشتراک گذاری</span>
+          </div>
         </header>
         <hr />
-        <main>body</main>
+        <main>
+          <Button
+            startIcon={Icons.AddSqureIcon}
+            title="تسک جدید"
+            classNames="fixed left-8 bottom-8"
+          ></Button>
+        </main>
       </div>
     </div>
   );
