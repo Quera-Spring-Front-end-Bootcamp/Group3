@@ -1,7 +1,7 @@
 import icons from "../../assets/Icons";
 import Button from "../Button";
 import Card from "../Card/Card";
-import { ColumnMoreItem } from "../ColumnMoreItem/ColumnMoreItem";
+import { ColumnMoreItem } from "./ColumnMoreItem";
 
 export const ColumMoreCard = ({ workSpace }) => {
   const dataColumnMoreItemsWorkSpace = [
