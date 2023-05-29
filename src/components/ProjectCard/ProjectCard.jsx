@@ -1,55 +1,50 @@
-import React, { useState } from "react";
-import icons from "../Icon";
+import { useState } from "react";
+import icons from "../Icons";
 import Card from "../Card/Card";
-import { ColumnMore } from "../ColumnMoreItem/index";
-import { Transition } from '@headlessui/react'
-const projectItems = [
-  {
-    projectTitle: "پروژه اول",
-    taskTitle: "این یک تیتر برای این تسک است.",
-    date: "۵ مهر - فردا",
-    time: "۲ / ۱۲",
-    id: 1,
-    tags: [
-      {
-        id: 1,
-        tagTitle: "درس",
-        tagColor: "#BFFDE3",
-      },
-      { id : 2, tagTitle: "پروژه", tagColor: "#EEDFF7" },
-    ],
-    userName: "NA",
-  },
-];
+import { ColumnMoreItem } from "../ColumnMoreItem/ColumnMoreItem";
+import { Transition } from "@headlessui/react";
+// const projectItems = [
+//   {
+//     projectTitle: "پروژه اول",
+//     taskTitle: "این یک تیتر برای این تسک است.",
+//     date: "۵ مهر - فردا",
+//     time: "۲ / ۱۲",
+//     id: 1,
+//     tags: [
+//       {
+//         id: 1,
+//         tagTitle: "درس",
+//         tagColor: "#BFFDE3",
+//       },
+//       { id: 2, tagTitle: "پروژه", tagColor: "#EEDFF7" },
+//     ],
+//     userName: "NA",
+//   },
+// ];
 
 const columnMoreItems = [
-  {title: "ویرایش نام ستون", icon: icons.EditIcon},
-  {title: "افزودن تسک", icon: icons.plusIcon},
-  {title: "آرشیو تمام تسک ها", icon: icons.ArchiveIcon},
-  {title: "حذف ستون", icon: icons.DeleteIcon}
-]
-
-
+  { id: 1, title: "ویرایش نام ستون", icon: icons.EditIcon },
+  { id: 2, title: "افزودن تسک", icon: icons.plusIcon },
+  { id: 3, title: "آرشیو تمام تسک ها", icon: icons.ArchiveIcon },
+  { id: 4, title: "حذف ستون", icon: icons.DeleteIcon },
+];
 
 export const ProjectCard = ({
   projectTitle,
   taskTitle,
   date,
   time,
-  tags,
+  tags = [],
   userName,
 }) => {
-  
   const [showMore, setShowMore] = useState(false);
-  
+
   const columnMore = () => {
-    
     setShowMore(!showMore);
   };
   const handleHover = () => {
     setShowMore(false);
   };
- 
 
   return (
     <div
@@ -96,17 +91,15 @@ export const ProjectCard = ({
 
       <div className="flex flex-row items-start gap-[12px] mt-[20.5px] ">
         {tags.map((tag) => (
-          
-            <div 
-              key={tag.id}
-              style={{ backgroundColor: tag.tagColor }}
-              className={`flex flex-row justify-center items-center py-[2px] px-[4px] w-[28px] h-[19px] rounded-tl-md rounded-bl-md`}
-            >
-              <span className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#323232]">
-                {tag.tagTitle}
-              </span>
-            </div>
-          
+          <div
+            key={tag.id}
+            style={{ backgroundColor: tag.tagColor }}
+            className={`flex flex-row justify-center items-center py-[2px] px-[4px] w-[28px] h-[19px] rounded-tl-md rounded-bl-md`}
+          >
+            <span className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#323232]">
+              {tag.tagTitle}
+            </span>
+          </div>
         ))}
       </div>
 
@@ -117,14 +110,9 @@ export const ProjectCard = ({
           {icons.MoreIcon}
         </i>
         {/* {showMore ? ( */}
-          
-          
-
-          
-        
       </div>
       <Transition
-          show={showMore}
+        show={showMore}
         enter="transition-opacity duration-500"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -132,28 +120,26 @@ export const ProjectCard = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
         className="mr-[3px]"
-       
+      >
+        <Card
+          className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_0_rgba(0, 0, 0, 0.16)]`}
+          title=""
+        >
+          <div
+            className="flex w-[160px] flex-col mt-[-14px] items-start gap-[12px] p-2 rounded-md"
+            onMouseEnter={() => setShowMore(true)}
           >
-
-         
-          <Card
-            className={`absolute rounded-[8px] mr-60 mt-[-45px]   gap-[16px] p-[12px] shadow-[0_4px_16px_0_rgba(0, 0, 0, 0.16)]`}
-            title=""
-            
-          >
-            <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]" onMouseEnter = {() => setShowMore(true)}>
             {columnMoreItems.map((item) => (
-              <ColumnMore  
-              className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
-              title= {item.title}
-              icon={item.icon}
-            />
-              
+              <ColumnMoreItem
+                key={item.id}
+                className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
+                title={item.title}
+                icon={item.icon}
+              />
             ))}
-           
-            </div>
-          </Card>
-          </Transition>
+          </div>
+        </Card>
+      </Transition>
     </div>
   );
 };

@@ -10,13 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@headlessui/react": "^1.7.14",
-||||||| f3d54d1
-=======
     "moment": "^2.29.4",
     "moment-jalaali": "^0.10.0",
->>>>>>> main
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
