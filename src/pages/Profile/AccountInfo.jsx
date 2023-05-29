@@ -4,31 +4,23 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
 
-
-
-
 export const AccountInfo = () => {
-
   const user = { userName: "Mt123456", email: "a@b.com", password: "123" };
-
-
 
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({defaultValues: user});
-
+  } = useForm({ defaultValues: user });
 
   const onSubmit = (data) => {
     console.log(data);
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
- 
   };
 
   const HandleAuth = () => {
     console.log("Auth");
-  }
+  };
   return (
     <div className="">
       <Card className={"w-[354px] h-[550px] absolute top-[160px] left-[688x] "}>
@@ -65,7 +57,9 @@ export const AccountInfo = () => {
             />
             <button
               onClick={HandleAuth}
-              className="w-24 rounded-md	bg-primary p-2.5 font-bold text-white text-center text-sm/[22px] absolute top-7 left-0">
+              type="button"
+              className="w-24 rounded-md	bg-primary p-2.5 font-bold text-white text-center text-sm/[22px] absolute top-7 left-0"
+            >
               احراز هویت
             </button>
           </div>
@@ -95,5 +89,3 @@ export const AccountInfo = () => {
     </div>
   );
 };
-
-
