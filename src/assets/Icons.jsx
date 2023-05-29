@@ -47,6 +47,104 @@ const icons = {
       />
     </svg>
   ),
+  searchIcon: (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="11.0586"
+        cy="11.5586"
+        r="7.06194"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M20.0033 20.5033L16.0517 16.5517"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  nextArrowIcon: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+<<<<<<< HEAD
+        d="M20 6.5L9 17.5L4 12.5"
+        stroke="#1E1E1E"
+=======
+        d="M14 8.00009L10 12.0001L14 16.0001"
+        stroke="#7D828C"
+>>>>>>> main
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  prevArrowIcon: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 16.0001L14 12.0001L10 8.00009"
+        stroke="#7D828C"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  addIcon: (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15 17H3C1.895 17 1 16.105 1 15V3C1 1.895 1.895 1 3 1H15C16.105 1 17 1.895 17 3V15C17 16.105 16.105 17 15 17Z"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9 5V13"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13 9H5"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
   noneIcon: (
     <svg
       width="15"
@@ -82,40 +180,7 @@ const icons = {
       />
     </svg>
   ),
-  nextArrowIcon: (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M14 8.00009L10 12.0001L14 16.0001"
-        stroke="#7D828C"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  ),
-  prevArrowIcon: (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M10 16.0001L14 12.0001L10 8.00009"
-        stroke="#7D828C"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  ),
+
   CalendarIcon: (
     <svg
       width="32"
@@ -527,22 +592,38 @@ const icons = {
       />
     </svg>
   ),
+<<<<<<< HEAD
   PalletIcons: (
     <svg
       width="20"
       height="21"
+=======
+  CollapsIcon_W5: (
+    <svg
+      width="20"
+      height="20"
+>>>>>>> main
       viewBox="0 0 20 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
+<<<<<<< HEAD
         d="M9.99899 5.8125C9.87233 5.8125 9.76983 5.915 9.77149 6.04166C9.77149 6.16833 9.87399 6.27083 10.0007 6.27083C10.1273 6.27083 10.2298 6.16833 10.2298 6.04166C10.2282 5.915 10.1265 5.8125 9.99899 5.8125"
         stroke="#323232"
         strokeWidth="1.24999"
+=======
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M2.5 10.5V10.5C2.5 6.3575 5.8575 3 10 3V3C14.1425 3 17.5 6.3575 17.5 10.5V10.5C17.5 14.6425 14.1425 18 10 18V18C5.8575 18 2.5 14.6425 2.5 10.5Z"
+        stroke="#323232"
+        strokeWidth="1.25"
+>>>>>>> main
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
+<<<<<<< HEAD
         d="M5.76944 10.499C5.76944 10.3723 5.66694 10.2698 5.5411 10.2715C5.41444 10.2715 5.31194 10.374 5.31194 10.5007C5.31194 10.6273 5.41444 10.7298 5.5411 10.7298C5.66777 10.7298 5.76944 10.6265 5.76944 10.499"
         stroke="#323232"
         strokeWidth="1.24999"
@@ -553,10 +634,35 @@ const icons = {
         d="M13.3139 7.18519C13.2247 7.09603 13.0797 7.09603 12.9914 7.18603C12.9022 7.27519 12.9022 7.42019 12.9914 7.50936C13.0805 7.59852 13.2255 7.59852 13.3147 7.50936C13.4039 7.41936 13.4039 7.27519 13.3139 7.18519"
         stroke="#323232"
         strokeWidth="1.24999"
+=======
+        d="M12.5 9.66699L10 12.167L7.5 9.66699"
+        stroke="#323232"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  CollapsIcon_W6: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M2.5 10.5V10.5C2.5 6.3575 5.8575 3 10 3V3C14.1425 3 17.5 6.3575 17.5 10.5V10.5C17.5 14.6425 14.1425 18 10 18V18C5.8575 18 2.5 14.6425 2.5 10.5Z"
+        stroke="#323232"
+        strokeWidth="1.25"
+>>>>>>> main
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
+<<<<<<< HEAD
         d="M7.00821 13.4909C6.91905 13.4017 6.77405 13.4017 6.68571 13.4917C6.59655 13.5809 6.59655 13.7259 6.68571 13.815C6.77488 13.9042 6.91988 13.9042 7.00905 13.815C7.09821 13.7259 7.09821 13.5809 7.00821 13.4909"
         stroke="#323232"
         strokeWidth="1.24999"
@@ -567,21 +673,16 @@ const icons = {
         d="M7.00946 7.50821C7.09863 7.41905 7.09863 7.27405 7.00863 7.18571C6.91946 7.09655 6.77446 7.09655 6.6853 7.18571C6.59613 7.27488 6.59613 7.41988 6.6853 7.50905C6.77446 7.59821 6.91946 7.59821 7.00946 7.50821"
         stroke="#323232"
         strokeWidth="1.24999"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M9.99957 17.9995C5.7871 17.9995 2.38546 14.5262 2.50296 10.2871C2.61129 6.37376 5.87376 3.11129 9.78707 3.00296C14.0262 2.88546 17.4995 6.2871 17.4995 10.4996V11.3329C17.4995 12.2537 16.7537 12.9996 15.8329 12.9996H14.1137C13.0062 12.9996 12.2071 14.0595 12.5112 15.1237L12.7254 15.8745C13.0304 16.9395 12.2304 17.9995 11.1237 17.9995H9.99957Z"
+=======
+        d="M12.5 9.66699L10 12.167L7.5 9.66699"
         stroke="#323232"
-        strokeWidth="1.24999"
+        strokeWidth="1.25"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>
   ),
-  LinkIcon: (
+  FlagIcon_immediate: (
     <svg
       width="20"
       height="21"
@@ -590,12 +691,239 @@ const icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
+        d="M4.16667 17.9998V3.7749"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+>>>>>>> main
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+<<<<<<< HEAD
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M9.99957 17.9995C5.7871 17.9995 2.38546 14.5262 2.50296 10.2871C2.61129 6.37376 5.87376 3.11129 9.78707 3.00296C14.0262 2.88546 17.4995 6.2871 17.4995 10.4996V11.3329C17.4995 12.2537 16.7537 12.9996 15.8329 12.9996H14.1137C13.0062 12.9996 12.2071 14.0595 12.5112 15.1237L12.7254 15.8745C13.0304 16.9395 12.2304 17.9995 11.1237 17.9995H9.99957Z"
+        stroke="#323232"
+        strokeWidth="1.24999"
+=======
+        d="M15.8337 12.1835V3.8335"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 12.1664C4.16699 12.1664 4.89616 11.5605 7.08365 11.5605C9.27114 11.5605 10.7295 12.9997 12.917 12.9997C15.1044 12.9997 15.8336 12.1855 15.8336 12.1855"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 3.77666C4.16699 3.77666 4.89616 3 7.08365 3C9.27114 3 10.7295 4.43916 12.917 4.43916C15.1044 4.43916 15.8336 3.83333 15.8336 3.83333"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagIcon_high: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 17.9998V3.7749"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8337 12.1835V3.8335"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 12.1664C4.16699 12.1664 4.89616 11.5605 7.08365 11.5605C9.27114 11.5605 10.7295 12.9997 12.917 12.9997C15.1044 12.9997 15.8336 12.1855 15.8336 12.1855"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 3.77666C4.16699 3.77666 4.89616 3 7.08365 3C9.27114 3 10.7295 4.43916 12.917 4.43916C15.1044 4.43916 15.8336 3.83333 15.8336 3.83333"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+>>>>>>> main
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+<<<<<<< HEAD
+  LinkIcon: (
+=======
+  FlagIcon_medium: (
+>>>>>>> main
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+<<<<<<< HEAD
         d="M9.02449 11.4163C8.76446 11.1892 8.36964 11.216 8.14263 11.476C7.91561 11.7361 7.94238 12.1309 8.2024 12.3579L9.02449 11.4163ZM14.1627 11.8871L14.5737 12.3579C14.5844 12.3486 14.5947 12.339 14.6046 12.329L14.1627 11.8871ZM15.1027 10.0632C14.8613 10.3098 14.8655 10.7055 15.1121 10.947C15.3588 11.1885 15.7545 11.1843 15.9959 10.9377L15.1027 10.0632ZM9.56285 4.50458C9.3162 4.74606 9.31201 5.14177 9.55349 5.38842C9.79497 5.63507 10.1907 5.63926 10.4373 5.39778L9.56285 4.50458ZM10.976 9.58417C11.2361 9.81119 11.6309 9.78442 11.8579 9.5244C12.0849 9.26437 12.0581 8.86955 11.7981 8.64254L10.976 9.58417ZM5.83782 9.11336L5.42678 8.64254C5.41616 8.65181 5.40585 8.66145 5.39587 8.67142L5.83782 9.11336ZM4.89778 10.9373C5.13926 10.6906 5.13507 10.2949 4.88842 10.0534C4.64177 9.81197 4.24606 9.81616 4.00458 10.0628L4.89778 10.9373ZM4.45118 10.5L4.00921 10.0581L4.00458 10.0628L4.45118 10.5ZM10.4377 16.4959C10.6843 16.2544 10.6885 15.8587 10.447 15.6121C10.2055 15.3654 9.80984 15.3612 9.56319 15.6027L10.4377 16.4959ZM8.2024 12.3579C10.0274 13.9512 12.7488 13.9512 14.5737 12.3579L13.7517 11.4163C12.3976 12.5984 10.3785 12.5984 9.02449 11.4163L8.2024 12.3579ZM14.6046 12.329L15.9913 10.9424L15.1074 10.0585L13.7208 11.4451L14.6046 12.329ZM15.9959 10.9377C17.7404 9.15584 17.7253 6.30172 15.9621 4.53847L15.0782 5.42235C16.3569 6.7011 16.3679 8.77097 15.1027 10.0632L15.9959 10.9377ZM15.9621 4.53847C14.1988 2.77521 11.3447 2.76009 9.56285 4.50458L10.4373 5.39778C11.7295 4.13263 13.7994 4.14359 15.0782 5.42235L15.9621 4.53847ZM11.7981 8.64254C9.97316 7.04928 7.25174 7.04928 5.42678 8.64254L6.24887 9.58417C7.60288 8.40206 9.62202 8.40206 10.976 9.58417L11.7981 8.64254ZM5.39587 8.67142L4.00923 10.0581L4.89313 10.942L6.27977 9.55529L5.39587 8.67142ZM4.00458 10.0628C2.26009 11.8446 2.27521 14.6987 4.03847 16.462L4.92235 15.5781C3.64359 14.2994 3.63263 12.2295 4.89778 10.9373L4.00458 10.0628ZM4.03847 16.462C5.80172 18.2253 8.65584 18.2404 10.4377 16.4959L9.56319 15.6027C8.27097 16.8678 6.2011 16.8569 4.92235 15.5781L4.03847 16.462Z"
         fill="#323232"
       />
     </svg>
   ),
   ShareIcon: (
+=======
+        d="M4.16667 17.9998V3.7749"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8337 12.1835V3.8335"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 12.1664C4.16699 12.1664 4.89616 11.5605 7.08365 11.5605C9.27114 11.5605 10.7295 12.9997 12.917 12.9997C15.1044 12.9997 15.8336 12.1855 15.8336 12.1855"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 3.77666C4.16699 3.77666 4.89616 3 7.08365 3C9.27114 3 10.7295 4.43916 12.917 4.43916C15.1044 4.43916 15.8336 3.83333 15.8336 3.83333"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagIcon_low: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 17.9998V3.7749"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8337 12.1835V3.8335"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 12.1664C4.16699 12.1664 4.89616 11.5605 7.08365 11.5605C9.27114 11.5605 10.7295 12.9997 12.917 12.9997C15.1044 12.9997 15.8336 12.1855 15.8336 12.1855"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16699 3.77666C4.16699 3.77666 4.89616 3 7.08365 3C9.27114 3 10.7295 4.43916 12.917 4.43916C15.1044 4.43916 15.8336 3.83333 15.8336 3.83333"
+        stroke="#B2ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  descriptionIcon: (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3.66602 3.66648H14.3371"
+        stroke="#BDC0C6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.66602 6.33445H14.3363"
+        stroke="#BDC0C6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.66602 9.00046H14.3363"
+        stroke="#BDC0C6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.66602 11.6704H14.3371"
+        stroke="#BDC0C6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.00098 14.3364H14.3365"
+        stroke="#BDC0C6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  SearchIcon: (
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 26 26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="12.059"
+        cy="12.059"
+        r="7.06194"
+        stroke="#323232"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M21.0034 21.0034L17.0518 17.0518"
+        stroke="#323232"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  ),
+  FilterIcon: (
+>>>>>>> main
     <svg
       width="24"
       height="24"
@@ -604,37 +932,506 @@ const icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
+<<<<<<< HEAD
         d="M13.5297 7.51953L9.46973 10.5595"
         stroke="white"
         strokeWidth="1.5"
+=======
+        d="M8.12132 4.87868C9.29289 6.05025 9.29289 7.94975 8.12132 9.12132C6.94975 10.2929 5.05025 10.2929 3.87868 9.12132C2.70711 7.94975 2.70711 6.05025 3.87868 4.87868C5.05025 3.70711 6.94975 3.70711 8.12132 4.87868"
+        stroke="#323232"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M20 7H9"
+        stroke="#323232"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M20.1213 14.8787C21.2929 16.0502 21.2929 17.9497 20.1213 19.1213C18.9497 20.2929 17.0502 20.2929 15.8787 19.1213C14.7071 17.9497 14.7071 16.0502 15.8787 14.8787C17.0502 13.7071 18.9497 13.7071 20.1213 14.8787"
+        stroke="#323232"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M4 17H15"
+        stroke="#323232"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  ),
+  BlackTrashIcon: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13.0081 17.5825H6.33402C5.49009 17.5825 4.78883 16.9312 4.72595 16.0889L4.00293 6.29785H15.315L14.6161 16.0849C14.5557 16.9288 13.8536 17.5825 13.0081 17.5825V17.5825Z"
+        stroke="#323232"
+        strokeWidth="1.20907"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
+        d="M9.67255 9.52148V14.3578"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.22461 6.29755H16.1214"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.703 6.29743L12.8865 4.11949C12.6503 3.48997 12.049 3.07324 11.3768 3.07324H7.96883C7.29659 3.07324 6.69528 3.48997 6.4591 4.11949L5.64258 6.29743"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.4377 9.52148L12.0911 14.3578"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.90843 9.52148L7.25503 14.3578"
+        stroke="#323232"
+        strokeWidth="1.20907"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  SearchIcon: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="9.21308"
+        cy="9.21601"
+        r="5.88495"
+        stroke="#208D8E"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.668 16.67L13.375 13.377"
+        stroke="#208D8E"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagRed: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 18.0003V3.77539"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8327 12.184V3.83398"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 12.1664C4.16602 12.1664 4.89518 11.5605 7.08267 11.5605C9.27016 11.5605 10.7285 12.9997 12.916 12.9997C15.1035 12.9997 15.8326 12.1855 15.8326 12.1855"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 3.77666C4.16602 3.77666 4.89518 3 7.08267 3C9.27016 3 10.7285 4.43916 12.916 4.43916C15.1035 4.43916 15.8326 3.83333 15.8326 3.83333"
+        stroke="#FB0606"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagYellow: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 18.0003V3.77539"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8327 12.184V3.83398"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 12.1664C4.16602 12.1664 4.89518 11.5605 7.08267 11.5605C9.27016 11.5605 10.7285 12.9997 12.916 12.9997C15.1035 12.9997 15.8326 12.1855 15.8326 12.1855"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 3.77666C4.16602 3.77666 4.89518 3 7.08267 3C9.27016 3 10.7285 4.43916 12.916 4.43916C15.1035 4.43916 15.8326 3.83333 15.8326 3.83333"
+        stroke="#FFE605"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagGreen: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 18.0003V3.77539"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8327 12.184V3.83398"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 12.1664C4.16602 12.1664 4.89518 11.5605 7.08267 11.5605C9.27016 11.5605 10.7285 12.9997 12.916 12.9997C15.1035 12.9997 15.8326 12.1855 15.8326 12.1855"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 3.77666C4.16602 3.77666 4.89518 3 7.08267 3C9.27016 3 10.7285 4.43916 12.916 4.43916C15.1035 4.43916 15.8326 3.83333 15.8326 3.83333"
+        stroke="#09DBCE"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagGray: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.16667 18.0003V3.77539"
+        stroke="#B3ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.8327 12.184V3.83398"
+        stroke="#B3ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 12.1664C4.16602 12.1664 4.89518 11.5605 7.08267 11.5605C9.27016 11.5605 10.7285 12.9997 12.916 12.9997C15.1035 12.9997 15.8326 12.1855 15.8326 12.1855"
+        stroke="#B3ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.16602 3.77666C4.16602 3.77666 4.89518 3 7.08267 3C9.27016 3 10.7285 4.43916 12.916 4.43916C15.1035 4.43916 15.8326 3.83333 15.8326 3.83333"
+        stroke="#B3ACAC"
+        strokeWidth="1.62499"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  DeactiveIcon: (
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.66699 7.16602L13.3337 13.8327"
+        stroke="#E45454"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.3337 7.16602L6.66699 13.8327"
+        stroke="#E45454"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagIcon: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0294V5.11035"
+        stroke="#C1C1C1"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4757V5.19629"
+        stroke="#C1C1C1"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 17.4505C6.4209 17.4505 7.4932 16.5596 10.7101 16.5596C13.927 16.5596 16.0716 18.676 19.2885 18.676C22.5054 18.676 23.5777 17.4787 23.5777 17.4787"
+        stroke="#C1C1C1"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#C1C1C1"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagRedBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4766V5.19727"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#FB0606"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagYellowBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4766V5.19727"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
+>>>>>>> main
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+<<<<<<< HEAD
         d="M16.4044 4.64203C17.1979 5.43558 17.1979 6.72217 16.4044 7.51571C15.6108 8.30926 14.3242 8.30926 13.5307 7.51571C12.7372 6.72217 12.7372 5.43557 13.5307 4.64203C14.3243 3.84849 15.6108 3.84849 16.4044 4.64203"
         stroke="white"
         strokeWidth="1.5"
+=======
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#FFE605"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagGreenBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M23.5776 17.4766V5.19727"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#09DBCE"
+        strokeWidth="2.3897"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  FlagGrayBig: (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.42231 26.0304V5.11133"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+>>>>>>> main
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+<<<<<<< HEAD
         d="M13.5297 16.4795L9.46973 13.4395"
         stroke="white"
         strokeWidth="1.5"
+=======
+        d="M23.5776 17.4766V5.19727"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+>>>>>>> main
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
+<<<<<<< HEAD
         d="M16.4044 16.4838C17.1979 17.2774 17.1979 18.564 16.4044 19.3575C15.6108 20.1511 14.3242 20.1511 13.5307 19.3575C12.7372 18.564 12.7372 17.2774 13.5307 16.4838C14.3243 15.6903 15.6108 15.6903 16.4044 16.4838"
         stroke="white"
         strokeWidth="1.5"
+=======
+        d="M6.4209 17.4515C6.4209 17.4515 7.4932 16.5605 10.7101 16.5605C13.927 16.5605 16.0716 18.677 19.2885 18.677C22.5054 18.677 23.5777 17.4797 23.5777 17.4797"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+>>>>>>> main
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
+<<<<<<< HEAD
         d="M9.46542 10.5643C10.2582 11.3571 10.2582 12.6424 9.46542 13.4351C8.67266 14.2279 7.38733 14.2279 6.59457 13.4351C5.80181 12.6424 5.80181 11.3571 6.59457 10.5643C7.38734 9.77154 8.67266 9.77154 9.46542 10.5643"
         stroke="white"
         strokeWidth="1.5"
+=======
+        d="M6.4209 5.11286C6.4209 5.11286 7.4932 3.9707 10.7101 3.9707C13.927 3.9707 16.0716 6.08712 19.2885 6.08712C22.5054 6.08712 23.5777 5.19619 23.5777 5.19619"
+        stroke="#B2ACAC"
+        strokeWidth="2.3897"
+>>>>>>> main
         strokeLinecap="round"
         strokeLinejoin="round"
       />

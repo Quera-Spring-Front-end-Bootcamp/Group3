@@ -28,7 +28,6 @@ const App = () => {
           <Route path="accountInfo" element={<AccountInfo />} />
           <Route path="setting" element={<Setting />} />
         </Route>
-
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster
