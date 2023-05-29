@@ -29,7 +29,6 @@ const App = () => {
           <Route path="accountInfo" element={<AccountInfo />} />
           <Route path="setting" element={<Setting />} />
         </Route>
-        <Route path="test" element={<Calendar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster
