@@ -24,11 +24,10 @@ const App = () => {
           <Route path="resetpassword" element={<ResetPassword />} />
         </Route>
         <Route path="profile" element={<ProfileLayout />}>
-          <Route path="personalInfo" element={<PersonalInfo/>}/>
-          <Route path="accountInfo" element={<AccountInfo/>}/>
-          <Route path="setting" element={<Setting/>}/>
+          <Route path="personalInfo" element={<PersonalInfo />} />
+          <Route path="accountInfo" element={<AccountInfo />} />
+          <Route path="setting" element={<Setting />} />
         </Route>
-
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster
