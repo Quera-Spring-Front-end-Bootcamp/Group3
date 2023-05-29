@@ -581,6 +581,32 @@ const icons = {
       />
     </svg>
   ),
+  SearchIcon: (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="9.21308"
+        cy="9.21601"
+        r="5.88495"
+        stroke="#208D8E"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.668 16.67L13.375 13.377"
+        stroke="#208D8E"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };
 
 export default icons;
