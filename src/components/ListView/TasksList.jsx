@@ -3,9 +3,8 @@ import { Transition } from "@headlessui/react";
 import TasksBasedOnStatus from "./TasksBasedOnStatus";
 import icons from "../../assets/Icons";
 
-const TasksList = ({data}) => {
+const TasksList = ({ data }) => {
   const [isOpen, setIsOpen] = useState(true);
-
 
   const handleCollapse = () => {
     setIsOpen((perv) => !perv);
@@ -28,7 +27,7 @@ const TasksList = ({data}) => {
           {data.project.title}
         </h1>
       </div>
-
+      {/* TODO: fix transition */}
       <Transition
         className="mr-5"
         show={isOpen}
