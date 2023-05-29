@@ -50,40 +50,38 @@ const Filter = () => {
             {icons.CloseIcon}
           </i>
         </div>
-        <div className=" flex flex-col gap-[14px] mb-[13px]">
-          {filters.map((filter, index) => (
-            <div key={filter.id} className="flex justify-between  ">
-              <div className="flex  items-center  gap-[10px] ">
-                <span className="text-[#000000] text-sm">تسک هایی که</span>
-                <Dropdown
-                  classNameCard={"w-[182px] "}
-                  key={dropdownOptionsWhere.id}
-                  options={dropdownOptionsWhere}
-                  setOption={(option) => setFilterOption(index, option)}
-                />
+        {filters.map((filter, index) => (
+          <div key={filter.id} className="flex justify-between  ">
+            <div className="flex  items-center  gap-[10px] ">
+              <span className="text-[#000000] text-sm">تسک هایی که</span>
+              <Dropdown
+                classNameCard={"w-[182px] "}
+                key={dropdownOptionsWhere.id}
+                options={dropdownOptionsWhere}
+                setOption={(option) => setFilterOption(index, option)}
+              />
 
-                <span className="text-[#000000] text-sm">آن ها</span>
+              <span className="text-[#000000] text-sm">آن ها</span>
 
-                <Dropdown
-                  key={dropdownOptionsTag.id}
-                  classNameCard={"w-[146px] "}
-                  options={dropdownOptionsTag}
-                  setOption={(option) => setFilterOption(index, option)}
-                />
-                <Dropdown
-                  key={dropdownOptionsIsOrNot.id}
-                  classNameCard={"w-[107px] "}
-                  options={dropdownOptionsIsOrNot}
-                  setOption={(option) => setFilterOption(index, option)}
-                  isOrNot={true}
-                />
-              </div>
-              <button onClick={() => handleRemoveFilter(filter.id)}>
-                {icons.BlackTrashIcon}
-              </button>
+              <Dropdown
+                key={dropdownOptionsTag.id}
+                classNameCard={"w-[146px] "}
+                options={dropdownOptionsTag}
+                setOption={(option) => setFilterOption(index, option)}
+              />
+              <Dropdown
+                key={dropdownOptionsIsOrNot.id}
+                classNameCard={"w-[107px] "}
+                options={dropdownOptionsIsOrNot}
+                setOption={(option) => setFilterOption(index, option)}
+                isOrNot={true}
+              />
             </div>
-          ))}
-        </div>
+            <button onClick={() => handleRemoveFilter(filter.id)}>
+              {icons.BlackTrashIcon}
+            </button>
+          </div>
+        ))}
         <button
           className=" w-fit  text-xs text-[#208D8E] font-semibold cursor-pointer"
           onClick={addFilter}

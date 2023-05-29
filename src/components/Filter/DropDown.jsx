@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import icons from "../../assets/Icons";
 
@@ -28,13 +27,40 @@ const Dropdown = ({
     setOpen(false);
   };
 
+  const getTagStyle = () => {
+    let backgroundColor = "";
+    let padding = "";
+    let borderRadius = "";
+
+    if (selectedValue === "درس") {
+      backgroundColor = "#EBC8C8";
+      padding = "2px 8px";
+      borderRadius = "8px";
+    } else if (selectedValue === "کار") {
+      backgroundColor = "#C3B7F2";
+      padding = "2px 8px";
+      borderRadius = "8px";
+    } else if (selectedValue === "پروژه") {
+      backgroundColor = "#7FFAFA";
+      padding = "2px 8px";
+      borderRadius = "8px";
+    } else {
+      backgroundColor = "";
+    }
+
+    return { backgroundColor, padding, borderRadius };
+  };
+
+  const { backgroundColor, padding, borderRadius } = getTagStyle();
   return (
     <div className="relative">
       <button
         className={`cursor-pointer flex  items-center justify-between  text-sm text-[#1e1e1e1] border border-[E9EBF0] rounded-md py-1 px-2 ${classNameCard}`}
         onClick={() => setOpen(!open)}
       >
-        {selectedValue || "انتخاب کنید"}
+        <span style={{ padding, backgroundColor, borderRadius }}>
+          {selectedValue || "انتخاب کنید"}
+        </span>
         <i>{icons.ArrowDownIcon}</i>
       </button>
 
