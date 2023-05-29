@@ -28,12 +28,14 @@ export const PermissionList = ({ isOpen, setIsOpen, setSelectedOption }) => {
     },
   ];
 
+
+
   const handleSelectOption = (option) => {
     setSelectedOption(option.title);
     setIsOpen(false);
     console.log(`id: ${option.id}`);
   };
-
+  
   return (
     <>
       {isOpen && (
