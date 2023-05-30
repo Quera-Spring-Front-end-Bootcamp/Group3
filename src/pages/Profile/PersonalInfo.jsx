@@ -3,7 +3,7 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 
 
@@ -40,7 +40,7 @@ export const PersonalInfo = () => {
     handleSubmit,
   } = useForm();
   
-  const navigate = useNavigate();
+ 
 
   const onSubmit = (data) => {
     const f = data.image[0];
@@ -51,23 +51,23 @@ export const PersonalInfo = () => {
     setFile(f);
     console.log("data", data);
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
-    // navigate("/");
+
   }
 
   return (
     <div className="">
-      <Card className={"w-[354px] h-[550px] absolute top-[170px] left-[688x] "}>
+      <Card className={"w-[354px] h-[550px] absolute top-[166px] left-[688x] "}>
         <p className="font-bold text-[31px] text-right">اطلاعات فردی</p>
-        <form className="w-full mt-7" onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-full mt-8" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex  gap-4 mb-8">
-            <div className="relative inline-flex items-center justify-center w-[100px] h-[99px] overflow-hidden bg-[#EAF562] rounded-full ">
+            <div className="relative inline-flex items-center justify-center w-[100px] h-[98px] overflow-hidden bg-[#EAF562] rounded-full ">
               {fileDataURL ? (
                 <img src={fileDataURL} alt="Profile Image" />
               ) : (
-                <span className="font-medium text-[34px] text-black ">NM</span>
+                <span className="font-medium mt-3 text-[34px] text-black ">NM</span>
               )}
             </div>
-            <div className="flex flex-col justify-end gap-6">
+            <div className="flex flex-col justify-center mt-4 gap-6">
               <div>
                 <input
                   type="file"
@@ -77,7 +77,7 @@ export const PersonalInfo = () => {
                   accept=".png, .jpg, .jpeg"
                 />
                 <label
-                  className="text-[#208D8E] text-xl font-medium border border-[#208D8E] rounded-lg p-[10px] w-[207px] h-[51px] mt-1"
+                  className="text-[#208D8E] text-xl font-medium border cursor-pointer border-[#208D8E] rounded-lg p-[10px] w-[207px] h-[51px] mt-1"
                   htmlFor="actual-btn"
                 >
                   ویرایش تصویر پروفایل
