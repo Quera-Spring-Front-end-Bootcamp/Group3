@@ -4,51 +4,40 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
 export const PersonalInfo = () => {
-  const [file, setFile] = useState(null);
+  const [userData, setUserData] = useState({
+    image: "",
+    name: "Nader",
+    family: "Mohamadi",
+    mobile: "09121234567",
+  });
   const [fileDataURL, setFileDataURL] = useState(null);
- 
-  useEffect(() => {
-    let fileReader,
-      isCancel = false;
-    if (file) {
-      fileReader = new FileReader();
-      fileReader.onload = (e) => {
-        const { result } = e.target;
-        if (result && !isCancel) {
-          setFileDataURL(result);
-        }
-      };
-      fileReader.readAsDataURL(file);
-    }
-    return () => {
-      isCancel = true;
-      if (fileReader && fileReader.readyState === 1) {
-        fileReader.abort();
-      }
-    };
-  }, [file]);
-
+  const [isAssighnImage, setIsAssighnImage] = useState(!!userData.image);
   const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  register,
+  formState: { errors },
+  handleSubmit,
+  } = useForm({defaultValues: userData});
   
  
 
   const onSubmit = (data) => {
     const f = data.image[0];
-    if (!f.type.match(imageMimeType)) {
-      toast.error("نوع فرمت فایل معتبر نیست")
-      return;
+    if(f){
+      if (!f.type.match(imageMimeType)) {
+        toast.error("نوع فرمت فایل معتبر نیست");
+        return;
+      }
+      setFileDataURL(URL.createObjectURL(f));
+      setIsAssighnImage(true);
     }
-    setFile(f);
+    setUserData(data)
+    
     console.log("data", data);
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
 
@@ -61,10 +50,12 @@ export const PersonalInfo = () => {
         <form className="w-full mt-8" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex  gap-4 mb-8">
             <div className="relative inline-flex items-center justify-center w-[100px] h-[98px] overflow-hidden bg-[#EAF562] rounded-full ">
-              {fileDataURL ? (
+              {isAssighnImage ? (
                 <img src={fileDataURL} alt="Profile Image" />
               ) : (
-                <span className="font-medium mt-3 text-[34px] text-black ">NM</span>
+                <span className="font-medium mt-3 text-[34px] text-black ">
+                  {userData.name.charAt(0) + userData.family.charAt(0)}
+                </span>
               )}
             </div>
             <div className="flex flex-col justify-center mt-4 gap-6">
@@ -116,7 +107,7 @@ export const PersonalInfo = () => {
               register={register("mobile", {
                 required: "این فیلد الزامی می باشد!",
                 pattern: {
-                  value: /09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}/,
+                  value: /^(?:0|98|\+98|\+980|0098|098|00980)?(9\d{9})$/,
                   message: "شماره موبایل معتبر نمی باشد.",
                 },
               })}
