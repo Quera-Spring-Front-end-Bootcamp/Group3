@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Forget from "./pages/auth/forget";
@@ -18,12 +18,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
+        <Route index element={<Navigate to="login" replace />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="forget" element={<Forget />} />
           <Route path="resetpassword" element={<ResetPassword />} />
         </Route>
         <Route path="profile" element={<ProfileLayout />}>
+          <Route index element={<Navigate to="personalInfo" replace />} />
+
           <Route path="personalInfo" element={<PersonalInfo />} />
           <Route path="accountInfo" element={<AccountInfo />} />
           <Route path="setting" element={<Setting />} />
