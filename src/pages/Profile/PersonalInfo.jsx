@@ -77,7 +77,7 @@ export const PersonalInfo = () => {
                   accept=".png, .jpg, .jpeg"
                 />
                 <label
-                  className="text-[#208D8E] text-xl font-medium border border-[#208D8E] rounded-lg p-[10px] w-[207px] h-[51px] mt-1"
+                  className="text-primary text-xl font-medium border border-primary rounded-lg p-[10px] w-[207px] h-[51px] mt-1"
                   htmlFor="actual-btn"
                 >
                   ویرایش تصویر پروفایل

@@ -61,7 +61,7 @@ const Login = () => {
             />
           </div>
           <a
-            className="text-xs text-[#208D8E] cursor-pointer"
+            className="text-xs text-primary cursor-pointer"
             onClick={handelRedirectForgetPage}
           >
             رمز عبور را فراموش کرده‌ای؟
@@ -74,7 +74,7 @@ const Login = () => {
           <div className="font-normal text-base text-center mt-4">
             ثبت‌نام نکرده‌ای؟
             <a
-              className="mr-2 text-[#208D8E] cursor-pointer"
+              className="mr-2 text-primary cursor-pointer"
               onClick={handelRedirectRegisterPage}
             >
               ثبت‌نام
