@@ -4,7 +4,6 @@
 
 
 html {
-
     margin: 0;
     scroll-behavior: smooth;
     font-family: "dana", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -15,14 +14,74 @@ html {
 }
 
 @layer base {
-
-    li {
-        @apply cursor-pointer
+    :root {
+        --textPrimary: var(--text-textPrimary);
+        --primary: var(--color-primary);
     }
+}
 
 
-    input {
-        @apply focus:outline-none
-    }
 
+.theme-208D8E {
+    --color-primary: theme('colors.208D8E');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-78C6B0 {
+    --color-primary: theme('colors.78C6B0');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-76BC86 {
+    --color-primary: theme('colors.76BC86');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-80DC69 {
+    --color-primary: theme('colors.80DC69');
+    --text-textPrimary: theme('colors.white');
+}
+
+.theme-E46161 {
+    --color-primary: theme('colors.E46161');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-E17E80 {
+    --color-primary: theme('colors.E17E80');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-EC8182 {
+    --color-primary: theme('colors.EC8182');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-F3C567 {
+    --color-primary: theme('colors.F3C567');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-E57A57 {
+    --color-primary: theme('colors.E57A57');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-F1A25C {
+    --color-primary: theme('colors.F1A25C');
+    --text-textPrimary: theme('colors.white');
+
+}
+
+.theme-light {
+    --textPrimary: var(--text-textPrimary);
+    --primary: var(--color-primary);
 }

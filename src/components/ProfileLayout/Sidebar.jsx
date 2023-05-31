@@ -29,7 +29,7 @@ export const Sidebar = () => {
         <Logo />
       </Link>
       <button
-        className="flex items-center gap-2 text-white rounded-lg py-1 px-2 bg-[#208D8E] mb-11"
+        className="flex items-center gap-2  rounded-lg py-1 px-2 text-textPrimary bg-primary mb-11"
         onClick={navigateHandler}
       >
         {icons.ArrowIcon}

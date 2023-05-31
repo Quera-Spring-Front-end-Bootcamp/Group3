@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Forget from "./pages/auth/forget";
@@ -11,10 +11,13 @@ import { ProfileLayout } from "./components/ProfileLayout/ProfileLayout";
 import { PersonalInfo } from "./pages/Profile/PersonalInfo";
 import { AccountInfo } from "./pages/Profile/AccountInfo";
 import { Setting } from "./pages/Profile/Setting";
+import { dataColors, useStickyState } from "./theme/theme";
 
 const App = () => {
+  const [color, setColor] = useStickyState(dataColors[0], "theme-color");
+  const mode = "light";
   return (
-    <>
+    <div className={[color && ` theme-${color}`, ` theme-${mode}`].join("")}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
@@ -26,7 +29,10 @@ const App = () => {
         <Route path="profile" element={<ProfileLayout />}>
           <Route path="personalInfo" element={<PersonalInfo />} />
           <Route path="accountInfo" element={<AccountInfo />} />
-          <Route path="setting" element={<Setting />} />
+          <Route
+            path="setting"
+            element={<Setting setColor={setColor} color={color} />}
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -39,7 +45,7 @@ const App = () => {
           },
         }}
       />
-    </>
+    </div>
   );
 };
 

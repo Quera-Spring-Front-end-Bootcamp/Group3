@@ -2,44 +2,33 @@ import { useState } from "react";
 import icons from "../../assets/Icons";
 import Button from "../../components/Button";
 import Card from "../../components/Card/Card";
+import { toast } from "react-hot-toast";
+import { dataColors } from "../../theme/theme";
 
-export const Setting = () => {
-  const [colorCode, setColorCode] = useState("#208D8E");
+export const Setting = ({ color, setColor }) => {
   const [enabled, setEnabled] = useState(false);
-
-  const colors = [
-    "#208D8E",
-    "#78C6B0",
-    "#76BC86",
-    "#80DC69",
-    "#E46161",
-    "#E17E80",
-    "#EC8182",
-    "#F3C567",
-    "#E57A57",
-    "#F1A25C",
-  ];
-
+  const [selectedColor, setSelectedColor] = useState(color);
   return (
-    <Card className={"w-[354px] h-[550px] gird gap-[35px] "}>
+    <Card className="w-[354px] h-[550px] gird gap-[35px] ">
       <p className="font-bold text-[31px] text-right ">تنظیمات</p>
       <div className="grid gap-[50px]">
         <div>
           <span className="text-sm/[21px] flex pb-2 text-black">انتخاب تم</span>
           <div className="flex gap-[13px] items-center">
-            {colors.map((color, index) => {
+            {dataColors.map((c, index) => {
+              const isSelected = c === selectedColor;
               return (
-                <button
+                <div
                   key={index}
                   className={
-                    (color === colorCode ? " w-10 h-10 " : " w-4 h-4") +
-                    " flex  items-center justify-center rounded-full transition-all duration-300 ease-in-out"
+                    (isSelected ? " w-10 h-10 " : " w-4 h-4") +
+                    " flex  items-center justify-center cursor-pointer rounded-full transition-all duration-300 ease-in-out text-textPrimary bg-primary"
                   }
-                  style={{ backgroundColor: color }}
-                  onClick={() => setColorCode(color)}
+                  style={{ backgroundColor: `#${c}` }}
+                  onClick={() => setSelectedColor(c)}
                 >
-                  {color == colorCode && icons.WhiteCheckIcon}
-                </button>
+                  {isSelected && icons.WhiteCheckIcon}
+                </div>
               );
             })}
           </div>
@@ -84,9 +73,14 @@ export const Setting = () => {
           </span>
         </div>
         <Button
+          color="secondary"
           title={"ثبت تغییرات"}
           type={"submit"}
-          classNames={"w-full text-center  h-9"}
+          classNames={"w-full text-center  h-9 "}
+          handleClick={() => {
+            setColor(selectedColor);
+            toast.success("تغییرات با موفقیت انجام  شد :)");
+          }}
         />
       </div>
     </Card>
