@@ -11,7 +11,7 @@ export const ColumnMoreItem = ({
       onClick={handleClick}
       {...props}
     >
-      <span className="flex flex-row items-center w-5 justify-center ">
+      <span className="flex flex-row items-center w-5 justify-center">
         {icon}
       </span>
       <span className=" font-normal">{title}</span>
