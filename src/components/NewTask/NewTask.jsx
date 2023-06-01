@@ -4,9 +4,9 @@ import Button from "../Button";
 import { Transition } from "@headlessui/react";
 import Datepicker from "../Datepicker";
 import { v4 as uuidv4 } from "uuid";
+import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
 
 import { useRef, useState } from "react";
-import { ColumnMoreItem } from "../ColumnMoreItem/ColumnMoreItem";
 
 const priorityItems = [
   { id: "1", title: "فوری", icon: icons.redFlag },
@@ -214,9 +214,7 @@ export const NewTask = () => {
               <Card
                 className={`absolute mt-[-220px]  w-[166px] justify-start rounded-[8px]  gap-[16px] p-[12px] shadow-xl`}
               >
-                <div
-                  className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]"
-                >
+                <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]">
                   {priorityItems.map((item) => (
                     <ColumnMoreItem
                       key={item.id}

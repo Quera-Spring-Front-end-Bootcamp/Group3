@@ -1,6 +1,4 @@
-import { NewTask } from "../components/NewTask/NewTask";
-
 const Home = () => {
-  return <NewTask></NewTask>;
+  return <div>Home Pgae</div>
 };
 export default Home;
