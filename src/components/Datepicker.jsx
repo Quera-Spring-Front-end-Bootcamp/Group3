@@ -8,7 +8,7 @@ import Card from "./Card/Card";
 import Button from "./Button";
 import icons from "../assets/Icons";
 
-function Datepicker({ setDatepickerModalOpen, setDate, setEndDate }{className, setDatePickerOpen}) {
+function Datepicker({ setDate, setEndDate, className, setDatePickerOpen }) {
   const [currentDate, setCurrentDate] = useState(moment());
   const [selectedStartDate, setSelectedStartDate] = useState(currentDate);
   const [selectedEndDate, setSelectedEndDate] = useState();
@@ -131,10 +131,10 @@ function Datepicker({ setDatepickerModalOpen, setDate, setEndDate }{className, s
   //buttons functionality
   const closeHandler = () => {
     // console.log("close button clicked");
-    setDatepickerModalOpen(false);
+    setDatePickerOpen(false);
     setDate(selectedStartDate);
     setEndDate(selectedEndDate);
-    setDatePickerOpen()
+    setDatePickerOpen();
   };
 
   const clickHandler = (e) => {
