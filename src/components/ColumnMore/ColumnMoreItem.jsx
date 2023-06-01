@@ -1,10 +1,4 @@
-export const ColumnMoreItem = ({
-  icon,
-  title,
-  handleClick,
-  className,
-  ...props
-}) => {
+const ColumnMoreItem = ({ icon, title, handleClick, className, ...props }) => {
   return (
     <div
       className={`flex cursor-pointer ${className}`}
@@ -24,3 +18,5 @@ ColumnMoreItem.defaultProps = {
   icon: "محل ایکون",
   className: "gap-[10px] text-[#1e1e1e]",
 };
+
+export default ColumnMoreItem;
