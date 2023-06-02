@@ -40,12 +40,13 @@ export const Sidebar = () => {
           {navAside.map((link) => (
             <li key={link.id}>
               <NavLink
-                style={({ isActive }) => ({
-                  backgroundColor: isActive ? "#C5FFFF" : "",
-                  fontWeight: isActive ? 600 : 500,
-                })}
+                className={({ isActive }) =>
+                  (isActive
+                    ? ` font-semibold bg-[#C5FFFF]  `
+                    : " font-medium ") +
+                  " flex items-center gap-[11px] rounded-[4px] py-1 px-2"
+                }
                 to={`/profile/${link.slug}`}
-                className="flex items-center gap-[11px] rounded-[4px] py-1 px-2"
               >
                 <i>{link.icon}</i>
                 <p className="text-[#1e1e1e] text-5  leading-[1.8]">
