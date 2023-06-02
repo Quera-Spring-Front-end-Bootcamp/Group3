@@ -1342,9 +1342,6 @@ const icons = {
       />
     </svg>
   ),
-<<<<<<< HEAD
-  WhiteCheckIcon: (
-=======
   PalletIcons: (
     <svg
       width="20"
@@ -1414,7 +1411,6 @@ const icons = {
     </svg>
   ),
   ShareIcon: (
->>>>>>> main
     <svg
       width="24"
       height="24"
@@ -1423,9 +1419,6 @@ const icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-<<<<<<< HEAD
-        d="M20 6.5L9 17.5L4 12.5"
-=======
         d="M13.5297 7.51953L9.46973 10.5595"
         stroke="white"
         strokeWidth="1.5"
@@ -1455,7 +1448,23 @@ const icons = {
       />
       <path
         d="M9.46542 10.5643C10.2582 11.3571 10.2582 12.6424 9.46542 13.4351C8.67266 14.2279 7.38733 14.2279 6.59457 13.4351C5.80181 12.6424 5.80181 11.3571 6.59457 10.5643C7.38734 9.77154 8.67266 9.77154 9.46542 10.5643"
->>>>>>> main
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  WhiteCheckIcon: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M20 6.5L9 17.5L4 12.5"
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
