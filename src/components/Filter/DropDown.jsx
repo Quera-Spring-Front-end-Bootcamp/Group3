@@ -75,7 +75,7 @@ const Dropdown = ({
                   htmlFor="search"
                   className="absolute inset-y-0 right-2 flex items-center "
                 >
-                  <i>{icons.SearchIcon}</i>
+                  <i>{icons.SearchIconGreen}</i>
                 </label>
                 <input
                   className="w-full py-2.5 px-8 border-b border-[#E8EAED] text-[10px] text-[#959595]  rounded-tr-lg  rounded-tl-lg"

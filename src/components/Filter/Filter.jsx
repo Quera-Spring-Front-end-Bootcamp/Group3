@@ -42,8 +42,6 @@ const Filter = () => {
     );
   };
 
-
-  
   return (
     isOpen && (
       <div className="flex flex-col gap-[14px] pt-[15px] py-8 px-[21px] w-[718px] min-h-[206px] h-full rounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)]">
@@ -64,21 +62,25 @@ const Filter = () => {
                 setOption={(option) => setFilterOption(index, option)}
               />
 
-              <span className="text-[#000000] text-sm">آن ها</span>
+              {filter.option && (
+                <>
+                  <span className="text-[#000000] text-sm">آن ها</span>
 
-              <Dropdown
-                key={dropdownOptionsTag.id}
-                classNameCard={"w-[146px] "}
-                options={dropdownOptionsTag}
-                setOption={(option) => setFilterOption(index, option)}
-              />
-              <Dropdown
-                key={dropdownOptionsIsOrNot.id}
-                classNameCard={"w-[107px] "}
-                options={dropdownOptionsIsOrNot}
-                setOption={(option) => setFilterOption(index, option)}
-                isOrNot={true}
-              />
+                  <Dropdown
+                    key={dropdownOptionsTag.id}
+                    classNameCard={"w-[146px] "}
+                    options={dropdownOptionsTag}
+                    setOption={(option) => setFilterOption(index, option)}
+                  />
+                  <Dropdown
+                    key={dropdownOptionsIsOrNot.id}
+                    classNameCard={"w-[107px] "}
+                    options={dropdownOptionsIsOrNot}
+                    setOption={(option) => setFilterOption(index, option)}
+                    isOrNot={true}
+                  />
+                </>
+              )}
             </div>
             <button onClick={() => handleRemoveFilter(filter.id)}>
               {icons.BlackTrashIcon}

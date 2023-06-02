@@ -950,7 +950,7 @@ const icons = {
       />
     </svg>
   ),
-  SearchIcon: (
+  SearchIconGreen: (
     <svg
       width="20"
       height="20"
