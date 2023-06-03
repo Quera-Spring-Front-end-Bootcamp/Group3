@@ -8,10 +8,10 @@ import Card from "./Card/Card";
 import Button from "./Button";
 import icons from "../assets/Icons";
 
-function Datepicker() {
+function Datepicker({ setDate, setEndDate, className, setDatePickerOpen }) {
   const [currentDate, setCurrentDate] = useState(moment());
   const [selectedStartDate, setSelectedStartDate] = useState(currentDate);
-  const [selectedEndDate, setSelectedEndDate] = useState(currentDate);
+  const [selectedEndDate, setSelectedEndDate] = useState();
   const [daySelector, setDaySelector] = useState("start");
 
   //Render day cells logic
@@ -130,7 +130,11 @@ function Datepicker() {
 
   //buttons functionality
   const closeHandler = () => {
-    console.log("close button clicked");
+    // console.log("close button clicked");
+    setDatePickerOpen(false);
+    setDate(selectedStartDate);
+    setEndDate(selectedEndDate);
+    setDatePickerOpen();
   };
 
   const clickHandler = (e) => {
@@ -158,7 +162,7 @@ function Datepicker() {
   };
 
   return (
-    <div className="flex p-[50px] items-center justify-center">
+    <div className={`flex p-[50px] items-center justify-center ${className}`}>
       <Card
         className={
           "shadow-[0_12px_32px_0_rgba(0,0,0,0.25)] rounded-[20px] w-[936px] h-[632px]"
