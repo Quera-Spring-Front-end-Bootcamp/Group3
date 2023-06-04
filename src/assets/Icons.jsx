@@ -755,28 +755,28 @@ const icons = {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M3 6.5V18.5C3 20.1569 4.34315 21.5 6 21.5H18C19.6569 21.5 21 20.1569 21 18.5V6.5C21 4.84315 19.6569 3.5 18 3.5H6C4.34315 3.5 3 4.84315 3 6.5Z"
-        stroke="#208D8E"
+        stroke="#323232"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M15 21.4996V9.55957"
-        stroke="#208D8E"
+        stroke="#323232"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M21 9.55957H11C9.89543 9.55957 9 10.455 9 11.5596V21.4996"
-        stroke="#208D8E"
+        stroke="#323232"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M21 15.5596H9"
-        stroke="#208D8E"
+        stroke="#323232"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -1150,32 +1150,6 @@ const icons = {
       />
     </svg>
   ),
-  SearchIcon: (
-    <svg
-      width="26"
-      height="26"
-      viewBox="0 0 26 26"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        cx="12.059"
-        cy="12.059"
-        r="7.06194"
-        stroke="#323232"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path
-        d="M21.0034 21.0034L17.0518 17.0518"
-        stroke="#323232"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  ),
   FilterIcon: (
     <svg
       width="24"
@@ -1187,30 +1161,30 @@ const icons = {
       <path
         d="M8.12132 4.87868C9.29289 6.05025 9.29289 7.94975 8.12132 9.12132C6.94975 10.2929 5.05025 10.2929 3.87868 9.12132C2.70711 7.94975 2.70711 6.05025 3.87868 4.87868C5.05025 3.70711 6.94975 3.70711 8.12132 4.87868"
         stroke="#323232"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M20 7H9"
         stroke="#323232"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M20.1213 14.8787C21.2929 16.0502 21.2929 17.9497 20.1213 19.1213C18.9497 20.2929 17.0502 20.2929 15.8787 19.1213C14.7071 17.9497 14.7071 16.0502 15.8787 14.8787C17.0502 13.7071 18.9497 13.7071 20.1213 14.8787"
         stroke="#323232"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4 17H15"
         stroke="#323232"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -1263,32 +1237,6 @@ const icons = {
         d="M6.90843 9.52148L7.25503 14.3578"
         stroke="#323232"
         strokeWidth="1.20907"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  ),
-  SearchIcon: (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        cx="9.21308"
-        cy="9.21601"
-        r="5.88495"
-        stroke="#208D8E"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16.668 16.67L13.375 13.377"
-        stroke="#208D8E"
-        strokeWidth="1.25"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -1728,7 +1676,7 @@ const icons = {
       />
     </svg>
   ),
-  ShareIcon: (
+  WhiteSqurePlus: (
     <svg
       width="24"
       height="24"
@@ -1737,35 +1685,23 @@ const icons = {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M13.5297 7.51953L9.46973 10.5595"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18 20H6C4.895 20 4 19.105 4 18V6C4 4.895 4.895 4 6 4H18C19.105 4 20 4.895 20 6V18C20 19.105 19.105 20 18 20Z"
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M16.4044 4.64203C17.1979 5.43558 17.1979 6.72217 16.4044 7.51571C15.6108 8.30926 14.3242 8.30926 13.5307 7.51571C12.7372 6.72217 12.7372 5.43557 13.5307 4.64203C14.3243 3.84849 15.6108 3.84849 16.4044 4.64203"
+        d="M12 8V16"
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M13.5297 16.4795L9.46973 13.4395"
-        stroke="white"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16.4044 16.4838C17.1979 17.2774 17.1979 18.564 16.4044 19.3575C15.6108 20.1511 14.3242 20.1511 13.5307 19.3575C12.7372 18.564 12.7372 17.2774 13.5307 16.4838C14.3243 15.6903 15.6108 15.6903 16.4044 16.4838"
-        stroke="white"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9.46542 10.5643C10.2582 11.3571 10.2582 12.6424 9.46542 13.4351C8.67266 14.2279 7.38733 14.2279 6.59457 13.4351C5.80181 12.6424 5.80181 11.3571 6.59457 10.5643C7.38734 9.77154 8.67266 9.77154 9.46542 10.5643"
+        d="M16 12H8"
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"

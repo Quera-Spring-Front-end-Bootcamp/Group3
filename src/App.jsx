@@ -12,6 +12,9 @@ import { ProfileLayout } from "./Layout/ProfileLayout";
 import { PersonalInfo } from "./pages/Profile/PersonalInfo";
 import { AccountInfo } from "./pages/Profile/AccountInfo";
 import { Setting } from "./pages/Profile/Setting";
+import ListView from "./pages/main/ListView";
+import ColumnView from "./pages/main/ColumnView";
+import CalendarView from "./pages/main/CalendarView";
 
 const App = () => {
   return (
@@ -33,7 +36,11 @@ const App = () => {
           <Route path="setting" element={<Setting />} />
         </Route>
 
-        <Route path="main" element={<MainLayout />}></Route>
+        <Route path="main" element={<MainLayout />}>
+          <Route path="listView" element={<ListView />}></Route>
+          <Route path="columnView" element={<ColumnView />}></Route>
+          <Route path="calendarView" element={<CalendarView />}></Route>
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,13 +1,12 @@
 import { PermissionTitle } from "./PermissionTitle";
 import { CopyLink } from "./CopyLink";
-import { useState } from "react";
 import { ProjectInvitationForm } from "./ProjectInvitationForm";
 import profile from "../../assets/images/profile.png";
 import Card from "../Card/Card";
 import icons from "../../assets/Icons";
 import { SharedUser } from "./SharedUser";
 
-const ShareProjectCard = () => {
+const ShareProjectCard = ({ openModal, setOpenModal }) => {
   const info = [
     {
       id: 1,
@@ -23,15 +22,14 @@ const ShareProjectCard = () => {
       isOwner: false,
     },
   ];
-  const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => {
-    setIsOpen(true);
+    setOpenModal(false);
   };
 
   return (
     <Card
       className={
-        !isOpen
+        openModal
           ? "max-w-[470px] w-full rounded-xl  p-5 bg-white flex flex-col"
           : "hidden"
       }
