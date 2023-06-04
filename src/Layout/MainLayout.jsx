@@ -3,7 +3,7 @@ import Icons from "../assets/Icons";
 import Button from "../components/Button";
 import VerticalDivider from "../components/VerticalDivider";
 import MainLayoutHeaderItem from "../components/MainLayoutHeaderItem";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { useState } from "react";
 import ShareProjectCard from "../components/ShareProject/ShareProjectCard";
 import { Disclosure } from "@headlessui/react";
@@ -41,6 +41,7 @@ const data = [
 function MainLayout() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
+  const naviaget = useNavigate();
 
   function handleOpenShareProject() {
     setOpenShareProjectModal(true);
@@ -48,6 +49,14 @@ function MainLayout() {
 
   function handleOpenNewTask() {
     setOpenNewTaskModal(true);
+  }
+
+  function handleNavigateToProfile() {
+    naviaget("/profile/personalInfo");
+  }
+
+  function handleNavigateToLogin() {
+    naviaget("/auth/login");
   }
 
   return (
@@ -99,7 +108,7 @@ function MainLayout() {
                           key={Project.ProjectId}
                           className="flex flex-row justify-between group"
                         >
-                          <li>{Project.ProjectTilte}</li>
+                          <li className="w-full">{Project.ProjectTilte}</li>
                           <button className="hidden group-hover:inline">
                             ...
                           </button>
@@ -113,14 +122,20 @@ function MainLayout() {
           ))}
         </div>
 
-        <button className="flex flex-row items-center mt-3">
+        <button
+          className="flex flex-row items-center mt-3"
+          onClick={() => handleNavigateToProfile()}
+        >
           <div className="flex flex-row items-center justify-center w-8 h-8 bg-[#EAF562] rounded-full">
             NM
           </div>
           <span className="mr-2 font-medium text-base">نیلوفر موجودی</span>
         </button>
 
-        <button className="flex flex-row items-center mt-3">
+        <button
+          className="flex flex-row items-center mt-3"
+          onClick={handleNavigateToLogin}
+        >
           <div className="">{Icons.LogoutIcon}</div>
           <span className="mr-2 font-normal text-base text-[#818181]">
             خروج
