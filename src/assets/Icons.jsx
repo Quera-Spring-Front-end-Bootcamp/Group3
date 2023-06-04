@@ -1709,6 +1709,51 @@ const icons = {
       />
     </svg>
   ),
+  WhiteShareIcon: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.5297 7.51953L9.46973 10.5595"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.4044 4.64203C17.1979 5.43558 17.1979 6.72217 16.4044 7.51571C15.6108 8.30926 14.3242 8.30926 13.5307 7.51571C12.7372 6.72217 12.7372 5.43557 13.5307 4.64203C14.3243 3.84849 15.6108 3.84849 16.4044 4.64203"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.5297 16.4795L9.46973 13.4395"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.4044 16.4838C17.1979 17.2774 17.1979 18.564 16.4044 19.3575C15.6108 20.1511 14.3242 20.1511 13.5307 19.3575C12.7372 18.564 12.7372 17.2774 13.5307 16.4838C14.3243 15.6903 15.6108 15.6903 16.4044 16.4838"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.46542 10.5643C10.2582 11.3571 10.2582 12.6424 9.46542 13.4351C8.67266 14.2279 7.38733 14.2279 6.59457 13.4351C5.80181 12.6424 5.80181 11.3571 6.59457 10.5643C7.38734 9.77154 8.67266 9.77154 9.46542 10.5643"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };
 
 export default icons;

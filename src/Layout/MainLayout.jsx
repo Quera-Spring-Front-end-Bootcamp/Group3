@@ -6,8 +6,9 @@ import MainLayoutHeaderItem from "../components/MainLayoutHeaderItem";
 import { Outlet, useNavigate } from "react-router";
 import { useState } from "react";
 import ShareProjectCard from "../components/ShareProject/ShareProjectCard";
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, Menu } from "@headlessui/react";
 import { NewTask } from "../components/NewTask/NewTask";
+import { ColumMoreCard } from "../components/ColumnMore/ColumnMoreCard";
 
 const data = [
   {
@@ -38,9 +39,25 @@ const data = [
   },
 ];
 
+const dataColumnMoreItemsWorkSpace = [
+  { id: 1, title: "ساخت پروژه جدید", icon: Icons.AddIcon },
+  { id: 2, title: "   ویراش نام ورک اسپیس", icon: Icons.EditIcon },
+  { id: 3, title: "ویراش رنگ", icon: Icons.PalletIcons },
+  { id: 4, title: "کپی لینک", icon: Icons.LinkIcon },
+  { id: 5, title: "حذف", icon: Icons.TrashIcon, bg: "#9F0000" },
+];
+
+const dataColumnMoreItemsProject = [
+  { id: 1, title: "ساخت تسک جدید", icon: Icons.AddIcon },
+  { id: 2, title: "ویراش نام پروژه  ", icon: Icons.EditIcon },
+  { id: 3, title: "کپی لینک", icon: Icons.LinkIcon },
+  { id: 4, title: "حذف", icon: Icons.TrashIcon, bg: "#9F0000" },
+];
+
 function MainLayout() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
+
   const naviaget = useNavigate();
 
   function handleOpenShareProject() {
@@ -98,20 +115,38 @@ function MainLayout() {
                         </button>
                       </div>
                     </Disclosure.Button>
-                    <button className="hidden group-hover:inline">...</button>
+                    <Menu>
+                      <Menu.Button>
+                        <button className="hidden group-hover:inline">
+                          ...
+                        </button>
+                      </Menu.Button>
+                      <Menu.Items className="absolute mt-9 mr-[50px]">
+                        <ColumMoreCard data={dataColumnMoreItemsWorkSpace} />
+                      </Menu.Items>
+                    </Menu>
                   </div>
 
-                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                  <Disclosure.Panel className="pr-4 pt-4 pb-2 text-sm text-gray-500">
                     <ul className="flex flex-col gap-3 font-medium text-base text-[#1E1E1E]">
                       {WorkSpace.WorkSpaceProjects.map((Project) => (
                         <div
                           key={Project.ProjectId}
-                          className="flex flex-row justify-between group"
+                          className="flex flex-row justify-between w-full group"
                         >
-                          <li className="w-full">{Project.ProjectTilte}</li>
-                          <button className="hidden group-hover:inline">
-                            ...
-                          </button>
+                          <li className="flex-1">{Project.ProjectTilte}</li>
+                          <Menu>
+                            <Menu.Button>
+                              <button className="hidden group-hover:inline">
+                                ...
+                              </button>
+                            </Menu.Button>
+                            <Menu.Items className="absolute mt-9 mr-[33px]">
+                              <ColumMoreCard
+                                data={dataColumnMoreItemsProject}
+                              />
+                            </Menu.Items>
+                          </Menu>
                         </div>
                       ))}
                     </ul>
