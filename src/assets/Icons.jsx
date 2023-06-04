@@ -47,7 +47,7 @@ const icons = {
       />
     </svg>
   ),
-  searchIcon: (
+  noneIcon: (
     <svg
       width="24"
       height="25"
@@ -76,14 +76,23 @@ const icons = {
   nextArrowIcon: (
     <svg
       width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <circle
+        cx="11.0586"
+        cy="11.5586"
+        r="7.06194"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
       <path
-        d="M14 8.00009L10 12.0001L14 16.0001"
-        stroke="#7D828C"
+        d="M20 6.5L9 17.5L4 12.5"
+        stroke="#1E1E1E"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -175,7 +184,6 @@ const icons = {
       />
     </svg>
   ),
-
   CalendarIcon: (
     <svg
       width="32"
@@ -587,6 +595,316 @@ const icons = {
       />
     </svg>
   ),
+  SearchIcon: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="11.059"
+        cy="11.059"
+        r="7.06194"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M20.0034 20.0034L16.0518 16.0518"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  AddSqureIcon: (
+    <svg
+      width="25"
+      height="24"
+      viewBox="0 0 25 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18.5 20H6.5C5.395 20 4.5 19.105 4.5 18V6C4.5 4.895 5.395 4 6.5 4H18.5C19.605 4 20.5 4.895 20.5 6V18C20.5 19.105 19.605 20 18.5 20Z"
+        stroke="#1E1E1E"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.5 8V16"
+        stroke="#1E1E1E"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.5 12H8.5"
+        stroke="#1E1E1E"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  LogoutIcon: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6 3H18C19.105 3 20 3.895 20 5V19C20 20.105 19.105 21 18 21H6C4.895 21 4 20.105 4 19V5C4 3.895 4.895 3 6 3Z"
+        stroke="#818181"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9 11V13"
+        stroke="#818181"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M4 5.00277V18.9978C4 20.4848 5.565 21.4518 6.894 20.7868L10.894 18.7868C11.572 18.4468 12 17.7548 12 16.9968V7.00277C12 6.24477 11.572 5.55277 10.894 5.21377L6.894 3.21377C5.565 2.54877 4 3.51577 4 5.00277Z"
+        stroke="#818181"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  ListViewIcon: (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 12.5H21"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.41375 11.0857C7.19475 11.8668 7.19475 13.1327 6.41375 13.9137C5.63275 14.6947 4.36675 14.6947 3.58575 13.9137C2.80475 13.1327 2.80475 11.8668 3.58575 11.0857C4.36675 10.3047 5.63275 10.3047 6.41375 11.0857"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M11 5.5H21"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.01953 5.008L4.67253 6.496L7.99953 3.5"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M11 19.5H21"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.41375 18.0857C7.19475 18.8668 7.19475 20.1327 6.41375 20.9137C5.63275 21.6947 4.36675 21.6947 3.58575 20.9137C2.80475 20.1327 2.80475 18.8668 3.58575 18.0857C4.36675 17.3047 5.63275 17.3047 6.41375 18.0857"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  ColumnViewIcon: (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3 6.5V18.5C3 20.1569 4.34315 21.5 6 21.5H18C19.6569 21.5 21 20.1569 21 18.5V6.5C21 4.84315 19.6569 3.5 18 3.5H6C4.34315 3.5 3 4.84315 3 6.5Z"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15 21.4996V9.55957"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21 9.55957H11C9.89543 9.55957 9 10.455 9 11.5596V21.4996"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21 15.5596H9"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  CalendarMainIcon: (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16 2.5V6.5"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 2.5V6.5"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3 9.5H21"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M19 4.5H5C3.895 4.5 3 5.395 3 6.5V19.5C3 20.605 3.895 21.5 5 21.5H19C20.105 21.5 21 20.605 21 19.5V6.5C21 5.395 20.105 4.5 19 4.5Z"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.01268 13.2285C6.87468 13.2285 6.76268 13.3405 6.76368 13.4785C6.76368 13.6165 6.87568 13.7285 7.01368 13.7285C7.15168 13.7285 7.26368 13.6165 7.26368 13.4785C7.26368 13.3405 7.15168 13.2285 7.01268 13.2285"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.0127 13.2285C11.8747 13.2285 11.7627 13.3405 11.7637 13.4785C11.7637 13.6165 11.8757 13.7285 12.0137 13.7285C12.1517 13.7285 12.2637 13.6165 12.2637 13.4785C12.2637 13.3405 12.1517 13.2285 12.0127 13.2285"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M17.0127 13.2285C16.8747 13.2285 16.7627 13.3405 16.7637 13.4785C16.7637 13.6165 16.8757 13.7285 17.0137 13.7285C17.1517 13.7285 17.2637 13.6165 17.2637 13.4785C17.2637 13.3405 17.1517 13.2285 17.0127 13.2285"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.01268 17.2285C6.87468 17.2285 6.76268 17.3405 6.76368 17.4785C6.76368 17.6165 6.87568 17.7285 7.01368 17.7285C7.15168 17.7285 7.26368 17.6165 7.26368 17.4785C7.26368 17.3405 7.15168 17.2285 7.01268 17.2285"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.0127 17.2285C11.8747 17.2285 11.7627 17.3405 11.7637 17.4785C11.7637 17.6165 11.8757 17.7285 12.0137 17.7285C12.1517 17.7285 12.2637 17.6165 12.2637 17.4785C12.2637 17.3405 12.1517 17.2285 12.0127 17.2285"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+
+  ShareIcon: (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.5297 8.01953L9.46973 11.0595"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.4044 5.14203C17.1979 5.93558 17.1979 7.22217 16.4044 8.01571C15.6108 8.80926 14.3242 8.80926 13.5307 8.01571C12.7372 7.22217 12.7372 5.93557 13.5307 5.14203C14.3243 4.34849 15.6108 4.34849 16.4044 5.14203"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.5297 16.9795L9.46973 13.9395"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.4044 16.9838C17.1979 17.7774 17.1979 19.064 16.4044 19.8575C15.6108 20.6511 14.3242 20.6511 13.5307 19.8575C12.7372 19.064 12.7372 17.7774 13.5307 16.9838C14.3243 16.1903 15.6108 16.1903 16.4044 16.9838"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.46542 11.0643C10.2582 11.8571 10.2582 13.1424 9.46542 13.9351C8.67266 14.7279 7.38733 14.7279 6.59457 13.9351C5.80181 13.1424 5.80181 11.8571 6.59457 11.0643C7.38734 10.2715 8.67266 10.2715 9.46542 11.0643"
+        stroke="#323232"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
   CollapsIcon_W5: (
     <svg
       width="20"
@@ -920,32 +1238,6 @@ const icons = {
         d="M6.90843 9.52148L7.25503 14.3578"
         stroke="#323232"
         strokeWidth="1.20907"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  ),
-  SearchIcon: (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        cx="9.21308"
-        cy="9.21601"
-        r="5.88495"
-        stroke="#208D8E"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16.668 16.67L13.375 13.377"
-        stroke="#208D8E"
-        strokeWidth="1.25"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -1385,7 +1677,40 @@ const icons = {
       />
     </svg>
   ),
-  ShareIcon: (
+  WhiteSqurePlus: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18 20H6C4.895 20 4 19.105 4 18V6C4 4.895 4.895 4 6 4H18C19.105 4 20 4.895 20 6V18C20 19.105 19.105 20 18 20Z"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 8V16"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 12H8"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  WhiteShareIcon: (
     <svg
       width="24"
       height="24"

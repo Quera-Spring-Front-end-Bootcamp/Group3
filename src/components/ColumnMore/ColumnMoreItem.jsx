@@ -1,4 +1,4 @@
-const ColumnMoreItem = ({ icon, title, handleClick, className, ...props }) => {
+function ColumnMoreItem({ icon, title, handleClick, className, ...props }) {
   return (
     <div
       className={`flex cursor-pointer ${className}`}
@@ -11,7 +11,7 @@ const ColumnMoreItem = ({ icon, title, handleClick, className, ...props }) => {
       <span className=" font-normal">{title}</span>
     </div>
   );
-};
+}
 
 ColumnMoreItem.defaultProps = {
   title: "عنوان",

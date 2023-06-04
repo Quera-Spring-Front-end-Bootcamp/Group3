@@ -7,10 +7,14 @@ import NotFound from "./pages/notFound";
 import { AuthLayout } from "./Layout/AuthLayout";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
-import { ProfileLayout } from "./components/ProfileLayout/ProfileLayout";
+import MainLayout from "./Layout/MainLayout";
+import { ProfileLayout } from "./Layout/ProfileLayout";
 import { PersonalInfo } from "./pages/Profile/PersonalInfo";
 import { AccountInfo } from "./pages/Profile/AccountInfo";
 import { Setting } from "./pages/Profile/Setting";
+import ListView from "./pages/main/ListView";
+import ColumnView from "./pages/main/ColumnView";
+import CalendarView from "./pages/main/CalendarView";
 import { dataColors, useStickyState } from "./theme/theme";
 
 const App = () => {
@@ -33,7 +37,17 @@ const App = () => {
             path="setting"
             element={<Setting setColor={setColor} color={color} />}
           />
+          <Route path="personalInfo" element={<PersonalInfo />} />
+          <Route path="accountInfo" element={<AccountInfo />} />
+          <Route path="setting" element={<Setting />} />
         </Route>
+
+        <Route path="main" element={<MainLayout />}>
+          <Route path="listView" element={<ListView />}></Route>
+          <Route path="columnView" element={<ColumnView />}></Route>
+          <Route path="calendarView" element={<CalendarView />}></Route>
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster

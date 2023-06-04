@@ -11,7 +11,7 @@ const Card = ({
   titleClassName,
 }) => {
   return (
-    <div className={`flex flex-col  bg-white ${className}`}>
+    <div className={`flex flex-col bg-white ${className}`}>
       {(title || closeIcon || backIcon) && (
         <div className={" flex flex-row items-center  w-full justify-between"}>
           {closeIcon ? (
