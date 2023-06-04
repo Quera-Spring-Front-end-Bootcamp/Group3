@@ -15,10 +15,13 @@ import { Setting } from "./pages/Profile/Setting";
 import ListView from "./pages/main/ListView";
 import ColumnView from "./pages/main/ColumnView";
 import CalendarView from "./pages/main/CalendarView";
+import { dataColors, useStickyState } from "./theme/theme";
 
 const App = () => {
+  const [color, setColor] = useStickyState(dataColors[0], "theme-color");
+  const mode = "light";
   return (
-    <>
+    <div className={[color && ` theme-${color}`, ` theme-${mode}`].join("")}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="auth" element={<AuthLayout />}>
@@ -30,7 +33,10 @@ const App = () => {
         <Route path="profile" element={<ProfileLayout />}>
           <Route path="personalInfo" element={<PersonalInfo />} />
           <Route path="accountInfo" element={<AccountInfo />} />
-          <Route path="setting" element={<Setting />} />
+          <Route
+            path="setting"
+            element={<Setting setColor={setColor} color={color} />}
+          />
           <Route path="personalInfo" element={<PersonalInfo />} />
           <Route path="accountInfo" element={<AccountInfo />} />
           <Route path="setting" element={<Setting />} />
@@ -53,7 +59,7 @@ const App = () => {
           },
         }}
       />
-    </>
+    </div>
   );
 };
 
