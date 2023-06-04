@@ -21,7 +21,7 @@ export const Sidebar = () => {
   ];
 
   const navigateHandler = () => {
-    navigate(-1);
+    navigate("/", { replace: true });
   };
   return (
     <aside className=" w-[340px]  border-[#aaaaaa] border-l h-full min-h-screen py-10 pr-[50px] pl-[60px] ">
@@ -29,7 +29,7 @@ export const Sidebar = () => {
         <Logo />
       </Link>
       <button
-        className="flex items-center gap-2 text-white rounded-lg py-1 px-2 bg-[#208D8E] mb-11"
+        className="flex items-center gap-2  rounded-lg py-1 px-2 text-textPrimary bg-primary mb-11"
         onClick={navigateHandler}
       >
         {icons.ArrowIcon}
@@ -40,12 +40,13 @@ export const Sidebar = () => {
           {navAside.map((link) => (
             <li key={link.id}>
               <NavLink
-                style={({ isActive }) => ({
-                  backgroundColor: isActive ? "#C5FFFF" : "",
-                  fontWeight: isActive ? 600 : 500,
-                })}
+                className={({ isActive }) =>
+                  (isActive
+                    ? ` font-semibold bg-[#C5FFFF]  `
+                    : " font-medium ") +
+                  " flex items-center gap-[11px] rounded-[4px] py-1 px-2"
+                }
                 to={`/profile/${link.slug}`}
-                className="flex items-center gap-[11px] rounded-[4px] py-1 px-2"
               >
                 <i>{link.icon}</i>
                 <p className="text-[#1e1e1e] text-5  leading-[1.8]">
