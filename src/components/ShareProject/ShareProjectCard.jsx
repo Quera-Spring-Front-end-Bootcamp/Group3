@@ -8,7 +8,10 @@ import { SharedUser } from "./SharedUser";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-const ShareProjectCard = ({ openModal, setOpenModal }) => {
+const ShareProjectCard = ({
+  openShareProjectModal,
+  setOpenShareProjectModal,
+}) => {
   const info = [
     {
       id: 1,
@@ -25,12 +28,12 @@ const ShareProjectCard = ({ openModal, setOpenModal }) => {
     },
   ];
   const handleClose = () => {
-    setOpenModal(false);
+    setOpenShareProjectModal(false);
   };
 
   return (
     <>
-      <Transition appear show={openModal} as={Fragment}>
+      <Transition appear show={openShareProjectModal} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={handleClose}>
           <Transition.Child
             as={Fragment}
@@ -58,7 +61,7 @@ const ShareProjectCard = ({ openModal, setOpenModal }) => {
                 <Dialog.Panel>
                   <Card
                     className={
-                      openModal
+                      openShareProjectModal
                         ? "w-[470px] rounded-xl  p-5 bg-white flex flex-col"
                         : "hidden"
                     }

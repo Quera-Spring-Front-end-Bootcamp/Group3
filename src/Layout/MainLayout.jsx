@@ -7,6 +7,7 @@ import { Outlet } from "react-router";
 import { useState } from "react";
 import ShareProjectCard from "../components/ShareProject/ShareProjectCard";
 import { Disclosure } from "@headlessui/react";
+import { NewTask } from "../components/NewTask/NewTask";
 
 const data = [
   {
@@ -38,10 +39,17 @@ const data = [
 ];
 
 function MainLayout() {
-  const [openModal, setOpenModal] = useState(false);
+  const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
+  const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
+
   function handleOpenShareProject() {
-    setOpenModal(true);
+    setOpenShareProjectModal(true);
   }
+
+  function handleOpenNewTask() {
+    setOpenNewTaskModal(true);
+  }
+
   return (
     <div className="flex flex-row bg-[#FAFBFC]">
       <aside className="w-80 h-screen p-9 flex flex-col border-l-[1px]">
@@ -105,19 +113,19 @@ function MainLayout() {
           ))}
         </div>
 
-        <div className="flex flex-row items-center mt-3">
+        <button className="flex flex-row items-center mt-3">
           <div className="flex flex-row items-center justify-center w-8 h-8 bg-[#EAF562] rounded-full">
             NM
           </div>
           <span className="mr-2 font-medium text-base">نیلوفر موجودی</span>
-        </div>
+        </button>
 
-        <div className="flex flex-row items-center mt-3">
+        <button className="flex flex-row items-center mt-3">
           <div className="">{Icons.LogoutIcon}</div>
           <span className="mr-2 font-normal text-base text-[#818181]">
             خروج
           </span>
-        </div>
+        </button>
       </aside>
       <div
         className="flex flex-col w-[calc(100vw_-_256px)] p-4
@@ -153,10 +161,10 @@ function MainLayout() {
             <div>{Icons.ShareIcon}</div>
             <span className="mr-2 font-normal text-base">اشتراک گذاری</span>
           </button>
-          {openModal && (
+          {openShareProjectModal && (
             <ShareProjectCard
-              openModal={openModal}
-              setOpenModal={setOpenModal}
+              openShareProjectModal={openShareProjectModal}
+              setOpenShareProjectModal={setOpenShareProjectModal}
             />
           )}
         </header>
@@ -167,7 +175,14 @@ function MainLayout() {
             startIcon={Icons.WhiteSqurePlus}
             title="تسک جدید"
             classNames="fixed left-8 bottom-8"
+            handleClick={() => handleOpenNewTask()}
           />
+          {openNewTaskModal && (
+            <NewTask
+              openNewTaskModal={openNewTaskModal}
+              setOpenNewTaskModal={setOpenNewTaskModal}
+            />
+          )}
         </main>
       </div>
     </div>
