@@ -1,5 +1,4 @@
 import Card from "../Card/Card";
-import icons from "../Icons";
 import Button from "../Button";
 import { Transition, Dialog } from "@headlessui/react";
 import Datepicker from "../Datepicker";
@@ -7,13 +6,40 @@ import { v4 as uuidv4 } from "uuid";
 import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
 
 import { useRef, useState, Fragment } from "react";
+import FlagIcon from "../../assets/Icons/FlagIcon";
+import CloseIcon from "../../assets/Icons/CloseIcon";
+import RectangleIcon from "../../assets/Icons/RectangleIcon";
+import AddUserDashedCircleIcon from "../../assets/Icons/AddUserDashedCircleIcon";
+import LinkIcon from "../../assets/Icons/LinkIcon";
+import FlagDashedCircleIcon from "../../assets/Icons/FlagDashedCircleIcon";
+import CalendarDashedCircleIcon from "../../assets/Icons/CalendarDashedCircleIcon";
+import TagDashedCircleIcon from "../../assets/Icons/TagDashedCircleIcon";
+import EyeIcon from "../../assets/Icons/EyeIcon";
+import SearchIcon from "../../assets/Icons/SearchIcon";
+import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
 
 const priorityItems = [
-  { id: "1", title: "فوری", icon: icons.redFlag },
-  { id: "2", title: "بالا", icon: icons.yellowFlag },
-  { id: "3", title: "متوسط", icon: icons.greenFlag },
-  { id: "4", title: "پایین", icon: icons.grayFlag },
-  { id: "5", title: "حذف اولویت", icon: icons.deletePriority },
+  {
+    id: "1",
+    title: "فوری",
+    icon: <FlagIcon color="#FB0606" width="20" height="21" />,
+  },
+  {
+    id: "2",
+    title: "بالا",
+    icon: <FlagIcon color="#FFE605" width="20" height="21" />,
+  },
+  {
+    id: "3",
+    title: "متوسط",
+    icon: <FlagIcon color="#09DBCE" width="20" height="21" />,
+  },
+  {
+    id: "4",
+    title: "پایین",
+    icon: <FlagIcon color="#B2ACAC" width="20" height="21" />,
+  },
+  { id: "5", title: "حذف اولویت", icon: <CloseIcon color="#E45454" /> },
 ];
 
 const tagsItem = [
@@ -159,13 +185,13 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                     <Dialog.Title>
                       <div className="top-bar flex flex-row justify-between items-center gap-[904px] w-[1078px] h-[37px] ">
                         <div className="title-task flex flex-row items-center gap-[13px] w-[142px] h-[37px]">
-                          <i>{icons.RectangleIcon}</i>
+                          <i>{<RectangleIcon />}</i>
                           <span className="not-italic font-medium text-[24px] leading-[37px] text-right text-[#000000]">
                             عنوان تسک
                           </span>
                         </div>
                         <i className="cursor-pointer" onClick={handleClose}>
-                          {icons.CLoseTaskIcon}
+                          {<CloseIcon color="#BDBDBD" width="32" height="33" />}
                         </i>
                       </div>
                     </Dialog.Title>
@@ -184,7 +210,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                         />
                       </div>
                       <span>برای</span>
-                      <i>{icons.membersTaskIcon}</i>
+                      <i>{<AddUserDashedCircleIcon color="#C1C1C1" />}</i>
                     </div>
                     {/* Frame 186 */}
                     <textarea
@@ -198,7 +224,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                         افزودن پیوست{" "}
                       </span>
                       <div className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
-                        <i>{icons.uploadTaskIcon}</i>
+                        <i>
+                          {<LinkIcon color="#208D8E" width="24" height="24" />}
+                        </i>
                         <span>آپلود فایل</span>
                       </div>
                     </div>
@@ -210,7 +238,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                           className="cursor-pointer"
                           onClick={handleFlagOpen}
                         >
-                          <i>{icons.priorityTaskIcon}</i>
+                          <i>{<FlagDashedCircleIcon />}</i>
                         </div>
 
                         <Transition
@@ -242,10 +270,10 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                           className="cursor-pointer"
                           onClick={handleDatePickerOpen}
                         >
-                          <i>{icons.CalendarTaskIcon}</i>
+                          <i>{<CalendarDashedCircleIcon />}</i>
                         </div>
                         <div className="cursor-pointer" onClick={handleTagOpen}>
-                          <i>{icons.tagTaskIcon}</i>
+                          <i>{<TagDashedCircleIcon />}</i>
                         </div>
                         <Transition
                           show={tagOpen}
@@ -259,7 +287,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                         >
                           <Card className="absolute mt-[-270px] w-[177px] h-[213px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[8px] p-[12px]">
                             <div className="flex flex-col items-start gap-[4px] w-[153px] h-[60px]">
-                              <div className="flex flex-row w-[153px] overflow-scroll gap-2">
+                              <div className="flex flex-row w-[153px] overflow-auto gap-2">
                                 {tag.map((item) => (
                                   <div
                                     key={item.id}
@@ -284,9 +312,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                             handleClickCloseTag(item)
                                           }
                                         >
-                                          {icons.CloseTagIcon}
+                                          {<CloseIcon width="11" height="11"/>}
                                         </i>
-                                        <i>{icons.etcTagIcon}</i>
+                                        <i>{<DotsMenuIcon />}</i>
                                       </div>
                                     )}
                                   </div>
@@ -294,7 +322,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                               </div>
 
                               <div className="flex flex-row justify-start items-center py-[4px] px-[8px] gap-[8px] w-[153px] h-[32px] bg-[#E9E9E9] rounded-[4px]">
-                                <i>{icons.searchIcon}</i>
+                                <i>{<SearchIcon color="#BDBDBD" />}</i>
                                 <input
                                   className="w-[103px] h-[18px] not-italic font-normal text-[12px] leading-[18px] text-[#534D60] bg-[#E9E9E9]"
                                   type="text"
@@ -307,7 +335,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                 />
                               </div>
                             </div>
-                            <div className="overflow-scroll">
+                            <div className="overflow-auto">
                               {tagItems.map((item) => (
                                 <div
                                   className="flex flex-col justify-center items-start w-[153px]  mt-[12px]"
@@ -324,7 +352,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                         {item.title}
                                       </span>
                                     </div>
-                                    <i>{icons.etcIcon}</i>
+                                    <i>{<DotsMenuIcon color="#BDBDBD" />}</i>
                                   </div>
                                 </div>
                               ))}
@@ -335,7 +363,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                           <div className="flex absolute  flex-col items-center pt-[3.0303px] py-[6.06061px] pb-[6.06061px] gap-[15.15px]  w-[25.76px] h-[25.76px] top-[-10px]  bg-[#4AB7D8] rounded-[151.515px]">
                             <span className="">۲</span>
                           </div>
-                          <i>{icons.eyeTaskIcon}</i>
+                          <i>{<EyeIcon />}</i>
                         </div>
                       </div>
 

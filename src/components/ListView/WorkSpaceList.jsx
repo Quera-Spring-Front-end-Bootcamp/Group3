@@ -38,7 +38,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/296" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
         {
           status: "Pending",
@@ -50,7 +50,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/302" },
           ],
           deadlines: "۶ آبان",
-          priority: "high",
+          priority: "#FFE605",
         },
         {
           status: "Done",
@@ -62,7 +62,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/305" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
         {
           status: "Done",
@@ -74,7 +74,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/308" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
       ],
     },
@@ -108,7 +108,7 @@ const WorkSpaceList = () => {
             { name: "Hasan", avatarUrl: "https://i.pravatar.cc/298" },
           ],
           deadlines: "۶ آبان",
-          priority: "low",
+          priority: "#B2ACAC",
         },
         {
           status: "In progress",
@@ -124,7 +124,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/296" },
           ],
           deadlines: "۶ آبان",
-          priority: "high",
+          priority: "#FB0606",
         },
         {
           status: "Done",
@@ -136,7 +136,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/305" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
         {
           status: "Done",
@@ -148,7 +148,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/308" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
       ],
     },

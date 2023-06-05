@@ -1,4 +1,4 @@
-function EyeIcon({ color = "#000000" }) {
+function EyeIcon({ color = "#BDBDBD" }) {
   return (
     <svg
       width="49"

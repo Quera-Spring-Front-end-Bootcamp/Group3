@@ -1,4 +1,4 @@
-import AddUserIcon from "../assets/Icons/AddUserIcon";
+import AddUserDashedCircleIcon from "../assets/Icons/AddUserDashedCircleIcon";
 import ArchiveIcon from "../assets/Icons/ArchiveIcon";
 import ArrowDownCircleIcon from "../assets/Icons/ArrowDownCircleIcon";
 import ArrowDownIcon from "../assets/Icons/ArrowDownIcon";
@@ -7,6 +7,7 @@ import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
 import ArtBoardIcon from "../assets/Icons/ArtBoardIcon";
 import BackLeftIcon from "../assets/Icons/BackLeftIcon";
 import BackRightIcon from "../assets/Icons/BackRightIcon";
+import CalendarDashedCircleIcon from "../assets/Icons/CalendarDashedCircleIcon";
 import CalendarIcon from "../assets/Icons/CalendarIcon";
 import ChackSharpSqureIcon from "../assets/Icons/ChackSharpSqureIcon";
 import CheckIcon from "../assets/Icons/CheckIcon";
@@ -23,6 +24,7 @@ import EmailIcon from "../assets/Icons/EmailIcon";
 import EndCalendarIcon from "../assets/Icons/EndCalendarIcon";
 import EyeIcon from "../assets/Icons/EyeIcon";
 import FilterIcon from "../assets/Icons/FilterIcon";
+import FlagDashedCircleIcon from "../assets/Icons/FlagDashedCircleIcon";
 import FlagIcon from "../assets/Icons/FlagIcon";
 import JustifyRightIcon from "../assets/Icons/JustifyRightIcon";
 import LinkIcon from "../assets/Icons/LinkIcon";
@@ -32,13 +34,14 @@ import NoteIcon from "../assets/Icons/NoteIcon";
 import PaletteIcon from "../assets/Icons/PaletteIcon";
 import PlayIcon from "../assets/Icons/PlayIcon";
 import PlusIcon from "../assets/Icons/PlusIcon";
+import RectangleIcon from "../assets/Icons/RectangleIcon";
 import SearchIcon from "../assets/Icons/SearchIcon";
 import SettingsIcon from "../assets/Icons/SettingsIcon";
 import ShareIcon from "../assets/Icons/ShareIcon";
 import SmileIcon from "../assets/Icons/SmileIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import StartCalendarIcon from "../assets/Icons/StartCalendarIcon";
-import TagsIcon from "../assets/Icons/TagsIcon";
+import TagDashedCircleIcon from "../assets/Icons/TagDashedCircleIcon";
 import TrashIcon from "../assets/Icons/TrashIcon";
 
 function IconSample() {
@@ -59,14 +62,14 @@ function IconSample() {
       <DotsMenuIcon color="#0000ff" />
       <JustifyRightIcon color="#0000ff" />
       <PlusIcon color="#0000ff" />
-      <CloseIcon color="#0000ff" />
-      <LinkIcon color="#0000ff" />
+      <CloseIcon color="#0000ff" width="24" height="25" />
+      <LinkIcon color="#0000ff" width="20" height="21" />
       <EditSqureIcon color="#0000ff" />
       <ArchiveIcon color="#0000ff" />
       <TrashIcon color="#0000ff" />
       <CircleHalfIcon color="#0000ff" />
       <BackLeftIcon color="#0000ff" />
-      <ArrowDownCircleIcon color="#0000ff" />
+      <ArrowDownCircleIcon color="#0000ff" width="24" height="25" />
       <ArrowRightIcon color="#0000ff" />
       <ArrowLeftIcon color="#0000ff" />
       <BackRightIcon color="#0000ff" />
@@ -74,8 +77,7 @@ function IconSample() {
       <CheckUserIcon color="#0000ff" />
       <SettingsIcon color="#0000ff" />
       <CheckIcon color="#0000ff" />
-      <AddUserIcon color="#0000ff" />
-      <TagsIcon color="#0000ff" />
+      <AddUserDashedCircleIcon />
       <EyeIcon color="#0000ff" />
       <StartCalendarIcon color="#0000ff" />
       <EndCalendarIcon color="#0000ff" />
@@ -86,6 +88,10 @@ function IconSample() {
       <NoteIcon color="#0000ff" />
       <SmileIcon color="#0000ff" />
       <EmailIcon color="#0000ff" />
+      <RectangleIcon />
+      <FlagDashedCircleIcon />
+      <CalendarDashedCircleIcon />
+      <TagDashedCircleIcon />
     </div>
   );
 }

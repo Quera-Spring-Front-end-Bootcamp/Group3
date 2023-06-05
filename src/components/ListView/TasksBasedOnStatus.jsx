@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
-import icons from "../../assets/Icons";
+import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
+import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
+import FlagIcon from "../../assets/Icons/FlagIcon";
 
 const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -50,7 +52,7 @@ const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
       <td className="p-3 mx-5 my-4 text-xs text-center ">{task.deadlines}</td>
       <td className="p-3 mx-5 my-4 text-xs text-center">
         <span className=" inline-flex justify-center align-middle w-3.5 ">
-          {icons[`FlagIcon_${task.priority}`]}
+          {<FlagIcon color={`${task.priority}`} />}
         </span>
       </td>
       <td className="p-3 mx-5 my-4 text-xs text-center ">
@@ -58,7 +60,7 @@ const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
           onClick={handleNavigateTaskInfoPage}
           className=" inline-flex justify-center align-middle w-4 cursor-pointer"
         >
-          {icons.descriptionIcon}
+          {<JustifyRightIcon />}
         </a>
       </td>
     </tr>
@@ -80,7 +82,7 @@ const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
                         : "transition transform-none   duration-500  focus:-rotate-180"
                     }
                   >
-                    {icons.CollapsIcon_W5}
+                    {<ArrowDownCircleIcon width="20" height="21" />}
                   </button>
                 ) : (
                   <span className="w-5"></span>

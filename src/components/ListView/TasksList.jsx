@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import TasksBasedOnStatus from "./TasksBasedOnStatus";
-import icons from "../../assets/Icons";
+import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
 
 const TasksList = ({ data }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -21,7 +21,7 @@ const TasksList = ({ data }) => {
               : "transition transform-none  delay-150 duration-700  focus:-rotate-180"
           }
         >
-          {icons.CollapsIcon_W6}
+          {<ArrowDownCircleIcon />}
         </button>
         <h1 className="text-[#1E1E1E] text-xl font-semibold">
           {data.project.title}
