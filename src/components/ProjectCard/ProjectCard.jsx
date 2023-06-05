@@ -3,6 +3,10 @@ import icons from "../Icons";
 import Card from "../Card/Card";
 import { ColumnMoreItem } from "../ColumnMoreItem/ColumnMoreItem";
 import { Transition } from "@headlessui/react";
+import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
+import PlusIcon from "../../assets/Icons/PlusIcon";
+import ArchiveIcon from "../../assets/Icons/ArchiveIcon";
+import TrashIcon from "../../assets/Icons/TrashIcon";
 // const projectItems = [
 //   {
 //     projectTitle: "پروژه اول",
@@ -23,10 +27,10 @@ import { Transition } from "@headlessui/react";
 // ];
 
 const columnMoreItems = [
-  { id: 1, title: "ویرایش نام ستون", icon: icons.EditIcon },
-  { id: 2, title: "افزودن تسک", icon: icons.plusIcon },
-  { id: 3, title: "آرشیو تمام تسک ها", icon: icons.ArchiveIcon },
-  { id: 4, title: "حذف ستون", icon: icons.DeleteIcon },
+  { id: 1, title: "ویرایش نام ستون", icon: <EditSqureIcon /> },
+  { id: 2, title: "افزودن تسک", icon: <PlusIcon /> },
+  { id: 3, title: "آرشیو تمام تسک ها", icon: <ArchiveIcon /> },
+  { id: 4, title: "حذف ستون", icon: <TrashIcon /> },
 ];
 
 export const ProjectCard = ({

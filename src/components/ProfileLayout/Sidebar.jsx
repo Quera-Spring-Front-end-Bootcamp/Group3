@@ -1,23 +1,26 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import Logo from "../AuthLayout/Logo";
-import icons from "../../assets/Icons";
+import EditUserIcon from "../../assets/Icons/EditUserIcon";
+import CheckUserIcon from "../../assets/Icons/CheckUserIcon";
+import SettingsIcon from "../../assets/Icons/SettingsIcon";
+import BackRightIcon from "../../assets/Icons/BackRightIcon";
 
 export const Sidebar = () => {
   const navigate = useNavigate();
   const navAside = [
     {
       id: 1,
-      icon: icons.ProfileEditIcon,
+      icon: <EditUserIcon />,
       title: " اطلاعات فردی",
       slug: "personalInfo",
     },
     {
       id: 2,
-      icon: icons.ProfileCheckmarkIcon,
+      icon: <CheckUserIcon />,
       title: "اطلاعات حساب  ",
       slug: "accountInfo",
     },
-    { id: 3, icon: icons.SettingIcon, title: "تنظیمات", slug: "setting" },
+    { id: 3, icon: <SettingsIcon />, title: "تنظیمات", slug: "setting" },
   ];
 
   const navigateHandler = () => {
@@ -32,7 +35,7 @@ export const Sidebar = () => {
         className="flex items-center gap-2  rounded-lg py-1 px-2 text-textPrimary bg-primary mb-11"
         onClick={navigateHandler}
       >
-        {icons.ArrowIcon}
+        {<BackRightIcon color="white" />}
         بازگشت
       </button>
       <nav>
