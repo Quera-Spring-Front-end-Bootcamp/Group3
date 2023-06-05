@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import Card from "./Card/Card";
-import Icons from "../assets/Icons";
 import Button from "./Button";
 
 import toast from "react-hot-toast";
@@ -13,6 +12,7 @@ import Datepicker from "./Datepicker";
 import PrioritySelection from "./PrioritySelection";
 import CloseIcon from "../assets/Icons/CloseIcon";
 import FlagIcon from "../assets/Icons/FlagIcon";
+import FlagDashedCircleIcon from "../assets/Icons/FlagDashedCircleIcon";
 
 function CalendarTaskModal({ initialDate, setOpenModal }) {
   const [date, setDate] = useState(initialDate);
@@ -20,10 +20,10 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
   const [flag, setFlag] = useState(false);
 
   const flagItems = [
-    { id: "urgent", icon: Icons.FlagRedBig },
-    { id: "high", icon: Icons.FlagYellowBig },
-    { id: "medium", icon: Icons.FlagGreenBig },
-    { id: "low", icon: Icons.FlagGrayBig },
+    { id: "urgent", icon: <FlagDashedCircleIcon color="#FB0606" /> },
+    { id: "high", icon: <FlagDashedCircleIcon color="#FFE605" /> },
+    { id: "medium", icon: <FlagDashedCircleIcon color="#09DBCE" /> },
+    { id: "low", icon: <FlagDashedCircleIcon color="#B2ACAC" /> },
   ];
 
   const [inputText, setInputText] = useState("");
@@ -93,12 +93,12 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
               <Popover className="relative">
                 <Popover.Button onClick={FlagButtonClickHandler}>
                   <div
-                    style={{
-                      borderColor: flag
-                        ? flag[1].props.children[0].props.stroke
-                        : "white",
-                    }}
-                    className="rounded-[100%] border-dashed border-[1.4px] p-[11px]"
+                  // style={{
+                  //   borderColor: flag
+                  //     ? flag[1].props.children[0].props.stroke
+                  //     : "white",
+                  // }}
+                  // className="rounded-[100%] border-dashed border-[1.4px] p-[11px]"
                   >
                     {flag ? (
                       matchingItem.icon
