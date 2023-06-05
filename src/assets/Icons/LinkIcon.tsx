@@ -1,6 +1,6 @@
 import React from "react";
 
-function LinkIcon({ color = "#000000", width = "20", height = "21" }) {
+function LinkIcon({ color = "#323232", width = "20", height = "21" }) {
   return (
     <svg
       width={width}

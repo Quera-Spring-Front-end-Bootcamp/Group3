@@ -1,4 +1,4 @@
-function JustifyRightIcon({ color = "#000000" }) {
+function JustifyRightIcon({ color = "#323232" }) {
   return (
     <svg
       width="12"

@@ -1,4 +1,4 @@
-function SqurePlusIcon({ color = "#000000" }) {
+function SqurePlusIcon({ color = "#323232" }) {
   return (
     <svg
       width="25"

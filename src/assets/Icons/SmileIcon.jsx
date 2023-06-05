@@ -1,4 +1,4 @@
-function SmileIcon({ color = "#000000" }) {
+function SmileIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

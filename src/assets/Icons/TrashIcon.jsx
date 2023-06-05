@@ -1,4 +1,4 @@
-function TrashIcon({ color = "#000000" }) {
+function TrashIcon({ color = "#323232" }) {
   return (
     <svg
       width="20"

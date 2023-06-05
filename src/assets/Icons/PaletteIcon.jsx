@@ -1,4 +1,4 @@
-function PaletteIcon({ color = "#000000" }) {
+function PaletteIcon({ color = "#323232" }) {
   return (
     <svg
       width="11"

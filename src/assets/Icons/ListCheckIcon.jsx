@@ -1,4 +1,4 @@
-function ListCheckIcon({ color = "#000000" }) {
+function ListCheckIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

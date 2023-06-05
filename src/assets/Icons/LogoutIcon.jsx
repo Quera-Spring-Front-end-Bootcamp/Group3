@@ -1,4 +1,4 @@
-function LogoutIcon({ color = "#000000" }) {
+function LogoutIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

@@ -1,4 +1,4 @@
-function SearchIcon({ color = "#000000" }) {
+function SearchIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

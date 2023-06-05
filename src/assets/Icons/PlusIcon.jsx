@@ -1,4 +1,4 @@
-function PlusIcon({ color = "#000000" }) {
+function PlusIcon({ color = "#323232" }) {
   return (
     <svg
       width="20"

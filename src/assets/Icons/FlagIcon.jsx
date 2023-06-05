@@ -1,4 +1,4 @@
-function FlagIcon({ color = "#000000", width = "16", height = "16" }) {
+function FlagIcon({ color = "#323232", width = "16", height = "16" }) {
   return (
     <svg
       width={width}

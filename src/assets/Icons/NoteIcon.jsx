@@ -1,4 +1,4 @@
-function NoteIcon({ color = "#000000" }) {
+function NoteIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"
