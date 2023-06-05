@@ -132,7 +132,7 @@ function MainLayout() {
                       </div>
                     </Disclosure.Button>
                     <Menu>
-                      <Menu.Button>
+                      <Menu.Button className="h-[20px]">
                         <button className="hidden group-hover:inline">
                           <DotsMenuIcon />
                         </button>
@@ -152,7 +152,7 @@ function MainLayout() {
                         >
                           <li className="flex-1">{Project.ProjectTilte}</li>
                           <Menu>
-                            <Menu.Button>
+                            <Menu.Button className="h-[20px]">
                               <button className="hidden group-hover:inline">
                                 <DotsMenuIcon />
                               </button>
@@ -193,10 +193,7 @@ function MainLayout() {
           </span>
         </button>
       </aside>
-      <div
-        className="flex flex-col w-[calc(100vw_-_256px)] p-4
-      "
-      >
+      <div className="flex flex-col w-[calc(100vw_-_256px)] p-4 h-screen">
         <header className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center h-20 gap-3">
             <div className="font-semibold text-xl">پروژه اول</div>
@@ -235,7 +232,7 @@ function MainLayout() {
           )}
         </header>
         <hr />
-        <main>
+        <main className="h-full overflow-auto">
           <Outlet />
           <Button
             startIcon={<SqurePlusIcon color="white" />}

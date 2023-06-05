@@ -181,7 +181,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel>
-                  <Card className="flex p-0 flex-col items-end py-[36px] px-[44px] gap-[40px] w-[1166px] h-[576px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[20px] pt-[36px] ">
+                  <Card className="flex p-0 flex-col items-end py-[36px] px-[44px] gap-[40px] w-[1166px] h-[576px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[20px] pt-[36px]">
                     <Dialog.Title>
                       <div className="top-bar flex flex-row justify-between items-center gap-[904px] w-[1078px] h-[37px] ">
                         <div className="title-task flex flex-row items-center gap-[13px] w-[142px] h-[37px]">

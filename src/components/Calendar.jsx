@@ -129,14 +129,14 @@ function Calendar() {
           setOpenModal={setOpenModal}
         />
       )}
-      <div className="relative flex flex-col pr-[16px] pl-[51px] pb-[59px] pt-[18px] border-t-[0.5px] border-solid border-[#AAAAAA] h-screen">
+      <div className="relative flex flex-col pb-[59px] pt-[18px] border-t-[0.5px] border-solid border-[#AAAAAA] h-screen">
         <div className="flex flex-row gap-[40px] border-b-[0.5px] border-solid border-[#AAAAAA] pb-[17px] mb-[25px]">
           <div className="flex flex-row ">
             {<SearchIcon />}
             <input
               type="text"
               placeholder="جستجو بین تسک ها"
-              className="text-[12px]/[18.4px] placeholder-[#959595]"
+              className="text-[12px]/[18.4px] placeholder-[#959595] bg-transparent"
             />
           </div>
           <div className="w-[1px] h-[24px] bg-[#999999]"></div>
@@ -211,7 +211,7 @@ function Calendar() {
                     ) : null
                   )}
                 </div>
-                <div className="absolute left-[12px] bottom-[12px] z-20">
+                <div className="absolute left-[12px] bottom-[12px]">
                   {day.format("jD")}
                 </div>
               </button>
