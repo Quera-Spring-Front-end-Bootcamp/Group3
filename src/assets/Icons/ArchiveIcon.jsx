@@ -1,4 +1,4 @@
-function ArchiveIcon({ color = "#000000" }) {
+function ArchiveIcon({ color = "#323232" }) {
   return (
     <svg
       width="20"

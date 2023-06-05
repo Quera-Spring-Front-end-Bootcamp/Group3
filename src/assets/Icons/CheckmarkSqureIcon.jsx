@@ -1,4 +1,4 @@
-function CheckmarkSqureIcon({ color = "#000000" }) {
+function CheckmarkSqureIcon({ color = "#323232" }) {
   return (
     <svg
       width="16"

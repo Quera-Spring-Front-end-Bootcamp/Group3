@@ -1,4 +1,4 @@
-function CheckmarkCircleIcon({ color = "#000000" }) {
+function CheckmarkCircleIcon({ color = "#323232" }) {
   return (
     <svg
       width="20"

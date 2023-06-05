@@ -1,4 +1,4 @@
-function EditSqureIcon({ color = "#000000" }) {
+function EditSqureIcon({ color = "#323232" }) {
   return (
     <svg
       width="20"

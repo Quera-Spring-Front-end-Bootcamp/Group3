@@ -1,4 +1,4 @@
-function ChackSharpSqureIcon({ color = "#000000" }) {
+function ChackSharpSqureIcon({ color = "#323232" }) {
   return (
     <svg
       width="30"

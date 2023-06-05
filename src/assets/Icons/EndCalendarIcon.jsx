@@ -1,4 +1,4 @@
-function EndCalendarIcon({ color = "#000000" }) {
+function EndCalendarIcon({ color = "#323232" }) {
   return (
     <svg
       width="32"

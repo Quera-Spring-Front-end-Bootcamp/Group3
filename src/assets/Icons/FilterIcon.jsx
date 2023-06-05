@@ -1,4 +1,4 @@
-function FilterIcon({ color = "#000000" }) {
+function FilterIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

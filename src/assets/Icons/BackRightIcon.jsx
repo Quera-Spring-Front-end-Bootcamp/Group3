@@ -1,4 +1,4 @@
-function BackRightIcon({ color = "#000000" }) {
+function BackRightIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

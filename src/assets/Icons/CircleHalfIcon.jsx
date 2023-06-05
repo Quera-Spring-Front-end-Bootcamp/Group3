@@ -1,4 +1,4 @@
-function CircleHalfIcon({ color = "#000000" }) {
+function CircleHalfIcon({ color = "#323232" }) {
   return (
     <svg
       width="15"

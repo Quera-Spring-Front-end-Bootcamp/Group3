@@ -1,4 +1,4 @@
-function CommentIcon({ color = "#000000" }) {
+function CommentIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

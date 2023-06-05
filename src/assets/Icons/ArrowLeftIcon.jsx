@@ -1,4 +1,4 @@
-function ArrowLeftIcon({ color = "#000000" }) {
+function ArrowLeftIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

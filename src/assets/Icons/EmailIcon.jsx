@@ -1,4 +1,4 @@
-function EmailIcon({ color = "#000000" }) {
+function EmailIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

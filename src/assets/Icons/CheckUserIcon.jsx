@@ -1,4 +1,4 @@
-function CheckUserIcon({ color = "#000000" }) {
+function CheckUserIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

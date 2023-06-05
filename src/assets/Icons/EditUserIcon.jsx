@@ -1,4 +1,4 @@
-function EditUserIcon({ color = "#000000" }) {
+function EditUserIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

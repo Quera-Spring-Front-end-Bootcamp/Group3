@@ -1,6 +1,6 @@
 import React from "react";
 
-function CheckIcon({ color = "#000000" }) {
+function CheckIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

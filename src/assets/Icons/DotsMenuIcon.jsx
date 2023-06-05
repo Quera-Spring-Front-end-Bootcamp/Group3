@@ -1,4 +1,4 @@
-function DotsMenuIcon({ color = "#000000" }) {
+function DotsMenuIcon({ color = "#323232" }) {
   return (
     <svg
       width="20"

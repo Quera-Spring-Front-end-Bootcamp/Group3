@@ -1,4 +1,4 @@
-function ArtBoardIcon({ color = "#000000" }) {
+function ArtBoardIcon({ color = "#323232" }) {
   return (
     <svg
       width="24"

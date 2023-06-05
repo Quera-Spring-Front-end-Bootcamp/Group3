@@ -1,5 +1,5 @@
 function ArrowDownCircleIcon({
-  color = "#000000",
+  color = "#323232",
   width = "24",
   height = "25",
 }) {

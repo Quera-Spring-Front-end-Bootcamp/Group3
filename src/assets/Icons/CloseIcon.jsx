@@ -1,4 +1,4 @@
-function CloseIcon({ color = "#000000", width = "24", height = "25" }) {
+function CloseIcon({ color = "#323232", width = "24", height = "25" }) {
   return (
     <svg
       width={width}
