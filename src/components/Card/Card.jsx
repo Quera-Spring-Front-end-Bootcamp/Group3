@@ -1,4 +1,5 @@
-import icons from "../../assets/Icons";
+import BackLeftIcon from "../../assets/Icons/BackLeftIcon";
+import CloseIcon from "../../assets/Icons/CloseIcon";
 
 const Card = ({
   title,
@@ -19,7 +20,7 @@ const Card = ({
               className="w-5 flex flex-row justify-center"
               onClick={handleClose}
             >
-              {icons.CloseIcon}
+              {<CloseIcon />}
             </button>
           ) : (
             <div className="w-5"></div>
@@ -30,7 +31,7 @@ const Card = ({
               className="w-5 flex flex-row justify-center"
               onClick={handleBack}
             >
-              {backIcon && icons.BackIcon}
+              {backIcon && <BackLeftIcon />}
             </button>
           ) : (
             <div className="w-5"></div>

@@ -1,4 +1,4 @@
-import icons from "../../assets/Icons";
+import ShareIcon from "../../assets/Icons/ShareIcon";
 import Button from "../Button";
 import Card from "../Card/Card";
 import ColumnMoreItem from "./ColumnMoreItem";
@@ -16,7 +16,7 @@ export const ColumMoreCard = ({ data }) => {
       ))}
       <Button
         title="اشتراک‌گذاری"
-        startIcon={icons.WhiteShareIcon}
+        startIcon={<ShareIcon color="white" />}
         className="rounded-md	bg-primary py-2 font-bold text-white  text-xs flex flex-row items-center px-3 gap-2 mt-1"
       />
     </Card>

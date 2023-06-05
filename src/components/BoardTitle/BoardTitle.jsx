@@ -1,7 +1,11 @@
 import { useState } from "react";
-import icons from "../../assets/Icons";
-import { ColumnMore } from "../ColumnMoreItem/ColumnMore";
+import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
 import Card from "../Card/Card";
+import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
+import PlusIcon from "../../assets/Icons/PlusIcon";
+import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
+import ArchiveIcon from "../../assets/Icons/ArchiveIcon";
+import TrashIcon from "../../assets/Icons/TrashIcon";
 
 const BoardTitle = () => {
   const card = [
@@ -61,23 +65,23 @@ const BoardTitle = () => {
               onClick={() => clickAddHandler(item.id)}
               onMouseLeave={handleMouseLeaveDots}
             >
-              {icons.DotsMenu}
+              <DotsMenuIcon />
               {item.id === selectId && showMore && (
                 <Card className="absolute  rounded-[8px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] top-full  gap-[16px] p-[12px] ">
-                  <ColumnMore
+                  <ColumnMoreItem
                     title="ویرایش نام ستون"
-                    icon={icons.EditIcon}
+                    icon={<EditSqureIcon />}
                     onClick={() => EditBoardTitleHandler(item.id)}
                   />
-                  <ColumnMore title="افزودن تسک" icon={icons.AddIcon} />
-                  <ColumnMore
+                  <ColumnMoreItem title="افزودن تسک" icon={<PlusIcon />} />
+                  <ColumnMoreItem
                     title="آرشیو تمام تسک‌ها"
-                    icon={icons.ArchiveIcon}
+                    icon={<ArchiveIcon />}
                   />
-                  <ColumnMore
+                  <ColumnMoreItem
                     title="حذف ستون"
                     className="text-[#9F0000] gap-[10px]"
-                    icon={icons.TrashIcon}
+                    icon={<TrashIcon color="#9F0000" />}
                     onClick={() => removeCulomnHandler(item.id)}
                   />
                 </Card>
@@ -95,7 +99,7 @@ const BoardTitle = () => {
                 </span>
               )}
 
-              {icons.AddIcon}
+              {<PlusIcon />}
             </div>
           </div>
         </div>
@@ -106,7 +110,7 @@ const BoardTitle = () => {
           onClick={addNewBoardTitleClickHandler}
         >
           <div className="flex gap-1 items-center">
-            <span>{icons.AddIcon}</span>
+            <span>{<PlusIcon />}</span>
             <span className=" text-[#1E1E1E] text-base font-medium">
               ساختن برد جدید
             </span>

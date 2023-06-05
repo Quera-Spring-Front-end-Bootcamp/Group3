@@ -3,7 +3,6 @@ import { CopyLink } from "./CopyLink";
 import { ProjectInvitationForm } from "./ProjectInvitationForm";
 import profile from "../../assets/images/profile.png";
 import Card from "../Card/Card";
-import icons from "../../assets/Icons";
 import { SharedUser } from "./SharedUser";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -60,22 +59,16 @@ const ShareProjectCard = ({
               >
                 <Dialog.Panel>
                   <Card
+                    closeIcon={true}
+                    title="به اشتراک‌گذاری پروژه"
+                    titleClassName="w-full text-center font-semibold"
+                    handleClose={handleClose}
                     className={
                       openShareProjectModal
                         ? "w-[470px] rounded-xl  p-5 bg-white flex flex-col"
                         : "hidden"
                     }
                   >
-                    <Dialog.Title>
-                      <div className="flex items-center pb-[45px]">
-                        <div className="cursor-pointer" onClick={handleClose}>
-                          {icons.CloseIcon}
-                        </div>
-                        <div className="w-full text-center font-semibold">
-                          به اشتراک‌گذاری پروژه‌
-                        </div>
-                      </div>
-                    </Dialog.Title>
                     <ProjectInvitationForm />
                     <CopyLink className="mb-[29px]" />
                     <span className="text-sm text-[#7d828c] block mb-5">
