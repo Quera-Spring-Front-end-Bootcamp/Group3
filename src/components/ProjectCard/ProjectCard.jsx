@@ -1,5 +1,4 @@
 import { useState } from "react";
-import icons from "../Icons";
 import Card from "../Card/Card";
 import { ColumnMoreItem } from "../ColumnMoreItem/ColumnMoreItem";
 import { Transition } from "@headlessui/react";
@@ -7,6 +6,10 @@ import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
 import PlusIcon from "../../assets/Icons/PlusIcon";
 import ArchiveIcon from "../../assets/Icons/ArchiveIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
+import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
+import CheckmarkCircleIcon from "../../assets/Icons/CheckmarkCircleIcon";
+import FlagIcon from "../../assets/Icons/FlagIcon";
+import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
 // const projectItems = [
 //   {
 //     projectTitle: "پروژه اول",
@@ -73,20 +76,20 @@ export const ProjectCard = ({
           <h2 className="not-italic font-medium text-[12px] leading-[18px] text-right text-[#0E0E0E]">
             {taskTitle}
           </h2>
-          <i>{icons.TaskIcon}</i>
+          <i>{<JustifyRightIcon color="#BDC0C6" width="14" height="14" />}</i>
         </div>
       </div>
 
       <div className="flex flex-row items-start gap-[8px]  h-[16px] mt-[18.5px]">
         <div className="flex flex-row justify-end items-center gap-[2px]  h-[16px]">
-          <i>{icons.CalendarIcon}</i>
+          <i>{<FlagIcon color="#FB0606" />}</i>
           <span className="not-italic font-medium text-[10px] leading-[15px] text-right">
             {date}
           </span>
         </div>
 
         <div className="flex flex-row justify-end items-center gap-[2px]  h-[16px]">
-          <i>{icons.TimeIcon}</i>
+          <i>{<CheckmarkCircleIcon color="#BDC0C6" />}</i>
           <span className="not-italic font-medium text-[10px] leading-[15px] text-right text-[#BDC0C6]">
             {time}
           </span>
@@ -109,9 +112,9 @@ export const ProjectCard = ({
 
       <hr className="border-[#EFF0F0] invisible mt-[20px] group-hover:visible" />
       <div className="flex invisible flex-row justify-between items-center gap-[8px] mt-[16px] group-hover:visible">
-        <i>{icons.AcceptIcon}</i>
+        <i>{<CheckmarkCircleIcon />}</i>
         <i className="cursor-pointer" onClick={columnMore}>
-          {icons.MoreIcon}
+          {<DotsMenuIcon />}
         </i>
         {/* {showMore ? ( */}
       </div>

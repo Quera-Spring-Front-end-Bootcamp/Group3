@@ -1,5 +1,11 @@
+import Datepicker from "../../components/Datepicker";
+
 function ColumnView() {
-  return <div>ColumnView</div>;
+  return (
+    <div>
+      <Datepicker />
+    </div>
+  );
 }
 
 export default ColumnView;

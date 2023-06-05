@@ -1,5 +1,3 @@
-// import React from "react";
-
 function Button({ title, handleClick, classNames, startIcon, ...props }) {
   return (
     <button

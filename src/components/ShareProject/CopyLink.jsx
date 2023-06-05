@@ -1,5 +1,5 @@
 import { copyLink } from "../../Utils/copyLink";
-import icons from "../../assets/Icons";
+import LinkIcon from "../../assets/Icons/LinkIcon";
 
 export const CopyLink = ({ className }) => {
   const privateLink = location.href;
@@ -9,7 +9,7 @@ export const CopyLink = ({ className }) => {
   return (
     <div className={`flex justify-between ${className}`}>
       <div className="flex gap-2.5">
-        {icons.LinkIcon}
+        {<LinkIcon />}
         لینک خصوصی
       </div>
       <button

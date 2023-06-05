@@ -5,9 +5,10 @@ import Button from "./Button";
 import Input from "./Input";
 import Card from "./Card/Card";
 
-import Icons from "../assets/Icons";
 import frame from "../assets/images/frame.png";
 import toast from "react-hot-toast";
+import CheckIcon from "../assets/Icons/CheckIcon";
+import CircleHalfIcon from "../assets/Icons/CircleHalfIcon";
 
 /* define a onClose function in parent component that will close this modal.
 for example:
@@ -121,7 +122,7 @@ function CreateWorkspace({ onClose }) {
                   className="block relative rounded-sm w-[15px] h-[15px] items-center justify-center"
                   onClick={() => setColorCode("#7D828C")}
                 >
-                  {Icons.noneIcon}
+                  {<CircleHalfIcon />}
                 </button>
                 {colors.map((color, index) => {
                   return (
@@ -133,7 +134,7 @@ function CreateWorkspace({ onClose }) {
                       style={{ backgroundColor: color }}
                       onClick={() => setColorCode(color)}
                     >
-                      {color == colorCode && Icons.checkIcon}
+                      {color == colorCode && <CheckIcon />}
                     </button>
                   );
                 })}

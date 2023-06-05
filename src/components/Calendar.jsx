@@ -2,9 +2,12 @@ import { useState } from "react";
 import moment from "moment-jalaali";
 import "moment/locale/fa";
 
-import Icons from "../assets/Icons";
 import Button from "./Button";
 import CalendarTaskModal from "./CalendarTaskModal";
+import ArrowLeftIcon from "../assets/Icons/ArrowLeftIcon";
+import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
+import SearchIcon from "../assets/Icons/SearchIcon";
+import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 
 // can't pass the clickHandler as prop. it should change inside the component
 function Calendar() {
@@ -129,7 +132,7 @@ function Calendar() {
       <div className="relative flex flex-col pr-[16px] pl-[51px] pb-[59px] pt-[18px] border-t-[0.5px] border-solid border-[#AAAAAA] h-screen">
         <div className="flex flex-row gap-[40px] border-b-[0.5px] border-solid border-[#AAAAAA] pb-[17px] mb-[25px]">
           <div className="flex flex-row ">
-            {Icons.searchIcon}
+            {<SearchIcon />}
             <input
               type="text"
               placeholder="جستجو بین تسک ها"
@@ -146,11 +149,11 @@ function Calendar() {
             </button>
             <div className="flex">
               <button onClick={goToPreviousMonth} className="w-[24px] h-[24px]">
-                {Icons.prevArrowIcon}
+                {<ArrowRightIcon color="#7D828C" />}
               </button>
 
               <button onClick={goToNextMonth} className="w-[24px] h-[24px]">
-                {Icons.nextArrowIcon}
+                {<ArrowLeftIcon color="#7D828C" />}
               </button>
             </div>
             <div className="font-[500] text-[12px]/[18px] text-black whitespace-nowrap">
@@ -186,7 +189,11 @@ function Calendar() {
                     classNames={
                       "absolute bottom-[17px] right-[12px] w-[24px] h-[24px] z-30"
                     }
-                    title={<div>{Icons.addIcon}</div>}
+                    title={
+                      <div>
+                        {<SqurePlusIcon color="white" width="18" height="18" />}
+                      </div>
+                    }
                   />
                 )}
                 <div className="flex flex-col items-start justify-start w-full gap-[2px]">

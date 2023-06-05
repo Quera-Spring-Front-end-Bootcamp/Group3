@@ -11,6 +11,8 @@ import { Popover, Transition } from "@headlessui/react";
 
 import Datepicker from "./Datepicker";
 import PrioritySelection from "./PrioritySelection";
+import CloseIcon from "../assets/Icons/CloseIcon";
+import FlagIcon from "../assets/Icons/FlagIcon";
 
 function CalendarTaskModal({ initialDate, setOpenModal }) {
   const [date, setDate] = useState(initialDate);
@@ -77,7 +79,7 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
           }
         >
           <div className="flex flex-row gap-[12px] justify-start items-center w-full">
-            <button onClick={CloseButtonClickHandler}>{Icons.CloseIcon}</button>
+            <button onClick={CloseButtonClickHandler}>{<CloseIcon />}</button>
             <input
               type="text"
               value={inputText}
@@ -98,7 +100,11 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
                     }}
                     className="rounded-[100%] border-dashed border-[1.4px] p-[11px]"
                   >
-                    {flag ? matchingItem.icon : Icons.FlagIcon}
+                    {flag ? (
+                      matchingItem.icon
+                    ) : (
+                      <FlagIcon color="#C1C1C1" width="30" height="30" />
+                    )}
                   </div>
                 </Popover.Button>
                 <Transition

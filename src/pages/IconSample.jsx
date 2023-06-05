@@ -47,47 +47,47 @@ import TrashIcon from "../assets/Icons/TrashIcon";
 function IconSample() {
   return (
     <div>
-      <SearchIcon color="#0000ff" />
-      <SqurePlusIcon color="#0000ff" />
-      <LogoutIcon color="#0000ff" />
-      <ArrowDownIcon color="#0000ff" />
-      <ListCheckIcon color="#0000ff" />
-      <ArtBoardIcon color="#0000ff" />
-      <CalendarIcon color="#0000ff" />
-      <ShareIcon color="#0000ff" />
-      <FilterIcon color="#0000ff" />
-      <FlagIcon color="#0000ff" width="30" height="30" />
-      <CheckmarkSqureIcon color="#0000ff" />
-      <CheckmarkCircleIcon color="#0000ff" />
-      <DotsMenuIcon color="#0000ff" />
-      <JustifyRightIcon color="#0000ff" />
-      <PlusIcon color="#0000ff" />
-      <CloseIcon color="#0000ff" width="24" height="25" />
-      <LinkIcon color="#0000ff" width="20" height="21" />
-      <EditSqureIcon color="#0000ff" />
-      <ArchiveIcon color="#0000ff" />
-      <TrashIcon color="#0000ff" />
-      <CircleHalfIcon color="#0000ff" />
-      <BackLeftIcon color="#0000ff" />
-      <ArrowDownCircleIcon color="#0000ff" width="24" height="25" />
-      <ArrowRightIcon color="#0000ff" />
-      <ArrowLeftIcon color="#0000ff" />
-      <BackRightIcon color="#0000ff" />
-      <EditUserIcon color="#0000ff" />
-      <CheckUserIcon color="#0000ff" />
-      <SettingsIcon color="#0000ff" />
-      <CheckIcon color="#0000ff" />
+      <SearchIcon color="#323232" />
+      <SqurePlusIcon color="#323232" />
+      <LogoutIcon color="#323232" />
+      <ArrowDownIcon color="#323232" width="24" height="25" />
+      <ListCheckIcon color="#323232" />
+      <ArtBoardIcon color="#323232" />
+      <CalendarIcon color="#323232" />
+      <ShareIcon color="#323232" />
+      <FilterIcon color="#323232" />
+      <FlagIcon color="#323232" width="30" height="30" />
+      <CheckmarkSqureIcon color="#323232" />
+      <CheckmarkCircleIcon color="#323232" />
+      <DotsMenuIcon color="#323232" />
+      <JustifyRightIcon color="#323232" width="12" height="12" />
+      <PlusIcon color="#323232" width="20" height="20" />
+      <CloseIcon color="#323232" width="24" height="25" />
+      <LinkIcon color="#323232" width="20" height="21" />
+      <EditSqureIcon color="#323232" />
+      <ArchiveIcon color="#323232" />
+      <TrashIcon color="#323232" />
+      <CircleHalfIcon color="#323232" />
+      <BackLeftIcon color="#323232" />
+      <ArrowDownCircleIcon color="#323232" width="24" height="25" />
+      <ArrowRightIcon color="#323232" />
+      <ArrowLeftIcon color="#323232" />
+      <BackRightIcon color="#323232" />
+      <EditUserIcon color="#323232" />
+      <CheckUserIcon color="#323232" />
+      <SettingsIcon color="#323232" />
+      <CheckIcon color="#323232" />
       <AddUserDashedCircleIcon />
-      <EyeIcon color="#0000ff" />
-      <StartCalendarIcon color="#0000ff" />
-      <EndCalendarIcon color="#0000ff" />
-      <PaletteIcon color="#0000ff" />
+      <EyeIcon color="#323232" />
+      <StartCalendarIcon color="#323232" />
+      <EndCalendarIcon color="#323232" />
+      <PaletteIcon color="#323232" width="11" height="11" />
       <PlayIcon />
-      <CommentIcon color="#0000ff" />
-      <ChackSharpSqureIcon color="#0000ff" />
-      <NoteIcon color="#0000ff" />
-      <SmileIcon color="#0000ff" />
-      <EmailIcon color="#0000ff" />
+      <CommentIcon color="#323232" />
+      <ChackSharpSqureIcon color="#323232" />
+      <NoteIcon color="#323232" />
+      <SmileIcon color="#323232" />
+      <EmailIcon color="#323232" />
       <RectangleIcon />
       <FlagDashedCircleIcon />
       <CalendarDashedCircleIcon />

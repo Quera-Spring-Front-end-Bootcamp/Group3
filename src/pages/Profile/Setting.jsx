@@ -1,9 +1,9 @@
 import { useState } from "react";
-import icons from "../../assets/Icons";
 import Button from "../../components/Button";
 import Card from "../../components/Card/Card";
 import { toast } from "react-hot-toast";
 import { dataColors } from "../../theme/theme";
+import CheckIcon from "../../assets/Icons/CheckIcon";
 
 export const Setting = ({ color, setColor }) => {
   const [enabled, setEnabled] = useState(false);
@@ -27,7 +27,7 @@ export const Setting = ({ color, setColor }) => {
                   style={{ backgroundColor: `#${c}` }}
                   onClick={() => setSelectedColor(c)}
                 >
-                  {isSelected && icons.WhiteCheckIcon}
+                  {isSelected && <CheckIcon color="white" />}
                 </div>
               );
             })}

@@ -1,5 +1,4 @@
 import Logo from "../components/AuthLayout/Logo";
-import Icons from "../assets/Icons";
 import Button from "../components/Button";
 import VerticalDivider from "../components/VerticalDivider";
 import MainLayoutHeaderItem from "../components/MainLayoutHeaderItem";
@@ -9,6 +8,19 @@ import ShareProjectCard from "../components/ShareProject/ShareProjectCard";
 import { Disclosure, Menu } from "@headlessui/react";
 import { NewTask } from "../components/NewTask/NewTask";
 import { ColumMoreCard } from "../components/ColumnMore/ColumnMoreCard";
+import SearchIcon from "../assets/Icons/SearchIcon";
+import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
+import LogoutIcon from "../assets/Icons/LogoutIcon";
+import ListCheckIcon from "../assets/Icons/ListCheckIcon";
+import ArtBoardIcon from "../assets/Icons/ArtBoardIcon";
+import CalendarIcon from "../assets/Icons/CalendarIcon";
+import ShareIcon from "../assets/Icons/ShareIcon";
+import PaletteIcon from "../assets/Icons/PaletteIcon";
+import LinkIcon from "../assets/Icons/LinkIcon";
+import TrashIcon from "../assets/Icons/TrashIcon";
+import EditSqureIcon from "../assets/Icons/EditSqureIcon";
+import PlusIcon from "../assets/Icons/PlusIcon";
+import DotsMenuIcon from "../assets/Icons/DotsMenuIcon";
 
 const data = [
   {
@@ -40,18 +52,22 @@ const data = [
 ];
 
 const dataColumnMoreItemsWorkSpace = [
-  { id: 1, title: "ساخت پروژه جدید", icon: Icons.AddIcon },
-  { id: 2, title: "   ویراش نام ورک اسپیس", icon: Icons.EditIcon },
-  { id: 3, title: "ویراش رنگ", icon: Icons.PalletIcons },
-  { id: 4, title: "کپی لینک", icon: Icons.LinkIcon },
-  { id: 5, title: "حذف", icon: Icons.TrashIcon, bg: "#9F0000" },
+  {
+    id: 1,
+    title: "ساخت پروژه جدید",
+    icon: <PlusIcon width="24" height="24" />,
+  },
+  { id: 2, title: "   ویراش نام ورک اسپیس", icon: <EditSqureIcon /> },
+  { id: 3, title: "ویراش رنگ", icon: <PaletteIcon width="20" height="21" /> },
+  { id: 4, title: "کپی لینک", icon: <LinkIcon /> },
+  { id: 5, title: "حذف", icon: <TrashIcon color="#9F0000" />, bg: "#9F0000" },
 ];
 
 const dataColumnMoreItemsProject = [
-  { id: 1, title: "ساخت تسک جدید", icon: Icons.AddIcon },
-  { id: 2, title: "ویراش نام پروژه  ", icon: Icons.EditIcon },
-  { id: 3, title: "کپی لینک", icon: Icons.LinkIcon },
-  { id: 4, title: "حذف", icon: Icons.TrashIcon, bg: "#9F0000" },
+  { id: 1, title: "ساخت تسک جدید", icon: <PlusIcon width="24" height="24" /> },
+  { id: 2, title: "ویراش نام پروژه  ", icon: <EditSqureIcon /> },
+  { id: 3, title: "کپی لینک", icon: <LinkIcon /> },
+  { id: 4, title: "حذف", icon: <TrashIcon color="#9F0000" />, bg: "#9F0000" },
 ];
 
 function MainLayout() {
@@ -86,7 +102,7 @@ function MainLayout() {
         </div>
 
         <div className="relative mt-3">
-          <div className="absolute top-2 right-2">{Icons.SearchIcon}</div>
+          <div className="absolute top-2 right-2">{<SearchIcon />}</div>
           <input
             type="text"
             placeholder="جستجو کنید"
@@ -95,7 +111,7 @@ function MainLayout() {
         </div>
 
         <button className="flex flex-row items-center justify-center bg-[#D3D3D3] rounded-md mt-3 h-8 text-xs font-semibold">
-          {Icons.AddSqureIcon}
+          {<SqurePlusIcon />}
           <span className="pr-1">ساختن اسپیس جدید</span>
         </button>
 
@@ -118,7 +134,7 @@ function MainLayout() {
                     <Menu>
                       <Menu.Button>
                         <button className="hidden group-hover:inline">
-                          ...
+                          <DotsMenuIcon />
                         </button>
                       </Menu.Button>
                       <Menu.Items className="absolute mt-9 mr-[50px]">
@@ -138,7 +154,7 @@ function MainLayout() {
                           <Menu>
                             <Menu.Button>
                               <button className="hidden group-hover:inline">
-                                ...
+                                <DotsMenuIcon />
                               </button>
                             </Menu.Button>
                             <Menu.Items className="absolute mt-9 mr-[33px]">
@@ -171,7 +187,7 @@ function MainLayout() {
           className="flex flex-row items-center mt-3"
           onClick={handleNavigateToLogin}
         >
-          <div className="">{Icons.LogoutIcon}</div>
+          <div className="">{<LogoutIcon color="#818181" />}</div>
           <span className="mr-2 font-normal text-base text-[#818181]">
             خروج
           </span>
@@ -186,19 +202,19 @@ function MainLayout() {
             <div className="font-semibold text-xl">پروژه اول</div>
             <VerticalDivider />
             <MainLayoutHeaderItem
-              icon={Icons.ListViewIcon}
+              icon={<ListCheckIcon />}
               title="نمایش لیستی"
               link="listView"
             />
             <VerticalDivider />
             <MainLayoutHeaderItem
-              icon={Icons.ColumnViewIcon}
+              icon={<ArtBoardIcon />}
               title="نمایش ستونی"
               link="columnView"
             />
             <VerticalDivider />
             <MainLayoutHeaderItem
-              icon={Icons.CalendarMainIcon}
+              icon={<CalendarIcon />}
               title="تقویم"
               link="calendarView"
             />
@@ -208,7 +224,7 @@ function MainLayout() {
             className="flex flex-row items-center"
             onClick={() => handleOpenShareProject()}
           >
-            <div>{Icons.ShareIcon}</div>
+            <div>{<ShareIcon />}</div>
             <span className="mr-2 font-normal text-base">اشتراک گذاری</span>
           </button>
           {openShareProjectModal && (
@@ -222,7 +238,7 @@ function MainLayout() {
         <main>
           <Outlet />
           <Button
-            startIcon={Icons.WhiteSqurePlus}
+            startIcon={<SqurePlusIcon color="white" />}
             title="تسک جدید"
             classNames="fixed left-8 bottom-8"
             handleClick={() => handleOpenNewTask()}

@@ -1,8 +1,8 @@
-function PlusIcon({ color = "#323232" }) {
+function PlusIcon({ color = "#323232", width = "20", height = "20" }) {
   return (
     <svg
-      width="20"
-      height="19"
+      width={width}
+      height={height}
       viewBox="0 0 20 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
