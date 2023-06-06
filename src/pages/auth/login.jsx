@@ -4,6 +4,13 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
+import AXIOS from "../../Utils/axios";
+import store from "../../redux/store";
+import {
+  setAccessToken,
+  setRefreshToken,
+  setUser,
+} from "../../redux/slices/authSlice";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,10 +28,22 @@ const Login = () => {
     navigate("/auth/register");
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-    toast.success("شما با موفقیت وارد شدید :)");
-  };
+  async function onSubmit(data) {
+    try {
+      const resp = await AXIOS.post("/auth/login", {
+        emailOrUsername: data.email,
+        password: data.password,
+      });
+      console.log(resp.data.data);
+      store.dispatch(setAccessToken(resp.data.data.accessToken));
+      store.dispatch(setRefreshToken(resp.data.data.refreshToken));
+      store.dispatch(setUser(resp.data.data.toBeSendUserData));
+      toast.success("شما با موفقیت وارد شدید :)");
+      navigate("/main/listView");
+    } catch (e) {
+      toast.error("ورود شما با مشکل رو به رو شد :(");
+    }
+  }
 
   return (
     <div className="flex flex-row items-center justify-center w-screen h-screen">
