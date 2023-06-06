@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import AXIOS from "../../Utils/axios";
 
 const Register = () => {
   const {
@@ -13,11 +14,19 @@ const Register = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    toast.success("ثبت نام شما با موفقیت انجام شد :)");
-    navigate("/");
-  };
+  async function onSubmit(data) {
+    try {
+      await AXIOS.post("/auth/register", {
+        username: data.firstName,
+        email: data.email,
+        password: data.password,
+      });
+      toast.success("ثبت نام شما با موفقیت انجام شد :)");
+      navigate("/main/listView");
+    } catch (e) {
+      toast.error("ثبت نام شما با مشکل رو به رو شد :(");
+    }
+  }
 
   return (
     <div className="flex flex-row items-center justify-center w-screen h-screen">
@@ -26,9 +35,9 @@ const Register = () => {
           <div>
             <Input
               label="نام کامل"
-              id="fname"
-              error={errors.fname}
-              register={register("fname", {
+              id="firstName"
+              error={errors.firstName}
+              register={register("firstName", {
                 required: "این فیلد الزامی می باشد!",
               })}
             />
