@@ -94,7 +94,7 @@ function MainLayout() {
 
   return (
     <div className="flex flex-row bg-[#FAFBFC]">
-      <aside className="w-80 h-screen p-9 flex flex-col border-l-[1px]">
+      <aside className="!w-72 h-screen p-9 flex flex-col border-l-[1px]">
         <Logo />
 
         <div className="mt-5 font-semibold">
@@ -193,7 +193,7 @@ function MainLayout() {
           </span>
         </button>
       </aside>
-      <div className="flex flex-col w-[calc(100vw_-_256px)] p-4 h-screen">
+      <div className="flex flex-col w-[calc(100vw_-_18rem)] p-4 h-screen">
         <header className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center h-20 gap-3">
             <div className="font-semibold text-xl">پروژه اول</div>

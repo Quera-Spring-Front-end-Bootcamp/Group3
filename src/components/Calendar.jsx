@@ -6,8 +6,8 @@ import Button from "./Button";
 import CalendarTaskModal from "./CalendarTaskModal";
 import ArrowLeftIcon from "../assets/Icons/ArrowLeftIcon";
 import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
-import SearchIcon from "../assets/Icons/SearchIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
+import MainLayoutSubHeader from "./MainLayoutSubHeader";
 
 // can't pass the clickHandler as prop. it should change inside the component
 function Calendar() {
@@ -129,17 +129,8 @@ function Calendar() {
           setOpenModal={setOpenModal}
         />
       )}
-      <div className="relative flex flex-col pb-[59px] pt-[18px] border-t-[0.5px] border-solid border-[#AAAAAA] h-screen">
-        <div className="flex flex-row gap-[40px] border-b-[0.5px] border-solid border-[#AAAAAA] pb-[17px] mb-[25px]">
-          <div className="flex flex-row ">
-            {<SearchIcon />}
-            <input
-              type="text"
-              placeholder="جستجو بین تسک ها"
-              className="text-[12px]/[18.4px] placeholder-[#959595] bg-transparent"
-            />
-          </div>
-          <div className="w-[1px] h-[24px] bg-[#999999]"></div>
+      <div className="relative flex flex-col pb-[59px] border-solid border-[#AAAAAA] h-screen">
+        <MainLayoutSubHeader>
           <div className="flex flex-row items-center gap-[8px] max-w-min">
             <button
               onClick={goToToday}
@@ -161,7 +152,7 @@ function Calendar() {
               {formatter.format(currentDate).split(" ")[2]}
             </div>
           </div>
-        </div>
+        </MainLayoutSubHeader>
         <div className="relative W-full h-full">
           <div className=" pointer-events-none z-10 absolute w-full grid grid-cols-7 pt-[12.5px]">
             {weekDays.map((weekday) => (
