@@ -1,5 +1,5 @@
 function ColumnView() {
-  return <div>ColumnView</div>;
+  return <div>Column View</div>;
 }
 
 export default ColumnView;

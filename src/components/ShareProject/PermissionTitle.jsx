@@ -1,6 +1,6 @@
 import { useState } from "react";
-import icons from "../../assets/Icons";
 import { PermissionList } from "./PermissionList";
+import ArrowDownIcon from "../../assets/Icons/ArrowDownIcon";
 
 export const PermissionTitle = ({ isOwner }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ export const PermissionTitle = ({ isOwner }) => {
             <span className="text-xs font-normal text-[#1e1e1e]">
               {selectedOption || "دسترسی کامل"}
             </span>
-            {icons.ArrowDownIcon}
+            {<ArrowDownIcon width="18" height="19" />}
           </div>
           <PermissionList
             isOpen={isOpen}

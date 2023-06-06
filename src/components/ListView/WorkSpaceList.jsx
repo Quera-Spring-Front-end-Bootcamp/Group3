@@ -1,11 +1,11 @@
-import HeaderProjectList from "./HeaderProjectList";
+import FilterIcon from "../../assets/Icons/FilterIcon";
+import MainLayoutSubHeader from "../MainLayoutSubHeader";
 import TasksList from "./TasksList";
 
 const WorkSpaceList = () => {
-  
   const data = [
     {
-      id:"1",
+      id: "1",
       project: {
         id: "1",
         title: "پروژه اول",
@@ -38,7 +38,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/296" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
         {
           status: "Pending",
@@ -50,7 +50,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/302" },
           ],
           deadlines: "۶ آبان",
-          priority: "high",
+          priority: "#FFE605",
         },
         {
           status: "Done",
@@ -62,7 +62,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/305" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
         {
           status: "Done",
@@ -74,7 +74,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/308" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
       ],
     },
@@ -108,7 +108,7 @@ const WorkSpaceList = () => {
             { name: "Hasan", avatarUrl: "https://i.pravatar.cc/298" },
           ],
           deadlines: "۶ آبان",
-          priority: "low",
+          priority: "#B2ACAC",
         },
         {
           status: "In progress",
@@ -124,7 +124,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/296" },
           ],
           deadlines: "۶ آبان",
-          priority: "high",
+          priority: "#FB0606",
         },
         {
           status: "Done",
@@ -136,7 +136,7 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/305" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
         {
           status: "Done",
@@ -148,21 +148,28 @@ const WorkSpaceList = () => {
             { name: "Reza", avatarUrl: "https://i.pravatar.cc/308" },
           ],
           deadlines: "۶ آبان",
-          priority: "immediate",
+          priority: "#FFE605",
         },
       ],
     },
   ];
 
-    return (
-      <div className="bg-[#FAFBFC]  w-[1100px] p-12">
-        <HeaderProjectList />
-        {data.map((item) => (
-          <TasksList key={item.id} data={item} />
-        ))}
-      </div>
-    );
+  return (
+    <div className="bg-[#FAFBFC]  w-[1100px] ">
+      <MainLayoutSubHeader>
+        <button className="flex gap-1 items-center">
+          <span>{<FilterIcon />}</span>
+          <span className="text-black font-medium text-xs">فیلترها</span>
+        </button>
+        <span className="bg-[#E9F9FF] text-black font-medium text-xs mr-5 h-[26px] p-1 flex items-center">
+          دسته‌بندی‌شده با: وضعیت
+        </span>
+      </MainLayoutSubHeader>
+      {data.map((item) => (
+        <TasksList key={item.id} data={item} />
+      ))}
+    </div>
+  );
+};
 
-}
-
-export default WorkSpaceList
+export default WorkSpaceList;

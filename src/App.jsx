@@ -16,6 +16,7 @@ import ListView from "./pages/main/ListView";
 import ColumnView from "./pages/main/ColumnView";
 import CalendarView from "./pages/main/CalendarView";
 import { dataColors, useStickyState } from "./theme/theme";
+import IconSample from "./pages/iconSample";
 
 const App = () => {
   const [color, setColor] = useStickyState(dataColors[0], "theme-color");
@@ -47,6 +48,8 @@ const App = () => {
           <Route path="columnView" element={<ColumnView />}></Route>
           <Route path="calendarView" element={<CalendarView />}></Route>
         </Route>
+
+        <Route path="iconSample" element={<IconSample />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

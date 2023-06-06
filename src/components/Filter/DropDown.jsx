@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import icons from "../../assets/Icons";
+import ArrowDownIcon from "../../assets/Icons/ArrowDownIcon";
+import SearchIcon from "../../assets/Icons/SearchIcon";
 
 const Dropdown = ({
   options,
@@ -61,7 +62,7 @@ const Dropdown = ({
         <span style={{ padding, backgroundColor, borderRadius }}>
           {selectedValue || "انتخاب کنید"}
         </span>
-        <i>{icons.ArrowDownIcon}</i>
+        <i>{<ArrowDownIcon />}</i>
       </button>
 
       {open && (
@@ -75,7 +76,7 @@ const Dropdown = ({
                   htmlFor="search"
                   className="absolute inset-y-0 right-2 flex items-center "
                 >
-                  <i>{icons.SearchIcon}</i>
+                  <i>{<SearchIcon color="#208D8E" />}</i>
                 </label>
                 <input
                   className="w-full py-2.5 px-8 border-b border-[#E8EAED] text-[10px] text-[#959595]  rounded-tr-lg  rounded-tl-lg"

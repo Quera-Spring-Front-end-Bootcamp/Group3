@@ -1,4 +1,3 @@
-// import React from 'react'
 import rectangle from "../assets/rectangle.svg";
 import Header from "../components/AuthLayout/Header";
 

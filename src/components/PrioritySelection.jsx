@@ -1,12 +1,29 @@
 import Card from "./Card/Card";
-import icons from "../assets/Icons";
+import FlagIcon from "../assets/Icons/FlagIcon";
+import CloseIcon from "../assets/Icons/CloseIcon";
 
 function PrioritySelection({ setFlag }) {
   const flagItems = [
-    { id: "urgent", name: "فوری", icon: icons.FlagRed },
-    { id: "high", name: "بالا", icon: icons.FlagYellow },
-    { id: "medium", name: "متوسط", icon: icons.FlagGreen },
-    { id: "low", name: "پایین", icon: icons.FlagGray },
+    {
+      id: "urgent",
+      name: "فوری",
+      icon: <FlagIcon color="#FB0606" width="20" height="21" />,
+    },
+    {
+      id: "high",
+      name: "بالا",
+      icon: <FlagIcon color="#FFE605" width="20" height="21" />,
+    },
+    {
+      id: "medium",
+      name: "متوسط",
+      icon: <FlagIcon color="#09DBCE" width="20" height="21" />,
+    },
+    {
+      id: "low",
+      name: "پایین",
+      icon: <FlagIcon color="#B3ACAC" width="20" height="21" />,
+    },
   ];
 
   return (
@@ -32,7 +49,9 @@ function PrioritySelection({ setFlag }) {
           onClick={() => setFlag(false)}
           className="flex flex-row items-center pt-[4px] justify-end gap-[8px]"
         >
-          <div className="w-[20px] h-[20px]">{icons.DeactiveIcon}</div>
+          <div className="w-[20px] h-[20px]">
+            {<CloseIcon color="#E45454" width="20" height="21" />}
+          </div>
           <div className="font-[400] text-[14px]/[21px] text-right text-[#534D60]">
             حذف اولویت
           </div>

@@ -15,7 +15,7 @@ export const ProjectInvitationForm = () => {
     e.target.reset();
   };
   return (
-    <form className="mb-[29px]" onSubmit={handleSubmit(onSubmit)}>
+    <form className="mt-[45px] mb-[29px]" onSubmit={handleSubmit(onSubmit)}>
       <div className="relative w-full h-8">
         <Input
           id="email"

@@ -6,7 +6,10 @@ import toast from "react-hot-toast";
 
 import Card from "./Card/Card";
 import Button from "./Button";
-import icons from "../assets/Icons";
+import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
+import ArrowLeftIcon from "../assets/Icons/ArrowLeftIcon";
+import StartCalendarIcon from "../assets/Icons/StartCalendarIcon";
+import EndCalendarIcon from "../assets/Icons/EndCalendarIcon";
 
 function Datepicker({ setDate, setEndDate, className, setDatePickerOpen }) {
   const [currentDate, setCurrentDate] = useState(moment());
@@ -174,9 +177,11 @@ function Datepicker({ setDate, setEndDate, className, setDatePickerOpen }) {
             onClick={() => setDaySelector("start")}
             className="flex flex-row justify-start items-center gap-[8px] w-[438px]"
           >
-            {daySelector === "start"
-              ? icons.CalendarIconActive
-              : icons.CalendarIcon}
+            {daySelector === "start" ? (
+              <StartCalendarIcon color="#208D8E" />
+            ) : (
+              <StartCalendarIcon color="#BDBDBD" />
+            )}
             زمان شروع
             {selectedStartDate && (
               <div className="text-primary">
@@ -193,9 +198,11 @@ function Datepicker({ setDate, setEndDate, className, setDatePickerOpen }) {
             onClick={() => setDaySelector("end")}
             className={`flex flex-row justify-start items-center gap-[8px] w-[438px]`}
           >
-            {daySelector === "end"
-              ? icons.CalendarIconActive
-              : icons.CalendarIcon}
+            {daySelector === "end" ? (
+              <EndCalendarIcon color="#208D8E" />
+            ) : (
+              <EndCalendarIcon color="#BDBDBD" />
+            )}
             زمان پایان
             <div className="text-primary">
               {selectedEndDate && (
@@ -239,9 +246,11 @@ function Datepicker({ setDate, setEndDate, className, setDatePickerOpen }) {
               {/* month navigator */}
               <div>
                 <button onClick={goToPreviousMonth}>
-                  {icons.prevArrowIcon}
+                  {<ArrowRightIcon color="#7D828C" />}
                 </button>
-                <button onClick={goToNextMonth}>{icons.nextArrowIcon}</button>
+                <button onClick={goToNextMonth}>
+                  {<ArrowLeftIcon color="#7D828C" />}
+                </button>
               </div>
               {/* today button */}
               <button

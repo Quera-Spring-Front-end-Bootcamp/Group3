@@ -1,5 +1,11 @@
+import WorkSpaceList from "../../components/ListView/WorkSpaceList";
+
 function ListView() {
-  return <div>ListView</div>;
+  return (
+    <div>
+      <WorkSpaceList />
+    </div>
+  );
 }
 
 export default ListView;
