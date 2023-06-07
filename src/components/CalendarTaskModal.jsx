@@ -1,7 +1,7 @@
 //todo: connect datepicker to date selector of modal.
 
 import { useState } from "react";
-
+import moment from "moment-jalaali";
 import Card from "./Card/Card";
 import Button from "./Button";
 
@@ -13,11 +13,13 @@ import PrioritySelection from "./PrioritySelection";
 import CloseIcon from "../assets/Icons/CloseIcon";
 import FlagIcon from "../assets/Icons/FlagIcon";
 import FlagDashedCircleIcon from "../assets/Icons/FlagDashedCircleIcon";
+import AXIOS from "../Utils/axios.js";
 
 function CalendarTaskModal({ initialDate, setOpenModal }) {
   const [date, setDate] = useState(initialDate);
   const [endDate, setEndDate] = useState(false);
   const [flag, setFlag] = useState(false);
+  let taskId = null;
 
   const flagItems = [
     { id: "urgent", icon: <FlagDashedCircleIcon color="#FB0606" /> },
@@ -42,18 +44,45 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
   const FlagButtonClickHandler = () => {
     console.log("Flag Button Clicked!");
   };
-  const AddButtonClickHandler = () => {
+
+  async function AddButtonClickHandler() {
     if (inputText) {
+      try {
+        await AXIOS.post("/task", {
+          name: inputText,
+          description: "",
+          boardId: "6480bf53b684d21e27413267",
+        })
+          .then((response) => {
+            taskId = response.data.data._id;
+          })
+          .then(async () => {
+            try {
+              await AXIOS.put(`/task/${taskId}`, {
+                name: inputText,
+                description: "",
+                deadline: `${moment(date).subtract(1, "day").toLocaleString()}`,
+              }).then(() => {
+                setOpenModal(false);
+              });
+            } catch (e) {
+              console.log(e);
+            }
+          });
+      } catch (e) {
+        toast.error("تسک شما ثبت نشد");
+      }
       console.log(
-        `text: ${inputText}, startDate: ${date}, endDate: ${endDate}, priority: ${
+        `text: ${inputText}, startDate: ${date.toLocaleString()}, endDate: ${endDate}, priority: ${
           flag ? flag[0] : "none"
         }`
       );
     }
+
     if (!inputText) {
       toast("نام تسک نمیتواند خالی باشد");
     }
-  };
+  }
   const CloseButtonClickHandler = () => {
     setOpenModal(false);
   };
@@ -63,9 +92,12 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
       <div className="z-80">
         {datepickerModalOpen && (
           <Datepicker
-            setDatepickerModalOpen={setDatepickerModalOpen}
+            setDatePickerOpen={setDatepickerModalOpen}
             setDate={setDate}
             setEndDate={setEndDate}
+            className={
+              "absolute z-[50] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            }
           />
         )}
       </div>
@@ -75,7 +107,7 @@ function CalendarTaskModal({ initialDate, setOpenModal }) {
       >
         <Card
           className={
-            "absolute shadow-[0_8px_16px_0px_rgba(0,0,0,0.2)] p-6 rounded-[8px] items-start w-[463px] gap-[30px] z-50 top-1/2 left-1/2 -translate-x-1/2 translate-y-1/2"
+            "absolute shadow-[0_8px_16px_0px_rgba(0,0,0,0.2)] p-6 rounded-[8px] items-start w-[463px] gap-[30px] z-50 top-1/2 left-1/2 "
           }
         >
           <div className="flex flex-row gap-[12px] justify-start items-center w-full">
