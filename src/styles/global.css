@@ -14,11 +14,18 @@ html {
 }
 
 @layer base {
+    input {
+        @apply focus:outline-none
+    }
+
     :root {
         --textPrimary: var(--text-textPrimary);
         --primary: var(--color-primary);
         --secondary: var(--color-secondary);
+
     }
+
+
 }
 
 
