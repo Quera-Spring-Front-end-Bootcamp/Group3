@@ -25,14 +25,7 @@ function ColumnViewComponent() {
           دسته‌بندی‌شده با: وضعیت
         </span>
       </MainLayoutSubHeader>
-      <BoardTitle boards={boards} />
-      <button
-        onClick={() => {
-          console.log(boards);
-        }}
-      >
-        click
-      </button>
+      <BoardTitle />
     </div>
   );
 }
