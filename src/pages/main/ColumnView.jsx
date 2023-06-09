@@ -1,5 +1,7 @@
+import ColumnViewComponent from "../../components/ColumnViewComponent";
+
 function ColumnView() {
-  return <div>Column View</div>;
+  return <ColumnViewComponent />;
 }
 
 export default ColumnView;
