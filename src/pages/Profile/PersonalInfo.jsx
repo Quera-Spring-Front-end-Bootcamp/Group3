@@ -4,7 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const imageMimeType = /image\/(png|jpg|jpeg)/i;
@@ -16,32 +16,38 @@ export const PersonalInfo = () => {
     family: "Mohamadi",
     mobile: "09121234567",
   });
-  const [fileDataURL, setFileDataURL] = useState(null);
-  const [isAssighnImage, setIsAssighnImage] = useState(!!userData.image);
+
+  const [image, setImage] = useState(null);
   const {
   register,
+  setValue,
+  setError,
   formState: { errors },
   handleSubmit,
   } = useForm({defaultValues: userData});
-  
- 
 
-  const onSubmit = (data) => {
-    const f = data.image[0];
-    if(f){
-      if (!f.type.match(imageMimeType)) {
-        toast.error("نوع فرمت فایل معتبر نیست");
+  useEffect(() => {
+    register("image");
+  }, []);
+  
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file){
+      if (!file.type.match(imageMimeType)){
+        setError("image","نوع فرمت فایل معتبر نیست.")
+        toast.error("نوع فرمت فایل معتبر نیست")
         return;
       }
-      setFileDataURL(URL.createObjectURL(f));
-      setIsAssighnImage(true);
     }
+     setValue("image", file);
+     setImage(file);
+   };
+  
+  const onSubmit = (data) => {
     setUserData(data)
-    
     console.log("data", data);
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
-
-  }
+}
 
   return (
     <div className="">
@@ -50,8 +56,8 @@ export const PersonalInfo = () => {
         <form className="w-full mt-8" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex  gap-4 mb-8">
             <div className="relative inline-flex items-center justify-center w-[100px] h-[98px] overflow-hidden bg-[#EAF562] rounded-full ">
-              {isAssighnImage ? (
-                <img src={fileDataURL} alt="Profile Image" />
+              {image ? (
+                <img src={URL.createObjectURL(image)} alt="Profile Image" />
               ) : (
                 <span className="font-medium mt-3 text-[34px] text-black ">
                   {userData.name.charAt(0) + userData.family.charAt(0)}
@@ -63,8 +69,9 @@ export const PersonalInfo = () => {
                 <input
                   type="file"
                   id="actual-btn"
+                  name="image"
+                  onChange={handleImageChange}
                   hidden
-                  {...register("image")}
                   accept=".png, .jpg, .jpeg"
                 />
                 <label
