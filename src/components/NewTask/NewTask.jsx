@@ -372,7 +372,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                         {item.title}
                                       </span>
                                     </div>
-                                    <i>{<DotsMenuIcon color="#BDBDBD" />}</i>
+                                    <i onClick={() => handleEtcOpen(item.id)}>{<DotsMenuIcon color="#BDBDBD" />}</i>
                                   </div>
 
 
@@ -381,7 +381,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
 
 
 
-                                  <i onClick={() => handleEtcOpen(item.id)}>{<EtcIcon/>}</i>
+                                  {/* <i onClick={() => handleEtcOpen(item.id)}>{<EtcIcon/>}</i> */}
                                     
                                     <div style={{display: `${item.etcFlag ? 'block' : 'none' }`}} className={`flex flex-col items-start p-[8px]   w-[80px]  shadow-xl rounded-[8px] absolute  mr-[-121px] mt-[50px] bg-white  right-[300px]`}>
                                         <div className='flex flex-col items-start justify-between  h-[69px]'>
