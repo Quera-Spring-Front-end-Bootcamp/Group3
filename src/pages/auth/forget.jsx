@@ -1,8 +1,10 @@
+import AXIOS from "../../Utils/axios";
 import Button from "../../components/Button";
 import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Forget = () => {
   const {
@@ -11,12 +13,22 @@ const Forget = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const enteredEmail = data.email;
     //check if email is registered
-    if (enteredEmail) {
-      navigate("/auth/resetpassword");
+    try {
+      if (enteredEmail) {
+        await AXIOS.post("/auth/forget-password",{
+        email: enteredEmail
+        });
+        toast.success("عملیات با موفقیت انجام شد :)");
+        navigate("/auth/resetpassword");
+      }
+
+    } catch (e) {
+      toast.error("عملیات با مشکل رو به رو شد :(");
     }
+
   };
 
   const onError = (data) => {
