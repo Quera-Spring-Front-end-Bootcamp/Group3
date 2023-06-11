@@ -17,6 +17,10 @@ import TagDashedCircleIcon from "../../assets/Icons/TagDashedCircleIcon";
 import EyeIcon from "../../assets/Icons/EyeIcon";
 import SearchIcon from "../../assets/Icons/SearchIcon";
 import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
+import CloseTagOption from "../../assets/Icons/CloseTagOption";
+import EtcIcon from "../../assets/Icons/EtcIcon"
+import EditTagOption from "../../assets/Icons/EditTagOption"
+import EditColorOption from "../../assets/Icons/EditColorOption"
 
 const priorityItems = [
   {
@@ -152,6 +156,22 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     setDatePickerOpen(false);
     setTagOpen(false);
   }
+  function handleEtcOpen(id) {
+    console.log(id);
+    const filteredItems = tagItems.map(item => {
+        if (item.id === id) {
+            return { ...item, etcFlag: !item.etcFlag};
+        }
+        return item;
+    })
+
+    setTagItems(filteredItems)
+    // setEtcId(id);
+    // console.log(tag);
+    // setKeyTag([event.target.id]);
+    // console.log(event.target.id);
+   
+}
 
   return (
     <>
@@ -354,6 +374,41 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                     </div>
                                     <i>{<DotsMenuIcon color="#BDBDBD" />}</i>
                                   </div>
+
+
+
+                                      
+
+
+
+                                  <i onClick={() => handleEtcOpen(item.id)}>{<EtcIcon/>}</i>
+                                    
+                                    <div style={{display: `${item.etcFlag ? 'block' : 'none' }`}} className={`flex flex-col items-start p-[8px]   w-[80px]  shadow-xl rounded-[8px] absolute  mr-[-121px] mt-[50px] bg-white  right-[300px]`}>
+                                        <div className='flex flex-col items-start justify-between  h-[69px]'>
+                                            <div className='flex flex-row justify-start items-center gap-[4px]'><i>{<CloseTagOption/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
+                                            <div className='flex flex-row justify-start items-center gap-[4px]'>{<EditTagOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
+                                            <div className='flex flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
+
+
+                                        </div>
+
+
+                                    </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  
                                 </div>
                               ))}
                             </div>
