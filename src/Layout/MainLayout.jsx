@@ -1,14 +1,15 @@
+import { useState } from "react";
+import { Outlet, useNavigate } from "react-router";
 import Logo from "../components/AuthLayout/Logo";
 import Button from "../components/Button";
 import VerticalDivider from "../components/VerticalDivider";
 import MainLayoutHeaderItem from "../components/MainLayoutHeaderItem";
-import { Outlet, useNavigate } from "react-router";
-import { useState } from "react";
-
-import ShareCard from "../components/shareCard/ShareCard";
 import { Disclosure, Menu } from "@headlessui/react";
 import { NewTask } from "../components/NewTask/NewTask";
 import { ColumMoreCard } from "../components/ColumnMore/ColumnMoreCard";
+import CreateWorkspace from "../components/CreateWorkspace";
+import ShareCard from "../components/ShareCard/ShareCard";
+import { copyLink } from "../Utils/copyLink";
 import SearchIcon from "../assets/Icons/SearchIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import LogoutIcon from "../assets/Icons/LogoutIcon";
@@ -19,11 +20,9 @@ import ShareIcon from "../assets/Icons/ShareIcon";
 import PaletteIcon from "../assets/Icons/PaletteIcon";
 import LinkIcon from "../assets/Icons/LinkIcon";
 import TrashIcon from "../assets/Icons/TrashIcon";
+import DotsMenuIcon from "../assets/Icons/DotsMenuIcon";
 import EditSqureIcon from "../assets/Icons/EditSqureIcon";
 import PlusIcon from "../assets/Icons/PlusIcon";
-import DotsMenuIcon from "../assets/Icons/DotsMenuIcon";
-import { copyLink } from "../Utils/copyLink";
-import CreateWorkspace from "../components/CreateWorkspace";
 
 const data = [
   {
@@ -129,8 +128,8 @@ function MainLayout() {
       title: "حذف",
       icon: <TrashIcon color="#9F0000" />,
       bg: "#9F0000",
-      onClick: ( ) => {
-       // Logic for deleting the project
+      onClick: () => {
+        // Logic for deleting the project
       },
     },
   ];

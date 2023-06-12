@@ -19,7 +19,7 @@ export const ColumMoreCard = ({ data, handleOpenProject }) => {
         handleClick={handleOpenProject}
         title="اشتراک‌گذاری"
         startIcon={<ShareIcon color="white" />}
-        className="rounded-md  bg-primary py-2 font-bold text-white  text-xs flex flex-row items-center px-3 gap-2 mt-1"
+        className="rounded-md	bg-primary py-2 font-bold text-white  text-xs flex flex-row items-center px-3 gap-2 mt-1"
       />
     </Card>
   );
