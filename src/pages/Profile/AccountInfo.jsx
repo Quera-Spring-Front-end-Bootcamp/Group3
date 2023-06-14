@@ -23,7 +23,7 @@ export const AccountInfo = () => {
   };
   return (
     <div className="">
-      <Card className={"w-[354px] h-[550px] absolute top-[160px] left-[688x] "}>
+      <Card className={"w-[354px] h-[550px] absolute top-[90px] left-[688x] "}>
         <p className="font-bold text-[31px] text-right">اطلاعات حساب</p>
         <form className="w-full mt-7" onSubmit={handleSubmit(onSubmit)}>
           <div className="my-5">

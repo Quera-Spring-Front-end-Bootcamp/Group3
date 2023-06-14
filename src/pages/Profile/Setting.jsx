@@ -9,7 +9,7 @@ export const Setting = ({ color, setColor }) => {
   const [enabled, setEnabled] = useState(false);
   const [selectedColor, setSelectedColor] = useState(color);
   return (
-    <Card className="w-[354px] h-[550px] gird gap-[35px] ">
+    <Card className="w-[354px] h-[550px] gird gap-[35px]  absolute top-[90px] left-[688x]">
       <p className="font-bold text-[31px] text-right ">تنظیمات</p>
       <div className="grid gap-[50px]">
         <div>
