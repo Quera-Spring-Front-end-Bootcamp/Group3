@@ -7,10 +7,10 @@ import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
 import ArchiveIcon from "../../assets/Icons/ArchiveIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
 import ProjectCard from "../ProjectCard/ProjectCard";
-import AddRectangleIcon from "../../assets/Icons/AddRectangleIcon";
+import SqurePlusIcon from "../../assets/Icons/SqurePlusIcon";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const BoardTitle = ({ boards }) => {
+const BoardTitle = () => {
   const card = [
     {
       id: useId(),
@@ -147,7 +147,7 @@ const BoardTitle = ({ boards }) => {
       );
 
       const draggedTask = sourceColumn.tasks[source.index];
-      const task = sourceColumn.tasks.splice(source.index, 1)[0];
+      // const task = sourceColumn.tasks.splice(source.index, 1)[0];
 
       if (!destinationColumn.tasks) {
         destinationColumn.tasks = [];
@@ -164,7 +164,7 @@ const BoardTitle = ({ boards }) => {
       <DragDropContext onDragEnd={onDragEnd}>
         {data.map((item) => (
           <Droppable droppableId={item.id} key={item.id}>
-            {(provided, snapshot) => {
+            {(provided) => {
               return (
                 <div
                   key={item.id}
@@ -240,7 +240,7 @@ const BoardTitle = ({ boards }) => {
                             draggableId={task.id}
                             index={index}
                           >
-                            {(provided, snapshot) => {
+                            {(provided) => {
                               return (
                                 <div
                                   ref={provided.innerRef}
@@ -263,7 +263,7 @@ const BoardTitle = ({ boards }) => {
                       })}
 
                     <div className="flex flex-row gap-[4px] justify-start items-center">
-                      <AddRectangleIcon />
+                      <SqurePlusIcon />
                       <div className="font-[500] text-[12px]/[18px] text-[#3D3D3D]">
                         ساختن تسک جدید
                       </div>
