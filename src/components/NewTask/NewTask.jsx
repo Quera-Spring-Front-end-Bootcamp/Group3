@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import Button from "../Button";
 import { Transition, Dialog } from "@headlessui/react";
+
 import Datepicker from "../Datepicker";
 import { v4 as uuidv4 } from "uuid";
 import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
@@ -46,13 +47,14 @@ const priorityItems = [
   { id: "5", title: "حذف اولویت", icon: <CloseIcon color="#E45454" /> },
 ];
 
-const tagsItem = [
+let tagsItem = [
   { id: uuidv4(), title: "درس", color: "#EBC8C8", editFlag: false },
   { id: uuidv4(), title: "کار", color: "#C3B7F2", editFlag: false },
   { id: uuidv4(), title: "پروژه", color: "#7FFAFA", editFlag: false },
 ];
 
 export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
+
   const [datePickerOpen, setDatePickerOpen] = useState(false);
   const [flagOpen, setFlagOpen] = useState(false);
   const [tagOpen, setTagOpen] = useState(false);
@@ -60,6 +62,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   const [tagItems, setTagItems] = useState(tagsItem);
   const [tag, setTag] = useState([]);
   const tagHover = useRef(null);
+  const [editWindowPosition, setEditWindowPosition] = useState({ x: 0, y: 0 });
 
   function handleDatePickerOpen() {
     setDatePickerOpen(!datePickerOpen);
@@ -156,8 +159,10 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     setDatePickerOpen(false);
     setTagOpen(false);
   }
-  function handleEtcOpen(id) {
-    console.log(id);
+  // console.log(typeof(editWindowPosition.x));
+  function handleEtcOpen(id,event) {
+    console.log((event.clientY / window.innerHeight) * 100-20);
+    setEditWindowPosition({ x: event.clientX, y: event.clientY });
     const filteredItems = tagItems.map(item => {
         if (item.id === id) {
             return { ...item, etcFlag: !item.etcFlag};
@@ -171,6 +176,23 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     // setKeyTag([event.target.id]);
     // console.log(event.target.id);
    
+}
+
+function deleteTag(id) {
+
+
+
+    const filteredItems = tagItems.filter(item => {
+        return item.id !== id
+    })
+    
+    
+    tagsItem = filteredItems
+    setTagItems(filteredItems)
+    // tagsItem =[]
+    // tagsItem = []
+    
+
 }
 
   return (
@@ -372,7 +394,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                         {item.title}
                                       </span>
                                     </div>
-                                    <i onClick={() => handleEtcOpen(item.id)}>{<DotsMenuIcon color="#BDBDBD" />}</i>
+                                    
+                                    <i onClick={(e) => handleEtcOpen(item.id, e)}>{<DotsMenuIcon color="#BDBDBD" />}</i>
+                                   
                                   </div>
 
 
@@ -383,9 +407,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
 
                                   {/* <i onClick={() => handleEtcOpen(item.id)}>{<EtcIcon/>}</i> */}
                                     
-                                    <div style={{display: `${item.etcFlag ? 'block' : 'none' }`}} className={`flex flex-col items-start p-[8px]   w-[80px]  shadow-xl rounded-[8px] absolute  mr-[-121px] mt-[50px] bg-white  right-[300px]`}>
+                                    <div style={{display: `${item.etcFlag ? 'block' : 'none' }`, top : `${editWindowPosition.y-(window.innerHeight/2)}px`}} className={`flex flex-col items-start p-[8px]    w-[80px]  shadow-xl rounded-[8px] absolute mr-[-120px]  bg-white  right-[300px]`}>
                                         <div className='flex flex-col items-start justify-between  h-[69px]'>
-                                            <div className='flex flex-row justify-start items-center gap-[4px]'><i>{<CloseTagOption/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
+                                            <div onClick={() => deleteTag(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'><i>{<CloseTagOption/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
                                             <div className='flex flex-row justify-start items-center gap-[4px]'>{<EditTagOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
                                             <div className='flex flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
 
