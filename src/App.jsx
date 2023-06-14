@@ -16,7 +16,7 @@ import ListView from "./pages/main/ListView";
 import ColumnView from "./pages/main/ColumnView";
 import CalendarView from "./pages/main/CalendarView";
 import { dataColors, useStickyState } from "./theme/theme";
-import IconSample from "./pages/iconSample";
+import IconSample from "./pages/IconSample";
 
 const App = () => {
   const [color, setColor] = useStickyState(dataColors[0], "theme-color");
