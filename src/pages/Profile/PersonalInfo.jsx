@@ -51,7 +51,7 @@ export const PersonalInfo = () => {
 
   return (
     <div className="">
-      <Card className={"w-[354px] h-[550px] absolute top-[166px] left-[688x] "}>
+      <Card className={"w-[354px] h-[550px] absolute top-[80px] left-[688x] "}>
         <p className="font-bold text-[31px] text-right">اطلاعات فردی</p>
         <form className="w-full mt-8" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex  gap-4 mb-8">
