@@ -22,6 +22,7 @@ import CloseTagOption from "../../assets/Icons/CloseTagOption";
 import EtcIcon from "../../assets/Icons/EtcIcon"
 import EditTagOption from "../../assets/Icons/EditTagOption"
 import EditColorOption from "../../assets/Icons/EditColorOption"
+import { set } from "lodash";
 
 const priorityItems = [
   {
@@ -63,6 +64,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   const [tag, setTag] = useState([]);
   const tagHover = useRef(null);
   const [editWindowPosition, setEditWindowPosition] = useState({ x: 0, y: 0 });
+  const [editing, setEditing] = useState({flag: false, id: null});
 
   function handleDatePickerOpen() {
     setDatePickerOpen(!datePickerOpen);
@@ -73,24 +75,44 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   function handleSubmitInputChange(event) {
     const text = event.target.value;
     if (event.key === "Enter") {
-      const newItem = {
-        id: uuidv4(),
-        title: text,
-        color: "#93fa7f",
-        editFlag: false,
-      };
-      // console.log(newItem)
-      tag.push(newItem);
-      // console.log(tag)
-      setTag([...tag]);
-      setTagInputText(""); // تخلیه input
+      if (editing.flag) {
+        const filteredItems = tagItems.map((item) => {
+          if (item.id === editing.id) {
+            return { ...item, title: text };
+          }
+          return item;
+        });
+        tagsItem = filteredItems;
+        setTagItems(filteredItems);
+        setEditing({flag: false, id: null});
+
+
+        
+
+      }
+      else{
+        const newItem = {
+          id: uuidv4(),
+          title: text,
+          color: "#93fa7f",
+          editFlag: false,
+        };
+        // console.log(newItem)
+        tag.push(newItem);
+        // console.log(tag)
+        setTag([...tag]);
+        setTagInputText(""); // تخلیه input
+
+      }
+      
     }
+
   }
 
   function handleTagInputChange(event) {
     const text = event.target.value;
     setTagInputText(text);
-
+    
     if (text === "") {
       setTagItems(tagsItem); // بازگشت به فیلتر اولیه
     } else {
@@ -167,7 +189,10 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
         if (item.id === id) {
             return { ...item, etcFlag: !item.etcFlag};
         }
-        return item;
+        else{
+          return { ...item, etcFlag: false};
+        }
+        
     })
 
     setTagItems(filteredItems)
@@ -189,11 +214,23 @@ function deleteTag(id) {
     
     tagsItem = filteredItems
     setTagItems(filteredItems)
-    // tagsItem =[]
-    // tagsItem = []
+
+    
     
 
 }
+
+function editTag (item) {
+  setTagInputText(item.title)
+  setEditing({flag: true, id: item.id})
+
+
+
+
+
+}
+
+
 
   return (
     <>
@@ -410,7 +447,7 @@ function deleteTag(id) {
                                     <div style={{display: `${item.etcFlag ? 'block' : 'none' }`, top : `${editWindowPosition.y-(window.innerHeight/2)}px`}} className={`flex flex-col items-start p-[8px]    w-[80px]  shadow-xl rounded-[8px] absolute mr-[-120px]  bg-white  right-[300px]`}>
                                         <div className='flex flex-col items-start justify-between  h-[69px]'>
                                             <div onClick={() => deleteTag(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'><i>{<CloseTagOption/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
-                                            <div className='flex flex-row justify-start items-center gap-[4px]'>{<EditTagOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
+                                            <div onClick={() => editTag(item)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'>{<EditTagOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
                                             <div className='flex flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
 
 
