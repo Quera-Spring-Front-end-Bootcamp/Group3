@@ -136,25 +136,25 @@ const BoardTitle = () => {
     }
 
     if (
-      (destination && destination.droppableId !== source.droppableId) ||
-      destination.index !== source.index
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
     ) {
-      const sourceColumn = data.find(
-        (column) => column.id === source.droppableId
-      );
-      const destinationColumn = data.find(
-        (column) => column.id === destination.droppableId
-      );
-
-      const draggedTask = sourceColumn.tasks[source.index];
-      // const task = sourceColumn.tasks.splice(source.index, 1)[0];
-
-      if (!destinationColumn.tasks) {
-        destinationColumn.tasks = [];
-      }
-      // sourceColumn.tasks.splice(source.index, 1);
-      destinationColumn.tasks.splice(destination.index, 0, draggedTask);
+      return; // Card was dropped in the same position, no need to update data
     }
+
+    const sourceColumn = data.find(
+      (column) => column.id === source.droppableId
+    );
+    const destinationColumn = data.find(
+      (column) => column.id === destination.droppableId
+    );
+
+    if (!destinationColumn.tasks) {
+      destinationColumn.tasks = [];
+    }
+
+    const draggedTask = sourceColumn.tasks.splice(source.index, 1)[0];
+    destinationColumn.tasks.splice(destination.index, 0, draggedTask);
 
     setData([...data]);
   };
