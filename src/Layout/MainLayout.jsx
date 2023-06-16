@@ -232,7 +232,7 @@ function MainLayout() {
                             <Menu.Items className="absolute mt-9 mr-[33px]">
                               <ColumMoreCard
                                 data={dataColumnMoreItemsProject}
-                                handleOpenProject={handleOpenWorkSpace}
+                                handleOpenProject={handleOpenShareProject}
                               />
                             </Menu.Items>
                           </Menu>
