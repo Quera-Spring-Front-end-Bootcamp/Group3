@@ -9,7 +9,7 @@ import frame from "../assets/images/frame.png";
 import toast from "react-hot-toast";
 import CheckIcon from "../assets/Icons/CheckIcon";
 import CircleHalfIcon from "../assets/Icons/CircleHalfIcon";
-
+import AXIOS from "../Utils/axios";
 /* define a onClose function in parent component that will close this modal.
 for example:
 const [showModal, setShowModal] = useState(true);
@@ -21,6 +21,18 @@ function CreateWorkspace({ onClose }) {
   const [colorCode, setColorCode] = useState("#7D828C");
   const [name, setName] = useState("");
   const [step, setStep] = useState(1);
+
+  async function createWorkspaceApi() {
+    try {
+      const response = await AXIOS.post("/workspace/create", {
+        name: name,
+      });
+      toast.success("ورک اسپیس ساخته شد :)");
+      onClose();
+    } catch (e) {
+      toast.error("ساخت ورک اسپیس با مشکل مواجه شد :(");
+    }
+  }
 
   const closeHandler = () => {
     onClose();
@@ -195,7 +207,7 @@ function CreateWorkspace({ onClose }) {
                     !name && toast("یک نام انتخاب کنید");
                   }
                   {
-                    name && console.log(name, colorCode);
+                    name && createWorkspaceApi();
                   }
                 }
               }
