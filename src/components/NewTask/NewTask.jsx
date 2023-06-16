@@ -24,6 +24,8 @@ import EditTagOption from "../../assets/Icons/EditTagOption"
 import EditColorOption from "../../assets/Icons/EditColorOption"
 import { set } from "lodash";
 
+
+
 const priorityItems = [
   {
     id: "1",
@@ -49,9 +51,9 @@ const priorityItems = [
 ];
 
 let tagsItem = [
-  { id: uuidv4(), title: "درس", color: "#EBC8C8", editFlag: false },
-  { id: uuidv4(), title: "کار", color: "#C3B7F2", editFlag: false },
-  { id: uuidv4(), title: "پروژه", color: "#7FFAFA", editFlag: false },
+  { id: uuidv4(), title: "درس", color: "#EBC8C8", editFlag: false, colorFlag: false },
+  { id: uuidv4(), title: "کار", color: "#C3B7F2", editFlag: false, colorFlag: false },
+  { id: uuidv4(), title: "پروژه", color: "#7FFAFA", editFlag: false, colorFlag: false },
 ];
 
 export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
@@ -225,6 +227,23 @@ function editTag (item) {
   setEditing({flag: true, id: item.id})
 
 
+
+
+
+}
+
+function tagChangeColor (id) {
+
+  const filteredItems = tagItems.map(item => {
+    if (item.id === id) {
+        return { ...item, colorFlag: !item.colorFlag};
+    }
+    else{
+      return { ...item, colorFlag: false};
+    }
+    
+})
+setTagItems(filteredItems)
 
 
 
@@ -448,7 +467,37 @@ function editTag (item) {
                                         <div className='flex flex-col items-start justify-between  h-[69px]'>
                                             <div onClick={() => deleteTag(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'><i>{<CloseTagOption/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
                                             <div onClick={() => editTag(item)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'>{<EditTagOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
-                                            <div className='flex flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
+                                            <div onClick={() => tagChangeColor(item.id)} className='flex flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
+                                            <div className="flex bg-white flex-col justify-center items-start p-[8px] absolute   w-[123px] gap-[11px] rounded-[8px] right-[85px] top-[53px] shadow-xl" style={{display: `${item.colorFlag ? 'flex' : 'none' }`}}>
+                                              <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px] ">
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                              </div>
+                                              <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                              </div>
+                                              <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                              </div>
+                                              <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
+                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                              </div>
+                                            </div>
 
 
                                         </div>
