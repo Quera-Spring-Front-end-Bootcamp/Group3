@@ -22,30 +22,34 @@ import CloseTagOption from "../../assets/Icons/CloseTagOption";
 import EtcIcon from "../../assets/Icons/EtcIcon"
 import EditTagOption from "../../assets/Icons/EditTagOption"
 import EditColorOption from "../../assets/Icons/EditColorOption"
-import { set } from "lodash";
+import { filter, set } from "lodash";
 
 
 
-const priorityItems = [
+let priorityItems = [
   {
     id: "1",
     title: "فوری",
     icon: <FlagIcon color="#FB0606" width="20" height="21" />,
+    color: "#FB0606",
   },
   {
     id: "2",
     title: "بالا",
     icon: <FlagIcon color="#FFE605" width="20" height="21" />,
+    color: "#FFE605",
   },
   {
     id: "3",
     title: "متوسط",
     icon: <FlagIcon color="#09DBCE" width="20" height="21" />,
+    color: "#09DBCE",
   },
   {
     id: "4",
     title: "پایین",
     icon: <FlagIcon color="#B2ACAC" width="20" height="21" />,
+    color: "#B2ACAC",
   },
   { id: "5", title: "حذف اولویت", icon: <CloseIcon color="#E45454" /> },
 ];
@@ -67,6 +71,8 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   const tagHover = useRef(null);
   const [editWindowPosition, setEditWindowPosition] = useState({ x: 0, y: 0 });
   const [editing, setEditing] = useState({flag: false, id: null});
+  const [prioritis, setPrioritis] = useState(priorityItems);
+  const [flagColor, setFlagColor] = useState("#B2ACAC");
 
   function handleDatePickerOpen() {
     setDatePickerOpen(!datePickerOpen);
@@ -185,7 +191,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   }
   // console.log(typeof(editWindowPosition.x));
   function handleEtcOpen(id,event) {
-    console.log((event.clientY / window.innerHeight) * 100-20);
+    // console.log((event.clientY / window.innerHeight) * 100-20);
     setEditWindowPosition({ x: event.clientX, y: event.clientY });
     const filteredItems = tagItems.map(item => {
         if (item.id === id) {
@@ -243,12 +249,45 @@ function tagChangeColor (id) {
     }
     
 })
+tagsItem = filteredItems
 setTagItems(filteredItems)
 
 
 
 }
 
+function changeColor (id,color) {
+  // console.log(event.target.getAttribute("color"));
+  const filteredItems = tagItems.map(item => {
+    if (item.id === id) {
+        return { ...item, color: color};
+    }
+    else{
+      return item;
+    }
+    
+})
+tagsItem = filteredItems
+setTagItems(filteredItems)
+}
+
+function changePriority(id, color) {
+  const filteredItems = priorityItems.map(item => {
+    if (item.id === id) {
+        return { ...item, color: color};
+    }
+    else{
+      return item;
+    }
+    
+})
+if(id == 5) setFlagOpen(false)
+priorityItems = filteredItems
+setPrioritis(filteredItems)
+setFlagColor(color)
+  
+
+}
 
 
   return (
@@ -336,7 +375,7 @@ setTagItems(filteredItems)
                           className="cursor-pointer"
                           onClick={handleFlagOpen}
                         >
-                          <i>{<FlagDashedCircleIcon />}</i>
+                          <i>{<FlagDashedCircleIcon color = {flagColor}/>}</i>
                         </div>
 
                         <Transition
@@ -353,8 +392,9 @@ setTagItems(filteredItems)
                             className={`absolute mt-[-220px]  w-[166px] justify-start rounded-[8px]  gap-[16px] p-[12px] shadow-xl`}
                           >
                             <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]">
-                              {priorityItems.map((item) => (
+                              {prioritis.map((item) => (
                                 <ColumnMoreItem
+                                  onClick={() => changePriority(item.id,item.color)}
                                   key={item.id}
                                   className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
                                   title={item.title}
@@ -385,7 +425,7 @@ setTagItems(filteredItems)
                         >
                           <Card className="absolute mt-[-270px] w-[177px] h-[213px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[8px] p-[12px]">
                             <div className="flex flex-col items-start gap-[4px] w-[153px] h-[60px]">
-                              <div className="flex flex-row w-[153px] overflow-auto gap-2">
+                              <div className="flex flex-row w-[153px] overflow-auto gap-2 ">
                                 {tag.map((item) => (
                                   <div
                                     key={item.id}
@@ -467,35 +507,35 @@ setTagItems(filteredItems)
                                         <div className='flex flex-col items-start justify-between  h-[69px]'>
                                             <div onClick={() => deleteTag(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'><i>{<CloseTagOption/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
                                             <div onClick={() => editTag(item)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'>{<EditTagOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
-                                            <div onClick={() => tagChangeColor(item.id)} className='flex flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
+                                            <div onClick={() => tagChangeColor(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
                                             <div className="flex bg-white flex-col justify-center items-start p-[8px] absolute   w-[123px] gap-[11px] rounded-[8px] right-[85px] top-[53px] shadow-xl" style={{display: `${item.colorFlag ? 'flex' : 'none' }`}}>
                                               <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px] ">
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                                <div onClick={() => changeColor(item.id,"#E46161")}  className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#E46161]"></div>
+                                                <div onClick={() => changeColor(item.id,"#80DC69")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#80DC69]"></div>
+                                                <div onClick={() => changeColor(item.id,"#76BC86")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#76BC86]"></div>
+                                                <div onClick={() => changeColor(item.id,"#78C6B0")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#78C6B0]"></div>
+                                                <div onClick={() => changeColor(item.id,"#84C6A1")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#84C6A1]"></div>
                                               </div>
                                               <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                                <div onClick={() => changeColor(item.id,"#F3C567")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#F3C567]"></div>
+                                                <div onClick={() => changeColor(item.id,"#F1A25C")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#F1A25C]"></div>
+                                                <div onClick={() => changeColor(item.id,"#E57A57")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#E57A57]"></div>
+                                                <div onClick={() => changeColor(item.id,"#EC8182")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#EC8182]"></div>
+                                                <div onClick={() => changeColor(item.id,"#B9995E")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#B9995E]"></div>
                                               </div>
                                               <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                                <div onClick={() => changeColor(item.id,"#E46161")}  className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#E28A60]"></div>
+                                                <div onClick={() => changeColor(item.id,"#E28A60")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#6897C2]"></div>
+                                                <div onClick={() => changeColor(item.id,"#74AADD")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#74AADD]"></div>
+                                                <div onClick={() => changeColor(item.id,"#3C45E7")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#3C45E7]"></div>
+                                                <div onClick={() => changeColor(item.id,"#6DAFCE")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#6DAFCE]"></div>
                                               </div>
                                               <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#E46161]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#80DC69]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#76BC86]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#78C6B0]"></div>
-                                                <div className="rounded-[2px] w-[15px] h-[15px] bg-[#84C6A1]"></div>
+                                                <div  onClick={() => changeColor(item.id,"#9286EA")}  className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#9286EA]"></div>
+                                                <div  onClick={() => changeColor(item.id,"#C074D1")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#C074D1]"></div>
+                                                <div  onClick={() => changeColor(item.id,"#486774")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#486774]"></div>
+                                                <div  onClick={() => changeColor(item.id,"#5F6C7C")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#5F6C7C]"></div>
+                                                <div  onClick={() => changeColor(item.id,"#46494D")} className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#46494D]"></div>
                                               </div>
                                             </div>
 
