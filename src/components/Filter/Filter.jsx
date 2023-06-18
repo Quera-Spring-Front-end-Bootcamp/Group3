@@ -45,7 +45,7 @@ const Filter = () => {
 
   return (
     isOpen && (
-      <div className="flex flex-col gap-[14px] pt-[15px] py-8 px-[21px] w-[718px] min-h-[206px] h-full rounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)]">
+      <div className="flex flex-col gap-[14px] pt-[15px] py-8 px-[21px] w-[718px] min-h-[206px] h-fullrounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)] rounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)]">
         <div className="flex justify-between mb-[3px]">
           <span className="text-2xl text-[#000000] font-semibold">فیلتر</span>
           <i className="cursor-pointer" onClick={handleClose}>

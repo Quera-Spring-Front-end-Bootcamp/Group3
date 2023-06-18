@@ -7,7 +7,7 @@ import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
 import ArchiveIcon from "../../assets/Icons/ArchiveIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
 
-const BoardTitle = () => {
+const BoardTitle = ({ addNewBoardTitleClickHandler }) => {
   const card = [
     { id: "1", title: "Open", color: "#F98F2E", badgeValue: "1" },
     { id: "2", title: "In progress", color: "#2E7FF9", badgeValue: "16" },
@@ -17,7 +17,6 @@ const BoardTitle = () => {
   const [hoverTooltip, setHoverTooltip] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [selectId, setSelectId] = useState(null);
-
   const handleMouseEnter = () => {
     setHoverTooltip(true);
   };
@@ -34,15 +33,14 @@ const BoardTitle = () => {
   const addNewTaskClickHandler = (id) => {
     console.log(`id ${id}`);
   };
-  const addNewBoardTitleClickHandler = () => {
-    console.log("addNewBoardTitleClickHandler");
-  };
+
   const removeCulomnHandler = (id) => {
     console.log(`Remove ${id}`);
   };
   const EditBoardTitleHandler = (id) => {
     console.log(`Edit ${id}`);
   };
+
   return (
     <div className="flex gap-5 m-5 whitespace-nowrap">
       {card.map((item) => (
@@ -67,7 +65,7 @@ const BoardTitle = () => {
             >
               <DotsMenuIcon />
               {item.id === selectId && showMore && (
-                <Card className="absolute  rounded-[8px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] top-full  gap-[16px] p-[12px] ">
+                <Card className="absolute  rounded-[8px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] top-full  gap-[16px] p-[12px] z-50">
                   <ColumnMoreItem
                     title="ویرایش نام ستون"
                     icon={<EditSqureIcon />}
