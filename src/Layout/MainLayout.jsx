@@ -1,20 +1,13 @@
 import Logo from "../components/AuthLayout/Logo";
 import Button from "../components/Button";
-import VerticalDivider from "../components/VerticalDivider";
-import MainLayoutHeaderItem from "../components/MainLayoutHeaderItem";
 import { Outlet, useNavigate } from "react-router";
 import { useState } from "react";
-import ShareProjectCard from "../components/ShareProject/ShareProjectCard";
 import { Disclosure, Menu } from "@headlessui/react";
 import { NewTask } from "../components/NewTask/NewTask";
 import { ColumMoreCard } from "../components/ColumnMore/ColumnMoreCard";
 import SearchIcon from "../assets/Icons/SearchIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import LogoutIcon from "../assets/Icons/LogoutIcon";
-import ListCheckIcon from "../assets/Icons/ListCheckIcon";
-import ArtBoardIcon from "../assets/Icons/ArtBoardIcon";
-import CalendarIcon from "../assets/Icons/CalendarIcon";
-import ShareIcon from "../assets/Icons/ShareIcon";
 import PaletteIcon from "../assets/Icons/PaletteIcon";
 import LinkIcon from "../assets/Icons/LinkIcon";
 import TrashIcon from "../assets/Icons/TrashIcon";
@@ -71,14 +64,9 @@ const dataColumnMoreItemsProject = [
 ];
 
 function MainLayout() {
-  const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
 
   const naviaget = useNavigate();
-
-  function handleOpenShareProject() {
-    setOpenShareProjectModal(true);
-  }
 
   function handleOpenNewTask() {
     setOpenNewTaskModal(true);
@@ -94,7 +82,7 @@ function MainLayout() {
 
   return (
     <div className="flex flex-row bg-[#FAFBFC]">
-      <aside className="!w-72 h-screen p-9 flex flex-col border-l-[1px]">
+      <aside className="!w-72 h-screen p-5 flex flex-col border-l-[1px]">
         <Logo />
 
         <div className="mt-5 font-semibold">
@@ -102,7 +90,7 @@ function MainLayout() {
         </div>
 
         <div className="relative mt-3">
-          <div className="absolute top-2 right-2">{<SearchIcon />}</div>
+          <div className="absolute top-2 right-2 left-2">{<SearchIcon />}</div>
           <input
             type="text"
             placeholder="جستجو کنید"
@@ -150,7 +138,9 @@ function MainLayout() {
                           key={Project.ProjectId}
                           className="flex flex-row justify-between w-full group"
                         >
-                          <li className="flex-1">{Project.ProjectTilte}</li>
+                          <li className="flex-1" style={{ cursor: "pointer" }}>
+                            {Project.ProjectTilte}
+                          </li>
                           <Menu>
                             <Menu.Button className="h-[20px]">
                               <button className="hidden group-hover:inline">
@@ -193,46 +183,8 @@ function MainLayout() {
           </span>
         </button>
       </aside>
-      <div className="flex flex-col w-[calc(100vw_-_18rem)] p-4 h-screen">
-        <header className="flex flex-row items-center justify-between">
-          <div className="flex flex-row items-center h-20 gap-3">
-            <div className="font-semibold text-xl">پروژه اول</div>
-            <VerticalDivider />
-            <MainLayoutHeaderItem
-              icon={<ListCheckIcon />}
-              title="نمایش لیستی"
-              link="listView"
-            />
-            <VerticalDivider />
-            <MainLayoutHeaderItem
-              icon={<ArtBoardIcon />}
-              title="نمایش ستونی"
-              link="columnView"
-            />
-            <VerticalDivider />
-            <MainLayoutHeaderItem
-              icon={<CalendarIcon />}
-              title="تقویم"
-              link="calendarView"
-            />
-            <VerticalDivider />
-          </div>
-          <button
-            className="flex flex-row items-center"
-            onClick={() => handleOpenShareProject()}
-          >
-            <div>{<ShareIcon />}</div>
-            <span className="mr-2 font-normal text-base">اشتراک گذاری</span>
-          </button>
-          {openShareProjectModal && (
-            <ShareProjectCard
-              openShareProjectModal={openShareProjectModal}
-              setOpenShareProjectModal={setOpenShareProjectModal}
-            />
-          )}
-        </header>
-        <hr />
-        <main className="h-full overflow-auto">
+      <div className="flex flex-col w-[calc(100vw_-_19rem)] p-4 h-screen overflow-auto">
+        <main className="h-full">
           <Outlet />
           <Button
             startIcon={<SqurePlusIcon color="white" />}
