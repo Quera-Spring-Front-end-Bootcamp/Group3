@@ -189,7 +189,7 @@ function MainLayout() {
             <Disclosure as="div" key={WorkSpace.WorkSpaceId}>
               {() => (
                 <>
-                  <div className="flex items-center group">
+                  <div className="flex group">
                     <Disclosure.Button className="flex flex-row items-center justify-between flex-1 group">
                       <div className="flex flex-row items-center">
                         <div
@@ -208,7 +208,7 @@ function MainLayout() {
                       </Menu.Button>
                       <Menu.Items className="absolute mt-9 mr-[50px]">
                         <ColumMoreCard
-                          handleOpenProject={handleOpenWorkSpace}
+                          handleOpenModal={handleOpenWorkSpace}
                           data={dataColumnMoreItemsWorkSpace}
                         />
                       </Menu.Items>
@@ -232,7 +232,7 @@ function MainLayout() {
                             <Menu.Items className="absolute mt-9 mr-[33px]">
                               <ColumMoreCard
                                 data={dataColumnMoreItemsProject}
-                                handleOpenProject={handleOpenShareProject}
+                                handleOpenModal={handleOpenShareProject}
                               />
                             </Menu.Items>
                           </Menu>
