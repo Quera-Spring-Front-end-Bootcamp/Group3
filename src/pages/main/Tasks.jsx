@@ -10,6 +10,7 @@ import ArtBoardIcon from "../../assets/Icons/ArtBoardIcon";
 import CalendarIcon from "../../assets/Icons/CalendarIcon";
 import ShareIcon from "../../assets/Icons/ShareIcon";
 import ShareProjectCard from "../../components/ShareProject/ShareProjectCard";
+import ColumnViewComponent from "../../components/ColumnViewComponent";
 
 function Tasks() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
@@ -76,7 +77,7 @@ function Tasks() {
       </header>
       <div>
         {view === "listView" && <WorkSpaceList data={data} />}
-        {view === "columnView" && <div>ColumnView</div>}
+        {view === "columnView" && <ColumnViewComponent data={data} />}
         {view === "calendarView" && <Calendar data={data} />}
       </div>
     </>
