@@ -25,7 +25,7 @@ function ColumnViewComponent() {
           دسته‌بندی‌شده با: وضعیت
         </span>
       </MainLayoutSubHeader>
-      <BoardTitle />
+      <BoardTitle boards={boards} />
     </div>
   );
 }

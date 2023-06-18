@@ -7,7 +7,6 @@ import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
 import ArchiveIcon from "../../assets/Icons/ArchiveIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
 import ProjectCard from "../ProjectCard/ProjectCard";
-import SqurePlusIcon from "../../assets/Icons/SqurePlusIcon";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const BoardTitle = () => {
@@ -160,7 +159,7 @@ const BoardTitle = () => {
   };
 
   return (
-    <div className="flex gap-5 m-5 whitespace-nowrap">
+    <div className="flex gap-5 m-5 whitespace-nowrap mt-36 overflow-auto h-[calc(100vh_-_180px)]">
       <DragDropContext onDragEnd={onDragEnd}>
         {data.map((item) => (
           <Droppable droppableId={item.id} key={item.id}>
@@ -261,13 +260,6 @@ const BoardTitle = () => {
                           </Draggable>
                         );
                       })}
-
-                    <div className="flex flex-row gap-[4px] justify-start items-center">
-                      <SqurePlusIcon />
-                      <div className="font-[500] text-[12px]/[18px] text-[#3D3D3D]">
-                        ساختن تسک جدید
-                      </div>
-                    </div>
                   </div>
                 </div>
               );
