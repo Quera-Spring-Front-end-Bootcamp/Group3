@@ -10,11 +10,12 @@ import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
 
 // can't pass the clickHandler as prop. it should change inside the component
-function Calendar() {
+function Calendar(data) {
   const [currentDate, setCurrentDate] = useState(moment());
   const [selectedDate, setSelectedDate] = useState(Date());
   const [openModal, setOpenModal] = useState(false);
   const [hoveredDate, setHoveredDate] = useState(false);
+  console.log(data);
 
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     dateStyle: "medium",
@@ -129,7 +130,7 @@ function Calendar() {
           setOpenModal={setOpenModal}
         />
       )}
-      <div className="relative flex flex-col pb-[59px] border-solid border-[#AAAAAA] h-screen">
+      <div className="relative flex flex-col pb-[59px] border-solid border-[#AAAAAA] mt-36 overflow-auto h-[calc(100vh_-_180px)]">
         <MainLayoutSubHeader>
           <div className="flex flex-row items-center gap-[8px] max-w-min">
             <button
