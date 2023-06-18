@@ -18,11 +18,9 @@ import TagDashedCircleIcon from "../../assets/Icons/TagDashedCircleIcon";
 import EyeIcon from "../../assets/Icons/EyeIcon";
 import SearchIcon from "../../assets/Icons/SearchIcon";
 import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
-import CloseTagOption from "../../assets/Icons/CloseTagOption";
-import EtcIcon from "../../assets/Icons/EtcIcon"
-import EditTagOption from "../../assets/Icons/EditTagOption"
-import EditColorOption from "../../assets/Icons/EditColorOption"
-import { filter, set } from "lodash";
+import PaletteIcon from "../../assets/Icons/PaletteIcon";
+import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
+
 
 
 
@@ -505,9 +503,9 @@ setFlagColor(color)
                                     
                                     <div style={{display: `${item.etcFlag ? 'block' : 'none' }`, top : `${editWindowPosition.y-(window.innerHeight/2)}px`}} className={`flex flex-col items-start p-[8px]    w-[80px]  shadow-xl rounded-[8px] absolute mr-[-120px]  bg-white  right-[300px]`}>
                                         <div className='flex flex-col items-start justify-between  h-[69px]'>
-                                            <div onClick={() => deleteTag(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'><i>{<CloseTagOption/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
-                                            <div onClick={() => editTag(item)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'>{<EditTagOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
-                                            <div onClick={() => tagChangeColor(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px] '>{<EditColorOption/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
+                                            <div onClick={() => deleteTag(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'><i>{<CloseIcon width="14" height="14"/>}</i> <span className=' not-italic font-normal text-[10px] leading-[15px] text-right'>حذف</span></div>
+                                            <div onClick={() => editTag(item)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px]'>{<EditSqureIcon width="11" height="11"/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش تگ</span></div>
+                                            <div onClick={() => tagChangeColor(item.id)} className='flex cursor-pointer flex-row justify-start items-center gap-[4px] '>{<PaletteIcon/>} <span className='not-italic font-normal text-[10px] leading-[15px] text-right'>ویرایش رنگ</span> </div>
                                             <div className="flex bg-white flex-col justify-center items-start p-[8px] absolute   w-[123px] gap-[11px] rounded-[8px] right-[85px] top-[53px] shadow-xl" style={{display: `${item.colorFlag ? 'flex' : 'none' }`}}>
                                               <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px] ">
                                                 <div onClick={() => changeColor(item.id,"#E46161")}  className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#E46161]"></div>
