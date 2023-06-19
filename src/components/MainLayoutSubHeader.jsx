@@ -3,7 +3,7 @@ import VerticalDivider from "./VerticalDivider";
 
 const MainLayoutSubHeader = ({ children, searchValue, setSearchValue }) => {
   return (
-    <div className="flex justify-start items-center h-14 border-b mb-9">
+    <div className="flex justify-start items-center h-14 border-y mb-9 fixed top-20 right-[305px] left-3">
       <div className="flex gap-1 items-center ">
         {<SearchIcon />}
         <input

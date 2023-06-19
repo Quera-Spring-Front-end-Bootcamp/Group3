@@ -1,55 +1,20 @@
 import Logo from "../components/AuthLayout/Logo";
 import Button from "../components/Button";
-import VerticalDivider from "../components/VerticalDivider";
-import MainLayoutHeaderItem from "../components/MainLayoutHeaderItem";
 import { Outlet, useNavigate } from "react-router";
-import { useState } from "react";
-import ShareProjectCard from "../components/ShareProject/ShareProjectCard";
+import { useEffect, useState } from "react";
 import { Disclosure, Menu } from "@headlessui/react";
 import { NewTask } from "../components/NewTask/NewTask";
 import { ColumMoreCard } from "../components/ColumnMore/ColumnMoreCard";
 import SearchIcon from "../assets/Icons/SearchIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import LogoutIcon from "../assets/Icons/LogoutIcon";
-import ListCheckIcon from "../assets/Icons/ListCheckIcon";
-import ArtBoardIcon from "../assets/Icons/ArtBoardIcon";
-import CalendarIcon from "../assets/Icons/CalendarIcon";
-import ShareIcon from "../assets/Icons/ShareIcon";
 import PaletteIcon from "../assets/Icons/PaletteIcon";
 import LinkIcon from "../assets/Icons/LinkIcon";
 import TrashIcon from "../assets/Icons/TrashIcon";
 import EditSqureIcon from "../assets/Icons/EditSqureIcon";
 import PlusIcon from "../assets/Icons/PlusIcon";
 import DotsMenuIcon from "../assets/Icons/DotsMenuIcon";
-
-const data = [
-  {
-    WorkSpaceId: "1",
-    WorkSpaceTitle: "درس مدیریت پروژه",
-    WorkSpaceColor: "bg-[#71FDA9]",
-    WorkSpaceProjects: [
-      {
-        ProjectId: "1",
-        ProjectTilte: "ارائه",
-      },
-    ],
-  },
-  {
-    WorkSpaceId: "2",
-    WorkSpaceTitle: "کارهای شخصی",
-    WorkSpaceColor: "bg-[#DE88FD]",
-    WorkSpaceProjects: [
-      {
-        ProjectId: "1",
-        ProjectTilte: "پروژه اول",
-      },
-      {
-        ProjectId: "2",
-        ProjectTilte: "پروژه دوم",
-      },
-    ],
-  },
-];
+import AXIOS from "../Utils/axios";
 
 const dataColumnMoreItemsWorkSpace = [
   {
@@ -71,14 +36,10 @@ const dataColumnMoreItemsProject = [
 ];
 
 function MainLayout() {
-  const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
+  const [data, setData] = useState([]);
 
   const naviaget = useNavigate();
-
-  function handleOpenShareProject() {
-    setOpenShareProjectModal(true);
-  }
 
   function handleOpenNewTask() {
     setOpenNewTaskModal(true);
@@ -92,9 +53,27 @@ function MainLayout() {
     naviaget("/auth/login");
   }
 
+  function navigateToProject(id) {
+    naviaget(`/main/${id}/listView`);
+  }
+
+  async function fetchData() {
+    try {
+      const response = (await AXIOS.get("/workspace/get-all")).data.data;
+      console.log(response);
+      setData(response);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="flex flex-row bg-[#FAFBFC]">
-      <aside className="!w-72 h-screen p-9 flex flex-col border-l-[1px]">
+      <aside className="!w-72 h-screen p-5 flex flex-col border-l-[1px]">
         <Logo />
 
         <div className="mt-5 font-semibold">
@@ -117,17 +96,15 @@ function MainLayout() {
 
         <div className="h-96 flex flex-col gap-5 mt-5">
           {data.map((WorkSpace) => (
-            <Disclosure as="div" key={WorkSpace.WorkSpaceId}>
+            <Disclosure as="div" key={WorkSpace._id}>
               {() => (
                 <>
                   <div className="flex group">
                     <Disclosure.Button className="flex flex-row items-cente justify-between flex-1 group">
                       <div className="flex flex-row items-center">
-                        <div
-                          className={`w-5 h-5 rounded-[4px] ${WorkSpace.WorkSpaceColor}`}
-                        />
+                        <div className={`w-5 h-5 rounded-[4px] bg-[#DE88FD]`} />
                         <button className="mr-2 text-base font-medium">
-                          {WorkSpace.WorkSpaceTitle}
+                          {WorkSpace.name}
                         </button>
                       </div>
                     </Disclosure.Button>
@@ -145,12 +122,18 @@ function MainLayout() {
 
                   <Disclosure.Panel className="pr-4 pt-4 pb-2 text-sm text-gray-500">
                     <ul className="flex flex-col gap-3 font-medium text-base text-[#1E1E1E]">
-                      {WorkSpace.WorkSpaceProjects.map((Project) => (
+                      {WorkSpace.projects.map((Project) => (
                         <div
-                          key={Project.ProjectId}
+                          key={Project._id}
                           className="flex flex-row justify-between w-full group"
                         >
-                          <li className="flex-1">{Project.ProjectTilte}</li>
+                          <li
+                            className="flex-1"
+                            style={{ cursor: "pointer" }}
+                            onClick={() => navigateToProject(Project._id)}
+                          >
+                            {Project.name}
+                          </li>
                           <Menu>
                             <Menu.Button className="h-[20px]">
                               <button className="hidden group-hover:inline">
@@ -193,46 +176,8 @@ function MainLayout() {
           </span>
         </button>
       </aside>
-      <div className="flex flex-col w-[calc(100vw_-_18rem)] p-4 h-screen">
-        <header className="flex flex-row items-center justify-between">
-          <div className="flex flex-row items-center h-20 gap-3">
-            <div className="font-semibold text-xl">پروژه اول</div>
-            <VerticalDivider />
-            <MainLayoutHeaderItem
-              icon={<ListCheckIcon />}
-              title="نمایش لیستی"
-              link="listView"
-            />
-            <VerticalDivider />
-            <MainLayoutHeaderItem
-              icon={<ArtBoardIcon />}
-              title="نمایش ستونی"
-              link="columnView"
-            />
-            <VerticalDivider />
-            <MainLayoutHeaderItem
-              icon={<CalendarIcon />}
-              title="تقویم"
-              link="calendarView"
-            />
-            <VerticalDivider />
-          </div>
-          <button
-            className="flex flex-row items-center"
-            onClick={() => handleOpenShareProject()}
-          >
-            <div>{<ShareIcon />}</div>
-            <span className="mr-2 font-normal text-base">اشتراک گذاری</span>
-          </button>
-          {openShareProjectModal && (
-            <ShareProjectCard
-              openShareProjectModal={openShareProjectModal}
-              setOpenShareProjectModal={setOpenShareProjectModal}
-            />
-          )}
-        </header>
-        <hr />
-        <main className="h-full overflow-auto">
+      <div className="flex flex-col w-[calc(100vw_-_19rem)] p-4 h-screen overflow-auto">
+        <main className="h-full">
           <Outlet />
           <Button
             startIcon={<SqurePlusIcon color="white" />}
