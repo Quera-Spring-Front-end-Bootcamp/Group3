@@ -9,6 +9,7 @@ import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
 import AXIOS from "../Utils/axios.js";
+import { useCallback } from "react";
 
 // can't pass the clickHandler as prop. it should change inside the component
 function Calendar(data) {
@@ -44,10 +45,10 @@ function Calendar(data) {
   }
 
   //define a function to work with the clicked date e is a Date object.
-  const clickHandler = (e) => {
+  const clickHandler = useCallback((e) => {
     setSelectedDate(e);
     setOpenModal(true);
-  };
+  }, []);
 
   const taskClickHandler = (e) => {
     const filteredTasks = allTasks.filter((task) => task.id === e);
@@ -67,12 +68,11 @@ function Calendar(data) {
   };
 
   useEffect(() => {
-    AXIOS.get("/board/6480beeeb684d21e2741325e").then((response) => {
-      const tasks = [];
-      response.data.data.forEach((item) => tasks.push(...item.tasks));
-      setAllTasks(tasks);
-    });
-  }, [setAllTasks, clickHandler]);
+    const tasks = [];
+    data.data.forEach((item) => tasks.push(...item.tasks));
+    setAllTasks(tasks);
+    console.log(data.data);
+  }, [setAllTasks, clickHandler, data]);
 
   return (
     <div>
