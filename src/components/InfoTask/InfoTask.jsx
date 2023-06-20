@@ -1,0 +1,618 @@
+import React from "react";
+import CloseIcon from "../../assets/icons/CloseIcon";
+import { useRef, useState, Fragment } from "react";
+import ArrowLeftIcon from "../../assets/icons/ArrowLeftIcon";
+import CheckIcon from "../../assets/Icons/CheckIcon";
+import AddUserDashedCircleIcon from "../../assets/Icons/AddUserDashedCircleIcon";
+import EyeIcon from "../../assets/Icons/EyeIcon";
+import { Transition } from "@headlessui/react";
+
+import FlagDashedCircleIcon from "../../assets/Icons/FlagDashedCircleIcon";
+import ShareIcon from "../../assets/Icons/ShareIcon";
+import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
+import TagDashedCircleIcon from "../../assets/Icons/TagDashedCircleIcon";
+import SqurePlusIcon from "../../assets/Icons/SqurePlusIcon";
+import PlayIcon from "../../assets/Icons/PlayIcon";
+import CommentIcon from "../../assets/Icons/CommentIcon";
+import EmailIcon from "../../assets/Icons/EmailIcon";
+import LinkIcon from "../../assets/Icons/LinkIcon";
+import SmileIcon from "../../assets/Icons/SmileIcon";
+import NoteIcon from "../../assets/Icons/NoteIcon";
+
+
+import Button from "../Button";
+import { set } from "lodash";
+
+
+const statusTaskDetails = [
+    {   
+        member : "شما",
+        action : "create",
+        start : "",
+        startTagColor : "",
+        goal : "",
+        goalTagColor : "",
+        time : "۱ ساعت پیش"
+    },
+    {   
+        member : "شما",
+        action : "move",
+        start : "In Progress",
+        startTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#EC612E"/>
+        </svg>,
+        goal : "Done",
+        goalTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#0EBB34"/>
+        </svg>
+        ,
+        time : "۱ ساعت پیش"
+    },
+    {   
+        member : "شما",
+        action : "move",
+        start : "Done",
+        startTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#0EBB34"/>
+        </svg>,
+        goal : "Pendding",
+        goalTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#F7CE46"/>
+        </svg>
+        ,
+        time : "۱ ساعت پیش"
+    }
+]
+const InfoTask = () => {
+  const [commentHandler, setCommentHandler] = useState(false);
+  const [statusTask, setStatusTask] = useState("open")
+  const [TaskDetails, setTaskDetails] = useState(statusTaskDetails)
+
+const buttonRender = () => {
+    if (statusTask === "open") {
+        return (<>
+        <button  className="w-[111px] h-[30px] bg-[#F84747] text-[#ffffff]">
+        Open
+      </button>
+        <div className="w-[25px] flex flex-col justify-center h-[30px] bg-[#F84747] rounded-sm mr-[-22px]">
+                <i onClick={handleStatus}>
+                  <ArrowLeftIcon color="#ffffff" />
+                </i>
+              </div>
+        </>)
+    } else if (statusTask === "Pendding") {
+        return (<>
+            <button  className="w-[111px] h-[30px] bg-[#ffb41e] text-[#ffffff]">
+            Pendding
+          </button>
+            <div className="w-[25px] flex flex-col justify-center h-[30px] bg-[#ffb41e] rounded-sm mr-[-22px]">
+                    <i onClick={handleStatus}>
+                      <ArrowLeftIcon color="#ffffff" />
+                    </i>
+                  </div>
+            </>)
+    }
+    else if (statusTask === "In Progress") {
+        return (<>
+            <button  className="w-[111px] h-[30px] bg-[#ff5f20] text-[#ffffff]">
+            In Progress
+          </button>
+            <div className="w-[25px] flex flex-col justify-center h-[30px] bg-[#ff5f20] rounded-sm mr-[-22px]">
+                    <i onClick={handleStatus}>
+                      <ArrowLeftIcon color="#ffffff" />
+                    </i>
+                  </div>
+            </>)
+    }
+    else if (statusTask === "Done") {
+        return (<>
+            <button  className="w-[111px] h-[30px] bg-[#6fd317] text-[#ffffff]">
+            Done
+          </button>
+            <div className="w-[25px] flex flex-col justify-center h-[30px] bg-[#6fd317] rounded-sm mr-[-22px]">
+                    <i onClick={handleStatus}>
+                      <ArrowLeftIcon color="#ffffff" />
+                    </i>
+                  </div>
+            </>)
+    }
+}
+
+  function handlerComment() {
+    setCommentHandler(true);
+  }
+ 
+
+  function handleStatus () {
+    // console.log(statusTask)
+    if (statusTask === "open") {
+        setStatusTask("Pendding")
+        setTaskDetails([...TaskDetails, {
+            member : "شما",
+            action : "move",
+            start : "open",
+            startTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#F84747"/>
+        </svg>,
+        goal : "Pendding",
+        goalTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#ffb41e"/>
+        </svg>
+        ,
+        time : "۱ ساعت پیش"
+            
+        }])
+    } else if (statusTask === "Pendding") {
+        setStatusTask("In Progress")
+        setTaskDetails([...TaskDetails, {
+            member : "شما",
+            action : "move",
+            start : "Pendding",
+            startTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#ffb41e"/>
+        </svg>,
+        goal : "In Progress",
+        goalTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#ff5f20"/>
+        </svg>
+        ,
+        time : "۱ ساعت پیش"
+            
+        }])
+    }
+    else if (statusTask === "In Progress") {
+        setStatusTask("Done")
+        setTaskDetails([...TaskDetails, {
+            member : "شما",
+            action : "move",
+            start : "In Progress",
+            startTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#ff5f20"/>
+        </svg>,
+        goal : "Done",
+        goalTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#6fd317"/>
+        </svg>
+        ,
+        time : "۱ ساعت پیش"
+            
+        }])
+    }
+    else if (statusTask === "Done") {
+        setStatusTask("open")
+        setTaskDetails([...TaskDetails, {
+            member : "شما",
+            action : "move",
+            start : "Done",
+            startTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#6fd317"/>
+        </svg>,
+        goal : "Open",
+        goalTagColor : <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.5" width="12" height="12" fill="#F84747"/>
+        </svg>
+        ,
+        time : "۱ ساعت پیش"
+            
+        }])
+    }
+   
+  }
+  return (
+    <div className="w-[1352px] h-[596px] bg-white rounded-[20px]">
+      <i className=" float-left ml-9 mt-4 pb-4">
+        <CloseIcon color="#BDBDBD" width="24" height="25" />
+      </i>
+      {/* frame 154 */}
+      <div className="flex float-left flex-row  justify-start items-start  w-[1316px] h-[506px] ">
+        {/* frame 152 */}
+        <div className="flex flex-col items-start gap-[24px]  w-[657px] h-[400px]">
+            {/* frame 131 */}
+          <div className="flex flex-row justify-between items-center px-[20px] gap-[113px] w-[657px] h-[57px] ">
+            <div className="flex flex-row bg-white justify-start items-center gap-[24px] w-[355px] h-[34px]">
+              {buttonRender()}
+               
+              {/* <button  className="w-[111px] h-[30px] bg-[#F84747] text-[#ffffff]">
+                Open
+              </button> */}
+              
+              <i className="border">
+                <CheckIcon color="#a5a5a5" />
+              </i>
+              <div className="flex flex-row items-start w-[61px] h-[34px]">
+                <div className="flex bg-black flex-row justify-center items-center pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] z-10"></div>
+                <div className="flex flex-row justify-center items-center p-[4.25px] gap-[10.62px] w-[34px] h-[34px] rounded-[106.25px] absolute mr-7">
+                  <i>
+                    <AddUserDashedCircleIcon color="#C1C1C1" />
+                  </i>
+                </div>
+              </div>
+
+              <i>
+                <FlagDashedCircleIcon color="#FB0606" width="34" height="34" />
+              </i>
+            </div>
+
+            <div className="flex flex-row items-center gap-[20px]  h-[25px] bg-white">
+              <div className="flex flex-row items-center  gap-[8px]   h-[25px]">
+                <i>
+                  <ShareIcon color="#BDBDBD" />
+                </i>
+                <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
+                  {" "}
+                  اشتراک گذاری
+                </span>
+                <i>
+                  <DotsMenuIcon color="#BDBDBD" />
+                </i>
+              </div>
+            </div>
+          </div>
+          {/* frame 151 */}
+          <div className="flex flex-col items-start px-[20px] gap-[24px] w-[657px] h-[310px] ">
+            <i>
+              <TagDashedCircleIcon color="#C1C1C1" />
+            </i>
+
+            <div className="flex  flex-col items-start gap-[12px] w-[617px] ">
+              <h1 className=" not-italic font-medium text-[24px] leading-[37px] text-right text-[#1E1E1E]">
+                عنوان تسک
+              </h1>
+              <div
+                className="flex flex-row justify-start  gap-[10px] w-[617px]  rounded-[12px]"
+                style={{
+                  border: "1px solid #C1C1C1",
+                }}
+              >
+                {/* <p className=" not-italic font-normal text-[16px] text-right text-[#000000]">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                  مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                  تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای
+                  کاربردی می باشد،
+                </p> */}
+                <textarea className="flex resize-none flex-row justify-start  gap-[10px] w-[617px] h-[96px]  rounded-[12px] " placeholder="" name="" id="" ></textarea>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-start gap-[17px]  h-[68px]">
+              <div className="flex flex-row justify-start items-center gap-[4px]  h-[24px]">
+                <i>
+                  <SqurePlusIcon color="#208D8E" />
+                </i>
+                <span className=" not-italic font-medium text-[12px] leading-[18px] text-right text-[#208D8E]">
+                  اضافه کردن چک لیست
+                </span>
+              </div>
+              <div className="flex flex-row justify-start items-center gap-[4px]  h-[24px]">
+                <i>
+                  <SqurePlusIcon color="#208D8E" />
+                </i>
+                <span className=" not-italic font-medium text-[12px] leading-[18px] text-right text-[#208D8E]">
+                  اضافه کردن پیوست
+                </span>
+              </div>
+
+              <div></div>
+            </div>
+          </div>
+        </div>
+
+
+
+{/* section 2 */}
+
+        {/* Frame 153 */}
+        <div className="flex flex-col  justify-between  items-start gap-[24px] w-[659px] h-[539px]">
+            {/* frame 230 */}
+          <div className="flex  flex-col items-start gap-[24px] w-[659px] h-[222px]">
+            {/* frame 140 */}
+            <div className="flex bg-white flex-row justify-between items-center pr-[20px] pl-[36px] gap-[214px] w-[659px] h-[57px]">
+                {/* frame 137 */}
+              <div className="flex flex-row items-center gap-[28px] w-[381px] h-[57px] bg-white">
+                <div className="flex flex-col items-start gap-[5px] h-[48px]">
+                  <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
+                    ساخته‌شده در
+                  </span>
+                  <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
+                    ۱ اردیبهشت ۱۴۰۲
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-start gap-[5px]  h-[48px]">
+                  <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
+                    زمان
+                  </span>
+                  <div className="flex flex-row justify-start items-center gap-[4px] h-[25px]">
+                    <i>
+                      <PlayIcon />
+                    </i>
+                    <span className=" not-italic font-normal text-[16px] leading-[25px] text-right">
+                      00 : 00 : 00
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-[5px] w-[51px] h-[48px]">
+                  <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
+                    ددلاین
+                  </span>
+                  <div className="flex flex-row justify-start items-center gap-[4px] h-[25px]">
+                    <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
+                      پس‌فردا
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+                {/* frame 139 */}
+              <div className="relative">
+                <div className="flex absolute  flex-col items-center pt-[3.0303px] py-[6.06061px] pb-[6.06061px] gap-[15.15px]  w-[19.76px] h-[19.76px] top-[-10px]  bg-[#4AB7D8] rounded-[151.515px]">
+                  <span className=" text-[12px]">۲</span>
+                </div>
+                <i>{<EyeIcon width="32" height="32" />}</i>
+              </div>
+
+
+            </div>
+            <div className=" flex overflow-scroll flex-col items-start pr-[20px] pl-[36px] gap-[21px]  w-[659px] h-[117px]">
+                {
+                    TaskDetails.map((item)=> (
+                        <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
+                    <div className="flex flex-row items-start gap-[4px]  h-[25px]">
+                    <span className=" not-italic font-medium text-[16px] leading-[18px] text-right text-[#208D8E]">
+                        {item.member} 
+
+                        </span>
+                        <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
+                        {item.action === 'create' ? 'این تسک را ساختید' : item.action === 'move' ?  <span className="flex gap-1 leading-[18px]"> این تسک را از {item.start}  <i> {item.startTagColor}
+</i> <span className="flex gap-1">{item.goal}<i>{item.goalTagColor}</i> منتقل کردید</span>  </span>    : 'این تسک را حذف کردید'}
+
+                        </span>
+
+                    </div>
+                    <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
+                    ۱ ساعت پیش
+
+                    </span>
+
+                </div>
+                    )
+                    
+                    )
+                }
+                {/* <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
+                    <div className="flex flex-row items-start gap-[4px] w-[156px] h-[25px]">
+                    <span className=" not-italic font-medium text-[16px] leading-[25px] text-right text-[#208D8E]">
+                        شما 
+
+                        </span>
+                        <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
+                        این تسک را ساختید
+
+                        </span>
+
+                    </div>
+                    <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
+                    ۱ ساعت پیش
+
+                    </span>
+
+                </div> */}
+
+                {/* <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
+                    <div className="flex flex-row items-start gap-[4px] w-[156px] h-[25px]">
+                        <span className=" not-italic font-medium text-[16px] leading-[25px] text-right text-[#208D8E]">
+                        شما 
+
+                        </span>
+                        <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
+                        این تسک را ساختید
+
+                        </span>
+
+                    </div>
+                    <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
+                    ۱ ساعت پیش
+
+                    </span>
+
+                </div> */}
+
+                {/* <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
+                    <div className="flex flex-row items-start gap-[4px] w-[156px] h-[25px]">
+                    <span className=" not-italic font-medium text-[16px] leading-[25px] text-right text-[#208D8E]">
+                        شما 
+
+                        </span>
+                        <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
+                        این تسک را ساختید
+
+                        </span>
+
+                    </div>
+                    <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
+                    ۱ ساعت پیش
+
+                    </span>
+
+                </div> */}
+                
+            </div>
+
+            
+            
+          </div>
+          <div className="h-[130px] mt-[-30px] flex-col overflow-scroll">
+          <div  className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]   rounded-[12px]">
+            <div className="flex bg-lime-600 flex-row justify-start items-start pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] ">
+
+            </div>
+            <div style={{
+                border : "1px solid #F4F4F4"
+            }} className=" flex  flex-col items-start p-[16px] gap-[8px] w-[572px] h-[104px] rounded-[12px]">
+                <div className="flex flex-row justify-between items-center gap-[365px] w-[497px] h-[25px]">
+                    <div className="flex flex-row justify-start items-center gap-[4px]  h-[25px]">
+                        <span className=" not-italic font-normal text-[16px] text-right text-[#208D8E]">شما</span>
+                        <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]"> کامنت گذاشتید</span>
+
+                    </div>
+                    
+                        <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]">۱۲ تیر</span>
+                    
+
+                </div>
+                <p className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#000000]">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+            </p>
+
+            </div>
+           
+
+            </div>
+            
+
+
+            
+
+
+
+
+            <div  className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]  rounded-[12px]">
+            <div className="flex bg-lime-600 flex-row justify-start items-start pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] ">
+
+            </div>
+            <div style={{
+                border : "1px solid #F4F4F4"
+            }} className=" flex  flex-col items-start p-[16px] gap-[8px] w-[572px] h-[104px] rounded-[12px]">
+                <div className="flex flex-row justify-between items-center gap-[365px] w-[497px] h-[25px]">
+                    <div className="flex flex-row justify-start items-center gap-[4px]  h-[25px]">
+                        <span className=" not-italic font-normal text-[16px] text-right text-[#208D8E]">شما</span>
+                        <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]"> کامنت گذاشتید</span>
+
+                    </div>
+                    
+                        <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]">۱۲ تیر</span>
+                    
+
+                </div>
+                <p className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#000000]">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+            </p>
+
+            </div>
+           
+
+            </div>
+            
+
+          </div>
+          
+            
+
+            
+
+          
+<div>
+     <div className="flex flex-row " 
+            >
+                
+            <textarea placeholder="کامنت" onClick={handlerComment}     style={{border: "1px solid #F4F4F4",height: `${!commentHandler ? '67px' : '206px' }`
+                }} className="w-[659px] p-4  resize-none rounded-bl-[20px]  focus:outline-none focus:rounded-[20px]   focus:shadow-lg transition-all"  >
+            </textarea>
+            <i className=" absolute mr-[42.7%] mt-5">
+                <CommentIcon color="#AEAEAE" />
+
+            </i>
+
+            
+            
+            
+           
+
+            </div>
+
+</div>
+            
+            {/* <Button classNames='w-[78px] absolute mr-[40%] mt-[34%]  h-[31px] bg-[#208D8E]' style={{
+                fontSize: '12px',
+            }} title="ثبت کامنت" /> */}
+            
+            <Transition
+                show={commentHandler}
+                
+                enter="ease-out duration-200"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+                className='absolute mr-[40%] mt-[34%]'
+              >
+                <Button  classNames='w-[78px] absolute   h-[31px] bg-[#208D8E]' style={{
+                fontSize: '12px',
+            }} title="ثبت کامنت" />
+                
+                
+               
+
+                
+                 
+
+
+              </Transition>
+              <Transition
+                show={commentHandler}
+                
+                enter="ease-out duration-200"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-out"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+                className='absolute mr-[1%]  mt-[34%]'
+              >
+                
+                <div className="flex flex-row justify-start items-center gap-[20px] w-[156px] h-[24px]">
+                    <i>
+                    <EmailIcon color="#C9CBDA" />
+                    </i>
+                    <i>
+                    <LinkIcon color="#C9CBDA" width="24" height="24" />
+
+                    </i>
+                    <i>
+                    <NoteIcon color="#C9CBDA" />
+                    </i>
+                    
+                    <i>
+                    <SmileIcon color="#C9CBDA" />
+                    </i>
+                    
+
+
+
+
+
+                </div>
+
+                
+                 
+
+
+              </Transition>
+            
+            
+           
+          
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  );
+};
+
+export default InfoTask;
