@@ -9,6 +9,7 @@ import TrashIcon from "../../assets/Icons/TrashIcon";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import AXIOS from "../../Utils/axios";
+import { useParams } from "react-router-dom";
 
 async function changePosition(taskId, index) {
   try {
@@ -33,7 +34,32 @@ async function changeBoard(taskId, boardId, index) {
   }
 }
 
+function getRandomHexCode() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 const BoardTitle = (boards) => {
+  const [newBoardName, setNewBoardName] = useState("");
+  const { projectId } = useParams();
+
+  async function createNewBoard(boardName) {
+    try {
+      const createNewBoard = await AXIOS.post(`/board`, {
+        name: boardName,
+        projectId: projectId,
+        color: getRandomHexCode(),
+      });
+      console.log(createNewBoard);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const card = [
     {
       id: useId(),
@@ -312,9 +338,22 @@ const BoardTitle = (boards) => {
           >
             <div className="flex gap-1 items-center">
               <span>{<PlusIcon />}</span>
-              <span className=" text-[#1E1E1E] text-base font-medium">
-                ساختن برد جدید
-              </span>
+              <input
+                type="text"
+                className=" text-[#1E1E1E] text-base font-medium"
+                placeholder={"ساختن برد جدید"}
+                value={newBoardName}
+                onChange={(e) => setNewBoardName(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    createNewBoard(newBoardName);
+                    setNewBoardName("");
+                  }
+                }}
+                onBlur={() => {
+                  setNewBoardName("");
+                }}
+              ></input>
             </div>
           </div>
         </div>
