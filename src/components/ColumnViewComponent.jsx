@@ -3,16 +3,11 @@ import { useEffect, useState } from "react";
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
 import FilterIcon from "../assets/Icons/FilterIcon";
 import BoardTitle from "./BoardTitle/BoardTitle";
-import AXIOS from "../Utils/axios";
-function ColumnViewComponent() {
-  const [boards, setBoards] = useState([]);
 
+function ColumnViewComponent(data) {
   useEffect(() => {
-    AXIOS.get("/board/6480beeeb684d21e2741325e").then((response) => {
-      const responsedBoards = response.data.data;
-      setBoards(responsedBoards);
-    });
-  }, []);
+    console.log(data);
+  }, [data]);
 
   return (
     <div>
@@ -25,7 +20,7 @@ function ColumnViewComponent() {
           دسته‌بندی‌شده با: وضعیت
         </span>
       </MainLayoutSubHeader>
-      <BoardTitle boards={boards} />
+      <BoardTitle boards={data.data} />
     </div>
   );
 }

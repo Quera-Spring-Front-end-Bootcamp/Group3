@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useId, useState, useEffect } from "react";
 import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
 import Card from "../Card/Card";
 import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
@@ -8,8 +8,32 @@ import ArchiveIcon from "../../assets/Icons/ArchiveIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import AXIOS from "../../Utils/axios";
 
-const BoardTitle = () => {
+async function changePosition(taskId, index) {
+  try {
+    const response = await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
+    console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+async function changeBoard(taskId, boardId, index) {
+  try {
+    const changeBoardResponse = await AXIOS.put(
+      `/task/${taskId}/board/${boardId}`
+    );
+    const changePositionResponse = await AXIOS.put(
+      `/task/${taskId}/position/${index + 1}`
+    );
+    console.log(changeBoardResponse, changePositionResponse);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+const BoardTitle = (boards) => {
   const card = [
     {
       id: useId(),
@@ -95,7 +119,11 @@ const BoardTitle = () => {
     { id: useId(), title: "To Do", color: "#F98F2E", badgeValue: "10" },
   ];
 
-  const [data, setData] = useState(card);
+  const [data, setData] = useState(boards.boards);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const [hoverTooltip, setHoverTooltip] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -128,8 +156,8 @@ const BoardTitle = () => {
   };
 
   const onDragEnd = (result) => {
-    const { destination, source } = result;
-
+    const { draggableId, destination, source } = result;
+    console.log(result);
     if (!destination) {
       return;
     }
@@ -142,10 +170,10 @@ const BoardTitle = () => {
     }
 
     const sourceColumn = data.find(
-      (column) => column.id === source.droppableId
+      (column) => column._id === source.droppableId
     );
     const destinationColumn = data.find(
-      (column) => column.id === destination.droppableId
+      (column) => column._id === destination.droppableId
     );
 
     if (!destinationColumn.tasks) {
@@ -155,6 +183,16 @@ const BoardTitle = () => {
     const draggedTask = sourceColumn.tasks.splice(source.index, 1)[0];
     destinationColumn.tasks.splice(destination.index, 0, draggedTask);
 
+    if (sourceColumn === destinationColumn) {
+      changePosition(draggableId, destination.index);
+      console.log("same column");
+    }
+
+    if (sourceColumn !== destinationColumn) {
+      changeBoard(draggableId, destination.droppableId, destination.index);
+      console.log("diffrent column");
+    }
+
     setData([...data]);
   };
 
@@ -162,7 +200,7 @@ const BoardTitle = () => {
     <div className="flex gap-5 m-5 whitespace-nowrap mt-36 overflow-auto h-[calc(100vh_-_180px)]">
       <DragDropContext onDragEnd={onDragEnd}>
         {data.map((item) => (
-          <Droppable droppableId={item.id} key={item.id}>
+          <Droppable droppableId={item._id} key={item._id}>
             {(provided) => {
               return (
                 <div
@@ -177,25 +215,25 @@ const BoardTitle = () => {
                   >
                     <div className="flex gap-1 items-center">
                       <span className=" text-[#1E1E1E] text-base font-medium">
-                        {item.title}
+                        {item.name}
                       </span>
                       <div className="text-[10px] leading-none	 p-1   grid items-center bg-[#F4F4F4] text-[#1E1E1E] font-medium rounded-full">
-                        <span>{item.badgeValue}</span>
+                        <span>{item.tasks.length}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100 ">
                       <div
                         className="cursor-pointer relative"
-                        onClick={() => clickAddHandler(item.id)}
+                        onClick={() => clickAddHandler(item._id)}
                         onMouseLeave={handleMouseLeaveDots}
                       >
                         <DotsMenuIcon />
-                        {item.id === selectId && showMore && (
+                        {item._id === selectId && showMore && (
                           <Card className="absolute  rounded-[8px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] top-full  gap-[16px] p-[12px] ">
                             <ColumnMoreItem
                               title="ویرایش نام ستون"
                               icon={<EditSqureIcon />}
-                              onClick={() => EditBoardTitleHandler(item.id)}
+                              onClick={() => EditBoardTitleHandler(item._id)}
                             />
                             <ColumnMoreItem
                               title="افزودن تسک"
@@ -209,7 +247,7 @@ const BoardTitle = () => {
                               title="حذف ستون"
                               className="text-[#9F0000] gap-[10px]"
                               icon={<TrashIcon color="#9F0000" />}
-                              onClick={() => removeCulomnHandler(item.id)}
+                              onClick={() => removeCulomnHandler(item._id)}
                             />
                           </Card>
                         )}
@@ -217,7 +255,7 @@ const BoardTitle = () => {
                       <div
                         className="cursor-pointer group relative"
                         onMouseEnter={handleMouseEnter}
-                        onClick={() => addNewTaskClickHandler(item.id)}
+                        onClick={() => addNewTaskClickHandler(item._id)}
                         onMouseLeave={handleMouseLeave}
                       >
                         {hoverTooltip && (
@@ -235,8 +273,8 @@ const BoardTitle = () => {
                       item.tasks.map((task, index) => {
                         return (
                           <Draggable
-                            key={task.id}
-                            draggableId={task.id}
+                            key={task._id}
+                            draggableId={task._id}
                             index={index}
                           >
                             {(provided) => {
@@ -247,12 +285,12 @@ const BoardTitle = () => {
                                   {...provided.dragHandleProps}
                                 >
                                   <ProjectCard
-                                    projectTitle={task.projectTitle}
-                                    taskTitle={task.taskTitle}
-                                    date={task.date}
-                                    time={task.time}
+                                    projectTitle={task.name}
+                                    taskTitle={task.name}
+                                    date={task.deadline}
+                                    time="12"
                                     tags={task.tags}
-                                    userName={task.username}
+                                    userName={task.taskAssigns}
                                   />
                                 </div>
                               );
