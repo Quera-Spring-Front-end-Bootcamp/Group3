@@ -1,6 +1,7 @@
 import axios from "axios";
-import { setAccessToken, logout } from "../redux/slices/authSlice";
-import store from "../redux/store";
+import { logout } from "../redux/slices/auth/authSlice";
+// import { useDispatch, useSelector } from 'react-redux'
+// import store from "../redux/store";
 
 const AXIOS = axios.create({
   baseURL: "http://localhost:3000/api",
@@ -9,10 +10,11 @@ const AXIOS = axios.create({
 let accessToken = localStorage.getItem("accessToken");
 let refreshToken = localStorage.getItem("refreshToken");
 
-store.subscribe(() => {
-  accessToken = store.getState().auth.accessToken;
-  refreshToken = store.getState().auth.refreshToken;
-});
+
+// store.subscribe(() => {
+//   accessToken = store.getState().auth.accessToken;
+//   refreshToken = store.getState().auth.refreshToken;
+// });
 
 AXIOS.interceptors.request.use(
   (config) => {
@@ -42,14 +44,15 @@ AXIOS.interceptors.response.use(
           if (res.status === 200) {
             const newAccessToken = res.data.data.accessToken;
 
-            store.dispatch(setAccessToken(newAccessToken));
+            // store.dispatch(setAccessToken(newAccessToken));
+            localStorage.setItem("accessToken", newAccessToken);
             AXIOS.defaults.headers["x-auth-token"] = newAccessToken;
             originalRequest.headers["x-auth-token"] = newAccessToken;
             return AXIOS(originalRequest);
           }
         })
         .catch((error) => {
-          store.dispatch(logout());
+          // store.dispatch(logout());
           return Promise.reject(error);
         });
     }

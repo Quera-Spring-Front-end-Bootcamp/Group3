@@ -1,16 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from 'react'
 import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
-import AXIOS from "../../Utils/axios";
-import store from "../../redux/store";
-import {
-  setAccessToken,
-  setRefreshToken,
-  setUser,
-} from "../../redux/slices/authSlice";
+import { userLogin } from '../../redux/slices/auth/authActions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,6 +15,14 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const { loading, error, user } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    if (user) {
+      navigate('/profile/personalinfo')
+    }
+  }, [navigate, user])
 
   const handelRedirectForgetPage = () => {
     navigate("/auth/forget");
@@ -28,19 +32,15 @@ const Login = () => {
     navigate("/auth/register");
   };
 
-  async function onSubmit(data) {
+  const onSubmit = (data) => {
     try {
-      const resp = await AXIOS.post("/auth/login", {
+      dispatch(userLogin({
         emailOrUsername: data.email,
         password: data.password,
-      });
-      console.log(resp.data.data);
-      store.dispatch(setAccessToken(resp.data.data.accessToken));
-      store.dispatch(setRefreshToken(resp.data.data.refreshToken));
-      store.dispatch(setUser(resp.data.data.toBeSendUserData));
+      }))
       toast.success("شما با موفقیت وارد شدید :)");
-      navigate("/main/listView");
-    } catch (e) {
+      navigate("/main");
+    } catch (error) {
       toast.error("ورود شما با مشکل رو به رو شد :(");
     }
   }

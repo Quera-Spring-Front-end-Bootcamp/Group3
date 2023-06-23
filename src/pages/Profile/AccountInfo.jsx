@@ -3,18 +3,22 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProfile } from "../../redux/slices/auth/authActions";
 
 export const AccountInfo = () => {
-  const user = { userName: "Mt123456", email: "a@b.com", password: "123" };
-
+  const user = useSelector(state => state.auth.user) || { userName: "user", email: "a@b.com", password: "123456" }
+  const accessToken = useSelector(state => state.auth.accessToken)
+  const dispatch = useDispatch()
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: user });
+  } = useForm({ defaultValues: {...user,password:'123456'} });
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(updateProfile({...data,id:user._id, accessToken}))
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
   };
 
@@ -65,11 +69,11 @@ export const AccountInfo = () => {
           </div>
           <div className="my-5">
             <Input
-              type="userName"
+              type="username"
               label="نام کاربری"
-              id="userName"
-              error={errors.userName}
-              register={register("userName", {
+              id="username"
+              error={errors.username}
+              register={register("username", {
                 required: "این فیلد الزامی می باشد!",
                 pattern: {
                   value: /^[A-Za-z][A-Za-z0-9]{7,15}$/g,

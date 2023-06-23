@@ -3,19 +3,22 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
-
+import {useSelector, useDispatch} from 'react-redux'
+import {updateProfile} from "../../redux/slices/auth/authActions"
 import { useEffect, useState } from "react";
 
 
 const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
 export const PersonalInfo = () => {
-  const [userData, setUserData] = useState({
+  
+  const userData = useSelector(state => state.auth.user) || {
     image: "",
-    name: "Nader",
-    family: "Mohamadi",
-    mobile: "09121234567",
-  });
+    firstname:  "",
+    lastname: "",
+    phone: "",
+  }
+  const accessToken = useSelector(state => state.auth.accessToken)
 
   const [image, setImage] = useState(null);
   const {
@@ -43,9 +46,11 @@ export const PersonalInfo = () => {
      setImage(file);
    };
   
+  const dispatch = useDispatch()
   const onSubmit = (data) => {
-    setUserData(data)
-    console.log("data", data);
+    dispatch(updateProfile(
+      {...data,id:userData._id,accessToken}
+    ))
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
 }
 
@@ -60,7 +65,7 @@ export const PersonalInfo = () => {
                 <img src={URL.createObjectURL(image)} alt="Profile Image" />
               ) : (
                 <span className="font-medium mt-3 text-[34px] text-black ">
-                  {userData.name.charAt(0) + userData.family.charAt(0)}
+                  {userData.firstname.charAt(0) + userData.lastname.charAt(0)}
                 </span>
               )}
             </div>
@@ -89,9 +94,9 @@ export const PersonalInfo = () => {
           <div className="my-5">
             <Input
               label="نام"
-              id="name"
-              error={errors.name}
-              register={register("name", {
+              id="firstname"
+              error={errors.firstname}
+              register={register("firstname", {
                 required: "این فیلد الزامی می باشد!",
               })}
             />
@@ -99,9 +104,9 @@ export const PersonalInfo = () => {
           <div>
             <Input
               label="نام خانوادگی"
-              id="family"
-              error={errors.family}
-              register={register("family", {
+              id="lastname"
+              error={errors.lastname}
+              register={register("lastname", {
                 required: "این فیلد الزامی می باشد!",
               })}
             />
@@ -109,9 +114,9 @@ export const PersonalInfo = () => {
           <div className="my-5">
             <Input
               label="شماره موبایل"
-              id="mobile"
-              error={errors.mobile}
-              register={register("mobile", {
+              id="phone"
+              error={errors.phone}
+              register={register("phone", {
                 required: "این فیلد الزامی می باشد!",
                 pattern: {
                   value: /^(?:0|98|\+98|\+980|0098|098|00980)?(9\d{9})$/,
