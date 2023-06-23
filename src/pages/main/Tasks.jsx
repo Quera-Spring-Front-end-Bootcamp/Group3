@@ -9,7 +9,7 @@ import ListCheckIcon from "../../assets/Icons/ListCheckIcon";
 import ArtBoardIcon from "../../assets/Icons/ArtBoardIcon";
 import CalendarIcon from "../../assets/Icons/CalendarIcon";
 import ShareIcon from "../../assets/Icons/ShareIcon";
-import ShareProjectCard from "../../components/ShareProject/ShareProjectCard";
+import ShareCard from "../../components/ShareCard/ShareCard";
 import ColumnViewComponent from "../../components/ColumnViewComponent";
 
 function Tasks() {
@@ -69,9 +69,10 @@ function Tasks() {
           <span className="mr-2 font-normal text-base">اشتراک گذاری</span>
         </button>
         {openShareProjectModal && (
-          <ShareProjectCard
-            openShareProjectModal={openShareProjectModal}
-            setOpenShareProjectModal={setOpenShareProjectModal}
+          <ShareCard
+            openShareModal={openShareProjectModal}
+            setOpenShareModal={setOpenShareProjectModal}
+            title="اشتراک گذاری پروژه"
           />
         )}
       </header>

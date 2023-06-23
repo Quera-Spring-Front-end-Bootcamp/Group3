@@ -217,11 +217,11 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                       placeholder="توضیحاتی برای این تسک بنویسید"
                       className="py-[19px] px-[21px] resize-none border-box w-[1078px] h-[191px] border border-[#E2E2E2] rounded-[12px]"
                     />
-
+                    Nima, [22/03/1402 07:17 ب.ظ]
                     {/* Frame 188 */}
                     <div className="cursor-pointer flex flex-row justify-start items-center gap-[15px] w-[1078px] h-[32px]">
                       <span className="not-italic font-normal tex-[16px] leading-[24px] text-right">
-                        افزودن پیوست{" "}
+                        افزودن پیوست
                       </span>
                       <div className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
                         <i>
@@ -231,7 +231,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                       </div>
                     </div>
                     {/* Frame 191 */}
-
                     <div className="flex flex-row justify-between  items-center gap-[670px] w-[1078px] h-[50px]">
                       <div className="flex flex-row justify-start items-center gap-[24px] w-[272px] h-[50px]">
                         <div
@@ -312,7 +311,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                             handleClickCloseTag(item)
                                           }
                                         >
-                                          {<CloseIcon width="11" height="11"/>}
+                                          {<CloseIcon width="11" height="11" />}
                                         </i>
                                         <i>{<DotsMenuIcon />}</i>
                                       </div>
