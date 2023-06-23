@@ -8,7 +8,6 @@ import ArrowLeftIcon from "../assets/Icons/ArrowLeftIcon";
 import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
-import AXIOS from "../Utils/axios.js";
 import { useCallback } from "react";
 
 // can't pass the clickHandler as prop. it should change inside the component
@@ -17,7 +16,7 @@ function Calendar(data) {
   const [selectedDate, setSelectedDate] = useState(Date());
   const [openModal, setOpenModal] = useState(false);
   const [hoveredDate, setHoveredDate] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue] = useState("");
 
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     dateStyle: "medium",
@@ -69,9 +68,11 @@ function Calendar(data) {
 
   useEffect(() => {
     const tasks = [];
-    data.data.forEach((item) => tasks.push(...item.tasks));
-    setAllTasks(tasks);
-    console.log(data.data);
+    if (data.data) {
+      data.data.forEach((item) => tasks.push(...item.tasks));
+      setAllTasks(tasks);
+      console.log(data.data);
+    }
   }, [setAllTasks, clickHandler, data]);
 
   return (
@@ -183,13 +184,6 @@ function Calendar(data) {
           </div>
         </div>
       </div>
-      <button
-        onClick={() => {
-          console.log(searchValue);
-        }}
-      >
-        Click
-      </button>
     </div>
   );
 }
