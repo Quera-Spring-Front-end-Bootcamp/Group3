@@ -1,8 +1,8 @@
-function ColumnMoreItem({ icon, title, handleClick, className, ...props }) {
+function ColumnMoreItem({ icon, title, onClick, className, ...props }) {
   return (
     <div
       className={`flex cursor-pointer ${className}`}
-      onClick={handleClick}
+      onClick={onClick}
       {...props}
     >
       <span className="flex flex-row items-center w-5 justify-center">
