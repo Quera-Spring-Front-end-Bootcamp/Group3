@@ -17,7 +17,7 @@ function Calendar(data) {
   const [openModal, setOpenModal] = useState(false);
   const [hoveredDate, setHoveredDate] = useState(false);
   const [searchValue] = useState("");
-
+  const [defaultBoard, setDefaultBoard] = useState("");
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     dateStyle: "medium",
   });
@@ -44,10 +44,14 @@ function Calendar(data) {
   }
 
   //define a function to work with the clicked date e is a Date object.
-  const clickHandler = useCallback((e) => {
-    setSelectedDate(e);
-    setOpenModal(true);
-  }, []);
+  const clickHandler = useCallback(
+    (e) => {
+      setSelectedDate(e);
+      setOpenModal(true);
+      console.log(defaultBoard);
+    },
+    [defaultBoard]
+  );
 
   const taskClickHandler = (e) => {
     const filteredTasks = allTasks.filter((task) => task.id === e);
@@ -71,6 +75,7 @@ function Calendar(data) {
     if (data.data) {
       data.data.forEach((item) => tasks.push(...item.tasks));
       setAllTasks(tasks);
+      setDefaultBoard(data.data[0]._id);
       console.log(data.data);
     }
   }, [setAllTasks, clickHandler, data]);
@@ -81,6 +86,7 @@ function Calendar(data) {
         <CalendarTaskModal
           initialDate={selectedDate}
           setOpenModal={setOpenModal}
+          defaultBoard={defaultBoard}
         />
       )}
       <div className="relative flex flex-col pb-[59px] border-solid border-[#AAAAAA] mt-36 overflow-auto h-[calc(100vh_-_180px)]">
@@ -148,10 +154,7 @@ function Calendar(data) {
                         // Filter when searchValue is not empty
                         return (
                           task.deadline &&
-                          day.isSame(
-                            moment(task.deadline).add(1, "day"),
-                            "day"
-                          ) &&
+                          day.isSame(moment(task.deadline), "day") &&
                           task.name
                             .toLowerCase()
                             .includes(searchValue.toLowerCase())
@@ -160,14 +163,17 @@ function Calendar(data) {
                         // Default filter when searchValue is empty
                         return (
                           task.deadline &&
-                          day.isSame(moment(task.deadline).add(1, "day"), "day")
+                          day.isSame(
+                            moment(task.deadline).subtract(1, "day"),
+                            "day"
+                          )
                         );
                       }
                     })
                     .map((task, index) =>
                       index <= 4 ? (
                         <button
-                          key={task.id}
+                          key={task._id}
                           onClick={() => taskClickHandler(task.id)}
                           className="text-[8px] text-white text-right bg-secondary transition-colors duration-100 w-full rounded-[2px] hover:bg-primary p-[2px]"
                         >

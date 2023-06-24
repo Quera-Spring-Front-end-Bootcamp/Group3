@@ -242,46 +242,47 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
                       handleClose={closeHandler}
                       handleBack={backHandler}
                     >
-                      <form onSubmit={handleSubmit(onSubmit)}></form>
-                      <div className="flex w-full flex-col justify-start items-start gap-[12px] border-[0.5px] border-[#AAAAAA] rounded-[8px] mt-[40px] px-[12px] py-[16px]">
-                        <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                          <div className="font-[600] text-[14px]/[22px]">
-                            نام ورک اسپیس
+                      <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="flex w-full flex-col justify-start items-start gap-[12px] border-[0.5px] border-[#AAAAAA] rounded-[8px] mt-[40px] px-[12px] py-[16px]">
+                          <div className="flex flex-row w-full items-center justify-between h-[35px]">
+                            <div className="font-[600] text-[14px]/[22px]">
+                              نام ورک اسپیس
+                            </div>
+                            <div className="font-[600] text-[14px]/[22px]">
+                              {watchName}
+                            </div>
                           </div>
-                          <div className="font-[600] text-[14px]/[22px]">
-                            {watchName}
+                          <div className="flex flex-row w-full items-center justify-between h-[35px]">
+                            <div className="font-[600] text-[14px]/[22px]">
+                              رنگ ورک اسپیس
+                            </div>
+                            <div
+                              className="block relative rounded-sm w-[15px] h-[15px]"
+                              style={{ backgroundColor: colorCode }}
+                            ></div>
+                          </div>
+                          <div className="flex flex-row w-full items-center justify-between h-[35px]">
+                            <div className="font-[600] text-[14px]/[22px]">
+                              اعضا
+                            </div>
+                            <div className="w-[35px] h-[35px]">
+                              <img
+                                className="rounded-full"
+                                src={
+                                  frame
+                                } /* TODO: we should pass profile picture to src  */
+                              />
+                            </div>
                           </div>
                         </div>
-                        <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                          <div className="font-[600] text-[14px]/[22px]">
-                            رنگ ورک اسپیس
-                          </div>
-                          <div
-                            className="block relative rounded-sm w-[15px] h-[15px]"
-                            style={{ backgroundColor: colorCode }}
-                          ></div>
+                        <div className="px-[19px] w-full">
+                          <Button
+                            title={"ساختن ورک اسپیس"}
+                            classNames={"w-full mt-[60px]"}
+                            handleClick={handleSubmit(onSubmit)}
+                          />
                         </div>
-                        <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                          <div className="font-[600] text-[14px]/[22px]">
-                            اعضا
-                          </div>
-                          <div className="w-[35px] h-[35px]">
-                            <img
-                              className="rounded-full"
-                              src={
-                                frame
-                              } /* TODO: we should pass profile picture to src  */
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="px-[19px] w-full">
-                        <Button
-                          title={"ساختن ورک اسپیس"}
-                          classNames={"w-full mt-[60px]"}
-                          handleClick={handleSubmit(onSubmit)}
-                        />
-                      </div>
+                      </form>
                     </Card>
                   )}
                 </Dialog.Panel>
