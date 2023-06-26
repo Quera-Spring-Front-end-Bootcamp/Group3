@@ -1,7 +1,16 @@
 import Card from "../Card/Card";
 
-export const PermissionList = ({ isOpen, setIsOpen, setSelectedOption }) => {
-  const permissionList = [
+export const PermissionList = ({
+  isOpenProject,
+  isOpenList,
+  setIsOpenProject,
+  setSelectedOption,
+  setIsOpenList,
+  setSelectedOptionProject,
+  title,
+}) => {
+  console.log(title);
+  const permissionListData = [
     {
       id: "1",
       title: "دسترسی کامل",
@@ -27,20 +36,44 @@ export const PermissionList = ({ isOpen, setIsOpen, setSelectedOption }) => {
       description: " توانایی گذاشتن کامنت یا ویرایش تسک‌ها را ندارد.",
     },
   ];
-
-
-
+  const permissionProjectData = [
+    { id: 1, title: "پروژه اول" },
+    { id: 2, title: "پروژه دوم" },
+    { id: 3, title: "همه پروژه ها " },
+  ];
   const handleSelectOption = (option) => {
     setSelectedOption(option.title);
-    setIsOpen(false);
+    setIsOpenList(false);
     console.log(`id: ${option.id}`);
   };
-  
+  const handleSelectOptionProject = (option) => {
+    setSelectedOptionProject(option.title);
+    setIsOpenProject(false);
+    console.log(`id: ${option.id}`);
+  };
+  console.log(title.includes("پروژه"));
   return (
     <>
-      {isOpen && (
+      {title.includes("پروژه")
+        ? null
+        : isOpenProject && (
+            <Card className="absolute top-10 left-0 z-20   flex gap-4 items-start  p-4 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
+              {permissionProjectData.map((option) => (
+                <div
+                  key={option.id}
+                  className="flex flex-col gap-1 cursor-pointer"
+                  onClick={() => handleSelectOptionProject(option)}
+                >
+                  <span className="text-[#1e1e1e] text-xs font-semibold">
+                    {option.title}
+                  </span>
+                </div>
+              ))}
+            </Card>
+          )}
+      {isOpenList && (
         <Card className="absolute top-10 left-0 z-20  w-64 flex gap-4 items-start  p-4 rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
-          {permissionList.map((option) => (
+          {permissionListData.map((option) => (
             <div
               key={option.id}
               className="flex flex-col gap-1 cursor-pointer"

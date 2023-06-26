@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from 'react'
+import { useEffect } from "react";
 import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -16,32 +16,32 @@ const Register = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  const { loading, user, error, success } = useSelector(
-    (state) => state.auth
-  )
-  const dispatch = useDispatch()
+  const { user, success } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // redirect user to login page if registration was successful
-    if (success) navigate('/login')
+    if (success) navigate("/login");
     // redirect authenticated user to profile screen
-    if (user) navigate('/profile/personalinfo')
-  }, [navigate, user, success])
+    if (user) navigate("/profile/personalinfo");
+  }, [navigate, user, success]);
 
   function onSubmit(data) {
     try {
-      dispatch(registerUser({
-        username: data.firstName,
-        email: data.email,
-        password: data.password,
-      }))
+      dispatch(
+        registerUser({
+          username: data.firstName,
+          email: data.email,
+          password: data.password,
+        })
+      );
       toast.success("ثبت نام شما با موفقیت انجام شد :)");
-      navigate("/main/listView");
-    } catch (error) {
+      navigate("/main");
+    } catch (e) {
       toast.error("ثبت نام شما با مشکل رو به رو شد :(");
     }
   }
-  
+
   return (
     <div className="flex flex-row items-center justify-center w-screen h-screen">
       <Card title="ثبت‌نام در کوئرا تسک منیجر">

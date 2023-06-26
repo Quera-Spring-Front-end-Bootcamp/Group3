@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useEffect } from 'react'
+import { useEffect } from "react";
 import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
-import { userLogin } from '../../redux/slices/auth/authActions'
-import { useDispatch, useSelector } from 'react-redux'
+import { userLogin } from "../../redux/slices/auth/authActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,14 +15,14 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const { loading, error, user } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (user) {
-      navigate('/profile/personalinfo')
+      navigate("/profile/personalinfo");
     }
-  }, [navigate, user])
+  }, [navigate, user]);
 
   const handelRedirectForgetPage = () => {
     navigate("/auth/forget");
@@ -34,16 +34,18 @@ const Login = () => {
 
   const onSubmit = (data) => {
     try {
-      dispatch(userLogin({
-        emailOrUsername: data.email,
-        password: data.password,
-      }))
+      dispatch(
+        userLogin({
+          emailOrUsername: data.email,
+          password: data.password,
+        })
+      );
       toast.success("شما با موفقیت وارد شدید :)");
       navigate("/main");
     } catch (error) {
       toast.error("ورود شما با مشکل رو به رو شد :(");
     }
-  }
+  };
 
   return (
     <div className="flex flex-row items-center justify-center w-screen h-screen">
