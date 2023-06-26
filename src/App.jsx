@@ -12,11 +12,9 @@ import { ProfileLayout } from "./Layout/ProfileLayout";
 import { PersonalInfo } from "./pages/Profile/PersonalInfo";
 import { AccountInfo } from "./pages/Profile/AccountInfo";
 import { Setting } from "./pages/Profile/Setting";
-import ListView from "./pages/main/ListView";
-import ColumnView from "./pages/main/ColumnView";
-import CalendarView from "./pages/main/CalendarView";
 import { dataColors, useStickyState } from "./theme/theme";
 import IconSample from "./pages/IconSample";
+import Tasks from "./pages/main/Tasks";
 
 const App = () => {
   const [color, setColor] = useStickyState(dataColors[0], "theme-color");
@@ -44,9 +42,7 @@ const App = () => {
         </Route>
 
         <Route path="main" element={<MainLayout />}>
-          <Route path="listView" element={<ListView />}></Route>
-          <Route path="columnView" element={<ColumnView />}></Route>
-          <Route path="calendarView" element={<CalendarView />}></Route>
+          <Route path=":projectId/:view" element={<Tasks />}></Route>
         </Route>
 
         <Route path="iconSample" element={<IconSample />} />

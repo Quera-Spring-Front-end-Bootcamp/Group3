@@ -7,9 +7,10 @@ import { SharedUser } from "./SharedUser";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-const ShareProjectCard = ({
-  openShareProjectModal,
-  setOpenShareProjectModal,
+const ShareCard = ({
+  openShareModal,
+  setOpenShareModal,
+  title
 }) => {
   const info = [
     {
@@ -27,12 +28,12 @@ const ShareProjectCard = ({
     },
   ];
   const handleClose = () => {
-    setOpenShareProjectModal(false);
+    setOpenShareModal(false);
   };
 
   return (
     <>
-      <Transition appear show={openShareProjectModal} as={Fragment}>
+      <Transition appear show={openShareModal} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={handleClose}>
           <Transition.Child
             as={Fragment}
@@ -60,11 +61,11 @@ const ShareProjectCard = ({
                 <Dialog.Panel>
                   <Card
                     closeIcon={true}
-                    title="به اشتراک‌گذاری پروژه"
+                    title={title}
                     titleClassName="w-full text-center font-semibold"
                     handleClose={handleClose}
                     className={
-                      openShareProjectModal
+                      openShareModal
                         ? "w-[470px] rounded-xl  p-5 bg-white flex flex-col"
                         : "hidden"
                     }
@@ -83,7 +84,7 @@ const ShareProjectCard = ({
                             image={user.image}
                             isOwner={user.isOwner}
                           />
-                          <PermissionTitle isOwner={user.isOwner} />
+                          <PermissionTitle isOwner={user.isOwner} title={title} />
                         </div>
                       ))}
                     </div>
@@ -98,4 +99,4 @@ const ShareProjectCard = ({
   );
 };
 
-export default ShareProjectCard;
+export default ShareCard;
