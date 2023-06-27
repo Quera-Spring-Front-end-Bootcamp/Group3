@@ -22,7 +22,7 @@ const Register = () => {
         password: data.password,
       });
       toast.success("ثبت نام شما با موفقیت انجام شد :)");
-      navigate("/main/listView");
+      navigate("/main");
     } catch (e) {
       toast.error("ثبت نام شما با مشکل رو به رو شد :(");
     }
