@@ -26,7 +26,7 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
     watch,
   } = useForm();
   const [colorCode, setColorCode] = useState("#7D828C");
-  const [name, setName] = useState("");
+  const [name] = useState("");
   const [step, setStep] = useState(1);
   const watchName = watch("workspaceName");
 
@@ -41,7 +41,7 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
   async function onSubmit(data) {
     try {
       const response = await AXIOS.post("/workspace/create", {
-        name: `${data.worksapceName}`,
+        name: `${data.workspaceName}`,
         color: colorCode,
       });
       console.log(response);
@@ -128,16 +128,6 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
                         <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
                           <div className="flex flex-col w-full items-start gap-[20px]">
                             <div className="px-[19px] w-full">
-                              {/* <input
-                                type="text"
-                                name="workspaceName" // Provide a unique name for the field
-                                placeholder="نام ورک اسپیس"
-                                value={name}
-                                {...register("workspaceName", {
-                                  required: true,
-                                })}
-                                onChange={(e) => setName(e.target.value)}
-                              /> */}
                               <Input
                                 type={"text"}
                                 id="workspaceName"
