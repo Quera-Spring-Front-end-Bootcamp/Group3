@@ -16,7 +16,7 @@ function Calendar(data) {
   const [selectedDate, setSelectedDate] = useState(Date());
   const [openModal, setOpenModal] = useState(false);
   const [hoveredDate, setHoveredDate] = useState(false);
-  const [searchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [defaultBoard, setDefaultBoard] = useState("");
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     dateStyle: "medium",
@@ -90,7 +90,10 @@ function Calendar(data) {
         />
       )}
       <div className="relative flex flex-col pb-[59px] border-solid border-[#AAAAAA] mt-36 overflow-auto h-[calc(100vh_-_180px)]">
-        <MainLayoutSubHeader>
+        <MainLayoutSubHeader
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        >
           <div className="flex flex-row items-center gap-[8px] max-w-min">
             <button
               onClick={goToToday}
@@ -154,7 +157,10 @@ function Calendar(data) {
                         // Filter when searchValue is not empty
                         return (
                           task.deadline &&
-                          day.isSame(moment(task.deadline), "day") &&
+                          day.isSame(
+                            moment(task.deadline).subtract(1, "day"),
+                            "day"
+                          ) &&
                           task.name
                             .toLowerCase()
                             .includes(searchValue.toLowerCase())

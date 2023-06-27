@@ -97,13 +97,13 @@ function CalendarTaskModal({ initialDate, setOpenModal, defaultBoard }) {
         )}
       </div>
       <div
-        className="absolute h-full w-full z-40"
+        className="absolute z-[40] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         // onClick={CloseButtonClickHandler}
       >
         <form onSubmit={handleSubmit(AddButtonClickHandler)}>
           <Card
             className={
-              "absolute shadow-[0_8px_16px_0px_rgba(0,0,0,0.2)] p-6 rounded-[8px] items-start w-[463px] gap-[30px] z-50 top-1/2 left-1/2 "
+              "absolute shadow-[0_8px_16px_0px_rgba(0,0,0,0.2)] p-6 rounded-[8px] items-start w-[463px] gap-[30px] z-[50] "
             }
           >
             <div className="flex flex-row gap-[12px] justify-start items-center w-full">
