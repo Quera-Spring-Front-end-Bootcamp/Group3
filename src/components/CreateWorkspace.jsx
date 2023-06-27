@@ -45,8 +45,7 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
         color: colorCode,
       });
       closeHandler();
-      toast.error("ورک اسپیس جدید با موفقیت ساخته شد");
-
+      toast.success("ورک اسپیس جدید با موفقیت ساخته شد");
     } catch (e) {
       toast.error("ساخت ورک اسپیس جدید با مشکل مواجه شد");
       console.log(e);
