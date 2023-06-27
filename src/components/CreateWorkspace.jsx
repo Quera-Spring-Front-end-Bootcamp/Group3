@@ -40,12 +40,13 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
 
   async function onSubmit(data) {
     try {
-      const response = await AXIOS.post("/workspace/create", {
+      await AXIOS.post("/workspace/create", {
         name: `${data.workspaceName}`,
         color: colorCode,
       });
-      console.log(response);
       closeHandler();
+      toast.error("ورک اسپیس جدید با موفقیت ساخته شد");
+
     } catch (e) {
       toast.error("ساخت ورک اسپیس جدید با مشکل مواجه شد");
       console.log(e);
