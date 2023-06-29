@@ -80,9 +80,9 @@ function Tasks() {
         )}
       </header>
       <div>
-        {view === "listView" && <WorkSpaceList data={data} />}
+        {view === "listView" && data && <WorkSpaceList data={data} />}
         {view === "columnView" && data && <ColumnViewComponent data={data} />}
-        {view === "calendarView" && <Calendar data={data} />}
+        {view === "calendarView" && data && <Calendar data={data} />}
       </div>
     </>
   );

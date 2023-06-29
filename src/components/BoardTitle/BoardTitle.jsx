@@ -1,4 +1,4 @@
-import { useId, useState, useEffect } from "react";
+import { useState } from "react";
 import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
 import Card from "../Card/Card";
 import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
@@ -10,11 +10,11 @@ import ProjectCard from "../ProjectCard/ProjectCard";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import AXIOS from "../../Utils/axios";
 import { useParams } from "react-router-dom";
+import { NewTask } from "../NewTask/NewTask";
 
 async function changePosition(taskId, index) {
   try {
-    const response = await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
-    console.log(response);
+    await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
   } catch (e) {
     console.log(e);
   }
@@ -22,10 +22,7 @@ async function changePosition(taskId, index) {
 
 async function changeBoardOrder(boardId, index) {
   try {
-    const changeBoardOrderResponse = await AXIOS.put(
-      `/board/${boardId}/position/${index + 1}`
-    );
-    console.log(changeBoardOrderResponse);
+    await AXIOS.put(`/board/${boardId}/position/${index + 1}`);
   } catch (e) {
     console.log(e);
   }
@@ -33,13 +30,8 @@ async function changeBoardOrder(boardId, index) {
 
 async function changeBoard(taskId, boardId, index) {
   try {
-    const changeBoardResponse = await AXIOS.put(
-      `/task/${taskId}/board/${boardId}`
-    );
-    const changePositionResponse = await AXIOS.put(
-      `/task/${taskId}/position/${index + 1}`
-    );
-    console.log(changeBoardResponse, changePositionResponse);
+    await AXIOS.put(`/task/${taskId}/board/${boardId}`);
+    await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
   } catch (e) {
     console.log(e);
   }
@@ -60,110 +52,21 @@ const BoardTitle = (boards) => {
 
   async function createNewBoard(boardName) {
     try {
-      const createNewBoard = await AXIOS.post(`/board`, {
+      await AXIOS.post(`/board`, {
         name: boardName,
         projectId: projectId,
         color: getRandomHexCode(),
       });
-      console.log(createNewBoard);
     } catch (e) {
       console.log(e);
     }
   }
 
-  const card = [
-    {
-      id: useId(),
-      title: "Open",
-      color: "#F98F2E",
-      badgeValue: "1",
-      tasks: [
-        {
-          projectTitle: "پروژه اول",
-          taskTitle: "این یک تیتر برای این تسک است.",
-          date: "۵ مهر - فردا",
-          time: "۲ / ۱۲",
-          id: useId(),
-          tags: [
-            {
-              id: useId(),
-              tagTitle: "درس",
-              tagColor: "#BFFDE3",
-            },
-            { id: useId(), tagTitle: "پروژه", tagColor: "#EEDFF7" },
-          ],
-          userName: "NA",
-        },
-        {
-          projectTitle: "پروژه اول",
-          taskTitle: "این یک تیتر برای این تسک است.",
-          date: "6 مهر - فردا",
-          time: "۲ / ۱۲",
-          id: useId(),
-          tags: [
-            {
-              id: useId(),
-              tagTitle: "درس",
-              tagColor: "#BFFDE3",
-            },
-            { id: useId(), tagTitle: "پروژه", tagColor: "#EEDFF7" },
-          ],
-          userName: "NA",
-        },
-      ],
-    },
-    {
-      id: useId(),
-      title: "In progress",
-      color: "#2E7FF9",
-      badgeValue: "16",
-      tasks: [
-        {
-          projectTitle: "پروژه اول",
-          taskTitle: "این یک تیتر برای این تسک است.",
-          date: "۵ ابان - فردا",
-          time: "۲ / ۱۲",
-          id: useId(),
-          tags: [
-            {
-              id: useId(),
-              tagTitle: "درس",
-              tagColor: "#BFFDE3",
-            },
-            { id: useId(), tagTitle: "پروژه", tagColor: "#EEDFF7" },
-          ],
-          userName: "NA",
-        },
-        {
-          projectTitle: "پروژه اول",
-          taskTitle: "این یک تیتر برای این تسک است.",
-          date: "16 آبان  - فردا",
-          time: "۲ / ۱۲",
-          id: useId(),
-          tags: [
-            {
-              id: useId(),
-              tagTitle: "درس",
-              tagColor: "#BFFDE3",
-            },
-            { id: useId(), tagTitle: "پروژه", tagColor: "#EEDFF7" },
-          ],
-          userName: "NA",
-        },
-      ],
-    },
-    { id: useId(), title: "Pending", color: "#DEC908", badgeValue: "13 " },
-    { id: useId(), title: "To Do", color: "#F98F2E", badgeValue: "10" },
-  ];
-
   const boardsData = boards.boards;
   boardsData.sort((a, b) => a.position - b.position);
 
   const [data, setData] = useState(boardsData);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
 
   const [hoverTooltip, setHoverTooltip] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -182,11 +85,8 @@ const BoardTitle = (boards) => {
     setSelectId(id);
     setShowMore(!showMore);
   };
-  const addNewTaskClickHandler = (id) => {
-    console.log(`id ${id}`);
-  };
-  const addNewBoardTitleClickHandler = () => {
-    console.log("addNewBoardTitleClickHandler");
+  const addNewTaskClickHandler = () => {
+    setOpenNewTaskModal(true);
   };
   const removeCulomnHandler = (id) => {
     console.log(`Remove ${id}`);
@@ -197,7 +97,6 @@ const BoardTitle = (boards) => {
 
   const onDragEnd = (result) => {
     const { draggableId, destination, source, type } = result;
-    console.log(result);
 
     if (type === "tasks") {
       if (!destination) {
@@ -395,15 +294,12 @@ const BoardTitle = (boards) => {
           }}
         </Droppable>
         <div className="pl-5">
-          <div
-            className="min-w-[250px]  cursor-pointer  px-4 py-2 flex  items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.18)] rounded border-t "
-            onClick={addNewBoardTitleClickHandler}
-          >
+          <div className="min-w-[250px]  cursor-pointer  px-4 py-2 flex  items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.18)] rounded border-t ">
             <div className="flex gap-1 items-center">
               <span>{<PlusIcon />}</span>
               <input
                 type="text"
-                className=" text-[#1E1E1E] text-base font-medium"
+                className=" text-[#1E1E1E] text-base font-medium bg-transparent"
                 placeholder={"ساختن برد جدید"}
                 value={newBoardName}
                 onChange={(e) => setNewBoardName(e.target.value)}
@@ -421,6 +317,12 @@ const BoardTitle = (boards) => {
           </div>
         </div>
       </DragDropContext>
+      {openNewTaskModal && (
+        <NewTask
+          openNewTaskModal={openNewTaskModal}
+          setOpenNewTaskModal={setOpenNewTaskModal}
+        />
+      )}
     </div>
   );
 };

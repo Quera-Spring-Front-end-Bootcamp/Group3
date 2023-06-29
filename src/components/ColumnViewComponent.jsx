@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
-
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
 import FilterIcon from "../assets/Icons/FilterIcon";
 import BoardTitle from "./BoardTitle/BoardTitle";
 
 function ColumnViewComponent(data) {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <div>
       <MainLayoutSubHeader>
