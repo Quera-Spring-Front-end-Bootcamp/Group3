@@ -1,45 +1,119 @@
+import { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router";
 import Logo from "../components/AuthLayout/Logo";
 import Button from "../components/Button";
-import { Outlet, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
 import { Disclosure, Menu } from "@headlessui/react";
 import { NewTask } from "../components/NewTask/NewTask";
 import { ColumMoreCard } from "../components/ColumnMore/ColumnMoreCard";
+import CreateWorkspace from "../components/CreateWorkspace";
+import { copyLink } from "../Utils/copyLink";
 import SearchIcon from "../assets/Icons/SearchIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import LogoutIcon from "../assets/Icons/LogoutIcon";
 import PaletteIcon from "../assets/Icons/PaletteIcon";
 import LinkIcon from "../assets/Icons/LinkIcon";
 import TrashIcon from "../assets/Icons/TrashIcon";
+import DotsMenuIcon from "../assets/Icons/DotsMenuIcon";
 import EditSqureIcon from "../assets/Icons/EditSqureIcon";
 import PlusIcon from "../assets/Icons/PlusIcon";
-import DotsMenuIcon from "../assets/Icons/DotsMenuIcon";
+import ShareCard from "../components/ShareCard/ShareCard";
 import AXIOS from "../Utils/axios";
 
-const dataColumnMoreItemsWorkSpace = [
-  {
-    id: 1,
-    title: "ساخت پروژه جدید",
-    icon: <PlusIcon width="24" height="24" />,
-  },
-  { id: 2, title: "   ویراش نام ورک اسپیس", icon: <EditSqureIcon /> },
-  { id: 3, title: "ویراش رنگ", icon: <PaletteIcon width="20" height="21" /> },
-  { id: 4, title: "کپی لینک", icon: <LinkIcon /> },
-  { id: 5, title: "حذف", icon: <TrashIcon color="#9F0000" />, bg: "#9F0000" },
-];
-
-const dataColumnMoreItemsProject = [
-  { id: 1, title: "ساخت تسک جدید", icon: <PlusIcon width="24" height="24" /> },
-  { id: 2, title: "ویراش نام پروژه  ", icon: <EditSqureIcon /> },
-  { id: 3, title: "کپی لینک", icon: <LinkIcon /> },
-  { id: 4, title: "حذف", icon: <TrashIcon color="#9F0000" />, bg: "#9F0000" },
-];
-
 function MainLayout() {
+  const dataColumnMoreItemsWorkSpace = [
+    {
+      id: 1,
+      title: "ساخت پروژه جدید",
+      icon: <PlusIcon width="24" height="24" />,
+      onClick: () => {
+        // Logic for adding a project
+      },
+    },
+    {
+      id: 2,
+      title: "ویراش نام ورک اسپیس",
+      icon: <EditSqureIcon />,
+      onClick: () => {
+        // Logic for editing the workspace name
+      },
+    },
+    {
+      id: 3,
+      title: "ویراش رنگ",
+      icon: <PaletteIcon width="20" height="21" />,
+      onClick: () => {
+        // Logic for editing the workspace color
+      },
+    },
+    {
+      id: 4,
+      title: "کپی لینک",
+      icon: <LinkIcon />,
+      onClick: () => {
+        copyLink(privateLink);
+      },
+    },
+    {
+      id: 5,
+      title: "حذف",
+      icon: <TrashIcon color="#9F0000" />,
+      bg: "#9F0000",
+      onClick: () => {
+        // Logic for deleting the workspace
+      },
+    },
+  ];
+
+  const dataColumnMoreItemsProject = [
+    {
+      id: 1,
+      title: "ساخت تسک جدید",
+      icon: <PlusIcon width="24" height="24" />,
+      onClick: () => {
+        setOpenNewTaskModal(true);
+      },
+    },
+    {
+      id: 2,
+      title: "ویراش نام پروژه",
+      icon: <EditSqureIcon />,
+      onClick: () => {
+        // Logic for editing the project name
+      },
+    },
+    {
+      id: 3,
+      title: "کپی لینک",
+      icon: <LinkIcon />,
+      onClick: () => {
+        copyLink(privateLink);
+      },
+    },
+    {
+      id: 4,
+      title: "حذف",
+      icon: <TrashIcon color="#9F0000" />,
+      bg: "#9F0000",
+      onClick: () => {
+        // Logic for deleting the project
+      },
+    },
+  ];
+  const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
+  const [openShareWorkSpaceModal, setOpenShareWorkSpaceModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
+  const [openNewWorkspaceModal, setOpenNewWorkspaceModal] = useState(false);
   const [data, setData] = useState([]);
 
   const naviaget = useNavigate();
+  const privateLink = location.href;
+
+  function handleOpenShareProject() {
+    setOpenShareProjectModal(true);
+  }
+  function handleOpenWorkSpace() {
+    setOpenShareWorkSpaceModal(true);
+  }
 
   function handleOpenNewTask() {
     setOpenNewTaskModal(true);
@@ -75,11 +149,9 @@ function MainLayout() {
     <div className="flex flex-row bg-[#FAFBFC]">
       <aside className="!w-72 h-screen p-5 flex flex-col border-l-[1px]">
         <Logo />
-
         <div className="mt-5 font-semibold">
           <h4>ورک اسپیس‌ها</h4>
         </div>
-
         <div className="relative mt-3">
           <div className="absolute top-2 right-2">{<SearchIcon />}</div>
           <input
@@ -88,19 +160,22 @@ function MainLayout() {
             className="w-full h-10 text-sm placeholder-[#AAAAAA] bg-[#F6F7F9] rounded pl-4 pr-9"
           />
         </div>
-
-        <button className="flex flex-row items-center justify-center bg-[#D3D3D3] rounded-md mt-3 h-8 text-xs font-semibold">
+        <button
+          onClick={() => {
+            setOpenNewWorkspaceModal(true);
+          }}
+          className="flex flex-row items-center justify-center bg-[#D3D3D3] rounded-md mt-3 h-8 text-xs font-semibold"
+        >
           {<SqurePlusIcon />}
           <span className="pr-1">ساختن اسپیس جدید</span>
         </button>
-
         <div className="h-96 flex flex-col gap-5 mt-5">
           {data.map((WorkSpace) => (
             <Disclosure as="div" key={WorkSpace._id}>
               {() => (
                 <>
                   <div className="flex group">
-                    <Disclosure.Button className="flex flex-row items-cente justify-between flex-1 group">
+                    <Disclosure.Button className="flex flex-row items-center justify-between flex-1 group">
                       <div className="flex flex-row items-center">
                         <div className={`w-5 h-5 rounded-[4px] bg-[#DE88FD]`} />
                         <button className="mr-2 text-base font-medium">
@@ -115,7 +190,10 @@ function MainLayout() {
                         </button>
                       </Menu.Button>
                       <Menu.Items className="absolute mt-9 mr-[50px]">
-                        <ColumMoreCard data={dataColumnMoreItemsWorkSpace} />
+                        <ColumMoreCard
+                          handleOpenModal={handleOpenWorkSpace}
+                          data={dataColumnMoreItemsWorkSpace}
+                        />
                       </Menu.Items>
                     </Menu>
                   </div>
@@ -143,6 +221,7 @@ function MainLayout() {
                             <Menu.Items className="absolute mt-9 mr-[33px]">
                               <ColumMoreCard
                                 data={dataColumnMoreItemsProject}
+                                handleOpenModal={handleOpenShareProject}
                               />
                             </Menu.Items>
                           </Menu>
@@ -155,7 +234,6 @@ function MainLayout() {
             </Disclosure>
           ))}
         </div>
-
         <button
           className="flex flex-row items-center mt-3"
           onClick={() => handleNavigateToProfile()}
@@ -165,7 +243,6 @@ function MainLayout() {
           </div>
           <span className="mr-2 font-medium text-base">نیلوفر موجودی</span>
         </button>
-
         <button
           className="flex flex-row items-center mt-3"
           onClick={handleNavigateToLogin}
@@ -176,6 +253,20 @@ function MainLayout() {
           </span>
         </button>
       </aside>
+      {openShareWorkSpaceModal && (
+        <ShareCard
+          openShareModal={openShareWorkSpaceModal}
+          setOpenShareModal={setOpenShareWorkSpaceModal}
+          title="اشتراک گذاری ورک اسپس"
+        />
+      )}
+      {openShareProjectModal && (
+        <ShareCard
+          openShareModal={openShareProjectModal}
+          setOpenShareModal={setOpenShareProjectModal}
+          title="اشتراک گذاری پروژه"
+        />
+      )}
       <div className="flex flex-col w-[calc(100vw_-_19rem)] p-4 h-screen overflow-auto">
         <main className="h-full">
           <Outlet />
@@ -189,6 +280,12 @@ function MainLayout() {
             <NewTask
               openNewTaskModal={openNewTaskModal}
               setOpenNewTaskModal={setOpenNewTaskModal}
+            />
+          )}
+          {openNewWorkspaceModal && (
+            <CreateWorkspace
+              openNewWorkspaceModal={openNewWorkspaceModal}
+              setOpenNewWorkspaceModal={setOpenNewWorkspaceModal}
             />
           )}
         </main>
