@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import moment from "moment-jalaali";
 import "moment/locale/fa";
 
@@ -8,74 +8,20 @@ import ArrowLeftIcon from "../assets/Icons/ArrowLeftIcon";
 import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
+import { useCallback } from "react";
 
 // can't pass the clickHandler as prop. it should change inside the component
-function Calendar() {
+function Calendar(data) {
   const [currentDate, setCurrentDate] = useState(moment());
   const [selectedDate, setSelectedDate] = useState(Date());
   const [openModal, setOpenModal] = useState(false);
   const [hoveredDate, setHoveredDate] = useState(false);
-
+  const [searchValue, setSearchValue] = useState("");
+  const [defaultBoard, setDefaultBoard] = useState("");
   const formatter = new Intl.DateTimeFormat("fa-IR", {
     dateStyle: "medium",
   });
-
-  const DUMMY_TASK = [
-    {
-      id: 1,
-      name: "test1",
-      startDate: moment("2023/05/28"),
-      endDate: null,
-    },
-    {
-      id: 2,
-      name: "test2",
-      startDate: moment("2023/05/28"),
-      endDate: null,
-    },
-    {
-      id: 3,
-      name: "test3",
-      startDate: moment("2023/05/28"),
-      endDate: null,
-    },
-    {
-      id: 4,
-      name: "test4",
-      startDate: moment("2023/05/28"),
-      endDate: null,
-    },
-    {
-      id: 5,
-      name: "test5",
-      startDate: moment("2023/05/28"),
-      endDate: null,
-    },
-    {
-      id: 6,
-      name: "test6",
-      startDate: moment("2023/06/4"),
-      endDate: null,
-    },
-    {
-      id: 7,
-      name: "test7",
-      startDate: moment("2023/06/11"),
-      endDate: null,
-    },
-    {
-      id: 6,
-      name: "test6",
-      startDate: moment("2023/06/4"),
-      endDate: null,
-    },
-    {
-      id: 9,
-      name: "test7",
-      startDate: moment("2023/06/11"),
-      endDate: null,
-    },
-  ];
+  const [allTasks, setAllTasks] = useState([]);
 
   const weekDays = [
     "شنبه",
@@ -98,14 +44,17 @@ function Calendar() {
   }
 
   //define a function to work with the clicked date e is a Date object.
-  const clickHandler = (e) => {
-    setSelectedDate(e);
-    setOpenModal(true);
-    console.log(DUMMY_TASK);
-  };
+  const clickHandler = useCallback(
+    (e) => {
+      setSelectedDate(e);
+      setOpenModal(true);
+      console.log(defaultBoard);
+    },
+    [defaultBoard]
+  );
 
   const taskClickHandler = (e) => {
-    const filteredTasks = DUMMY_TASK.filter((task) => task.id === e);
+    const filteredTasks = allTasks.filter((task) => task.id === e);
     console.log(filteredTasks);
   };
 
@@ -121,16 +70,30 @@ function Calendar() {
     setCurrentDate(moment().startOf("jMonth"));
   };
 
+  useEffect(() => {
+    const tasks = [];
+    if (data.data) {
+      data.data.forEach((item) => tasks.push(...item.tasks));
+      setAllTasks(tasks);
+      setDefaultBoard(data.data[0]._id);
+      console.log(data.data);
+    }
+  }, [setAllTasks, clickHandler, data]);
+
   return (
     <div>
       {openModal && (
         <CalendarTaskModal
           initialDate={selectedDate}
           setOpenModal={setOpenModal}
+          defaultBoard={defaultBoard}
         />
       )}
-      <div className="relative flex flex-col pb-[59px] border-solid border-[#AAAAAA] h-screen">
-        <MainLayoutSubHeader>
+      <div className="relative flex flex-col pb-[59px] border-solid border-[#AAAAAA] mt-36 overflow-auto h-[calc(100vh_-_180px)]">
+        <MainLayoutSubHeader
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        >
           <div className="flex flex-row items-center gap-[8px] max-w-min">
             <button
               onClick={goToToday}
@@ -167,7 +130,7 @@ function Calendar() {
           <div className="h-full grid grid-cols-7 grid-rows-[auto] border-solid border-[#AAAAAA] border-l-[0.5px] border-t-[0.5px]">
             {calendarDays.map((day) => (
               <button
-                className={`relative border-solid border-[#AAAAAA] border-[0.5px] flex flex-col justify-start items-start p-[11px] font-[500] font-[16px]/[24.53px] border-l-0 border-t-0 ${
+                className={`relative border-solid border-[#AAAAAA] border-[0.5px] min-h-[110px] flex flex-col justify-start items-start p-[11px] font-[500] font-[16px]/[24.53px] border-l-0 border-t-0 ${
                   day.isSame(moment(), "day") && "bg-primary"
                 }`}
                 key={day.format("jYYYY-jMM-jDD")}
@@ -188,19 +151,42 @@ function Calendar() {
                   />
                 )}
                 <div className="flex flex-col items-start justify-start w-full gap-[2px]">
-                  {DUMMY_TASK.filter((task) =>
-                    day.isSame(task.startDate, "day")
-                  ).map((task, index) =>
-                    index <= 1 ? (
-                      <button
-                        key={task.id}
-                        onClick={() => taskClickHandler(task.id)}
-                        className="text-[8px] text-white text-right bg-secondary transition-colors duration-100 w-full rounded-[2px] hover:bg-primary p-[2px]"
-                      >
-                        {task.name}
-                      </button>
-                    ) : null
-                  )}
+                  {allTasks
+                    .filter((task) => {
+                      if (searchValue) {
+                        // Filter when searchValue is not empty
+                        return (
+                          task.deadline &&
+                          day.isSame(
+                            moment(task.deadline).subtract(1, "day"),
+                            "day"
+                          ) &&
+                          task.name
+                            .toLowerCase()
+                            .includes(searchValue.toLowerCase())
+                        );
+                      } else {
+                        // Default filter when searchValue is empty
+                        return (
+                          task.deadline &&
+                          day.isSame(
+                            moment(task.deadline).subtract(1, "day"),
+                            "day"
+                          )
+                        );
+                      }
+                    })
+                    .map((task, index) =>
+                      index <= 4 ? (
+                        <button
+                          key={task._id}
+                          onClick={() => taskClickHandler(task.id)}
+                          className="text-[8px] text-white text-right bg-secondary transition-colors duration-100 w-full rounded-[2px] hover:bg-primary p-[2px]"
+                        >
+                          {task.name}
+                        </button>
+                      ) : null
+                    )}
                 </div>
                 <div className="absolute left-[12px] bottom-[12px]">
                   {day.format("jD")}

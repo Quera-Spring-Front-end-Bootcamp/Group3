@@ -137,7 +137,6 @@ function Datepicker({ setDate, setEndDate, className, setDatePickerOpen }) {
     setDatePickerOpen(false);
     setDate(selectedStartDate);
     setEndDate(selectedEndDate);
-    setDatePickerOpen();
   };
 
   const clickHandler = (e) => {

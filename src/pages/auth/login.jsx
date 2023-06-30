@@ -39,7 +39,7 @@ const Login = () => {
       store.dispatch(setRefreshToken(resp.data.data.refreshToken));
       store.dispatch(setUser(resp.data.data.toBeSendUserData));
       toast.success("شما با موفقیت وارد شدید :)");
-      navigate("/main/listView");
+      navigate("/main");
     } catch (e) {
       toast.error("ورود شما با مشکل رو به رو شد :(");
     }

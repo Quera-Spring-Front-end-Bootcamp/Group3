@@ -155,7 +155,7 @@ const WorkSpaceList = () => {
   ];
 
   return (
-    <div className="bg-[#FAFBFC]  w-[1100px] ">
+    <div className="bg-[#FAFBFC] w-[1100px] ">
       <MainLayoutSubHeader>
         <button className="flex gap-1 items-center">
           <span>{<FilterIcon />}</span>
@@ -165,9 +165,11 @@ const WorkSpaceList = () => {
           دسته‌بندی‌شده با: وضعیت
         </span>
       </MainLayoutSubHeader>
-      {data.map((item) => (
-        <TasksList key={item.id} data={item} />
-      ))}
+      <div className="mt-36 overflow-auto h-[calc(100vh_-_180px)]">
+        {data.map((item) => (
+          <TasksList key={item.id} data={item} />
+        ))}
+      </div>
     </div>
   );
 };
