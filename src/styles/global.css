@@ -14,9 +14,10 @@ html {
 }
 
 @layer base {
-    input {
+    input ,button {
         @apply focus:outline-none
     }
+  
 
     :root {
         --textPrimary: var(--text-textPrimary);

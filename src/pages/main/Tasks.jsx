@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import AXIOS from "../../Utils/axios";
 import Calendar from "../../components/Calendar";
@@ -23,18 +23,21 @@ function Tasks() {
     setOpenShareProjectModal(true);
   }
 
-  async function handleGetProjectData() {
-    try {
-      const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
-      setData(response);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  const handleGetProjectData = useCallback(
+    async function handleGetProjectData() {
+      try {
+        const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
+        setData(response);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [projectId]
+  );
 
   useEffect(() => {
     handleGetProjectData();
-  }, []);
+  }, [handleGetProjectData]);
 
   return (
     <>
@@ -77,9 +80,9 @@ function Tasks() {
         )}
       </header>
       <div>
-        {view === "listView" && <WorkSpaceList data={data} />}
-        {view === "columnView" && <ColumnViewComponent data={data} />}
-        {view === "calendarView" && <Calendar data={data} />}
+        {view === "listView" && data && <WorkSpaceList data={data} />}
+        {view === "columnView" && data && <ColumnViewComponent data={data} />}
+        {view === "calendarView" && data && <Calendar data={data} />}
       </div>
     </>
   );

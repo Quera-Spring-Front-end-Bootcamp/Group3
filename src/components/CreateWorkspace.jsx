@@ -9,7 +9,8 @@ import toast from "react-hot-toast";
 import CheckIcon from "../assets/Icons/CheckIcon";
 import CircleHalfIcon from "../assets/Icons/CircleHalfIcon";
 import { Transition, Dialog } from "@headlessui/react";
-
+import { useForm } from "react-hook-form";
+import AXIOS from "../Utils/axios";
 /* define a onClose function in parent component that will close this modal.
 for example:
 const [showModal, setShowModal] = useState(true);
@@ -18,9 +19,16 @@ onClose={() => {
           }}
 */
 function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm();
   const [colorCode, setColorCode] = useState("#7D828C");
-  const [name, setName] = useState("");
+  const [name] = useState("");
   const [step, setStep] = useState(1);
+  const watchName = watch("workspaceName");
 
   const closeHandler = () => {
     setOpenNewWorkspaceModal(false);
@@ -28,6 +36,24 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
 
   const backHandler = () => {
     setStep((prevState) => prevState - 1);
+  };
+
+  async function onSubmit(data) {
+    try {
+      await AXIOS.post("/workspace/create", {
+        name: `${data.workspaceName}`,
+        color: colorCode,
+      });
+      closeHandler();
+      toast.success("ورک اسپیس جدید با موفقیت ساخته شد");
+    } catch (e) {
+      toast.error("ساخت ورک اسپیس جدید با مشکل مواجه شد");
+      console.log(e);
+    }
+  }
+
+  const handleColorSelection = (color) => {
+    setColorCode(color);
   };
 
   const colors = [
@@ -94,35 +120,40 @@ function CreateWorkspace({ openNewWorkspaceModal, setOpenNewWorkspaceModal }) {
                       }
                       handleClose={closeHandler}
                     >
-                      <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
-                        <div className="flex flex-col w-full items-start gap-[20px]">
-                          <div className="px-[19px] w-full">
-                            <Input
-                              type={"text"}
-                              label={"نام ورک اسپیس"}
-                              onChange={(e) => {
-                                setName(e.target.value);
-                              }}
-                              value={name}
-                            />
+                      <form
+                        onSubmit={handleSubmit(() => {
+                          setStep(2);
+                        })}
+                      >
+                        <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
+                          <div className="flex flex-col w-full items-start gap-[20px]">
+                            <div className="px-[19px] w-full">
+                              <Input
+                                type={"text"}
+                                id="workspaceName"
+                                name="workspaceName" // Provide a unique name for the field
+                                label="نام ورک اسپیس" // Add a label prop if needed
+                                register={register("workspaceName", {
+                                  required: "این فیلد الزامی می باشد",
+                                })}
+                                error={errors.workspaceName}
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="px-[19px] w-full">
-                        <Button
-                          title={"ادامه"}
-                          classNames={"w-full mt-[60px]"}
-                          handleClick={() => {
-                            setStep(2);
-                          }}
-                        />
-                      </div>
+                        <div className="px-[19px] w-full">
+                          <Button
+                            title={"ادامه"}
+                            classNames={"w-full mt-[60px]"}
+                            handleClick={handleSubmit(() => setStep(2))}
+                          />
+                        </div>
+                      </form>
                     </Card>
                   )}
                   {step === 2 && (
                     <Card
-
-className="p-6 rounded-[8px] w-[500px]"
+                      className="p-6 rounded-[8px] w-[500px]"
                       title={"انتخاب رنگ ورک اسپیس"}
                       closeIcon={true}
                       backIcon={true}
@@ -132,54 +163,61 @@ className="p-6 rounded-[8px] w-[500px]"
                       handleClose={closeHandler}
                       handleBack={backHandler}
                     >
-                      <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
-                        <div
-                          className="w-[70px] h-[70px] rounded-[8px] text-center flex items-center justify-center"
-                          style={{ backgroundColor: colorCode }}
-                        >
-                          {name
-                            .split(" ")
-                            .slice(0, 2)
-                            .map((word) => word.charAt(0))
-                            .join(" ")}
-                        </div>
-                        <div className="flex flex-col items-start gap-[20px]">
-                          <div className="text-right font-[500] text-[14px]/[21.22px]">
-                            رنگ ورک اسپیس
+                      <form
+                        onSubmit={handleSubmit(() => {
+                          setStep(3);
+                        })}
+                      >
+                        <div className="flex w-full flex-row justify-start items-start gap-[20px] mt-[40px]">
+                          <div
+                            className="w-[70px] h-[70px] rounded-[8px] text-center flex items-center justify-center"
+                            style={{ backgroundColor: colorCode }}
+                          >
+                            {name
+                              .split(" ")
+                              .slice(0, 2)
+                              .map((word) => word.charAt(0))
+                              .join(" ")}
                           </div>
-                          <div className="grid grid-cols-12 gap-[10px] items-center justify-items-center max-w-[299px] transition-all duration-300 ease-in-out">
-                            <button
-                              className="block relative rounded-sm w-[15px] h-[15px] items-center justify-center"
-                              onClick={() => setColorCode("#7D828C")}
-                            >
-                              {<CircleHalfIcon />}
-                            </button>
-                            {colors.map((color, index) => {
-                              return (
-                                <button
-                                  key={index}
-                                  className={`block relative rounded-sm w-[15px] ${
-                                    color == colorCode && "w-[24px] h-[24px]"
-                                  } h-[15px] transition-all duration-300 ease-in-out`}
-                                  style={{ backgroundColor: color }}
-                                  onClick={() => setColorCode(color)}
-                                >
-                                  {color == colorCode && <CheckIcon />}
-                                </button>
-                              );
-                            })}
+                          <div className="flex flex-col items-start gap-[20px]">
+                            <div className="text-right font-[500] text-[14px]/[21.22px]">
+                              رنگ ورک اسپیس
+                            </div>
+                            <div className="grid grid-cols-12 gap-[10px] items-center justify-items-center max-w-[299px] transition-all duration-300 ease-in-out">
+                              <button
+                                className="block relative rounded-sm w-[15px] h-[15px] items-center justify-center"
+                                onClick={() => setColorCode("#7D828C")}
+                              >
+                                {<CircleHalfIcon />}
+                              </button>
+                              {colors.map((color, index) => {
+                                return (
+                                  <button
+                                    key={index}
+                                    className={`block relative rounded-sm w-[15px] ${
+                                      color == colorCode && "w-[24px] h-[24px]"
+                                    } h-[15px] transition-all duration-300 ease-in-out`}
+                                    style={{ backgroundColor: color }}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      handleColorSelection(color);
+                                    }}
+                                  >
+                                    {color == colorCode && <CheckIcon />}
+                                  </button>
+                                );
+                              })}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="px-[19px] w-full">
-                        <Button
-                          title={"ادامه"}
-                          classNames={"w-full mt-[60px]"}
-                          handleClick={() => {
-                            setStep(3);
-                          }}
-                        />
-                      </div>
+                        <div className="px-[19px] w-full">
+                          <Button
+                            title={"ادامه"}
+                            classNames={"w-full mt-[60px]"}
+                            handleClick={handleSubmit(() => setStep(3))}
+                          />
+                        </div>
+                      </form>
                     </Card>
                   )}
                   {step === 3 && (
@@ -194,56 +232,47 @@ className="p-6 rounded-[8px] w-[500px]"
                       handleClose={closeHandler}
                       handleBack={backHandler}
                     >
-                      <div className="flex w-full flex-col justify-start items-start gap-[12px] border-[0.5px] border-[#AAAAAA] rounded-[8px] mt-[40px] px-[12px] py-[16px]">
-                        <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                          <div className="font-[600] text-[14px]/[22px]">
-                            نام ورک اسپیس
+                      <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="flex w-full flex-col justify-start items-start gap-[12px] border-[0.5px] border-[#AAAAAA] rounded-[8px] mt-[40px] px-[12px] py-[16px]">
+                          <div className="flex flex-row w-full items-center justify-between h-[35px]">
+                            <div className="font-[600] text-[14px]/[22px]">
+                              نام ورک اسپیس
+                            </div>
+                            <div className="font-[600] text-[14px]/[22px]">
+                              {watchName}
+                            </div>
                           </div>
-                          <div className="font-[600] text-[14px]/[22px]">
-                            {name}
-
-</div>
+                          <div className="flex flex-row w-full items-center justify-between h-[35px]">
+                            <div className="font-[600] text-[14px]/[22px]">
+                              رنگ ورک اسپیس
+                            </div>
+                            <div
+                              className="block relative rounded-sm w-[15px] h-[15px]"
+                              style={{ backgroundColor: colorCode }}
+                            ></div>
+                          </div>
+                          <div className="flex flex-row w-full items-center justify-between h-[35px]">
+                            <div className="font-[600] text-[14px]/[22px]">
+                              اعضا
+                            </div>
+                            <div className="w-[35px] h-[35px]">
+                              <img
+                                className="rounded-full"
+                                src={
+                                  frame
+                                } /* TODO: we should pass profile picture to src  */
+                              />
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                          <div className="font-[600] text-[14px]/[22px]">
-                            رنگ ورک اسپیس
-                          </div>
-                          <div
-                            className="block relative rounded-sm w-[15px] h-[15px]"
-                            style={{ backgroundColor: colorCode }}
-                          ></div>
+                        <div className="px-[19px] w-full">
+                          <Button
+                            title={"ساختن ورک اسپیس"}
+                            classNames={"w-full mt-[60px]"}
+                            handleClick={handleSubmit(onSubmit)}
+                          />
                         </div>
-                        <div className="flex flex-row w-full items-center justify-between h-[35px]">
-                          <div className="font-[600] text-[14px]/[22px]">
-                            اعضا
-                          </div>
-                          <div className="w-[35px] h-[35px]">
-                            <img
-                              className="rounded-full"
-                              src={
-                                frame
-                              } /* TODO: we should pass profile picture to src  */
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="px-[19px] w-full">
-                        <Button
-                          title={"ساختن ورک اسپیس"}
-                          classNames={"w-full mt-[60px]"}
-                          handleClick={
-                            //TODO: Connect to API and send this info to server.
-                            () => {
-                              {
-                                !name && toast("یک نام انتخاب کنید");
-                              }
-                              {
-                                name && console.log(name, colorCode);
-                              }
-                            }
-                          }
-                        />
-                      </div>
+                      </form>
                     </Card>
                   )}
                 </Dialog.Panel>
