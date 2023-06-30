@@ -71,7 +71,6 @@ const BoardTitle = (boards) => {
   const [hoverTooltip, setHoverTooltip] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [selectId, setSelectId] = useState(null);
-
   const handleMouseEnter = () => {
     setHoverTooltip(true);
   };

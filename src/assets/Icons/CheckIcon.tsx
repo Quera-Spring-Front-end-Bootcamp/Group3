@@ -12,9 +12,9 @@ function CheckIcon({ color = "#323232" }) {
       <path
         d="M20 6.5L9 17.5L4 12.5"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
