@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate, useParams } from "react-router";
 import Logo from "../components/AuthLayout/Logo";
 import Button from "../components/Button";
 import { Disclosure, Menu } from "@headlessui/react";
@@ -20,6 +20,8 @@ import ShareCard from "../components/ShareCard/ShareCard";
 import AXIOS from "../Utils/axios";
 
 function MainLayout() {
+  const { projectId } = useParams();
+
   const dataColumnMoreItemsWorkSpace = [
     {
       id: 1,
@@ -131,6 +133,12 @@ function MainLayout() {
     naviaget(`/main/${id}/listView`);
   }
 
+  function handleBackground(id) {
+    if (projectId === id) {
+      return "bg-[#E9F9FF]";
+    }
+  }
+
   async function fetchData() {
     try {
       const response = (await AXIOS.get("/workspace/get-all")).data.data;
@@ -203,7 +211,9 @@ function MainLayout() {
                       {WorkSpace.projects.map((Project) => (
                         <div
                           key={Project._id}
-                          className="flex flex-row justify-between w-full group"
+                          className={`flex flex-row justify-between w-full group rounded-md p-[2px] ${handleBackground(
+                            Project._id
+                          )}`}
                         >
                           <li
                             className="flex-1"
