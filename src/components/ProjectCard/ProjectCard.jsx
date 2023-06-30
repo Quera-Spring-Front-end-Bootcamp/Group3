@@ -10,24 +10,6 @@ import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
 import CheckmarkCircleIcon from "../../assets/Icons/CheckmarkCircleIcon";
 import FlagIcon from "../../assets/Icons/FlagIcon";
 import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
-const projectItems = [
-  {
-    projectTitle: "پروژه اول",
-    taskTitle: "این یک تیتر برای این تسک است.",
-    date: "۵ مهر - فردا",
-    time: "۲ / ۱۲",
-    id: 1,
-    tags: [
-      {
-        id: 1,
-        tagTitle: "درس",
-        tagColor: "#BFFDE3",
-      },
-      { id: 2, tagTitle: "پروژه", tagColor: "#EEDFF7" },
-    ],
-    userName: "NA",
-  },
-];
 
 const columnMoreItems = [
   { id: 1, title: "ویرایش نام ستون", icon: <EditSqureIcon /> },

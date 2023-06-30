@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import CloseIcon from "../../assets/icons/CloseIcon";
-import { useRef, useState, Fragment } from "react";
-import ArrowLeftIcon from "../../assets/icons/ArrowLeftIcon";
+import { useEffect } from "react";
+import CloseIcon from "../../assets/Icons/CloseIcon";
+import { useState } from "react";
+import ArrowLeftIcon from "../../assets/Icons/ArrowLeftIcon";
 import CheckIcon from "../../assets/Icons/CheckIcon";
 import AddUserDashedCircleIcon from "../../assets/Icons/AddUserDashedCircleIcon";
 import EyeIcon from "../../assets/Icons/EyeIcon";
@@ -21,7 +21,6 @@ import NoteIcon from "../../assets/Icons/NoteIcon";
 import moment from "moment-jalaali";
 
 import Button from "../Button";
-import { set } from "lodash";
 
 const statusTaskDetails = [
   {
@@ -378,7 +377,7 @@ const InfoTask = () => {
     // console.log(event.target.value)
   }
 
-  function textAreaSubmitHandler(event) {
+  function textAreaSubmitHandler() {
     setComment([
       ...comment,
       {
@@ -580,8 +579,11 @@ const InfoTask = () => {
                 </div>
               </div>
               <div className=" flex overflow-scroll flex-col items-start pr-[20px] pl-[36px] gap-[21px]  w-[659px] h-[117px]">
-                {TaskDetails.map((item) => (
-                  <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
+                {TaskDetails.map((item, index) => (
+                  <div
+                    className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]"
+                    key={index}
+                  >
                     <div className="flex flex-row items-start gap-[4px]  h-[25px]">
                       <span className=" not-italic font-medium text-[16px] leading-[18px] text-right text-[#208D8E]">
                         {item.member}
@@ -668,8 +670,8 @@ const InfoTask = () => {
               </div>
             </div>
             <div className="h-[130px] mt-[-30px] flex-col overflow-scroll">
-              {comment.map((item) => (
-                <div className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]   rounded-[12px]">
+              {comment.map((item, index) => (
+                <div className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]   rounded-[12px]" key={index}>
                   <div
                     style={{
                       backgroundImage: `url(${item.img})`,
