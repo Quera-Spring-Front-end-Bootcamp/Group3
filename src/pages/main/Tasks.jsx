@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import AXIOS from "../../Utils/axios";
 import Calendar from "../../components/Calendar";
-// import WorkSpaceList from "../../components/ListView/WorkSpaceList";
 import ProjectList from "../../components/ListView/ProjectList";
 import VerticalDivider from "../../components/VerticalDivider";
 import MainLayoutHeaderItem from "../../components/MainLayoutHeaderItem";
@@ -95,7 +94,6 @@ function Tasks() {
         )}
       </header>
       <div>
-        {/* {view === "listView" && <WorkSpaceList />} */}
         {view === "listView" && <ProjectList projectName={projectName}/>}
         {view === "columnView" && <ColumnViewComponent />}
         {view === "calendarView" && <Calendar />}
