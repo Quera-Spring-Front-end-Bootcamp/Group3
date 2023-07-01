@@ -4,55 +4,59 @@ import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
 import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
 import FlagIcon from "../../assets/Icons/FlagIcon";
 
-const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
+const TasksBasedOnStatus = ({ boardName, boardColor, tasks }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleCollapse = () => {
     setIsOpen((perv) => !perv);
   };
 
-  const handleNavigateTaskInfoPage = () => {};
-  const avatarUrls = tasks.map((task) =>
-    task.members.map((member) => member.avatarUrl)
-  )[0];
-  const limitAvatar = avatarUrls
-    ? { urls: avatarUrls.slice(0, 3), count: avatarUrls.length }
-    : [];
+  const handleNavigateTaskInfoPage = () => {}; // task info page not completed
+
+  const members = [
+    { url: "https://i.pravatar.cc/297" },
+    { url: "https://i.pravatar.cc/298" },
+    { url: "https://i.pravatar.cc/299" },
+  ]
+  const formatter = new Intl.DateTimeFormat("fa-IR", { day: 'numeric', month: 'long' });
 
   const rows = tasks.map((task) => (
-    <tr className="bg-white  " key={task.taskID}>
+    <tr className="bg-white  " key={task._id}>
       <td className=" p-3 mx-5 my-4 text-xs text-start w-1/2">
         <div className="flex gap-1">
           <div
-            style={{ backgroundColor: statusColor.bg }}
+            style={{ backgroundColor: boardColor }}
             className="w-4 h-4 rounded mr-3.5 ml-1"
           ></div>
-          {task.taskTitle}
+          {task.name}
         </div>
       </td>
       <td className="p-3 mx-5 my-4">
         <div className="flex flex-row-reverse -space-x-3 justify-center">
-          {limitAvatar.count > 3 && (
+          {task.taskAssigns.length > 3 && (
             <a
               onClick={handleNavigateTaskInfoPage}
               className="flex items-center justify-center w-[35px] h-[34px] text-xs font-medium cursor-pointer text-black bg-gray-100  rounded-full hover:bg-gray-200"
             >
-              {limitAvatar.count}+
+              {task.taskAssigns.length}+
             </a>
           )}
-          {limitAvatar.urls.map((url) => (
+          {members.slice(0, task.taskAssigns.length).map((member) => (
             <img
               className="w-[35px] h-[34px] rounded-full"
-              key={url}
-              src={url}
+              key={member.url}
+              src={member.url}
             />
           ))}
         </div>
       </td>
-      <td className="p-3 mx-5 my-4 text-xs text-center ">{task.deadlines}</td>
+      <td className="p-3 mx-5 my-4 text-xs text-center ">
+        {task.deadline ? formatter.format(new Date(task.deadline)):'-'}
+      </td>
       <td className="p-3 mx-5 my-4 text-xs text-center">
         <span className=" inline-flex justify-center align-middle w-3.5 ">
-          {<FlagIcon color={`${task.priority}`} />}
+          {/* {<FlagIcon color={`${task.priority}`} />} */}
+          {<FlagIcon color="#FB0606" />}
         </span>
       </td>
       <td className="p-3 mx-5 my-4 text-xs text-center ">
@@ -89,12 +93,12 @@ const TasksBasedOnStatus = ({ statusName, statusColor, tasks }) => {
                 )}
                 <span
                   style={{
-                    backgroundColor: statusColor.bg,
-                    color: statusColor.text,
+                    backgroundColor: boardColor, 
+                    color: '#ffffff',
                   }}
                   className="font-medium px-2 py-1 rounded select-none"
                 >
-                  {statusName}
+                  {boardName}
                 </span>
                 <span className="font-normal text-xs select-none">
                   {tasks.length}
