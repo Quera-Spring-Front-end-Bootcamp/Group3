@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import moment from "moment-jalaali";
 import "moment/locale/fa";
-import { useParams } from "react-router-dom";
 
 import Button from "./Button";
 import CalendarTaskModal from "./CalendarTaskModal";

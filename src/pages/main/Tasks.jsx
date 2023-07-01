@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import AXIOS from "../Utils/axios.js";
+import AXIOS from "../../Utils/axios.js";
 
 import Calendar from "../../components/Calendar";
 import ProjectList from "../../components/ListView/ProjectList";

@@ -2,7 +2,7 @@ import MainLayoutSubHeader from "./MainLayoutSubHeader";
 import FilterIcon from "../assets/Icons/FilterIcon";
 import BoardTitle from "./BoardTitle/BoardTitle";
 
-function ColumnViewComponent(data) {
+function ColumnViewComponent() {
   return (
     <div>
       <MainLayoutSubHeader>
@@ -14,7 +14,7 @@ function ColumnViewComponent(data) {
           دسته‌بندی‌شده با: وضعیت
         </span>
       </MainLayoutSubHeader>
-      <BoardTitle boards={data.data} />
+      <BoardTitle />
     </div>
   );
 }
