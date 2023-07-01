@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
-import AXIOS from "../../Utils/axios";
+
 import Calendar from "../../components/Calendar";
 import ProjectList from "../../components/ListView/ProjectList";
 import VerticalDivider from "../../components/VerticalDivider";
@@ -14,10 +13,9 @@ import ColumnViewComponent from "../../components/ColumnViewComponent";
 import store from "../../redux/store";
 import { setBoards } from "../../redux/slices/boardSlice";
 
-
 function Tasks() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
-  const [projectName, setProjectName] = useState()
+  const [projectName, setProjectName] = useState();
   const { view } = useParams();
   const { projectId } = useParams();
 
@@ -94,7 +92,7 @@ function Tasks() {
         )}
       </header>
       <div>
-        {view === "listView" && <ProjectList projectName={projectName}/>}
+        {view === "listView" && <ProjectList projectName={projectName} />}
         {view === "columnView" && <ColumnViewComponent />}
         {view === "calendarView" && <Calendar />}
       </div>

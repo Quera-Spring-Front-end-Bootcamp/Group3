@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import moment from "moment-jalaali";
 import "moment/locale/fa";
+import { useParams } from "react-router-dom";
 
 import Button from "./Button";
 import CalendarTaskModal from "./CalendarTaskModal";
@@ -75,10 +76,12 @@ function Calendar() {
 
   useEffect(() => {
     const tasks = [];
-    if (boards.data) {
-      boards.data.forEach((item) => tasks.push(...item.tasks));
+    if (boards) {
+      boards.forEach((item) => tasks.push(...item.tasks));
       setAllTasks(tasks);
-      setDefaultBoard(boards.data[0]._id);
+      if (boards[0]) {
+        setDefaultBoard(boards[0]._id);
+      }
     }
   }, [setAllTasks, clickHandler, boards]);
 
