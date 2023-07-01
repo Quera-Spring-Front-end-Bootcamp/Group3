@@ -62,7 +62,6 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
       </td>
       <td className="p-3 mx-5 my-4 text-xs text-center">
         <span className=" inline-flex justify-center align-middle w-3.5 ">
-          {/* {<FlagIcon color={`${task.priority}`} />} */}
           {<FlagIcon color="#FB0606" />}
         </span>
       </td>
