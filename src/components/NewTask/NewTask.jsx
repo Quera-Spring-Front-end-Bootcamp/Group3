@@ -71,6 +71,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   const [editing, setEditing] = useState({flag: false, id: null});
   const [prioritis, setPrioritis] = useState(priorityItems);
   const [flagColor, setFlagColor] = useState("#B2ACAC");
+  const [search, setSearch] = useState(false);
 
   function handleDatePickerOpen() {
     setDatePickerOpen(!datePickerOpen);
@@ -139,7 +140,8 @@ console.log(event)
     setTagInputText(text);
     
     if (text === "") {
-      setTagItems(tagsItem); // بازگشت به فیلتر اولیه
+      setTagItems(tagsItem); //
+      setSearch(false)    
     } else {
       const filteredItems = tagItems.filter((item) => {
         return item.title.includes(text);
@@ -147,6 +149,14 @@ console.log(event)
 
       if (filteredItems.length > 0) {
         setTagItems(filteredItems);
+        setSearch(false)
+      }
+      else{
+        // alert("موردی یافت نشد")
+         // تخلیه input
+         setTagItems([])
+         setSearch(true)
+        
       }
     }
   }
@@ -500,6 +510,7 @@ setFlagColor(color)
                               </div>
                             </div>
                             <div className="overflow-auto">
+                              {search ?<p className="flex flex-row justify-center">نتیجه ای یافت نشد</p> : null}
                               {tagItems.map((item) => (
                                 <div
                                   className="flex flex-col justify-center items-start w-[153px]  mt-[12px]"

@@ -460,12 +460,12 @@ const InfoTask = () => {
                 <TagDashedCircleIcon color="#C1C1C1" />
               </i>
 
-              <div className="flex  flex-col items-start gap-[12px] w-[617px] ">
+              <div className="flex   flex-col items-start gap-[12px] w-[617px] ">
                 <h1 className=" not-italic font-medium text-[24px] leading-[37px] text-right text-[#1E1E1E]">
                   عنوان تسک
                 </h1>
                 <div
-                  className="flex flex-row justify-start  gap-[10px] w-[617px]  rounded-[12px]"
+                  className="flex  flex-row justify-start  gap-[10px] w-[617px]  rounded-[12px]"
                   style={{
                     border: "1px solid #C1C1C1",
                   }}
