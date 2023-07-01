@@ -11,13 +11,14 @@ import CalendarIcon from "../../assets/Icons/CalendarIcon";
 import ShareIcon from "../../assets/Icons/ShareIcon";
 import ShareCard from "../../components/ShareCard/ShareCard";
 import ColumnViewComponent from "../../components/ColumnViewComponent";
+import store from "../../redux/store";
+import { setBoards } from "../../redux/slices/boardSlice";
 
 function Tasks() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
 
   const { view } = useParams();
   const { projectId } = useParams();
-  const [data, setData] = useState();
 
   function handleOpenShareProject() {
     setOpenShareProjectModal(true);
@@ -27,7 +28,7 @@ function Tasks() {
     async function handleGetProjectData() {
       try {
         const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
-        setData(response);
+        store.dispatch(setBoards(response));
       } catch (e) {
         console.log(e);
       }
@@ -80,9 +81,9 @@ function Tasks() {
         )}
       </header>
       <div>
-        {view === "listView" && data && <WorkSpaceList data={data} />}
-        {view === "columnView" && data && <ColumnViewComponent data={data} />}
-        {view === "calendarView" && data && <Calendar data={data} />}
+        {view === "listView" && <WorkSpaceList />}
+        {view === "columnView" && <ColumnViewComponent />}
+        {view === "calendarView" && <Calendar />}
       </div>
     </>
   );

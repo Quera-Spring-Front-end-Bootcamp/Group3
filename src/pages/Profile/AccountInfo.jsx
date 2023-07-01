@@ -3,15 +3,25 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export const AccountInfo = () => {
-  const user = { userName: "Mt123456", email: "a@b.com", password: "123" };
+  const auth = useSelector((state) => state.auth);
 
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: user });
+    setValue,
+  } = useForm();
+
+  useEffect(() => {
+    if (auth) {
+      setValue("email", auth.user?.email || "");
+      setValue("userName", auth.user?.username || "");
+    }
+  }, [auth]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -48,11 +58,6 @@ export const AccountInfo = () => {
               error={errors.password}
               register={register("password", {
                 required: "این فیلد الزامی می باشد!",
-                // pattern: {
-                //   value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/g,
-                //   message:
-                //     "پسورد باید حداقل یک عدد و یک حرف بزرگ و کوچک و حداقل 8 کاراکتر یا بیشتر داشته باشد.",
-                // },
               })}
             />
             <button

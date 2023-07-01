@@ -34,7 +34,6 @@ const Login = () => {
         emailOrUsername: data.email,
         password: data.password,
       });
-      console.log(resp.data.data);
       store.dispatch(setAccessToken(resp.data.data.accessToken));
       store.dispatch(setRefreshToken(resp.data.data.refreshToken));
       store.dispatch(setUser(resp.data.data.toBeSendUserData));

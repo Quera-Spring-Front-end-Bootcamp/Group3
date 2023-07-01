@@ -5,11 +5,13 @@ import Button from "../../components/Button";
 import toast from "react-hot-toast";
 
 import { useEffect, useState } from "react";
-
+import { useSelector } from "react-redux";
 
 const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
 export const PersonalInfo = () => {
+  const auth = useSelector((state) => state.auth);
+
   const [userData, setUserData] = useState({
     image: "",
     name: "Nader",
@@ -19,35 +21,40 @@ export const PersonalInfo = () => {
 
   const [image, setImage] = useState(null);
   const {
-  register,
-  setValue,
-  setError,
-  formState: { errors },
-  handleSubmit,
-  } = useForm({defaultValues: userData});
+    register,
+    setValue,
+    setError,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({ defaultValues: userData });
 
   useEffect(() => {
     register("image");
-  }, []);
-  
+    if (auth) {
+      setValue("name", auth.user?.firstname || "");
+      setValue("family", auth.user?.lastname || "");
+      setValue("mobile", auth.user?.phone || "");
+    }
+  }, [auth]);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file){
-      if (!file.type.match(imageMimeType)){
-        setError("image","نوع فرمت فایل معتبر نیست.")
-        toast.error("نوع فرمت فایل معتبر نیست")
+    if (file) {
+      if (!file.type.match(imageMimeType)) {
+        setError("image", "نوع فرمت فایل معتبر نیست.");
+        toast.error("نوع فرمت فایل معتبر نیست");
         return;
       }
     }
-     setValue("image", file);
-     setImage(file);
-   };
-  
+    setValue("image", file);
+    setImage(file);
+  };
+
   const onSubmit = (data) => {
-    setUserData(data)
+    setUserData(data);
     console.log("data", data);
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
-}
+  };
 
   return (
     <div className="">
@@ -130,4 +137,3 @@ export const PersonalInfo = () => {
     </div>
   );
 };
-
