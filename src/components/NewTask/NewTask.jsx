@@ -611,7 +611,7 @@ setFlagColor(color)
 
                       <Button title="ساختن تسک"></Button>
                     </div>
-                    <Transition show={datePickerOpen} className="z-40 ml-[100%] mt-[-50%]">
+                    <Transition show={datePickerOpen} className="z-40 absolute ml-[100%] ">
                       <Datepicker
                         setDatePickerOpen={handleDatePickerOpen}
                         className="absolute mt-[-130px] mr-[63px] z-10"
