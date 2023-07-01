@@ -41,7 +41,13 @@ const TasksBasedOnStatus = ({ boardName, boardColor, tasks }) => {
               {task.taskAssigns.length}+
             </a>
           )}
-          {members.slice(0, task.taskAssigns.length).map((member) => (
+          {(task.taskAssigns.length < 3 ) ? members.slice(0, task.taskAssigns.length).map((member) => (
+            <img
+              className="w-[35px] h-[34px] rounded-full"
+              key={member.url}
+              src={member.url}
+            />
+          )):members.map((member) => (
             <img
               className="w-[35px] h-[34px] rounded-full"
               key={member.url}
