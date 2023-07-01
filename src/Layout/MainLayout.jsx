@@ -24,6 +24,9 @@ import { setWorkspaces } from "../redux/slices/workspaceSlice";
 
 function MainLayout() {
   const auth = useSelector((state) => state.auth);
+  const {user} = auth
+  const avatarName = user?.firstname ? user.firstname.charAt(0) + user.lastname.charAt(0):user?.username?.charAt(0)
+  const fullName = user?.firstname ? `${user.firstname} ${user.lastname}`:user?.username
   const workspaces = useSelector((state) => state.workspace);
   const { projectId } = useParams();
 
@@ -252,10 +255,10 @@ function MainLayout() {
           onClick={() => handleNavigateToProfile()}
         >
           <div className="flex flex-row items-center justify-center w-8 h-8 bg-[#EAF562] rounded-full">
-            NM
+            {avatarName}
           </div>
           <span className="mr-2 font-medium text-base">
-            {auth.user?.username}
+            {fullName}
           </span>
         </button>
         <button
