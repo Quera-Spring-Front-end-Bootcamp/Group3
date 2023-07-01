@@ -1,10 +1,10 @@
 //todo: connect datepicker to date selector of modal.
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import moment from "moment-jalaali";
 import Card from "./Card/Card";
 import Button from "./Button";
-
+import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Popover, Transition } from "@headlessui/react";
 
@@ -15,8 +15,12 @@ import FlagIcon from "../assets/Icons/FlagIcon";
 import FlagDashedCircleIcon from "../assets/Icons/FlagDashedCircleIcon";
 import AXIOS from "../Utils/axios.js";
 import { useForm } from "react-hook-form";
+import { setBoards } from "../redux/slices/boardSlice";
+import store from "../redux/store";
 
 function CalendarTaskModal({ initialDate, setOpenModal, defaultBoard }) {
+  const { projectId } = useParams();
+
   const [date, setDate] = useState(initialDate);
   const [endDate, setEndDate] = useState(false);
   const [flag, setFlag] = useState(false);
@@ -46,6 +50,18 @@ function CalendarTaskModal({ initialDate, setOpenModal, defaultBoard }) {
     console.log("Flag Button Clicked!");
   };
 
+  const handleGetProjectData = useCallback(
+    async function handleGetProjectData() {
+      try {
+        const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
+        store.dispatch(setBoards(response));
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [projectId]
+  );
+
   async function AddButtonClickHandler(data) {
     try {
       await AXIOS.post("/task", {
@@ -63,6 +79,7 @@ function CalendarTaskModal({ initialDate, setOpenModal, defaultBoard }) {
               description: "",
               deadline: `${moment(date).add(1, "day").toLocaleString()}`,
             }).then(() => {
+              handleGetProjectData();
               setOpenModal(false);
             });
           } catch (e) {
