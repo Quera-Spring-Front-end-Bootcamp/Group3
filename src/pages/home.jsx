@@ -1,10 +1,5 @@
-// import InfoTask from "../components/InfoTask/InfoTask";
+function Home() {
+  return <div>Home Pgae</div>;
+}
 
-const Home = () => {
-  return (
-    <div>
-      
-    </div>
-  );
-};
 export default Home;

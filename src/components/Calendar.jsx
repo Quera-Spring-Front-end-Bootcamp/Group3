@@ -9,9 +9,12 @@ import ArrowRightIcon from "../assets/Icons/ArrowRightIcon";
 import SqurePlusIcon from "../assets/Icons/SqurePlusIcon";
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
 import { useCallback } from "react";
+import { useSelector } from "react-redux";
 
 // can't pass the clickHandler as prop. it should change inside the component
-function Calendar(data) {
+function Calendar() {
+  const boards = useSelector((state) => state.board);
+
   const [currentDate, setCurrentDate] = useState(moment());
   const [selectedDate, setSelectedDate] = useState(Date());
   const [openModal, setOpenModal] = useState(false);
@@ -72,13 +75,12 @@ function Calendar(data) {
 
   useEffect(() => {
     const tasks = [];
-    if (data.data) {
-      data.data.forEach((item) => tasks.push(...item.tasks));
+    if (boards.data) {
+      boards.data.forEach((item) => tasks.push(...item.tasks));
       setAllTasks(tasks);
-      setDefaultBoard(data.data[0]._id);
-      console.log(data.data);
+      setDefaultBoard(boards.data[0]._id);
     }
-  }, [setAllTasks, clickHandler, data]);
+  }, [setAllTasks, clickHandler, boards]);
 
   return (
     <div>

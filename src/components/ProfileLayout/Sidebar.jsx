@@ -24,7 +24,7 @@ export const Sidebar = () => {
   ];
 
   const navigateHandler = () => {
-    navigate("/main/listView");
+    navigate("/main");
   };
   return (
     <aside className=" w-[340px]  border-[#aaaaaa] border-l h-full min-h-screen py-10 pr-[50px] pl-[60px] ">

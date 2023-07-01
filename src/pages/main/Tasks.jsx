@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import AXIOS from "../../Utils/axios";
 import Calendar from "../../components/Calendar";
-import WorkSpaceList from "../../components/ListView/WorkSpaceList";
+import ProjectList from "../../components/ListView/ProjectList";
 import VerticalDivider from "../../components/VerticalDivider";
 import MainLayoutHeaderItem from "../../components/MainLayoutHeaderItem";
 import ListCheckIcon from "../../assets/Icons/ListCheckIcon";
@@ -11,13 +11,15 @@ import CalendarIcon from "../../assets/Icons/CalendarIcon";
 import ShareIcon from "../../assets/Icons/ShareIcon";
 import ShareCard from "../../components/ShareCard/ShareCard";
 import ColumnViewComponent from "../../components/ColumnViewComponent";
+import store from "../../redux/store";
+import { setBoards } from "../../redux/slices/boardSlice";
+
 
 function Tasks() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
-
+  const [projectName, setProjectName] = useState()
   const { view } = useParams();
   const { projectId } = useParams();
-  const [data, setData] = useState();
 
   function handleOpenShareProject() {
     setOpenShareProjectModal(true);
@@ -27,7 +29,18 @@ function Tasks() {
     async function handleGetProjectData() {
       try {
         const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
-        setData(response);
+        store.dispatch(setBoards(response));
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [projectId]
+  );
+  const handleGetProjectName = useCallback(
+    async function handleGetProjectName() {
+      try {
+        const response = (await AXIOS.get(`/projects/${projectId}`)).data.data;
+        setProjectName(response.name);
       } catch (e) {
         console.log(e);
       }
@@ -37,13 +50,14 @@ function Tasks() {
 
   useEffect(() => {
     handleGetProjectData();
-  }, [handleGetProjectData]);
+    handleGetProjectName();
+  }, [handleGetProjectData, handleGetProjectName]);
 
   return (
     <>
       <header className="flex flex-row items-center justify-between fixed top-0 right-[305px] left-3">
         <div className="flex flex-row items-center h-20 gap-3">
-          <div className="font-semibold text-xl">پروژه اول</div>
+          <div className="font-semibold text-xl">{projectName}</div>
           <VerticalDivider />
           <MainLayoutHeaderItem
             icon={<ListCheckIcon />}
@@ -80,9 +94,9 @@ function Tasks() {
         )}
       </header>
       <div>
-        {view === "listView" && data && <WorkSpaceList data={data} />}
-        {view === "columnView" && data && <ColumnViewComponent data={data} />}
-        {view === "calendarView" && data && <Calendar data={data} />}
+        {view === "listView" && <ProjectList projectName={projectName}/>}
+        {view === "columnView" && <ColumnViewComponent />}
+        {view === "calendarView" && <Calendar />}
       </div>
     </>
   );

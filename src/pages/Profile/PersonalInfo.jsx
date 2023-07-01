@@ -5,49 +5,57 @@ import Button from "../../components/Button";
 import toast from "react-hot-toast";
 
 import { useEffect, useState } from "react";
-
+import { useSelector } from "react-redux";
 
 const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
 export const PersonalInfo = () => {
+  const auth = useSelector((state) => state.auth);
+  const {user} = auth
+  const avatarName = user?.firstname ? user.firstname.charAt(0) + user.lastname.charAt(0):user?.username?.charAt(0)
   const [userData, setUserData] = useState({
     image: "",
-    name: "Nader",
-    family: "Mohamadi",
-    mobile: "09121234567",
+    name: "",
+    family: "",
+    mobile: "",
   });
 
   const [image, setImage] = useState(null);
   const {
-  register,
-  setValue,
-  setError,
-  formState: { errors },
-  handleSubmit,
-  } = useForm({defaultValues: userData});
+    register,
+    setValue,
+    setError,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({ defaultValues: userData });
 
   useEffect(() => {
     register("image");
-  }, []);
-  
+    if (auth) {
+      setValue("name", auth.user?.firstname || "");
+      setValue("family", auth.user?.lastname || "");
+      setValue("mobile", auth.user?.phone || "");
+    }
+  }, [auth]);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file){
-      if (!file.type.match(imageMimeType)){
-        setError("image","نوع فرمت فایل معتبر نیست.")
-        toast.error("نوع فرمت فایل معتبر نیست")
+    if (file) {
+      if (!file.type.match(imageMimeType)) {
+        setError("image", "نوع فرمت فایل معتبر نیست.");
+        toast.error("نوع فرمت فایل معتبر نیست");
         return;
       }
     }
-     setValue("image", file);
-     setImage(file);
-   };
-  
+    setValue("image", file);
+    setImage(file);
+  };
+
   const onSubmit = (data) => {
-    setUserData(data)
+    setUserData(data);
     console.log("data", data);
     toast.success("ثبت تغییرات با موفقیت انجام شد :)");
-}
+  };
 
   return (
     <div className="">
@@ -60,7 +68,7 @@ export const PersonalInfo = () => {
                 <img src={URL.createObjectURL(image)} alt="Profile Image" />
               ) : (
                 <span className="font-medium mt-3 text-[34px] text-black ">
-                  {userData.name.charAt(0) + userData.family.charAt(0)}
+                  {avatarName}
                 </span>
               )}
             </div>
@@ -130,4 +138,3 @@ export const PersonalInfo = () => {
     </div>
   );
 };
-
