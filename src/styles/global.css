@@ -14,21 +14,22 @@ html {
 }
 
 @layer base {
+
     input:focus,
     button:focus {
-      @apply outline-none;
+        @apply outline-none;
     }
-  
+
     input:focus-visible,
     button:focus-visible {
-      @apply outline-none;
+        @apply outline-none;
     }
-  
+
 
     :root {
-        --textPrimary: #208D8E;
-        --primary: #50bae0;
-        --secondary: #fff;
+        --textPrimary: #fff;
+        --primary: #208D8E;
+        --secondary: #50bae0;
 
     }
 
