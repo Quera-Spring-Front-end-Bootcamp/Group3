@@ -25,6 +25,7 @@ import { setWorkspaces } from "../redux/slices/workspaceSlice";
 function MainLayout() {
   const auth = useSelector((state) => state.auth);
   const workspaces = useSelector((state) => state.workspace);
+  const { projectId } = useParams();
 
   const dataColumnMoreItemsWorkSpace = [
     {
