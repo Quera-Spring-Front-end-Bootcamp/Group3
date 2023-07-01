@@ -4,8 +4,9 @@ import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
 import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
 import FlagIcon from "../../assets/Icons/FlagIcon";
 
-const TasksBasedOnStatus = ({ boardName, boardColor, tasks }) => {
+const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const tasks = searchValue ? boardTasks.filter(task => task.name.includes(searchValue)):[...boardTasks]
 
   const handleCollapse = () => {
     setIsOpen((perv) => !perv);
