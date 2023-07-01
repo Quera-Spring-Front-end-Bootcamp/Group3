@@ -16,12 +16,14 @@ html {
 @layer base {
 
     input:focus,
-    button:focus {
+    button:focus,
+    textarea:focus {
         @apply outline-none;
     }
 
     input:focus-visible,
-    button:focus-visible {
+    button:focus-visible,
+    textarea:focus-visible{
         @apply outline-none;
     }
 
