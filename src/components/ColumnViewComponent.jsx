@@ -1,11 +1,17 @@
+import { useState } from "react";
 import MainLayoutSubHeader from "./MainLayoutSubHeader";
 import FilterIcon from "../assets/Icons/FilterIcon";
 import BoardTitle from "./BoardTitle/BoardTitle";
 
 function ColumnViewComponent() {
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <div>
-      <MainLayoutSubHeader>
+      <MainLayoutSubHeader
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      >
         <button className="flex gap-1 items-center">
           <span>{<FilterIcon />}</span>
           <span className="text-black font-medium text-xs">فیلترها</span>
@@ -14,7 +20,7 @@ function ColumnViewComponent() {
           دسته‌بندی‌شده با: وضعیت
         </span>
       </MainLayoutSubHeader>
-      <BoardTitle />
+      <BoardTitle searchValue={searchValue} />
     </div>
   );
 }

@@ -24,7 +24,8 @@ function getRandomHexCode() {
   return color;
 }
 
-const BoardTitle = () => {
+const BoardTitle = (searchValue) => {
+  console.log(searchValue.searchValue);
   const [newBoardName, setNewBoardName] = useState("");
   const { projectId } = useParams();
 
@@ -309,6 +310,7 @@ const BoardTitle = () => {
                                 </div>
                                 <div className="flex flex-col gap-[12px] my-[12px]">
                                   {item.tasks &&
+                                    !searchValue.searchValue &&
                                     item.tasks.map((task, index) => {
                                       return (
                                         <Draggable
@@ -337,6 +339,42 @@ const BoardTitle = () => {
                                         </Draggable>
                                       );
                                     })}
+                                  {item.tasks &&
+                                    searchValue.searchValue &&
+                                    item.tasks
+                                      .filter((task) =>
+                                        task.name.includes(
+                                          searchValue.searchValue
+                                        )
+                                      ) // Filter tasks based on search value
+                                      .map((task, index) => {
+                                        return (
+                                          <Draggable
+                                            key={task._id}
+                                            draggableId={task._id}
+                                            index={index}
+                                          >
+                                            {(provided) => {
+                                              return (
+                                                <div
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                >
+                                                  <ProjectCard
+                                                    projectTitle={task.name}
+                                                    taskTitle={task.name}
+                                                    date={task.deadline}
+                                                    time="12"
+                                                    tags={task.tags}
+                                                    userName={task.taskAssigns}
+                                                  />
+                                                </div>
+                                              );
+                                            }}
+                                          </Draggable>
+                                        );
+                                      })}
                                 </div>
                               </div>
                             );
