@@ -10,26 +10,6 @@ import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
 import CheckmarkCircleIcon from "../../assets/Icons/CheckmarkCircleIcon";
 import FlagIcon from "../../assets/Icons/FlagIcon";
 import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
-import moment from "moment-jalaali";
-
-const projectItems = [
-  {
-    projectTitle: "پروژه اول",
-    taskTitle: "این یک تیتر برای این تسک است.",
-    date: "۵ مهر - فردا",
-    time: "۲ / ۱۲",
-    id: 1,
-    tags: [
-      {
-        id: 1,
-        tagTitle: "درس",
-        tagColor: "#BFFDE3",
-      },
-      { id: 2, tagTitle: "پروژه", tagColor: "#EEDFF7" },
-    ],
-    userName: "NA",
-  },
-];
 
 const columnMoreItems = [
   { id: 1, title: "ویرایش نام ستون", icon: <EditSqureIcon /> },
@@ -37,21 +17,6 @@ const columnMoreItems = [
   { id: 3, title: "آرشیو تمام تسک ها", icon: <ArchiveIcon /> },
   { id: 4, title: "حذف ستون", icon: <TrashIcon /> },
 ];
-
-const dataFormatter = (data) => {
-  const monthFormatter = new Intl.DateTimeFormat("fa-IR", {
-    dateStyle: "medium",
-  });
-
-  const returned = (
-    <div>
-      {monthFormatter.format(moment.parseZone(data)).split(" ")[0]}{" "}
-      {monthFormatter.format(moment.parseZone(data)).split(" ")[1]}
-    </div>
-  );
-
-  return returned;
-};
 
 const ProjectCard = ({
   projectTitle,
@@ -81,13 +46,11 @@ const ProjectCard = ({
             {projectTitle}
           </h1>
           <div className="opacity-0 transition-all group-hover:opacity-100">
-            {userName.length >= 1 && (
-              <div className="flex flex-row justify-center items-center pt-[6.10196px] px-[5.42396px] pb-[4.74597px] w-[23.85px] h-[22.85px] bg-[#EAF562] rounded-[67.7996px]">
-                <span className="not-italic font-medium text-[8.13595px] leading-[12px] text-right text-[#000000]">
-                  {userName[0].username.slice(0, 2).toUpperCase()}
-                </span>
-              </div>
-            )}
+            <div className="flex flex-row justify-center items-center pt-[6.10196px] px-[5.42396px] pb-[4.74597px] w-[23.85px] h-[22.85px] bg-[#EAF562] rounded-[67.7996px]">
+              <span className="not-italic font-medium text-[8.13595px] leading-[12px] text-right text-[#000000]">
+                {userName}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -103,7 +66,7 @@ const ProjectCard = ({
         <div className="flex flex-row justify-end items-center gap-[2px]  h-[16px]">
           <i>{<FlagIcon color="#FB0606" />}</i>
           <span className="not-italic font-medium text-[10px] leading-[15px] text-right">
-            {dataFormatter(date)}
+            {date}
           </span>
         </div>
 
@@ -136,6 +99,7 @@ const ProjectCard = ({
         <i className="cursor-pointer" onClick={columnMore}>
           {<DotsMenuIcon />}
         </i>
+        {/* {showMore ? ( */}
       </div>
       <Transition
         show={showMore}
