@@ -77,7 +77,26 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     setFlagOpen(false);
     setTagOpen(false);
   }
+  function handleUpload (event) {
+    // انتخاب المنت دکمه
+    
+// const uploadButton = document.getElementById('upload-button');
+console.log(event)
 
+// تعریف رویداد onclick برای دکمه
+// uploadButton.onClick = function() {
+//   // ساخت المان input جدید
+//   const fileInput = document.createElement('input');
+  
+//   // تنظیم نوع المان input به "file"
+//   fileInput.type = 'file';
+
+//   // نمایش پنجره انتخاب فایل
+//   fileInput.click();
+// }
+
+
+  }
   function handleSubmitInputChange(event) {
     const text = event.target.value;
     if (event.key === "Enter") {
@@ -358,12 +377,22 @@ setFlagColor(color)
                       <span className="not-italic font-normal tex-[16px] leading-[24px] text-right">
                         افزودن پیوست
                       </span>
-                      <div className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
+                      {/* <input type="file"  className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]" /> */}
+                      {/* <div id="#upload-button"   type="file" className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
+                        
                         <i>
                           {<LinkIcon color="#208D8E" width="24" height="24" />}
                         </i>
                         <span>آپلود فایل</span>
-                      </div>
+                      </div> */}
+                      <label  htmlFor="upload-button" className="flex cursor-pointer flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
+  <i>
+    <LinkIcon color="#208D8E" width="24" height="24" />
+  </i>
+  <span>آپلود فایل</span>
+  <input id="upload-button" type="file" className="hidden" />
+</label>
+
                     </div>
                     {/* Frame 191 */}
                     <div className="flex flex-row justify-between  items-center gap-[670px] w-[1078px] h-[50px]">
@@ -418,11 +447,11 @@ setFlagColor(color)
                           leave="transition-opacity duration-500"
                           leaveFrom="opacity-100"
                           leaveTo="opacity-0"
-                          className="mr-[150px] absolute"
+                          className=" absolute mr-[150px]"
                         >
-                          <Card className="absolute mt-[-270px] w-[177px] h-[213px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[8px] p-[12px]">
+                          <Card className="absolute  mt-[-270px] w-[177px] h-[213px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[8px] p-[12px]">
                             <div className="flex flex-col items-start gap-[4px] w-[153px] h-[60px]">
-                              <div className="flex flex-row w-[153px] overflow-auto gap-2 ">
+                              <div className="flex flex-row w-[153px] overflow-auto gap-2">
                                 {tag.map((item) => (
                                   <div
                                     key={item.id}
@@ -476,7 +505,7 @@ setFlagColor(color)
                                   className="flex flex-col justify-center items-start w-[153px]  mt-[12px]"
                                   key={item.id}
                                 >
-                                  <div className="flex flex-row justify-between items-center gap-[12px] w-[153px] h-[31px]">
+                                  <div className="flex cursor-pointer flex-row justify-between items-center gap-[12px] w-[153px] h-[31px]">
                                     <div
                                       style={{
                                         backgroundColor: `${item.color}`,
@@ -571,7 +600,7 @@ setFlagColor(color)
 
                       <Button title="ساختن تسک"></Button>
                     </div>
-                    <Transition show={datePickerOpen} className="z-40">
+                    <Transition show={datePickerOpen} className="z-40 ml-[100%] mt-[-50%]">
                       <Datepicker
                         setDatePickerOpen={handleDatePickerOpen}
                         className="absolute mt-[-130px] mr-[63px] z-10"
