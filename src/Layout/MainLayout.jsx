@@ -18,8 +18,14 @@ import EditSqureIcon from "../assets/Icons/EditSqureIcon";
 import PlusIcon from "../assets/Icons/PlusIcon";
 import ShareCard from "../components/ShareCard/ShareCard";
 import AXIOS from "../Utils/axios";
+import { useSelector } from "react-redux";
+import store from "../redux/store";
+import { setWorkspaces } from "../redux/slices/workspaceSlice";
 
 function MainLayout() {
+  const auth = useSelector((state) => state.auth);
+  const workspaces = useSelector((state) => state.workspace);
+
   const dataColumnMoreItemsWorkSpace = [
     {
       id: 1,
@@ -103,7 +109,6 @@ function MainLayout() {
   const [openShareWorkSpaceModal, setOpenShareWorkSpaceModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
   const [openNewWorkspaceModal, setOpenNewWorkspaceModal] = useState(false);
-  const [data, setData] = useState([]);
 
   const naviaget = useNavigate();
   const privateLink = location.href;
@@ -134,8 +139,7 @@ function MainLayout() {
   async function fetchData() {
     try {
       const response = (await AXIOS.get("/workspace/get-all")).data.data;
-      console.log(response);
-      setData(response);
+      store.dispatch(setWorkspaces(response));
     } catch (e) {
       console.log(e);
     }
@@ -170,7 +174,7 @@ function MainLayout() {
           <span className="pr-1">ساختن اسپیس جدید</span>
         </button>
         <div className="h-96 flex flex-col gap-5 mt-5">
-          {data.map((WorkSpace) => (
+          {workspaces.map((WorkSpace) => (
             <Disclosure as="div" key={WorkSpace._id}>
               {() => (
                 <>
@@ -241,7 +245,9 @@ function MainLayout() {
           <div className="flex flex-row items-center justify-center w-8 h-8 bg-[#EAF562] rounded-full">
             NM
           </div>
-          <span className="mr-2 font-medium text-base">نیلوفر موجودی</span>
+          <span className="mr-2 font-medium text-base">
+            {auth.user?.username}
+          </span>
         </button>
         <button
           className="flex flex-row items-center mt-3"
