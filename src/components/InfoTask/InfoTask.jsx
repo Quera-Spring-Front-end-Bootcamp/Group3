@@ -578,7 +578,7 @@ const InfoTask = () => {
                   <i>{<EyeIcon width="32" height="32" />}</i>
                 </div>
               </div>
-              <div className=" flex overflow-scroll flex-col items-start pr-[20px] pl-[36px] gap-[21px]  w-[659px] h-[117px]">
+              <div className=" flex overflow-auto flex-col items-start pr-[20px] pl-[36px] gap-[21px]  w-[659px] h-[117px]">
                 {TaskDetails.map((item, index) => (
                   <div
                     className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]"
@@ -669,7 +669,7 @@ const InfoTask = () => {
                 </div> */}
               </div>
             </div>
-            <div className="h-[130px] mt-[-30px] flex-col overflow-scroll">
+            <div className="h-[130px] mt-[-30px] flex-col overflow-auto">
               {comment.map((item, index) => (
                 <div className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]   rounded-[12px]" key={index}>
                   <div
@@ -749,7 +749,7 @@ const InfoTask = () => {
                   }}
                   className="w-[659px] p-4  resize-none rounded-bl-[20px]  focus:outline-none focus:rounded-[20px]   focus:shadow-lg transition-all"
                 ></textarea>
-                <i className=" absolute mr-[42.7%] mt-5">
+                <i className=" absolute mr-[620px] mt-5">
                   <CommentIcon color="#AEAEAE" />
                 </i>
               </div>
@@ -767,7 +767,7 @@ const InfoTask = () => {
               leave="ease-in"
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
-              className="absolute mr-[40%] mt-[34%]"
+              className="absolute mr-[570px] mt-[500px]"
             >
               <Button
                 onClick={textAreaSubmitHandler}
@@ -786,7 +786,7 @@ const InfoTask = () => {
               leave="ease-out"
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
-              className="absolute mr-[1%]  mt-[34%]"
+              className="absolute mr-[1%]  mt-[500px]"
             >
               <div className="flex flex-row justify-start items-center gap-[20px] w-[156px] h-[24px]">
                 <i className=" cursor-pointer">
