@@ -161,7 +161,7 @@ const WorkSpaceList = () => {
           <span>{<FilterIcon />}</span>
           <span className="text-black font-medium text-xs">فیلترها</span>
         </button>
-        <span className="bg-[#E9F9FF] text-black font-medium text-xs mr-5 h-[26px] p-1 flex items-center">
+        <span className="bg-[#E9F9FF] text-black font-medium text-xs mr-5 h-[26px] flex items-center rounded-md p-[7px]">
           دسته‌بندی‌شده با: وضعیت
         </span>
       </MainLayoutSubHeader>

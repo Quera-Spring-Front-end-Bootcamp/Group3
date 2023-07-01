@@ -14,15 +14,24 @@ html {
 }
 
 @layer base {
-    input ,button {
-        @apply focus:outline-none
+
+    input:focus,
+    button:focus,
+    textarea:focus {
+        @apply outline-none;
     }
-  
+
+    input:focus-visible,
+    button:focus-visible,
+    textarea:focus-visible{
+        @apply outline-none;
+    }
+
 
     :root {
-        --textPrimary: var(--text-textPrimary);
-        --primary: var(--color-primary);
-        --secondary: var(--color-secondary);
+        --textPrimary: #fff;
+        --primary: #208D8E;
+        --secondary: #50bae0;
 
     }
 

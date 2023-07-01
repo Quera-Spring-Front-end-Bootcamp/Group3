@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import TasksBasedOnStatus from "./TasksBasedOnStatus";
 import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
+import { useSelector } from "react-redux";
 
-const TasksList = ({ data }) => {
+const TasksList = ({ projectName, searchValue }) => {
+  const boards = useSelector((state) => state.board)
   const [isOpen, setIsOpen] = useState(true);
 
   const handleCollapse = () => {
@@ -24,7 +26,7 @@ const TasksList = ({ data }) => {
           {<ArrowDownCircleIcon />}
         </button>
         <h1 className="text-[#1E1E1E] text-xl font-semibold">
-          {data.project.title}
+          {projectName}
         </h1>
       </div>
       {/* TODO: fix transition */}
@@ -38,14 +40,13 @@ const TasksList = ({ data }) => {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        {data.statusList.map((item) => (
-          <div key={item.statusName}>
+        {boards.map((item) => (
+          <div key={item._id}>
             <TasksBasedOnStatus
-              statusName={item.statusName}
-              statusColor={item.statusColor}
-              tasks={data.tasks.filter(
-                (task) => task.status === item.statusName
-              )}
+              boardName={item.name}
+              boardColor={item.color}
+              boardTasks={item.tasks}
+              searchValue={searchValue}
             />
           </div>
         ))}
