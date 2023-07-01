@@ -14,8 +14,14 @@ html {
 }
 
 @layer base {
-    input ,button {
-        @apply focus:outline-none
+    input:focus,
+    button:focus {
+      @apply outline-none;
+    }
+  
+    input:focus-visible,
+    button:focus-visible {
+      @apply outline-none;
     }
   
 
