@@ -2,8 +2,10 @@ import { useState } from "react";
 import Dropdown from "./DropDown";
 import CloseIcon from "../../assets/Icons/CloseIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
+import { useSelector } from "react-redux";
 
-const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
+const Filter = ({ isOpenFilter, setIsOpenFilter }) => {
+  const boards = useSelector((state) => state.board);
   const [filters, setFilters] = useState([]);
   const dropdownOptionsWhere = [
     { id: 1, value: "تاریخ" },
@@ -16,7 +18,7 @@ const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
   //   { id: 2, value: "کار", background: "#C3B7F2" },
   //   { id: 3, value: "پروژه", background: "#7FFAFA" },
   // ];
-  const dropdownOptionsTag = data.flatMap((board) =>
+  const dropdownOptionsTag = boards.flatMap((board) =>
     board.tasks.flatMap((task) =>
       task.taskAssigns.map((assign) => ({
         id: assign._id,
