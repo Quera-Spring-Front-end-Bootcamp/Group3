@@ -5,9 +5,8 @@ import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
 import { useSelector } from "react-redux";
 
 const TasksList = ({ projectName, searchValue }) => {
-  const boards = useSelector((state) => state.board)
+  const boards = useSelector((state) => state.board);
   const [isOpen, setIsOpen] = useState(true);
-
   const handleCollapse = () => {
     setIsOpen((perv) => !perv);
   };
@@ -25,9 +24,7 @@ const TasksList = ({ projectName, searchValue }) => {
         >
           {<ArrowDownCircleIcon />}
         </button>
-        <h1 className="text-[#1E1E1E] text-xl font-semibold">
-          {projectName}
-        </h1>
+        <h1 className="text-[#1E1E1E] text-xl font-semibold">{projectName}</h1>
       </div>
       {/* TODO: fix transition */}
       <Transition

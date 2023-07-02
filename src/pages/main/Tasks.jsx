@@ -18,6 +18,7 @@ import { setBoards } from "../../redux/slices/boardSlice";
 function Tasks() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
   const [projectName, setProjectName] = useState()
+  const [user, setUser] = useState([])
   const { view } = useParams();
   const { projectId } = useParams();
 
@@ -30,6 +31,7 @@ function Tasks() {
       try {
         const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
         store.dispatch(setBoards(response));
+        store.dispatch(setUser(response));
       } catch (e) {
         console.log(e);
       }
@@ -94,7 +96,7 @@ function Tasks() {
         )}
       </header>
       <div>
-        {view === "listView" && <ProjectList projectName={projectName}/>}
+        {view === "listView" && <ProjectList projectName={projectName} setUser={setUser} data={user}/>}
         {view === "columnView" && <ColumnViewComponent />}
         {view === "calendarView" && <Calendar />}
       </div>
