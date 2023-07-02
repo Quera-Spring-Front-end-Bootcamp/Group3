@@ -25,7 +25,6 @@ function getRandomHexCode() {
 }
 
 const BoardTitle = (searchValue) => {
-  console.log(searchValue.searchValue);
   const [newBoardName, setNewBoardName] = useState("");
   const { projectId } = useParams();
 
