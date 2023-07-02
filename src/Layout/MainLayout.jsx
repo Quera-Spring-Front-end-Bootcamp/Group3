@@ -24,9 +24,13 @@ import { setWorkspaces } from "../redux/slices/workspaceSlice";
 
 function MainLayout() {
   const auth = useSelector((state) => state.auth);
-  const {user} = auth
-  const avatarName = user?.firstname ? user.firstname.charAt(0) + user.lastname.charAt(0):user?.username?.charAt(0)
-  const fullName = user?.firstname ? `${user.firstname} ${user.lastname}`:user?.username
+  const { user } = auth;
+  const avatarName = user?.firstname
+    ? user.firstname.charAt(0) + user.lastname.charAt(0)
+    : user?.username?.charAt(0);
+  const fullName = user?.firstname
+    ? `${user.firstname} ${user.lastname}`
+    : user?.username;
   const workspaces = useSelector((state) => state.workspace);
   const { projectId } = useParams();
 
@@ -113,6 +117,10 @@ function MainLayout() {
   const [openShareWorkSpaceModal, setOpenShareWorkSpaceModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
   const [openNewWorkspaceModal, setOpenNewWorkspaceModal] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const finalWorkspaces = searchValue
+    ? workspaces.filter((workspace) => workspace.name.includes(searchValue))
+    : [...workspaces];
 
   const naviaget = useNavigate();
   const privateLink = location.href;
@@ -172,6 +180,7 @@ function MainLayout() {
             type="text"
             placeholder="جستجو کنید"
             className="w-full h-10 text-sm placeholder-[#AAAAAA] bg-[#F6F7F9] rounded pl-4 pr-9"
+            onChange={(e) => setSearchValue(e.target.value)}
           />
         </div>
         <button
@@ -184,7 +193,7 @@ function MainLayout() {
           <span className="pr-1">ساختن اسپیس جدید</span>
         </button>
         <div className="h-96 flex flex-col gap-5 mt-5">
-          {workspaces.map((WorkSpace) => (
+          {finalWorkspaces.map((WorkSpace) => (
             <Disclosure as="div" key={WorkSpace._id}>
               {() => (
                 <>
@@ -257,9 +266,7 @@ function MainLayout() {
           <div className="flex flex-row items-center justify-center w-8 h-8 bg-[#EAF562] rounded-full">
             {avatarName}
           </div>
-          <span className="mr-2 font-medium text-base">
-            {fullName}
-          </span>
+          <span className="mr-2 font-medium text-base">{fullName}</span>
         </button>
         <button
           className="flex flex-row items-center mt-3"
