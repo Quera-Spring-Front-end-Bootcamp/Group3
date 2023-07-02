@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
 import Card from "../Card/Card";
 import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
@@ -11,31 +11,9 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import AXIOS from "../../Utils/axios";
 import { useParams } from "react-router-dom";
 import { NewTask } from "../NewTask/NewTask";
-
-async function changePosition(taskId, index) {
-  try {
-    await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-async function changeBoardOrder(boardId, index) {
-  try {
-    await AXIOS.put(`/board/${boardId}/position/${index + 1}`);
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-async function changeBoard(taskId, boardId, index) {
-  try {
-    await AXIOS.put(`/task/${taskId}/board/${boardId}`);
-    await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
-  } catch (e) {
-    console.log(e);
-  }
-}
+import { useSelector } from "react-redux";
+import store from "../../redux/store";
+import { setBoards } from "../../redux/slices/boardSlice";
 
 function getRandomHexCode() {
   const letters = "0123456789ABCDEF";
@@ -46,7 +24,7 @@ function getRandomHexCode() {
   return color;
 }
 
-const BoardTitle = (boards) => {
+const BoardTitle = (searchValue) => {
   const [newBoardName, setNewBoardName] = useState("");
   const { projectId } = useParams();
 
@@ -57,20 +35,71 @@ const BoardTitle = (boards) => {
         projectId: projectId,
         color: getRandomHexCode(),
       });
+      handleGetProjectData();
     } catch (e) {
       console.log(e);
     }
   }
+  const boards = useSelector((state) => state.board);
 
-  const boardsData = boards.boards;
-  boardsData.sort((a, b) => a.position - b.position);
+  const [data, setData] = useState([]);
 
-  const [data, setData] = useState(boardsData);
+  useEffect(() => {
+    if (boards) {
+      const boardsData = [...boards];
+      boardsData.sort((a, b) => a.position - b.position);
+      setData(boardsData);
+    }
+  }, [boards]);
+
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
 
   const [hoverTooltip, setHoverTooltip] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [selectId, setSelectId] = useState(null);
+
+  const handleGetProjectData = useCallback(
+    async function handleGetProjectData() {
+      try {
+        const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
+        store.dispatch(setBoards(response));
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [projectId]
+  );
+
+  async function changePosition(taskId, index) {
+    try {
+      const resp = await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
+      console.log("POSITION CHANGED", resp);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function changeBoardOrder(boardId, index) {
+    try {
+      const resp = await AXIOS.put(`/board/${boardId}/position/${index + 1}`);
+      await handleGetProjectData();
+      console.log("BOARD ORDER CHANGED", resp);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function changeBoard(taskId, boardId, index) {
+    try {
+      const resp1 = await AXIOS.put(`/task/${taskId}/board/${boardId}`);
+      const resp2 = await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
+      await handleGetProjectData();
+      console.log("BOARD CHANGED", resp1, resp2);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const handleMouseEnter = () => {
     setHoverTooltip(true);
   };
@@ -95,6 +124,7 @@ const BoardTitle = (boards) => {
   };
 
   const onDragEnd = (result) => {
+    console.log(result);
     const { draggableId, destination, source, type } = result;
 
     if (type === "tasks") {
@@ -109,31 +139,59 @@ const BoardTitle = (boards) => {
         return; // Card was dropped in the same position, no need to update data
       }
 
-      const sourceColumn = data.find(
+      const updatedData = [...data];
+
+      const sourceColumnIndex = updatedData.findIndex(
         (column) => column._id === source.droppableId
       );
-      const destinationColumn = data.find(
+      const destinationColumnIndex = updatedData.findIndex(
         (column) => column._id === destination.droppableId
       );
+
+      const sourceColumn = updatedData[sourceColumnIndex];
+      const destinationColumn = updatedData[destinationColumnIndex];
 
       if (!destinationColumn.tasks) {
         destinationColumn.tasks = [];
       }
 
-      const draggedTask = sourceColumn.tasks.splice(source.index, 1)[0];
-      destinationColumn.tasks.splice(destination.index, 0, draggedTask);
-
       if (sourceColumn === destinationColumn) {
+        const updatedSourceTasks = [...sourceColumn.tasks];
+        const [draggedTask] = updatedSourceTasks.splice(source.index, 1);
+        updatedSourceTasks.splice(destination.index, 0, draggedTask);
+
+        updatedData[sourceColumnIndex] = {
+          ...sourceColumn,
+          tasks: updatedSourceTasks,
+        };
+
         changePosition(draggableId, destination.index);
         console.log("same column");
       }
 
       if (sourceColumn !== destinationColumn) {
+        const draggedTask = sourceColumn.tasks[source.index];
+        const updatedSourceTasks = [...sourceColumn.tasks];
+        updatedSourceTasks.splice(source.index, 1);
+
+        const updatedDestinationTasks = [...destinationColumn.tasks];
+        updatedDestinationTasks.splice(destination.index, 0, draggedTask);
+
+        updatedData[sourceColumnIndex] = {
+          ...sourceColumn,
+          tasks: updatedSourceTasks,
+        };
+
+        updatedData[destinationColumnIndex] = {
+          ...destinationColumn,
+          tasks: updatedDestinationTasks,
+        };
+
         changeBoard(draggableId, destination.droppableId, destination.index);
         console.log("diffrent column");
       }
 
-      setData([...data]);
+      setData(updatedData);
     }
 
     if (type === "column") {
@@ -154,7 +212,7 @@ const BoardTitle = (boards) => {
         <Droppable droppableId="allCols" direction="horizontal" type="column">
           {(provided) => {
             return (
-              <container
+              <div
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 className="flex flex-row gap-[20px]"
@@ -166,7 +224,7 @@ const BoardTitle = (boards) => {
                     index={index}
                   >
                     {(provided) => (
-                      <container
+                      <div
                         {...provided.draggableProps}
                         ref={provided.innerRef}
                         {...provided.dragHandleProps}
@@ -251,6 +309,7 @@ const BoardTitle = (boards) => {
                                 </div>
                                 <div className="flex flex-col gap-[12px] my-[12px]">
                                   {item.tasks &&
+                                    !searchValue.searchValue &&
                                     item.tasks.map((task, index) => {
                                       return (
                                         <Draggable
@@ -279,16 +338,52 @@ const BoardTitle = (boards) => {
                                         </Draggable>
                                       );
                                     })}
+                                  {item.tasks &&
+                                    searchValue.searchValue &&
+                                    item.tasks
+                                      .filter((task) =>
+                                        task.name.includes(
+                                          searchValue.searchValue
+                                        )
+                                      ) // Filter tasks based on search value
+                                      .map((task, index) => {
+                                        return (
+                                          <Draggable
+                                            key={task._id}
+                                            draggableId={task._id}
+                                            index={index}
+                                          >
+                                            {(provided) => {
+                                              return (
+                                                <div
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                >
+                                                  <ProjectCard
+                                                    projectTitle={task.name}
+                                                    taskTitle={task.name}
+                                                    date={task.deadline}
+                                                    time="12"
+                                                    tags={task.tags}
+                                                    userName={task.taskAssigns}
+                                                  />
+                                                </div>
+                                              );
+                                            }}
+                                          </Draggable>
+                                        );
+                                      })}
                                 </div>
                               </div>
                             );
                           }}
                         </Droppable>
-                      </container>
+                      </div>
                     )}
                   </Draggable>
                 ))}
-              </container>
+              </div>
             );
           }}
         </Droppable>
