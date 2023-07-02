@@ -4,7 +4,7 @@ import MainLayoutSubHeader from "../MainLayoutSubHeader";
 import TasksList from "./TasksList";
 import Filter from "../Filter/Filter";
 
-const ProjectList = ({ projectName,data,isOpenFilter,setIsOpenFilter,handleOpenFilter }) => {
+const ProjectList = ({ projectName,isOpenFilter,setIsOpenFilter,handleOpenFilter }) => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
@@ -24,7 +24,6 @@ const ProjectList = ({ projectName,data,isOpenFilter,setIsOpenFilter,handleOpenF
           <Filter
             isOpenFilter={isOpenFilter}
             setIsOpenFilter={setIsOpenFilter}
-            data={data}
           />
         </div>
       </MainLayoutSubHeader>

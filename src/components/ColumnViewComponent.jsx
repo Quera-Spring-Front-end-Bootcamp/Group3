@@ -4,7 +4,7 @@ import FilterIcon from "../assets/Icons/FilterIcon";
 import BoardTitle from "./BoardTitle/BoardTitle";
 import Filter from "./Filter/Filter";
 
-function ColumnViewComponent({data,isOpenFilter,setIsOpenFilter,handleOpenFilter}) {
+function ColumnViewComponent({isOpenFilter,setIsOpenFilter,handleOpenFilter}) {
   const [searchValue, setSearchValue] = useState("");
 
   return (
@@ -24,7 +24,6 @@ function ColumnViewComponent({data,isOpenFilter,setIsOpenFilter,handleOpenFilter
           <Filter
             isOpenFilter={isOpenFilter}
             setIsOpenFilter={setIsOpenFilter}
-            data={data}
           />
         </div>
       </MainLayoutSubHeader>
