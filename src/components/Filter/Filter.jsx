@@ -4,7 +4,6 @@ import CloseIcon from "../../assets/Icons/CloseIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
 
 const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
-  console.log(data);
   const [filters, setFilters] = useState([]);
   const dropdownOptionsWhere = [
     { id: 1, value: "تاریخ" },
@@ -17,14 +16,14 @@ const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
   //   { id: 2, value: "کار", background: "#C3B7F2" },
   //   { id: 3, value: "پروژه", background: "#7FFAFA" },
   // ];
-  const dropdownOptionsTag  = data.flatMap((board) =>
-  board.tasks.flatMap((task) =>
-    task.taskAssigns.map((assign) => ({
-      id: assign._id,
-      value: assign.firstname,
-    }))
-  )
-);
+  const dropdownOptionsTag = data.flatMap((board) =>
+    board.tasks.flatMap((task) =>
+      task.taskAssigns.map((assign) => ({
+        id: assign._id,
+        value: assign.firstname,
+      }))
+    )
+  );
 
   const dropdownOptionsIsOrNot = [
     { id: 1, value: "است" },
@@ -51,7 +50,6 @@ const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
       prevFilters.filter((filter) => filter.id !== id)
     );
   };
-
 
   return (
     isOpenFilter && (
