@@ -4,7 +4,7 @@ import TasksBasedOnStatus from "./TasksBasedOnStatus";
 import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
 import { useSelector } from "react-redux";
 
-const TasksList = ({ projectName }) => {
+const TasksList = ({ projectName, searchValue }) => {
   const boards = useSelector((state) => state.board)
   const [isOpen, setIsOpen] = useState(true);
 
@@ -45,7 +45,8 @@ const TasksList = ({ projectName }) => {
             <TasksBasedOnStatus
               boardName={item.name}
               boardColor={item.color}
-              tasks={item.tasks}
+              boardTasks={item.tasks}
+              searchValue={searchValue}
             />
           </div>
         ))}
