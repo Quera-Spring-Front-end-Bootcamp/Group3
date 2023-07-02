@@ -3,20 +3,28 @@ import Dropdown from "./DropDown";
 import CloseIcon from "../../assets/Icons/CloseIcon";
 import TrashIcon from "../../assets/Icons/TrashIcon";
 
-const Filter = () => {
+const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
   const [filters, setFilters] = useState([]);
-  const [isOpen, setIsOpen] = useState(true);
   const dropdownOptionsWhere = [
     { id: 1, value: "تاریخ" },
     { id: 2, value: "تگ" },
     { id: 3, value: "اعضا" },
     { id: 4, value: "اولویت" },
   ];
-  const dropdownOptionsTag = [
-    { id: 1, value: "درس", background: " #EBC8C8" },
-    { id: 2, value: "کار", background: "#C3B7F2" },
-    { id: 3, value: "پروژه", background: "#7FFAFA" },
-  ];
+  // const dropdownOptionsTag = [
+  //   { id: 1, value: "درس", background: " #EBC8C8" },
+  //   { id: 2, value: "کار", background: "#C3B7F2" },
+  //   { id: 3, value: "پروژه", background: "#7FFAFA" },
+  // ];
+  const dropdownOptionsTag = data.flatMap((board) =>
+    board.tasks.flatMap((task) =>
+      task.taskAssigns.map((assign) => ({
+        id: assign._id,
+        value: assign.firstname,
+      }))
+    )
+  );
+
   const dropdownOptionsIsOrNot = [
     { id: 1, value: "است" },
     { id: 2, value: "نیست" },
@@ -35,7 +43,7 @@ const Filter = () => {
     setFilters(newFilters);
   };
   const handleClose = () => {
-    setIsOpen(false);
+    setIsOpenFilter(false);
   };
   const handleRemoveFilter = (id) => {
     setFilters((prevFilters) =>
@@ -44,7 +52,7 @@ const Filter = () => {
   };
 
   return (
-    isOpen && (
+    isOpenFilter && (
       <div className="flex flex-col gap-[14px] pt-[15px] py-8 px-[21px] w-[718px] min-h-[206px] h-fullrounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)] rounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)]">
         <div className="flex justify-between mb-[3px]">
           <span className="text-2xl text-[#000000] font-semibold">فیلتر</span>
@@ -63,21 +71,24 @@ const Filter = () => {
                 setOption={(option) => setFilterOption(index, option)}
               />
 
-              <span className="text-[#000000] text-sm">آن ها</span>
-
-              <Dropdown
-                key={dropdownOptionsTag.id}
-                classNameCard={"w-[146px] "}
-                options={dropdownOptionsTag}
-                setOption={(option) => setFilterOption(index, option)}
-              />
-              <Dropdown
-                key={dropdownOptionsIsOrNot.id}
-                classNameCard={"w-[107px] "}
-                options={dropdownOptionsIsOrNot}
-                setOption={(option) => setFilterOption(index, option)}
-                isOrNot={true}
-              />
+              {filter.option && (
+                <>
+                  <span className="text-[#000000] text-sm">آن ها</span>
+                  <Dropdown
+                    key={dropdownOptionsTag.id}
+                    classNameCard={"w-[146px] "}
+                    options={dropdownOptionsTag}
+                    setOption={(option) => setFilterOption(index, option)}
+                  />
+                  <Dropdown
+                    key={dropdownOptionsIsOrNot.id}
+                    classNameCard={"w-[107px] "}
+                    options={dropdownOptionsIsOrNot}
+                    setOption={(option) => setFilterOption(index, option)}
+                    isOrNot={true}
+                  />
+                </>
+              )}
             </div>
             <button onClick={() => handleRemoveFilter(filter.id)}>
               {<TrashIcon />}

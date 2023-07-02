@@ -59,7 +59,7 @@ const Dropdown = ({
         className={`cursor-pointer flex  items-center justify-between  text-sm text-[#1e1e1e1] border border-[E9EBF0] rounded-md py-1 px-2 ${classNameCard}`}
         onClick={() => setOpen(!open)}
       >
-        <span style={{ padding, backgroundColor, borderRadius }}>
+        <span style={{ padding, backgroundColor, borderRadius }} className="whitespace-nowrap">
           {selectedValue || "انتخاب کنید"}
         </span>
         <i>{<ArrowDownIcon />}</i>

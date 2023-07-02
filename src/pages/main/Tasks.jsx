@@ -18,6 +18,12 @@ import { setBoards } from "../../redux/slices/boardSlice";
 function Tasks() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
   const [projectName, setProjectName] = useState();
+  const [user, setUser] = useState([]);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
+
+  const handleOpenFilter = () => {
+    setIsOpenFilter(true);
+  };
   const { view } = useParams();
   const { projectId } = useParams();
 
@@ -30,6 +36,7 @@ function Tasks() {
       try {
         const response = (await AXIOS.get(`/board/${projectId}`)).data.data;
         store.dispatch(setBoards(response));
+        store.dispatch(setUser(response));
       } catch (e) {
         console.log(e);
       }
@@ -94,8 +101,23 @@ function Tasks() {
         )}
       </header>
       <div>
-        {view === "listView" && <ProjectList projectName={projectName} />}
-        {view === "columnView" && <ColumnViewComponent />}
+        {view === "listView" && (
+          <ProjectList
+            data={user}
+            projectName={projectName}
+            isOpenFilter={isOpenFilter}
+            setIsOpenFilter={setIsOpenFilter}
+            handleOpenFilter={handleOpenFilter}
+          />
+        )}
+        {view === "columnView" && (
+          <ColumnViewComponent
+            data={user}
+            isOpenFilter={isOpenFilter}
+            setIsOpenFilter={setIsOpenFilter}
+            handleOpenFilter={handleOpenFilter}
+          />
+        )}
         {view === "calendarView" && <Calendar />}
       </div>
     </>
