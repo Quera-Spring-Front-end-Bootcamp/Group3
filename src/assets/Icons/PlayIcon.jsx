@@ -1,4 +1,4 @@
-function PlayIcon() {
+function PlayIcon({ color = "#80C959" }) {
   return (
     <svg
       width="24"
@@ -11,8 +11,8 @@ function PlayIcon() {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3C16.971 3 21 7.029 21 12Z"
-        fill="#80C959"
-        stroke="#80C959"
+        fill={color}
+        stroke={color}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

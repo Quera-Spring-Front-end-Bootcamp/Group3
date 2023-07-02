@@ -11,12 +11,13 @@ const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
 export const PersonalInfo = () => {
   const auth = useSelector((state) => state.auth);
-
+  const {user} = auth
+  const avatarName = user?.firstname ? user.firstname.charAt(0) + user.lastname.charAt(0):user?.username?.charAt(0)
   const [userData, setUserData] = useState({
     image: "",
-    name: "Nader",
-    family: "Mohamadi",
-    mobile: "09121234567",
+    name: "",
+    family: "",
+    mobile: "",
   });
 
   const [image, setImage] = useState(null);
@@ -67,7 +68,7 @@ export const PersonalInfo = () => {
                 <img src={URL.createObjectURL(image)} alt="Profile Image" />
               ) : (
                 <span className="font-medium mt-3 text-[34px] text-black ">
-                  {userData.name.charAt(0) + userData.family.charAt(0)}
+                  {avatarName}
                 </span>
               )}
             </div>

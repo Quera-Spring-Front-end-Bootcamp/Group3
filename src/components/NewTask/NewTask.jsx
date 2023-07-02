@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import Button from "../Button";
 import { Transition, Dialog } from "@headlessui/react";
+
 import Datepicker from "../Datepicker";
 import { v4 as uuidv4 } from "uuid";
 import ColumnMoreItem from "../ColumnMore/ColumnMoreItem";
@@ -17,35 +18,59 @@ import TagDashedCircleIcon from "../../assets/Icons/TagDashedCircleIcon";
 import EyeIcon from "../../assets/Icons/EyeIcon";
 import SearchIcon from "../../assets/Icons/SearchIcon";
 import DotsMenuIcon from "../../assets/Icons/DotsMenuIcon";
+import PaletteIcon from "../../assets/Icons/PaletteIcon";
+import EditSqureIcon from "../../assets/Icons/EditSqureIcon";
 
-const priorityItems = [
+let priorityItems = [
   {
     id: "1",
     title: "فوری",
     icon: <FlagIcon color="#FB0606" width="20" height="21" />,
+    color: "#FB0606",
   },
   {
     id: "2",
     title: "بالا",
     icon: <FlagIcon color="#FFE605" width="20" height="21" />,
+    color: "#FFE605",
   },
   {
     id: "3",
     title: "متوسط",
     icon: <FlagIcon color="#09DBCE" width="20" height="21" />,
+    color: "#09DBCE",
   },
   {
     id: "4",
     title: "پایین",
     icon: <FlagIcon color="#B2ACAC" width="20" height="21" />,
+    color: "#B2ACAC",
   },
   { id: "5", title: "حذف اولویت", icon: <CloseIcon color="#E45454" /> },
 ];
 
-const tagsItem = [
-  { id: uuidv4(), title: "درس", color: "#EBC8C8", editFlag: false },
-  { id: uuidv4(), title: "کار", color: "#C3B7F2", editFlag: false },
-  { id: uuidv4(), title: "پروژه", color: "#7FFAFA", editFlag: false },
+let tagsItem = [
+  {
+    id: uuidv4(),
+    title: "درس",
+    color: "#EBC8C8",
+    editFlag: false,
+    colorFlag: false,
+  },
+  {
+    id: uuidv4(),
+    title: "کار",
+    color: "#C3B7F2",
+    editFlag: false,
+    colorFlag: false,
+  },
+  {
+    id: uuidv4(),
+    title: "پروژه",
+    color: "#7FFAFA",
+    editFlag: false,
+    colorFlag: false,
+  },
 ];
 
 export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
@@ -56,6 +81,11 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   const [tagItems, setTagItems] = useState(tagsItem);
   const [tag, setTag] = useState([]);
   const tagHover = useRef(null);
+  const [editWindowPosition, setEditWindowPosition] = useState({ x: 0, y: 0 });
+  const [editing, setEditing] = useState({ flag: false, id: null });
+  const [prioritis, setPrioritis] = useState(priorityItems);
+  const [flagColor, setFlagColor] = useState("#B2ACAC");
+  const [search, setSearch] = useState(false);
 
   function handleDatePickerOpen() {
     setDatePickerOpen(!datePickerOpen);
@@ -66,17 +96,29 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   function handleSubmitInputChange(event) {
     const text = event.target.value;
     if (event.key === "Enter") {
-      const newItem = {
-        id: uuidv4(),
-        title: text,
-        color: "#93fa7f",
-        editFlag: false,
-      };
-      // console.log(newItem)
-      tag.push(newItem);
-      // console.log(tag)
-      setTag([...tag]);
-      setTagInputText(""); // تخلیه input
+      if (editing.flag) {
+        const filteredItems = tagItems.map((item) => {
+          if (item.id === editing.id) {
+            return { ...item, title: text };
+          }
+          return item;
+        });
+        tagsItem = filteredItems;
+        setTagItems(filteredItems);
+        setEditing({ flag: false, id: null });
+      } else {
+        const newItem = {
+          id: uuidv4(),
+          title: text,
+          color: "#93fa7f",
+          editFlag: false,
+        };
+        // console.log(newItem)
+        tag.push(newItem);
+        // console.log(tag)
+        setTag([...tag]);
+        setTagInputText(""); // تخلیه input
+      }
     }
   }
 
@@ -85,7 +127,8 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     setTagInputText(text);
 
     if (text === "") {
-      setTagItems(tagsItem); // بازگشت به فیلتر اولیه
+      setTagItems(tagsItem); //
+      setSearch(false);
     } else {
       const filteredItems = tagItems.filter((item) => {
         return item.title.includes(text);
@@ -93,6 +136,12 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
 
       if (filteredItems.length > 0) {
         setTagItems(filteredItems);
+        setSearch(false);
+      } else {
+        // alert("موردی یافت نشد")
+        // تخلیه input
+        setTagItems([]);
+        setSearch(true);
       }
     }
   }
@@ -151,6 +200,77 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     setFlagOpen(!flagOpen);
     setDatePickerOpen(false);
     setTagOpen(false);
+  }
+  // console.log(typeof(editWindowPosition.x));
+  function handleEtcOpen(id, event) {
+    // console.log((event.clientY / window.innerHeight) * 100-20);
+    setEditWindowPosition({ x: event.clientX, y: event.clientY });
+    const filteredItems = tagItems.map((item) => {
+      if (item.id === id) {
+        return { ...item, etcFlag: !item.etcFlag };
+      } else {
+        return { ...item, etcFlag: false };
+      }
+    });
+
+    setTagItems(filteredItems);
+    // setEtcId(id);
+    // console.log(tag);
+    // setKeyTag([event.target.id]);
+    // console.log(event.target.id);
+  }
+
+  function deleteTag(id) {
+    const filteredItems = tagItems.filter((item) => {
+      return item.id !== id;
+    });
+
+    tagsItem = filteredItems;
+    setTagItems(filteredItems);
+  }
+
+  function editTag(item) {
+    setTagInputText(item.title);
+    setEditing({ flag: true, id: item.id });
+  }
+
+  function tagChangeColor(id) {
+    const filteredItems = tagItems.map((item) => {
+      if (item.id === id) {
+        return { ...item, colorFlag: !item.colorFlag };
+      } else {
+        return { ...item, colorFlag: false };
+      }
+    });
+    tagsItem = filteredItems;
+    setTagItems(filteredItems);
+  }
+
+  function changeColor(id, color) {
+    // console.log(event.target.getAttribute("color"));
+    const filteredItems = tagItems.map((item) => {
+      if (item.id === id) {
+        return { ...item, color: color };
+      } else {
+        return item;
+      }
+    });
+    tagsItem = filteredItems;
+    setTagItems(filteredItems);
+  }
+
+  function changePriority(id, color) {
+    const filteredItems = priorityItems.map((item) => {
+      if (item.id === id) {
+        return { ...item, color: color };
+      } else {
+        return item;
+      }
+    });
+    if (id == 5) setFlagOpen(false);
+    priorityItems = filteredItems;
+    setPrioritis(filteredItems);
+    setFlagColor(color);
   }
 
   return (
@@ -223,12 +343,28 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                       <span className="not-italic font-normal tex-[16px] leading-[24px] text-right">
                         افزودن پیوست
                       </span>
-                      <div className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
+                      {/* <input type="file"  className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]" /> */}
+                      {/* <div id="#upload-button"   type="file" className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
+                        
                         <i>
                           {<LinkIcon color="#208D8E" width="24" height="24" />}
                         </i>
                         <span>آپلود فایل</span>
-                      </div>
+                      </div> */}
+                      <label
+                        htmlFor="upload-button"
+                        className="flex cursor-pointer flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]"
+                      >
+                        <i>
+                          <LinkIcon color="#208D8E" width="24" height="24" />
+                        </i>
+                        <span>آپلود فایل</span>
+                        <input
+                          id="upload-button"
+                          type="file"
+                          className="hidden"
+                        />
+                      </label>
                     </div>
                     {/* Frame 191 */}
                     <div className="flex flex-row justify-between  items-center gap-[670px] w-[1078px] h-[50px]">
@@ -237,7 +373,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                           className="cursor-pointer"
                           onClick={handleFlagOpen}
                         >
-                          <i>{<FlagDashedCircleIcon />}</i>
+                          <i>{<FlagDashedCircleIcon color={flagColor} />}</i>
                         </div>
 
                         <Transition
@@ -254,8 +390,11 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                             className={`absolute mt-[-220px]  w-[166px] justify-start rounded-[8px]  gap-[16px] p-[12px] shadow-xl`}
                           >
                             <div className="flex w-[142px] flex-col mt-[-14px] items-start gap-[12px]">
-                              {priorityItems.map((item) => (
+                              {prioritis.map((item) => (
                                 <ColumnMoreItem
+                                  onClick={() =>
+                                    changePriority(item.id, item.color)
+                                  }
                                   key={item.id}
                                   className="flex-row justify-end gap-[8px] not-italic font-normal text-[14px] leading-[21px] text-right text-[#1E1E1E]"
                                   title={item.title}
@@ -282,9 +421,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                           leave="transition-opacity duration-500"
                           leaveFrom="opacity-100"
                           leaveTo="opacity-0"
-                          className="mr-[150px] absolute"
+                          className=" absolute mr-[150px]"
                         >
-                          <Card className="absolute mt-[-270px] w-[177px] h-[213px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[8px] p-[12px]">
+                          <Card className="absolute  mt-[-270px] w-[177px] h-[213px] shadow-[0_4px_16px_0_rgba(0,0,0,0.16)] rounded-[8px] p-[12px]">
                             <div className="flex flex-col items-start gap-[4px] w-[153px] h-[60px]">
                               <div className="flex flex-row w-[153px] overflow-auto gap-2">
                                 {tag.map((item) => (
@@ -334,13 +473,18 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                 />
                               </div>
                             </div>
-                            <div className="overflow-auto">
+                            <div>
+                              {search ? (
+                                <p className="flex flex-row justify-center">
+                                  نتیجه ای یافت نشد
+                                </p>
+                              ) : null}
                               {tagItems.map((item) => (
                                 <div
                                   className="flex flex-col justify-center items-start w-[153px]  mt-[12px]"
                                   key={item.id}
                                 >
-                                  <div className="flex flex-row justify-between items-center gap-[12px] w-[153px] h-[31px]">
+                                  <div className="flex cursor-pointer flex-row justify-between items-center gap-[12px] w-[153px] h-[31px]">
                                     <div
                                       style={{
                                         backgroundColor: `${item.color}`,
@@ -351,7 +495,201 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                         {item.title}
                                       </span>
                                     </div>
-                                    <i>{<DotsMenuIcon color="#BDBDBD" />}</i>
+
+                                    <i
+                                      onClick={(e) => handleEtcOpen(item.id, e)}
+                                    >
+                                      {<DotsMenuIcon color="#BDBDBD" />}
+                                    </i>
+                                  </div>
+
+                                  {/* <i onClick={() => handleEtcOpen(item.id)}>{<EtcIcon/>}</i> */}
+
+                                  <div
+                                    style={{
+                                      display: `${
+                                        item.etcFlag ? "block" : "none"
+                                      }`,
+                                      top: `${
+                                        editWindowPosition.y -
+                                        window.innerHeight / 2
+                                      }px`,
+                                    }}
+                                    className={`flex flex-col items-start p-[8px]    w-[80px]  shadow-xl rounded-[8px] absolute mr-[-120px]  bg-white  right-[300px]`}
+                                  >
+                                    <div className="flex flex-col items-start justify-between  h-[69px]">
+                                      <div
+                                        onClick={() => deleteTag(item.id)}
+                                        className="flex cursor-pointer flex-row justify-start items-center gap-[4px]"
+                                      >
+                                        <i>
+                                          {<CloseIcon width="14" height="14" />}
+                                        </i>{" "}
+                                        <span className=" not-italic font-normal text-[10px] leading-[15px] text-right">
+                                          حذف
+                                        </span>
+                                      </div>
+                                      <div
+                                        onClick={() => editTag(item)}
+                                        className="flex cursor-pointer flex-row justify-start items-center gap-[4px]"
+                                      >
+                                        {
+                                          <EditSqureIcon
+                                            width="11"
+                                            height="11"
+                                          />
+                                        }{" "}
+                                        <span className="not-italic font-normal text-[10px] leading-[15px] text-right">
+                                          ویرایش تگ
+                                        </span>
+                                      </div>
+                                      <div
+                                        onClick={() => tagChangeColor(item.id)}
+                                        className="flex cursor-pointer flex-row justify-start items-center gap-[4px] "
+                                      >
+                                        {<PaletteIcon />}{" "}
+                                        <span className="not-italic font-normal text-[10px] leading-[15px] text-right">
+                                          ویرایش رنگ
+                                        </span>{" "}
+                                      </div>
+                                      <div
+                                        className="flex bg-white flex-col justify-center items-start p-[8px] absolute   w-[123px] gap-[11px] rounded-[8px] right-[85px] top-[53px] shadow-xl"
+                                        style={{
+                                          display: `${
+                                            item.colorFlag ? "flex" : "none"
+                                          }`,
+                                        }}
+                                      >
+                                        <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px] ">
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#E46161")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#E46161]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#80DC69")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#80DC69]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#76BC86")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#76BC86]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#78C6B0")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#78C6B0]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#84C6A1")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#84C6A1]"
+                                          ></div>
+                                        </div>
+                                        <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#F3C567")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#F3C567]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#F1A25C")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#F1A25C]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#E57A57")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#E57A57]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#EC8182")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#EC8182]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#B9995E")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#B9995E]"
+                                          ></div>
+                                        </div>
+                                        <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#E46161")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#E28A60]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#E28A60")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#6897C2]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#74AADD")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#74AADD]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#3C45E7")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#3C45E7]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#6DAFCE")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#6DAFCE]"
+                                          ></div>
+                                        </div>
+                                        <div className="flex flex-row justify-start items-center gap-[8px] w-[107px] h-[15px]">
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#9286EA")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#9286EA]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#C074D1")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#C074D1]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#486774")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#486774]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#5F6C7C")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#5F6C7C]"
+                                          ></div>
+                                          <div
+                                            onClick={() =>
+                                              changeColor(item.id, "#46494D")
+                                            }
+                                            className="rounded-[2px] cursor-pointer w-[15px] h-[15px] bg-[#46494D]"
+                                          ></div>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               ))}
@@ -368,7 +706,10 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
 
                       <Button title="ساختن تسک"></Button>
                     </div>
-                    <Transition show={datePickerOpen} className="z-40">
+                    <Transition
+                      show={datePickerOpen}
+                      className="z-40 ml-[100%] absolute"
+                    >
                       <Datepicker
                         setDatePickerOpen={handleDatePickerOpen}
                         className="absolute mt-[-130px] mr-[63px] z-10"
