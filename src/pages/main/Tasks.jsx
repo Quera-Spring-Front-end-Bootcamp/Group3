@@ -17,12 +17,13 @@ import { setBoards } from "../../redux/slices/boardSlice";
 
 function Tasks() {
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
-<<<<<<< HEAD
-  const [projectName, setProjectName] = useState()
-  const [user, setUser] = useState([])
-=======
   const [projectName, setProjectName] = useState();
->>>>>>> main
+  const [user, setUser] = useState([]);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
+
+  const handleOpenFilter = () => {
+    setIsOpenFilter(true);
+  };
   const { view } = useParams();
   const { projectId } = useParams();
 
@@ -100,12 +101,23 @@ function Tasks() {
         )}
       </header>
       <div>
-<<<<<<< HEAD
-        {view === "listView" && <ProjectList projectName={projectName} setUser={setUser} data={user}/>}
-=======
-        {view === "listView" && <ProjectList projectName={projectName} />}
->>>>>>> main
-        {view === "columnView" && <ColumnViewComponent />}
+        {view === "listView" && (
+          <ProjectList
+            data={user}
+            projectName={projectName}
+            isOpenFilter={isOpenFilter}
+            setIsOpenFilter={setIsOpenFilter}
+            handleOpenFilter={handleOpenFilter}
+          />
+        )}
+        {view === "columnView" && (
+          <ColumnViewComponent
+            data={user}
+            isOpenFilter={isOpenFilter}
+            setIsOpenFilter={setIsOpenFilter}
+            handleOpenFilter={handleOpenFilter}
+          />
+        )}
         {view === "calendarView" && <Calendar />}
       </div>
     </>

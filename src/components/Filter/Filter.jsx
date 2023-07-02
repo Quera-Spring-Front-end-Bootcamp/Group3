@@ -17,6 +17,15 @@ const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
   //   { id: 2, value: "کار", background: "#C3B7F2" },
   //   { id: 3, value: "پروژه", background: "#7FFAFA" },
   // ];
+  const dropdownOptionsTag  = data.flatMap((board) =>
+  board.tasks.flatMap((task) =>
+    task.taskAssigns.map((assign) => ({
+      id: assign._id,
+      value: assign.firstname,
+    }))
+  )
+);
+
   const dropdownOptionsIsOrNot = [
     { id: 1, value: "است" },
     { id: 2, value: "نیست" },
@@ -43,14 +52,7 @@ const Filter = ({ isOpenFilter, setIsOpenFilter, data }) => {
     );
   };
 
-  const dropdownOptionsTag  = data.flatMap((board) =>
-    board.tasks.flatMap((task) =>
-      task.taskAssigns.map((assign) => ({
-        id: assign._id,
-        value: assign.firstname,
-      }))
-    )
-  );
+
   return (
     isOpenFilter && (
       <div className="flex flex-col gap-[14px] pt-[15px] py-8 px-[21px] w-[718px] min-h-[206px] h-fullrounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)] rounded-lg bg-white shadow-[0_8px_12px_0_rgba(0,0,0,0.2)]">

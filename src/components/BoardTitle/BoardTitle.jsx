@@ -207,7 +207,7 @@ const BoardTitle = (searchValue) => {
   };
 
   return (
-    <div className="flex gap-5 m-5 whitespace-nowrap mt-36 overflow-auto h-[calc(100vh_-_180px)]">
+    <div className="flex gap-5 m-5 whitespace-nowrap mt-28 pt-8 overflow-auto h-[calc(100vh_-_180px)]">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="allCols" direction="horizontal" type="column">
           {(provided) => {

@@ -4,13 +4,9 @@ import MainLayoutSubHeader from "../MainLayoutSubHeader";
 import TasksList from "./TasksList";
 import Filter from "../Filter/Filter";
 
-const ProjectList = ({ projectName,data }) => {
+const ProjectList = ({ projectName,data,isOpenFilter,setIsOpenFilter,handleOpenFilter }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [isOpenFilter, setIsOpenFilter] = useState(false);
 
-  const handleOpenFilter = () => {
-    setIsOpenFilter(true);
-  };
   return (
     <div className="bg-[#FAFBFC] w-[1100px] relative">
       <MainLayoutSubHeader
