@@ -180,6 +180,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   }
 
   function handleClickCloseTag(item) {
+    setSearch(false)
     const filteredItems = tag.filter((tagItem) => {
       return item.id !== tagItem.id;
     });

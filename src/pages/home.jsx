@@ -1,12 +1,10 @@
 import { useState } from "react";
-import Button from "../components/Button";
-import InfoTask from '../components/InfoTask/InfoTask';
+
 function Home() {
-  const [infoTask,setInfoTask] = useState(false)
-  return <div className="flex flex-row justify-center items-center">
-    <Button  title="Click Me" handleClick={() => setInfoTask(true)} />
-    {infoTask ? <InfoTask/> : null}
-  </div>;
+ 
+  return <div > Home Page</div>
+    
+ 
 }
 
 export default Home;
