@@ -17,7 +17,7 @@ function ColumnViewComponent({isOpenFilter,setIsOpenFilter,handleOpenFilter}) {
           <span>{<FilterIcon />}</span>
           <span className="text-black font-medium text-xs">فیلترها</span>
         </button>
-        <span className="bg-primary bg-opacity-50 text-black font-medium text-xs mr-5 h-[26px] p-1 flex items-center">
+        <span className="bg-secondary bg-opacity-50 text-black font-medium text-xs mr-5 h-[26px] p-1 flex items-center">
           دسته‌بندی‌شده با: وضعیت
         </span>
         <div className="absolute top-full right-0 z-50">
