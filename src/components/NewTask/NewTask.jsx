@@ -95,7 +95,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
 
   function handleSubmitInputChange(event) {
     const text = event.target.value;
+    setSearch(false)
     if (event.key === "Enter") {
+      
       if (editing.flag) {
         const filteredItems = tagItems.map((item) => {
           if (item.id === editing.id) {
@@ -178,6 +180,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   }
 
   function handleClickCloseTag(item) {
+    setSearch(false)
     const filteredItems = tag.filter((tagItem) => {
       return item.id !== tagItem.id;
     });
