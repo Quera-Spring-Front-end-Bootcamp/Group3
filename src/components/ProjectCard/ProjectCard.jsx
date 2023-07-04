@@ -11,6 +11,7 @@ import CheckmarkCircleIcon from "../../assets/Icons/CheckmarkCircleIcon";
 import FlagIcon from "../../assets/Icons/FlagIcon";
 import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
 import moment from "moment-jalaali";
+import InfoTask from "../InfoTask/InfoTask";
 
 const columnMoreItems = [
   { id: 1, title: "ویرایش نام ستون", icon: <EditSqureIcon /> },
@@ -43,6 +44,7 @@ const ProjectCard = ({
   userName,
 }) => {
   const [showMore, setShowMore] = useState(false);
+  const [infoTaskOpen, setInfoTaskOpen] = useState(false);
 
   const columnMore = () => {
     setShowMore(!showMore);
@@ -51,8 +53,13 @@ const ProjectCard = ({
     setShowMore(false);
   };
 
+  const handelShowInfoTask = () => {
+    setInfoTaskOpen(true)
+  };
   return (
-    <div
+    <>  
+      {infoTaskOpen && <InfoTask infoTaskOpen= {infoTaskOpen} setInfoTaskOpen = {setInfoTaskOpen} /> } 
+      <div
       onMouseLeave={handleHover}
       className="group transition-all w-[250px] box-border border-[#EFF0F0] flex-col items-end p-[10px] gap-[18px] h-[133px] bg-[#FFFFFF] shadow-md rounded hover:h-[189px]"
     >
@@ -72,9 +79,9 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div className="flex flex-row  items-center gap-[4px] w-[230px] h-[18px]">
+        <div className="flex flex-row  items-center gap-[4px] w-[230px] h-[18px]" onClick={handelShowInfoTask}>
           <h2 className="not-italic font-medium text-[12px] leading-[18px] text-right text-[#0E0E0E]">
-            {taskTitle}
+            {taskTitle} 
           </h2>
           <i>{<JustifyRightIcon color="#BDC0C6" width="14" height="14" />}</i>
         </div>
@@ -148,6 +155,8 @@ const ProjectCard = ({
         </Card>
       </Transition>
     </div>
+    </>
+
   );
 };
 
