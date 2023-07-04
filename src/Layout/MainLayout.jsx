@@ -150,7 +150,7 @@ function MainLayout() {
 
   function handleBackground(id) {
     if (projectId === id) {
-      return "bg-[#E9F9FF]";
+      return "bg-secondary20";
     }
   }
 

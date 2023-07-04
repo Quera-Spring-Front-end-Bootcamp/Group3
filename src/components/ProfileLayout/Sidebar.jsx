@@ -45,7 +45,7 @@ export const Sidebar = () => {
               <NavLink
                 className={({ isActive }) =>
                   (isActive
-                    ? ` font-semibold bg-[#C5FFFF]  `
+                    ? ` font-semibold bg-secondary20  `
                     : " font-medium ") +
                   " flex items-center gap-[11px] rounded-[4px] py-1 px-2"
                 }
