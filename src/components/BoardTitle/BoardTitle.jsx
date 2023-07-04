@@ -73,8 +73,7 @@ const BoardTitle = (searchValue) => {
 
   async function changePosition(taskId, index) {
     try {
-      const resp = await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
-      console.log("POSITION CHANGED", resp);
+      await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
     } catch (e) {
       console.log(e);
     }
@@ -82,9 +81,8 @@ const BoardTitle = (searchValue) => {
 
   async function changeBoardOrder(boardId, index) {
     try {
-      const resp = await AXIOS.put(`/board/${boardId}/position/${index + 1}`);
+    await AXIOS.put(`/board/${boardId}/position/${index + 1}`);
       await handleGetProjectData();
-      console.log("BOARD ORDER CHANGED", resp);
     } catch (e) {
       console.log(e);
     }
