@@ -7,6 +7,7 @@ import InfoTask from "../InfoTask/InfoTask";
 
 const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) => {
   const [infoTaskOpen, setInfoTaskOpen] = useState(false);
+  const [taskSelected, setTaskSelected] = useState('')
   const [isOpen, setIsOpen] = useState(true);
   const tasks = searchValue ? boardTasks.filter(task => task.name.includes(searchValue)):[...boardTasks]
 
@@ -14,8 +15,9 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
     setIsOpen((perv) => !perv);
   };
 
-  const handleShowInfoTask = () => {
+  const handleShowInfoTask = (id) => {
     setInfoTaskOpen(true)
+    setTaskSelected(boardTasks.filter(task => task._id === id)[0]);
   }; 
   
 
@@ -41,7 +43,7 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
         <div className="flex flex-row-reverse -space-x-3 justify-center">
           {task.taskAssigns.length > 3 && (
             <a
-              onClick={handleShowInfoTask}
+              onClick={() => handleShowInfoTask(task._id)}
               className="flex items-center justify-center w-[35px] h-[34px] text-xs font-medium cursor-pointer text-black bg-gray-100  rounded-full hover:bg-gray-200"
             >
               {task.taskAssigns.length}+
@@ -72,7 +74,7 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
       </td>
       <td className="p-3 mx-5 my-4 text-xs text-center ">
         <a
-          onClick={handleShowInfoTask}
+          onClick={() => handleShowInfoTask(task._id)}
           className=" inline-flex justify-center align-middle w-4 cursor-pointer"
         >
           {<JustifyRightIcon />}
@@ -83,7 +85,7 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
 
   return (
     <>
-      {infoTaskOpen && <InfoTask infoTaskOpen= {infoTaskOpen} setInfoTaskOpen = {setInfoTaskOpen} /> } 
+      {infoTaskOpen && <InfoTask infoTaskOpen= {infoTaskOpen} setInfoTaskOpen = {setInfoTaskOpen} taskSelected = {taskSelected} /> } 
       <table className="table-fixed  w-[1034px] border-separate border-spacing-y-4">
         <thead>
           <tr className="">
