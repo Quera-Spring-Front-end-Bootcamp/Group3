@@ -3,8 +3,10 @@ import { Transition } from "@headlessui/react";
 import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
 import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
 import FlagIcon from "../../assets/Icons/FlagIcon";
+import { useOutletContext } from "react-router-dom";
 
 const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) => {
+  const { setInfoTaskOpen } = useOutletContext();
   const [isOpen, setIsOpen] = useState(true);
   const tasks = searchValue ? boardTasks.filter(task => task.name.includes(searchValue)):[...boardTasks]
 
@@ -12,7 +14,9 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
     setIsOpen((perv) => !perv);
   };
 
-  const handleNavigateTaskInfoPage = () => {}; // task info page not completed
+  const handleShowInfoTask = () => {
+    setInfoTaskOpen(true);
+  }; 
 
   const members = [
     { url: "https://i.pravatar.cc/297" },
@@ -67,7 +71,7 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
       </td>
       <td className="p-3 mx-5 my-4 text-xs text-center ">
         <a
-          onClick={handleNavigateTaskInfoPage}
+          onClick={handleShowInfoTask}
           className=" inline-flex justify-center align-middle w-4 cursor-pointer"
         >
           {<JustifyRightIcon />}

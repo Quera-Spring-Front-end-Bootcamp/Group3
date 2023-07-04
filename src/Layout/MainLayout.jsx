@@ -21,6 +21,7 @@ import AXIOS from "../Utils/axios";
 import { useSelector } from "react-redux";
 import store from "../redux/store";
 import { setWorkspaces } from "../redux/slices/workspaceSlice";
+import InfoTask from "../components/InfoTask/InfoTask";
 
 function MainLayout() {
   const auth = useSelector((state) => state.auth);
@@ -113,6 +114,7 @@ function MainLayout() {
       },
     },
   ];
+  const [infoTaskOpen, setInfoTaskOpen] = useState(false);
   const [openShareProjectModal, setOpenShareProjectModal] = useState(false);
   const [openShareWorkSpaceModal, setOpenShareWorkSpaceModal] = useState(false);
   const [openNewTaskModal, setOpenNewTaskModal] = useState(false);
@@ -294,7 +296,7 @@ function MainLayout() {
       )}
       <div className="flex flex-col w-[calc(100vw_-_19rem)] p-4 h-screen overflow-auto">
         <main className="h-full">
-          <Outlet />
+          <Outlet context={{ setInfoTaskOpen }} />
           <Button
             startIcon={<SqurePlusIcon color="white" />}
             title="تسک جدید"
@@ -307,6 +309,7 @@ function MainLayout() {
               setOpenNewTaskModal={setOpenNewTaskModal}
             />
           )}
+          {infoTaskOpen && <InfoTask infoTaskOpen= {infoTaskOpen} setInfoTaskOpen = {setInfoTaskOpen} /> }
           {openNewWorkspaceModal && (
             <CreateWorkspace
               openNewWorkspaceModal={openNewWorkspaceModal}
