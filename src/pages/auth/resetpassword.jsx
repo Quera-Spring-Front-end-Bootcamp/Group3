@@ -26,7 +26,7 @@ const ResetPassword = () => {
         password: data.password,
       });
       toast.success("عملیات با موفقیت انجام شد.");
-      navigate("/main/listView");
+      navigate("/main");
     } catch (e) {
       toast.error("عملیات با خطا مواجه شد.");
     }
