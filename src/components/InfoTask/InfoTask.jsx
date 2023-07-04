@@ -99,12 +99,6 @@ const comments = [
     text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.",
     img: "https://www.w3schools.com/howto/img_avatar.png",
   },
-  // {
-  //   name: "شما",
-  //   time: "۱۲ تیر",
-  //   text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.",
-  //   img: "https://www.w3schools.com/howto/img_avatar.png",
-  // },
 ];
 
 const monthNamesEn = {
@@ -122,8 +116,7 @@ const monthNamesEn = {
   Esfand: "اسفند",
 };
 
-const InfoTask = ({infoTaskOpen, setInfoTaskOpen}) => {
-  
+const InfoTask = ({ infoTaskOpen, setInfoTaskOpen }) => {
   const [commentHandler, setCommentHandler] = useState(false);
   const [statusTask, setStatusTask] = useState("open");
   const [TaskDetails, setTaskDetails] = useState(statusTaskDetails);
@@ -392,450 +385,339 @@ const InfoTask = ({infoTaskOpen, setInfoTaskOpen}) => {
   }
 
   return (
-    <Transition
-      appear
-      show={infoTaskOpen}
-      as={Fragment}
-      // enter="transition-opacity duration-500"
-      // enterFrom="opacity-0"
-      // enterTo="opacity-100"
-      // leave="transition-opacity duration-500"
-      // leaveFrom="opacity-100"
-      // leaveTo="opacity-0"
-    >
-       <Dialog as="div" className="relative z-10" onClose={closeHandler}>
+    <Transition appear show={infoTaskOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={closeHandler}>
         <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <div className="fixed inset-0 bg-black bg-opacity-25" />
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-[1352px] h-[596px] bg-white rounded-[20px]">
-                  <i onClick={closeHandler} className=" float-left ml-9 mt-4 pb-4">
-                    <CloseIcon color="#BDBDBD" width="24" height="25" />
-                  </i>
-                  {/* frame 154 */}
-                  <div className="flex float-left flex-row  justify-start items-start  w-[1316px] h-[506px] ">
-                    {/* frame 152 */}
-                    <div className="flex flex-col items-start gap-[24px]  w-[657px] h-[400px]">
-                      {/* frame 131 */}
-                      <div className="flex flex-row justify-between items-center px-[20px] gap-[113px] w-[657px] h-[57px] ">
-                        <div className="flex flex-row bg-white justify-start items-center gap-[24px] w-[355px] h-[34px]">
-                          {buttonRender()}
+                <i
+                  onClick={closeHandler}
+                  className=" float-left ml-9 mt-4 pb-4"
+                >
+                  <CloseIcon color="#BDBDBD" width="24" height="25" />
+                </i>
+                <div className="flex float-left flex-row  justify-start items-start  w-[1316px] h-[506px] ">
+                  <div className="flex flex-col items-start gap-[24px]  w-[657px] h-[400px]">
+                    <div className="flex flex-row justify-between items-center px-[20px] gap-[113px] w-[657px] h-[57px] ">
+                      <div className="flex flex-row bg-white justify-start items-center gap-[24px] w-[355px] h-[34px]">
+                        {buttonRender()}
 
-                          {/* <button  className="w-[111px] h-[30px] bg-[#F84747] text-[#ffffff]">
-                          Open
-                        </button> */}
-
-                          <i className="border">
-                            <CheckIcon color="#a5a5a5" />
-                          </i>
-                          <div className="flex flex-row items-start w-[61px] h-[34px]">
-                            <div className="flex bg-black flex-row justify-center items-center pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] z-10"></div>
-                            <div className="flex flex-row justify-center items-center p-[4.25px] gap-[10.62px] w-[34px] h-[34px] rounded-[106.25px] absolute mr-7">
-                              <i>
-                                <AddUserDashedCircleIcon color="#C1C1C1" />
-                              </i>
-                            </div>
-                          </div>
-
-                          <i>
-                            <FlagDashedCircleIcon
-                              color="#FB0606"
-                              width="34"
-                              height="34"
-                            />
-                          </i>
-                        </div>
-
-                        <div className="flex flex-row items-center gap-[20px]  h-[25px] bg-white">
-                          <div className="flex flex-row items-center  gap-[8px]   h-[25px]">
-                            <i>
-                              <ShareIcon color="#BDBDBD" />
-                            </i>
-                            <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
-                              {" "}
-                              اشتراک گذاری
-                            </span>
-                            <i>
-                              <DotsMenuIcon color="#BDBDBD" />
-                            </i>
-                          </div>
-                        </div>
-                      </div>
-                      {/* frame 151 */}
-                      <div className="flex flex-col items-start px-[20px] gap-[24px] w-[657px] h-[310px] ">
-                        <i>
-                          <TagDashedCircleIcon color="#C1C1C1" />
+                        <i className="border">
+                          <CheckIcon color="#a5a5a5" />
                         </i>
-
-                        <div className="flex  flex-col items-start gap-[12px] w-[617px] ">
-                          <h1 className=" not-italic font-medium text-[24px] leading-[37px] text-right text-[#1E1E1E]">
-                            عنوان تسک
-                          </h1>
-                          <div
-                            className="flex flex-row justify-start  gap-[10px] w-[617px]  rounded-[12px]"
-                            style={{
-                              border: "1px solid #C1C1C1",
-                            }}
-                          >
-                            {/* <p className=" not-italic font-normal text-[16px] text-right text-[#000000]">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                            با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                            مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای
-                            کاربردی می باشد،
-                          </p> */}
-                            <textarea
-                              className="flex p-4 resize-none flex-row justify-start  gap-[10px] w-[617px] h-[96px]  rounded-[12px] "
-                              placeholder=""
-                              name=""
-                              id=""
-                            ></textarea>
+                        <div className="flex flex-row items-start w-[61px] h-[34px]">
+                          <div className="flex bg-black flex-row justify-center items-center pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] z-10"></div>
+                          <div className="flex flex-row justify-center items-center p-[4.25px] gap-[10.62px] w-[34px] h-[34px] rounded-[106.25px] absolute mr-7">
+                            <i>
+                              <AddUserDashedCircleIcon color="#C1C1C1" />
+                            </i>
                           </div>
                         </div>
 
-                        <div className="flex flex-col items-start gap-[17px]  h-[68px]">
-                          <div className="flex cursor-pointer flex-row justify-start items-center gap-[4px]  h-[24px]">
-                            <i>
-                              <SqurePlusIcon color="#208D8E" />
-                            </i>
-                            <span className=" not-italic font-medium text-[12px] leading-[18px] text-right text-[#208D8E]">
-                              اضافه کردن چک لیست
-                            </span>
-                          </div>
-                          <div className="flex cursor-pointer flex-row justify-start items-center gap-[4px]  h-[24px]">
-                            <i>
-                              <SqurePlusIcon color="#208D8E" />
-                            </i>
-                            <span className=" not-italic font-medium text-[12px] leading-[18px] text-right text-[#208D8E]">
-                              اضافه کردن پیوست
-                            </span>
-                          </div>
+                        <i>
+                          <FlagDashedCircleIcon
+                            color="#FB0606"
+                            width="34"
+                            height="34"
+                          />
+                        </i>
+                      </div>
 
-                          <div></div>
+                      <div className="flex flex-row items-center gap-[20px]  h-[25px] bg-white">
+                        <div className="flex flex-row items-center  gap-[8px]   h-[25px]">
+                          <i>
+                            <ShareIcon color="#BDBDBD" />
+                          </i>
+                          <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
+                            {" "}
+                            اشتراک گذاری
+                          </span>
+                          <i>
+                            <DotsMenuIcon color="#BDBDBD" />
+                          </i>
                         </div>
                       </div>
                     </div>
+                    <div className="flex flex-col items-start px-[20px] gap-[24px] w-[657px] h-[310px] ">
+                      <i>
+                        <TagDashedCircleIcon color="#C1C1C1" />
+                      </i>
 
-                    {/* section 2 */}
-
-                    {/* Frame 153 */}
-                    <div className="flex flex-col  justify-between  items-start gap-[24px] w-[659px] h-[539px]">
-                      {/* frame 230 */}
-                      <div className="flex  flex-col items-start gap-[24px] w-[659px] h-[222px]">
-                        {/* frame 140 */}
-                        <div className="flex bg-white flex-row justify-between items-center pr-[20px] pl-[36px] gap-[214px] w-[659px] h-[57px]">
-                          {/* frame 137 */}
-                          <div className="flex flex-row items-center gap-[28px] w-[381px] h-[57px] bg-white">
-                            <div className="flex flex-col items-start gap-[5px] h-[48px]">
-                              <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
-                                ساخته‌شده در
-                              </span>
-                              <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
-                                ۱ اردیبهشت ۱۴۰۲
-                              </span>
-                            </div>
-
-                            <div className="flex flex-col items-start gap-[5px]  h-[48px]">
-                              <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
-                                زمان
-                              </span>
-                              <div className="flex flex-row justify-start items-center gap-[4px] w-[120px] h-[25px]">
-                                {!isRunning ? (
-                                  <i onClick={startTimer}>
-                                    <PlayIcon />
-                                  </i>
-                                ) : (
-                                  <>
-                                    <i className="flex" onClick={stopTimer}>
-                                      <PlayIcon color="#db1a1a" />
-                                    </i>
-                                    <i className="flex" onClick={resetTimer}>
-                                      <PlayIcon color="#edad0d" />
-                                    </i>
-                                  </>
-                                )}
-
-                                <span className=" not-italic font-normal text-[16px] leading-[25px] text-right">
-                                  <span>{hours}</span>
-                                  <span>:</span>
-                                  <span>{minutes}</span>
-                                  <span>:</span>
-                                  <span>{seconds}</span>
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="flex flex-col items-start gap-[5px] w-[51px] h-[48px]">
-                              <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
-                                ددلاین
-                              </span>
-                              <div className="flex flex-row justify-start items-center gap-[4px] h-[25px]">
-                                <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
-                                  پس‌فردا
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* frame 139 */}
-                          <div className="relative">
-                            <div className="flex absolute  flex-col items-center pt-[3.0303px] py-[6.06061px] pb-[6.06061px] gap-[15.15px]  w-[19.76px] h-[19.76px] top-[-10px]  bg-[#4AB7D8] rounded-[151.515px]">
-                              <span className=" text-[12px]">۲</span>
-                            </div>
-                            <i>{<EyeIcon width="32" height="32" />}</i>
-                          </div>
-                        </div>
-                        <div className=" flex overflow-auto flex-col items-start pr-[20px] pl-[36px] gap-[21px]  w-[659px] h-[117px]">
-                          {TaskDetails.map((item, index) => (
-                            <div
-                              className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]"
-                              key={index}
-                            >
-                              <div className="flex flex-row items-start gap-[4px]  h-[25px]">
-                                <span className=" not-italic font-medium text-[16px] leading-[18px] text-right text-[#208D8E]">
-                                  {item.member}
-                                </span>
-                                <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
-                                  {item.action === "create" ? (
-                                    "این تسک را ساختید"
-                                  ) : item.action === "move" ? (
-                                    <span className="flex gap-1 leading-[18px]">
-                                      {" "}
-                                      این تسک را از {item.start}{" "}
-                                      <i> {item.startTagColor}</i> به{" "}
-                                      <span className="flex gap-1">
-                                        {item.goal}
-                                        <i>{item.goalTagColor}</i> منتقل کردید
-                                      </span>{" "}
-                                    </span>
-                                  ) : (
-                                    "این تسک را حذف کردید"
-                                  )}
-                                </span>
-                              </div>
-                              <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
-                                ۱ ساعت پیش
-                              </span>
-                            </div>
-                          ))}
-                          {/* <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
-                              <div className="flex flex-row items-start gap-[4px] w-[156px] h-[25px]">
-                              <span className=" not-italic font-medium text-[16px] leading-[25px] text-right text-[#208D8E]">
-                                  شما 
-
-                                  </span>
-                                  <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
-                                  این تسک را ساختید
-
-                                  </span>
-
-                              </div>
-                              <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
-                              ۱ ساعت پیش
-
-                              </span>
-
-                          </div> */}
-
-                          {/* <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
-                              <div className="flex flex-row items-start gap-[4px] w-[156px] h-[25px]">
-                                  <span className=" not-italic font-medium text-[16px] leading-[25px] text-right text-[#208D8E]">
-                                  شما 
-
-                                  </span>
-                                  <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
-                                  این تسک را ساختید
-
-                                  </span>
-
-                              </div>
-                              <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
-                              ۱ ساعت پیش
-
-                              </span>
-
-                          </div> */}
-
-                          {/* <div className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]">
-                              <div className="flex flex-row items-start gap-[4px] w-[156px] h-[25px]">
-                              <span className=" not-italic font-medium text-[16px] leading-[25px] text-right text-[#208D8E]">
-                                  شما 
-
-                                  </span>
-                                  <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
-                                  این تسک را ساختید
-
-                                  </span>
-
-                              </div>
-                              <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
-                              ۱ ساعت پیش
-
-                              </span>
-
-                          </div> */}
-                        </div>
-                      </div>
-                      <div className="h-[130px] mt-[-30px] flex-col overflow-auto">
-                        {comment.map((item, index) => (
-                          <div className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]   rounded-[12px]" key={index}>
-                            <div
-                              style={{
-                                backgroundImage: `url(${item.img})`,
-                                backgroundRepeat: "none",
-                                backgroundSize: "cover",
-                              }}
-                              className="flex  flex-row justify-start items-start pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] "
-                            ></div>
-                            <div
-                              style={{
-                                border: "1px solid #F4F4F4",
-                              }}
-                              className=" flex  flex-col items-start p-[16px] gap-[8px] w-[572px] h-[104px] rounded-[12px]"
-                            >
-                              <div className="flex flex-row justify-between items-center gap-[365px]  h-[25px]">
-                                <div className="flex flex-row justify-start items-center gap-[4px]  h-[25px]">
-                                  <span className=" not-italic font-normal text-[16px] text-right text-[#208D8E]">
-                                    {item.name}
-                                  </span>
-                                  <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]">
-                                    {" "}
-                                    کامنت گذاشتید
-                                  </span>
-                                </div>
-
-                                <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]">
-                                  {item.time}
-                                </span>
-                              </div>
-                              <p className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#000000]">
-                                {item.text}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-
-                        {/* <div  className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]  rounded-[12px]">
-                      <div className="flex bg-lime-600 flex-row justify-start items-start pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] ">
-
-                      </div>
-                      <div style={{
-                          border : "1px solid #F4F4F4"
-                      }} className=" flex  flex-col items-start p-[16px] gap-[8px] w-[572px] h-[104px] rounded-[12px]">
-                          <div className="flex flex-row justify-between items-center gap-[365px] w-[497px] h-[25px]">
-                              <div className="flex flex-row justify-start items-center gap-[4px]  h-[25px]">
-                                  <span className=" not-italic font-normal text-[16px] text-right text-[#208D8E]">شما</span>
-                                  <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]"> کامنت گذاشتید</span>
-
-                              </div>
-                              
-                                  <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]">۱۲ تیر</span>
-                              
-
-                          </div>
-                          <p className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#000000]">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
-                      </p>
-
-                      </div>
-                    
-
-                      </div> */}
-                      </div>
-
-                      <div>
-                        <div className="flex flex-row ">
-                          <textarea
-                            placeholder="کامنت"
-                            onChange={textAreaChangeHandler}
-                            onClick={handlerComment}
-                            value={textAreaInput}
-                            style={{
-                              border: "1px solid #F4F4F4",
-                              height: `${!commentHandler ? "67px" : "206px"}`,
-                            }}
-                            className="w-[659px] p-4  resize-none rounded-bl-[20px]  focus:outline-none focus:rounded-[20px]   focus:shadow-lg transition-all"
-                          ></textarea>
-                          <i className=" absolute mr-[620px] mt-5">
-                            <CommentIcon color="#AEAEAE" />
-                          </i>
-                        </div>
-                      </div>
-
-                      {/* <Button classNames='w-[78px] absolute mr-[40%] mt-[34%]  h-[31px] bg-[#208D8E]' style={{
-                          fontSize: '12px',
-                      }} title="ثبت کامنت" /> */}
-
-                      <Transition
-                        show={commentHandler}
-                        enter="ease-out duration-200"
-                        enterFrom="opacity-0 scale-95"
-                        enterTo="opacity-100 scale-100"
-                        leave="ease-in"
-                        leaveFrom="opacity-100 scale-100"
-                        leaveTo="opacity-0 scale-95"
-                        className="absolute mr-[570px] mt-[500px]"
-                      >
-                        <Button
-                          onClick={textAreaSubmitHandler}
-                          classNames="w-[78px] absolute   h-[31px] bg-[#208D8E]"
+                      <div className="flex  flex-col items-start gap-[12px] w-[617px] ">
+                        <h1 className=" not-italic font-medium text-[24px] leading-[37px] text-right text-[#1E1E1E]">
+                          عنوان تسک
+                        </h1>
+                        <div
+                          className="flex flex-row justify-start  gap-[10px] w-[617px]  rounded-[12px]"
                           style={{
-                            fontSize: "12px",
+                            border: "1px solid #C1C1C1",
                           }}
-                          title="ثبت کامنت"
-                        />
-                      </Transition>
-                      <Transition
-                        show={commentHandler}
-                        enter="ease-out duration-200"
-                        enterFrom="opacity-0 scale-95"
-                        enterTo="opacity-100 scale-100"
-                        leave="ease-out"
-                        leaveFrom="opacity-100 scale-100"
-                        leaveTo="opacity-0 scale-95"
-                        className="absolute mr-[1%]  mt-[500px]"
-                      >
-                        <div className="flex flex-row justify-start items-center gap-[20px] w-[156px] h-[24px]">
-                          <i className=" cursor-pointer">
-                            <EmailIcon color="#C9CBDA" />
-                          </i>
-                          <i className=" cursor-pointer">
-                            <LinkIcon color="#C9CBDA" width="24" height="24" />
-                          </i>
-                          <i className=" cursor-pointer">
-                            <NoteIcon color="#C9CBDA" />
-                          </i>
-
-                          <i className=" cursor-pointer">
-                            <SmileIcon color="#C9CBDA" />
-                          </i>
+                        >
+                          <textarea
+                            className="flex p-4 resize-none flex-row justify-start  gap-[10px] w-[617px] h-[96px]  rounded-[12px] "
+                            placeholder=""
+                            name=""
+                            id=""
+                          ></textarea>
                         </div>
-                      </Transition>
+                      </div>
+
+                      <div className="flex flex-col items-start gap-[17px]  h-[68px]">
+                        <div className="flex cursor-pointer flex-row justify-start items-center gap-[4px]  h-[24px]">
+                          <i>
+                            <SqurePlusIcon color="#208D8E" />
+                          </i>
+                          <span className=" not-italic font-medium text-[12px] leading-[18px] text-right text-[#208D8E]">
+                            اضافه کردن چک لیست
+                          </span>
+                        </div>
+                        <div className="flex cursor-pointer flex-row justify-start items-center gap-[4px]  h-[24px]">
+                          <i>
+                            <SqurePlusIcon color="#208D8E" />
+                          </i>
+                          <span className=" not-italic font-medium text-[12px] leading-[18px] text-right text-[#208D8E]">
+                            اضافه کردن پیوست
+                          </span>
+                        </div>
+
+                        <div></div>
+                      </div>
                     </div>
                   </div>
+
+                  {/* section 2 */}
+
+                  <div className="flex flex-col  justify-between  items-start gap-[24px] w-[659px] h-[539px]">
+                    <div className="flex  flex-col items-start gap-[24px] w-[659px] h-[222px]">
+                      <div className="flex bg-white flex-row justify-between items-center pr-[20px] pl-[36px] gap-[214px] w-[659px] h-[57px]">
+                        <div className="flex flex-row items-center gap-[28px] w-[381px] h-[57px] bg-white">
+                          <div className="flex flex-col items-start gap-[5px] h-[48px]">
+                            <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
+                              ساخته‌شده در
+                            </span>
+                            <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
+                              ۱ اردیبهشت ۱۴۰۲
+                            </span>
+                          </div>
+
+                          <div className="flex flex-col items-start gap-[5px]  h-[48px]">
+                            <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
+                              زمان
+                            </span>
+                            <div className="flex flex-row justify-start items-center gap-[4px] w-[120px] h-[25px]">
+                              {!isRunning ? (
+                                <i onClick={startTimer}>
+                                  <PlayIcon />
+                                </i>
+                              ) : (
+                                <>
+                                  <i className="flex" onClick={stopTimer}>
+                                    <PlayIcon color="#db1a1a" />
+                                  </i>
+                                  <i className="flex" onClick={resetTimer}>
+                                    <PlayIcon color="#edad0d" />
+                                  </i>
+                                </>
+                              )}
+
+                              <span className=" not-italic font-normal text-[16px] leading-[25px] text-right">
+                                <span>{hours}</span>
+                                <span>:</span>
+                                <span>{minutes}</span>
+                                <span>:</span>
+                                <span>{seconds}</span>
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-col items-start gap-[5px] w-[51px] h-[48px]">
+                            <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#BBBBBB]">
+                              ددلاین
+                            </span>
+                            <div className="flex flex-row justify-start items-center gap-[4px] h-[25px]">
+                              <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
+                                پس‌فردا
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* frame 139 */}
+                        <div className="relative">
+                          <div className="flex absolute  flex-col items-center pt-[3.0303px] py-[6.06061px] pb-[6.06061px] gap-[15.15px]  w-[19.76px] h-[19.76px] top-[-10px]  bg-[#4AB7D8] rounded-[151.515px]">
+                            <span className=" text-[12px]">۲</span>
+                          </div>
+                          <i>{<EyeIcon width="32" height="32" />}</i>
+                        </div>
+                      </div>
+                      <div className=" flex overflow-auto flex-col items-start pr-[20px] pl-[36px] gap-[21px]  w-[659px] h-[117px]">
+                        {TaskDetails.map((item, index) => (
+                          <div
+                            className="flex flex-row justify-between items-center gap-[21px] w-[603px] h-[25px]"
+                            key={index}
+                          >
+                            <div className="flex flex-row items-start gap-[4px]  h-[25px]">
+                              <span className=" not-italic font-medium text-[16px] leading-[18px] text-right text-[#208D8E]">
+                                {item.member}
+                              </span>
+                              <span className=" not-italic font-normal text-[16px] leading-[24px] text-right text-[#000000]">
+                                {item.action === "create" ? (
+                                  "این تسک را ساختید"
+                                ) : item.action === "move" ? (
+                                  <span className="flex gap-1 leading-[18px]">
+                                    {" "}
+                                    این تسک را از {item.start}{" "}
+                                    <i> {item.startTagColor}</i> به{" "}
+                                    <span className="flex gap-1">
+                                      {item.goal}
+                                      <i>{item.goalTagColor}</i> منتقل کردید
+                                    </span>{" "}
+                                  </span>
+                                ) : (
+                                  "این تسک را حذف کردید"
+                                )}
+                              </span>
+                            </div>
+                            <span className="not-italic font-normal text-[12px] leading-[18px] text-right text-[#ACAEB0]">
+                              ۱ ساعت پیش
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="h-[130px] mt-[-30px] flex-col overflow-auto">
+                      {comment.map((item, index) => (
+                        <div
+                          className=" flex  flex-row justify-start items-start py-[20px] gap-[12px] w-[659px] h-[125px]   rounded-[12px]"
+                          key={index}
+                        >
+                          <div
+                            style={{
+                              backgroundImage: `url(${item.img})`,
+                              backgroundRepeat: "none",
+                              backgroundSize: "cover",
+                            }}
+                            className="flex  flex-row justify-start items-start pt-[9px] px-[8px] pb-[7px] w-[35px] h-[34px] rounded-[100px] "
+                          ></div>
+                          <div
+                            style={{
+                              border: "1px solid #F4F4F4",
+                            }}
+                            className=" flex  flex-col items-start p-[16px] gap-[8px] w-[572px] h-[104px] rounded-[12px]"
+                          >
+                            <div className="flex flex-row justify-between items-center gap-[365px]  h-[25px]">
+                              <div className="flex flex-row justify-start items-center gap-[4px]  h-[25px]">
+                                <span className=" not-italic font-normal text-[16px] text-right text-[#208D8E]">
+                                  {item.name}
+                                </span>
+                                <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]">
+                                  {" "}
+                                  کامنت گذاشتید
+                                </span>
+                              </div>
+
+                              <span className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#AAAAAA]">
+                                {item.time}
+                              </span>
+                            </div>
+                            <p className=" not-italic font-normal text-[12px] leading-[18px] text-right text-[#000000]">
+                              {item.text}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div>
+                      <div className="flex flex-row ">
+                        <textarea
+                          placeholder="کامنت"
+                          onChange={textAreaChangeHandler}
+                          onClick={handlerComment}
+                          value={textAreaInput}
+                          style={{
+                            border: "1px solid #F4F4F4",
+                            height: `${!commentHandler ? "67px" : "206px"}`,
+                          }}
+                          className="w-[659px] p-4  resize-none rounded-bl-[20px]  focus:outline-none focus:rounded-[20px]   focus:shadow-lg transition-all"
+                        ></textarea>
+                        <i className=" absolute mr-[620px] mt-5">
+                          <CommentIcon color="#AEAEAE" />
+                        </i>
+                      </div>
+                    </div>
+                    <Transition
+                      show={commentHandler}
+                      enter="ease-out duration-200"
+                      enterFrom="opacity-0 scale-95"
+                      enterTo="opacity-100 scale-100"
+                      leave="ease-in"
+                      leaveFrom="opacity-100 scale-100"
+                      leaveTo="opacity-0 scale-95"
+                      className="absolute mr-[570px] mt-[500px]"
+                    >
+                      <Button
+                        onClick={textAreaSubmitHandler}
+                        classNames="w-[78px] absolute   h-[31px] bg-[#208D8E]"
+                        style={{
+                          fontSize: "12px",
+                        }}
+                        title="ثبت کامنت"
+                      />
+                    </Transition>
+                    <Transition
+                      show={commentHandler}
+                      enter="ease-out duration-200"
+                      enterFrom="opacity-0 scale-95"
+                      enterTo="opacity-100 scale-100"
+                      leave="ease-out"
+                      leaveFrom="opacity-100 scale-100"
+                      leaveTo="opacity-0 scale-95"
+                      className="absolute mr-[1%]  mt-[500px]"
+                    >
+                      <div className="flex flex-row justify-start items-center gap-[20px] w-[156px] h-[24px]">
+                        <i className=" cursor-pointer">
+                          <EmailIcon color="#C9CBDA" />
+                        </i>
+                        <i className=" cursor-pointer">
+                          <LinkIcon color="#C9CBDA" width="24" height="24" />
+                        </i>
+                        <i className=" cursor-pointer">
+                          <NoteIcon color="#C9CBDA" />
+                        </i>
+
+                        <i className=" cursor-pointer">
+                          <SmileIcon color="#C9CBDA" />
+                        </i>
+                      </div>
+                    </Transition>
+                  </div>
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
-        </div>    
-      </Dialog>      
+        </div>
+      </Dialog>
     </Transition>
   );
 };
