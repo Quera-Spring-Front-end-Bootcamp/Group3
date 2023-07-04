@@ -114,11 +114,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
           color: "#93fa7f",
           editFlag: false,
         };
-        // console.log(newItem)
         tag.push(newItem);
-        // console.log(tag)
         setTag([...tag]);
-        setTagInputText(""); // تخلیه input
+        setTagInputText("");
       }
     }
   }
@@ -128,7 +126,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     setTagInputText(text);
 
     if (text === "") {
-      setTagItems(tagsItem); //
+      setTagItems(tagsItem);
       setSearch(false);
     } else {
       const filteredItems = tagItems.filter((item) => {
@@ -139,8 +137,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
         setTagItems(filteredItems);
         setSearch(false);
       } else {
-        // alert("موردی یافت نشد")
-        // تخلیه input
         setTagItems([]);
         setSearch(true);
       }
@@ -148,8 +144,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   }
 
   function handleTagEditHover(id) {
-    // setEditTag({flag : !editTag , id : event.target.id});
-
     const filteredItems = tag.map((item) => {
       if (item.id === id) {
         return { ...item, editFlag: true };
@@ -157,15 +151,9 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
       return item;
     });
     setTag(filteredItems);
-
-    // console.log(tag);
-    // setKeyTag([event.target.id]);
-    // console.log(event.target.id);
   }
 
   function handleTagEditHoverLeave(id) {
-    // console.log("leave");
-    // setEditTag({flag : !editTag , id : event.target.id});
     const filteredItems = tag.map((item) => {
       if (item.id === id) {
         return { ...item, editFlag: false };
@@ -173,9 +161,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
       return item;
     });
     setTag(filteredItems);
-    // console.log(tag);
-    // setKeyTag([event.target.id]);
-    // console.log(event.target.id);
   }
 
   function handleClickCloseTag(item) {
@@ -203,9 +188,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     setDatePickerOpen(false);
     setTagOpen(false);
   }
-  // console.log(typeof(editWindowPosition.x));
   function handleEtcOpen(id, event) {
-    // console.log((event.clientY / window.innerHeight) * 100-20);
     setEditWindowPosition({ x: event.clientX, y: event.clientY });
     const filteredItems = tagItems.map((item) => {
       if (item.id === id) {
@@ -216,10 +199,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
     });
 
     setTagItems(filteredItems);
-    // setEtcId(id);
-    // console.log(tag);
-    // setKeyTag([event.target.id]);
-    // console.log(event.target.id);
   }
 
   function deleteTag(id) {
@@ -249,7 +228,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   }
 
   function changeColor(id, color) {
-    // console.log(event.target.getAttribute("color"));
     const filteredItems = tagItems.map((item) => {
       if (item.id === id) {
         return { ...item, color: color };
@@ -317,15 +295,11 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                         </i>
                       </div>
                     </Dialog.Title>
-                    {/* Frame 185 */}
                     <div className="Frame-185 flex flex-row justify-start items-center gap-[8px] w-[1078px] h-[34px] ">
                       <span className=" not-italic font-medium text-[16px] leading-[25px] text-right text-[#000000]">
                         در
                       </span>
                       <div className="box-border flex flex-row justify-start items-center pt-[5px] px-[8px] pb-[4px] gap-[10px]  h-[33px] border border-[#E9EBF0] rounded-[6px]">
-                        {/* <span className='not-italic font-normal text-[16px] leading-[24px] text-right text-[#1E1E1E]'>
-                       
-                    </span> */}
                         <input
                           className="not-italic w-[158px] font-normal text-[16px] leading-[24px] text-right text-[#1E1E1E]"
                           placeholder="عنوان تسک"
@@ -334,24 +308,18 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                       <span>برای</span>
                       <i>{<AddUserDashedCircleIcon color="#C1C1C1" />}</i>
                     </div>
-                    {/* Frame 186 */}
                     <textarea
                       placeholder="توضیحاتی برای این تسک بنویسید"
                       className="py-[19px] px-[21px] resize-none border-box w-[1078px] h-[191px] border border-[#E2E2E2] rounded-[12px]"
                     />
+<<<<<<< HEAD
                     {/* Frame 188 */}
+=======
+>>>>>>> main
                     <div className="cursor-pointer flex flex-row justify-start items-center gap-[15px] w-[1078px] h-[32px]">
                       <span className="not-italic font-normal tex-[16px] leading-[24px] text-right">
                         افزودن پیوست
                       </span>
-                      {/* <input type="file"  className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]" /> */}
-                      {/* <div id="#upload-button"   type="file" className="flex flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]">
-                        
-                        <i>
-                          {<LinkIcon color="#208D8E" width="24" height="24" />}
-                        </i>
-                        <span>آپلود فایل</span>
-                      </div> */}
                       <label
                         htmlFor="upload-button"
                         className="flex cursor-pointer flex-row justify-start items-center px-[4px] py-[8px] w-[110px] h-[32px] border border-[#208D8E] rounded-[4px]"
@@ -367,7 +335,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                         />
                       </label>
                     </div>
-                    {/* Frame 191 */}
                     <div className="flex flex-row justify-between  items-center gap-[670px] w-[1078px] h-[50px]">
                       <div className="flex flex-row justify-start items-center gap-[24px] w-[272px] h-[50px]">
                         <div
@@ -503,9 +470,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                                       {<DotsMenuIcon color="#BDBDBD" />}
                                     </i>
                                   </div>
-
-                                  {/* <i onClick={() => handleEtcOpen(item.id)}>{<EtcIcon/>}</i> */}
-
                                   <div
                                     style={{
                                       display: `${
