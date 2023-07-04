@@ -3,8 +3,10 @@ import { Transition } from "@headlessui/react";
 import ArrowDownCircleIcon from "../../assets/Icons/ArrowDownCircleIcon";
 import JustifyRightIcon from "../../assets/Icons/JustifyRightIcon";
 import FlagIcon from "../../assets/Icons/FlagIcon";
+import InfoTask from "../InfoTask/InfoTask";
 
 const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) => {
+  const [infoTaskOpen, setInfoTaskOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const tasks = searchValue ? boardTasks.filter(task => task.name.includes(searchValue)):[...boardTasks]
 
@@ -12,7 +14,10 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
     setIsOpen((perv) => !perv);
   };
 
-  const handleNavigateTaskInfoPage = () => {}; // task info page not completed
+  const handleShowInfoTask = () => {
+    setInfoTaskOpen(true)
+  }; 
+  
 
   const members = [
     { url: "https://i.pravatar.cc/297" },
@@ -36,7 +41,7 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
         <div className="flex flex-row-reverse -space-x-3 justify-center">
           {task.taskAssigns.length > 3 && (
             <a
-              onClick={handleNavigateTaskInfoPage}
+              onClick={handleShowInfoTask}
               className="flex items-center justify-center w-[35px] h-[34px] text-xs font-medium cursor-pointer text-black bg-gray-100  rounded-full hover:bg-gray-200"
             >
               {task.taskAssigns.length}+
@@ -67,7 +72,7 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
       </td>
       <td className="p-3 mx-5 my-4 text-xs text-center ">
         <a
-          onClick={handleNavigateTaskInfoPage}
+          onClick={handleShowInfoTask}
           className=" inline-flex justify-center align-middle w-4 cursor-pointer"
         >
           {<JustifyRightIcon />}
@@ -78,6 +83,7 @@ const TasksBasedOnStatus = ({ boardName, boardColor, boardTasks, searchValue }) 
 
   return (
     <>
+      {infoTaskOpen && <InfoTask infoTaskOpen= {infoTaskOpen} setInfoTaskOpen = {setInfoTaskOpen} /> } 
       <table className="table-fixed  w-[1034px] border-separate border-spacing-y-4">
         <thead>
           <tr className="">
