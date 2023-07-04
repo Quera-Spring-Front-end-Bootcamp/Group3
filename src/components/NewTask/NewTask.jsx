@@ -95,9 +95,8 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
 
   function handleSubmitInputChange(event) {
     const text = event.target.value;
-    setSearch(false)
+    setSearch(false);
     if (event.key === "Enter") {
-      
       if (editing.flag) {
         const filteredItems = tagItems.map((item) => {
           if (item.id === editing.id) {
@@ -180,7 +179,7 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
   }
 
   function handleClickCloseTag(item) {
-    setSearch(false)
+    setSearch(false);
     const filteredItems = tag.filter((tagItem) => {
       return item.id !== tagItem.id;
     });
@@ -340,7 +339,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                       placeholder="توضیحاتی برای این تسک بنویسید"
                       className="py-[19px] px-[21px] resize-none border-box w-[1078px] h-[191px] border border-[#E2E2E2] rounded-[12px]"
                     />
-                    Nima, [22/03/1402 07:17 ب.ظ]
                     {/* Frame 188 */}
                     <div className="cursor-pointer flex flex-row justify-start items-center gap-[15px] w-[1078px] h-[32px]">
                       <span className="not-italic font-normal tex-[16px] leading-[24px] text-right">

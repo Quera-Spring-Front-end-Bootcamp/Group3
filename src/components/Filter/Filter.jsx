@@ -98,7 +98,7 @@ const Filter = ({ isOpenFilter, setIsOpenFilter }) => {
           </div>
         ))}
         <button
-          className=" w-fit  text-xs text-[#208D8E] font-semibold cursor-pointer"
+          className=" w-fit  text-xs text-primary font-semibold cursor-pointer"
           onClick={addFilter}
         >
           افزودن فیلتر جدید
