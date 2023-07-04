@@ -312,10 +312,6 @@ export const NewTask = ({ openNewTaskModal, setOpenNewTaskModal }) => {
                       placeholder="توضیحاتی برای این تسک بنویسید"
                       className="py-[19px] px-[21px] resize-none border-box w-[1078px] h-[191px] border border-[#E2E2E2] rounded-[12px]"
                     />
-<<<<<<< HEAD
-                    {/* Frame 188 */}
-=======
->>>>>>> main
                     <div className="cursor-pointer flex flex-row justify-start items-center gap-[15px] w-[1078px] h-[32px]">
                       <span className="not-italic font-normal tex-[16px] leading-[24px] text-right">
                         افزودن پیوست
