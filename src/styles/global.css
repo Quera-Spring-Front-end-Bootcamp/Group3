@@ -38,10 +38,10 @@ html {
 
 }
 
-
 .theme-208D8E {
     --color-primary: theme('colors.208D8E');
     --color-secondary: theme('colors.50bae0');
+    --color-secondary20: theme('colors.OP50bae0');
     --text-textPrimary: theme('colors.white');
 
 }
@@ -49,6 +49,7 @@ html {
 .theme-78C6B0 {
     --color-primary: theme('colors.78C6B0');
     --color-secondary: theme('colors.6EE7B7');
+    --color-secondary20: theme('colors.OP6EE7B7');
     --text-textPrimary: theme('colors.white');
 
 }
@@ -56,6 +57,7 @@ html {
 .theme-76BC86 {
     --color-primary: theme('colors.76BC86');
     --color-secondary: theme('colors.4ADE80');
+    --color-secondary20: theme('colors.OP4ADE80');
     --text-textPrimary: theme('colors.white');
 
 }
@@ -64,6 +66,7 @@ html {
     --color-primary: theme('colors.80DC69');
     --text-textPrimary: theme('colors.white');
     --color-secondary: theme('colors.4ADE80');
+    --color-secondary20: theme('colors.OP4ADE80');
 
 }
 
@@ -71,6 +74,7 @@ html {
     --color-primary: theme('colors.E46161');
     --text-textPrimary: theme('colors.white');
     --color-secondary: theme('colors.F87171');
+    --color-secondary20: theme('colors.OPF87171');
 
 
 }
@@ -78,6 +82,7 @@ html {
 .theme-E17E80 {
     --color-primary: theme('colors.E17E80');
     --color-secondary: theme('colors.FB7185');
+    --color-secondary20: theme('colors.OPFB7185');
     --text-textPrimary: theme('colors.white');
 
 }
@@ -86,6 +91,7 @@ html {
     --color-primary: theme('colors.EC8182');
     --text-textPrimary: theme('colors.white');
     --color-secondary: theme('colors.FB7185');
+    --color-secondary20: theme('colors.OPFB7185');
 
 
 }
@@ -94,6 +100,8 @@ html {
     --color-primary: theme('colors.F3C567');
     --text-textPrimary: theme('colors.white');
     --color-secondary: theme('colors.FDBA74');
+    --color-secondary20: theme('colors.OPFDBA74');
+
 
 
 }
@@ -102,6 +110,8 @@ html {
     --color-primary: theme('colors.E57A57');
     --text-textPrimary: theme('colors.white');
     --color-secondary: theme('colors.F87171');
+    --color-secondary20: theme('colors.OPF87171');
+
 
 
 }
@@ -110,6 +120,7 @@ html {
     --color-primary: theme('colors.F1A25C');
     --text-textPrimary: theme('colors.white');
     --color-secondary: theme('colors.FDBA74');
+    --color-secondary20: theme('colors.OPFDBA74');
 
 }
 
@@ -117,4 +128,5 @@ html {
     --textPrimary: var(--text-textPrimary);
     --primary: var(--color-primary);
     --secondary: var(--color-secondary);
+    --secondary20: var(--color-secondary20);
 }
