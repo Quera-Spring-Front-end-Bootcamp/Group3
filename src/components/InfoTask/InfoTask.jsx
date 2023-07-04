@@ -126,7 +126,6 @@ const InfoTask = ({ infoTaskOpen, setInfoTaskOpen, taskSelected }) => {
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  console.log(taskSelected)
   const formatter = new Intl.DateTimeFormat("fa-IR", { day: 'numeric', month: 'long' });
 
   useEffect(() => {
@@ -226,7 +225,6 @@ const InfoTask = ({ infoTaskOpen, setInfoTaskOpen, taskSelected }) => {
   }
 
   function handleStatus() {
-    // console.log(statusTask)
     if (statusTask === "open") {
       setStatusTask("Pendding");
       setTaskDetails([
