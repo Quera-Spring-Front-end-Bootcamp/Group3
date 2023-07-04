@@ -6,7 +6,7 @@ function MainLayoutHeaderItem({ title, icon, link }) {
   return (
     <NavLink
       style={({ isActive }) => ({
-        color: isActive ? "#208D8E" : "",
+        color: isActive ? "text-primary" : "",
         fontWeight: isActive ? 700 : 500,
       })}
       to={`/main/${projectId}/${link}`}
@@ -15,9 +15,9 @@ function MainLayoutHeaderItem({ title, icon, link }) {
       {({ isActive }) => (
         <>
           {React.cloneElement(icon, {
-            color: isActive ? "#208D8E" : "#000000",
+            color: isActive ? "#3e3e3e" : "#000000",
           })}
-          <span>{title}</span>
+          <span className={isActive ? "text-primary" : ""}>{title}</span>
         </>
       )}
     </NavLink>
