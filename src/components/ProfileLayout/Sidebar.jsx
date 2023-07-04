@@ -44,9 +44,7 @@ export const Sidebar = () => {
             <li key={link.id}>
               <NavLink
                 className={({ isActive }) =>
-                  (isActive
-                    ? ` font-semibold bg-[#C5FFFF]  `
-                    : " font-medium ") +
+                  (isActive ? ` font-semibold bg-secondary bg-opacity-10` : " font-medium ") +
                   " flex items-center gap-[11px] rounded-[4px] py-1 px-2"
                 }
                 to={`/profile/${link.slug}`}
