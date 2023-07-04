@@ -30,11 +30,12 @@ const BoardTitle = (searchValue) => {
 
   async function createNewBoard(boardName) {
     try {
-      await AXIOS.post(`/board`, {
+      const resp = await AXIOS.post(`/board`, {
         name: boardName,
         projectId: projectId,
         color: getRandomHexCode(),
       });
+      console.log(resp);
       handleGetProjectData();
     } catch (e) {
       console.log(e);
@@ -116,9 +117,16 @@ const BoardTitle = (searchValue) => {
   const addNewTaskClickHandler = () => {
     setOpenNewTaskModal(true);
   };
-  const removeCulomnHandler = (id) => {
+  async function removeCulomnHandler(id) {
+    try {
+      const resp = await AXIOS.delete(`/board/${id}`);
+      console.log(resp);
+      await handleGetProjectData();
+    } catch (e) {
+      console.log(e);
+    }
     console.log(`Remove ${id}`);
-  };
+  }
   const EditBoardTitleHandler = (id) => {
     console.log(`Edit ${id}`);
   };
