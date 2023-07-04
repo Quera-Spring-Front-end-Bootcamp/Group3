@@ -116,7 +116,7 @@ const monthNamesEn = {
   Esfand: "اسفند",
 };
 
-const InfoTask = ({ infoTaskOpen, setInfoTaskOpen }) => {
+const InfoTask = ({ infoTaskOpen, setInfoTaskOpen, taskSelected }) => {
   const [commentHandler, setCommentHandler] = useState(false);
   const [statusTask, setStatusTask] = useState("open");
   const [TaskDetails, setTaskDetails] = useState(statusTaskDetails);
@@ -126,6 +126,7 @@ const InfoTask = ({ infoTaskOpen, setInfoTaskOpen }) => {
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const formatter = new Intl.DateTimeFormat("fa-IR", { day: 'numeric', month: 'long' });
 
   useEffect(() => {
     let interval;
@@ -224,7 +225,6 @@ const InfoTask = ({ infoTaskOpen, setInfoTaskOpen }) => {
   }
 
   function handleStatus() {
-    // console.log(statusTask)
     if (statusTask === "open") {
       setStatusTask("Pendding");
       setTaskDetails([
@@ -478,6 +478,7 @@ const InfoTask = ({ infoTaskOpen, setInfoTaskOpen }) => {
                             placeholder=""
                             name=""
                             id=""
+                            defaultValue={taskSelected?.name}
                           ></textarea>
                         </div>
                       </div>
@@ -556,7 +557,7 @@ const InfoTask = ({ infoTaskOpen, setInfoTaskOpen }) => {
                             </span>
                             <div className="flex flex-row justify-start items-center gap-[4px] h-[25px]">
                               <span className=" not-italic font-normal text-[16px] leading-[25px] text-right text-[#1E1E1E]">
-                                پس‌فردا
+                                {taskSelected.deadline ? formatter.format(new Date(taskSelected.deadline)):'-'}
                               </span>
                             </div>
                           </div>
