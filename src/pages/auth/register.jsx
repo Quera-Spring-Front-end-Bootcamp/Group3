@@ -64,11 +64,6 @@ const Register = () => {
               error={errors.password}
               register={register("password", {
                 required: "این فیلد الزامی می باشد!",
-                // pattern: {
-                //   value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/g,
-                //   message:
-                //     "پسورد باید حداقل یک عدد و یک حرف بزرگ و کوچک و حداقل 8 کاراکتر یا بیشتر داشته باشد.",
-                // },
               })}
             />
           </div>
