@@ -30,11 +30,12 @@ const BoardTitle = (searchValue) => {
 
   async function createNewBoard(boardName) {
     try {
-      await AXIOS.post(`/board`, {
+      const resp = await AXIOS.post(`/board`, {
         name: boardName,
         projectId: projectId,
         color: getRandomHexCode(),
       });
+      console.log(resp);
       handleGetProjectData();
     } catch (e) {
       console.log(e);
@@ -72,8 +73,7 @@ const BoardTitle = (searchValue) => {
 
   async function changePosition(taskId, index) {
     try {
-      const resp = await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
-      console.log("POSITION CHANGED", resp);
+      await AXIOS.put(`/task/${taskId}/position/${index + 1}`);
     } catch (e) {
       console.log(e);
     }
@@ -81,9 +81,8 @@ const BoardTitle = (searchValue) => {
 
   async function changeBoardOrder(boardId, index) {
     try {
-      const resp = await AXIOS.put(`/board/${boardId}/position/${index + 1}`);
+    await AXIOS.put(`/board/${boardId}/position/${index + 1}`);
       await handleGetProjectData();
-      console.log("BOARD ORDER CHANGED", resp);
     } catch (e) {
       console.log(e);
     }
@@ -116,9 +115,16 @@ const BoardTitle = (searchValue) => {
   const addNewTaskClickHandler = () => {
     setOpenNewTaskModal(true);
   };
-  const removeCulomnHandler = (id) => {
+  async function removeCulomnHandler(id) {
+    try {
+      const resp = await AXIOS.delete(`/board/${id}`);
+      console.log(resp);
+      await handleGetProjectData();
+    } catch (e) {
+      console.log(e);
+    }
     console.log(`Remove ${id}`);
-  };
+  }
   const EditBoardTitleHandler = (id) => {
     console.log(`Edit ${id}`);
   };
@@ -207,7 +213,7 @@ const BoardTitle = (searchValue) => {
   };
 
   return (
-    <div className="flex gap-5 m-5 whitespace-nowrap mt-28 pt-8 overflow-auto h-[calc(100vh_-_180px)]">
+    <div className="flex gap-5 m-5 whitespace-nowrap mt-28 pt-8 overflow-auto h-[calc(100vh_-_135px)]">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="allCols" direction="horizontal" type="column">
           {(provided) => {
